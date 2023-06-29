@@ -84,8 +84,8 @@ export default function IndexPage() {
           <Reviews />
         </div>
         <div className="hidden md:block">
-          <Parallax pages={1.7}>
-            <ParallaxLayer offset={0.7} speed={0}>
+          <Parallax pages={2.0}>
+            <ParallaxLayer offset={1.0} speed={0}>
               <Image
                 src={"/images/mountains.png"}
                 alt=""

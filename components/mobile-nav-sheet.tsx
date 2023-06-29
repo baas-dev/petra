@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
 import {
   AlertCircle,
@@ -91,6 +92,7 @@ export default function MobileNavSheet() {
 }
 
 const MobileNavMenu = ({ className, playlists }: SidebarProps) => {
+  let router = useRouter()
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4 py-4">
@@ -99,42 +101,57 @@ const MobileNavMenu = ({ className, playlists }: SidebarProps) => {
             Discover
           </h2>
           <div className="space-y-1">
-            <Link href="/">
-              <Button variant={"ghost"} className="w-full justify-start">
-                <Home className="mr-2 h-4 w-4" />
-                Home
-              </Button>
-            </Link>
-            <Link href="/about">
-              <Button variant="ghost" className="w-full justify-start">
-                <Info className="mr-2 h-4 w-4" />
-                About
-              </Button>
-            </Link>
-            <Link href="/social">
-              <Button variant="ghost" className="w-full justify-start">
-                <Newspaper className="mr-2 h-4 w-4" />
-                Social
-              </Button>
-            </Link>
-            <Link href="/resources">
-              <Button variant="ghost" className="w-full justify-start">
-                <Radio className="mr-2 h-4 w-4" />
-                Resource Center
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button variant="ghost" className="w-full justify-start">
-                <Phone className="mr-2 h-4 w-4" />
-                Contact
-              </Button>
-            </Link>
-            <Link href="/prequalify">
-              <Button variant="ghost" className="w-full justify-start">
-                <AlertCircle className="mr-2 h-4 w-4" />
-                Get Prequalified
-              </Button>
-            </Link>
+            <Button
+              onClick={() => router.push("/")}
+              variant={"ghost"}
+              className="w-full justify-start"
+            >
+              <Home className="mr-2 h-4 w-4" />
+              Home
+            </Button>
+            <Button
+              onClick={() => router.push("/about")}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <Info className="mr-2 h-4 w-4" />
+              About
+            </Button>
+            {/* <Link href="/social"> */}
+            <Button
+              onClick={() => router.push("/social")}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <Newspaper className="mr-2 h-4 w-4" />
+              Social
+            </Button>
+            {/* </Link> */}
+            <Button
+              onClick={() => router.push("/resources")}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <Radio className="mr-2 h-4 w-4" />
+              Resource Center
+            </Button>
+
+            <Button
+              onClick={() => router.push("/contact")}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <Phone className="mr-2 h-4 w-4" />
+              Contact
+            </Button>
+            <Button
+              onClick={() => router.push("/prequalify")}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <AlertCircle className="mr-2 h-4 w-4" />
+              Get Prequalified
+            </Button>
           </div>
         </div>
       </div>
