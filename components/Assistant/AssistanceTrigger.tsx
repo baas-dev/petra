@@ -26,7 +26,7 @@ import {
 
 export default function AssistanceTrigger() {
   return (
-    <Sheet key={0}>
+    <Sheet key={0} side={"top"}>
       <SheetTrigger asChild>
         <Button variant="outline">{"Need Help?"}</Button>
       </SheetTrigger>
@@ -36,7 +36,7 @@ export default function AssistanceTrigger() {
           <div className="max-w-4xl mx-auto">
             <SheetHeader>
               <SheetTitle className="text-4xl text-center font-light mb-2">
-                Assisstance Tool
+                Assistance Tool
               </SheetTitle>
               {/* <SheetDescription>
             Make changes to your profile here. Click save when you're done.
