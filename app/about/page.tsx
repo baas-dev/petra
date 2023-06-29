@@ -161,10 +161,10 @@ const CoreHero = () => {
 }
 
 const TeamCard = (props: {
-  title: string
-  description: string
-  image: string
-  rmloNumber: string
+  title?: string
+  description?: string
+  image?: string
+  rmloNumber?: string
 }) => {
   return (
     <div className="w-full px-4 py-2">
@@ -181,7 +181,7 @@ const TeamCard = (props: {
         <div className="md:w-1/3 w-full">
           <Image
             className="mx-auto"
-            src={props.image}
+            src={props.image ? props.image : ""}
             height={300}
             width={200}
             alt=""

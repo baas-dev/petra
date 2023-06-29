@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card"
 
 export default function ContactCard(props: {
-  icon: JSX.Element
+  icon?: JSX.Element
   title: string
   actionText: string
   description?: string

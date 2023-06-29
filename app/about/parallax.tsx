@@ -9,7 +9,6 @@ import Banner from "@/components/BAAS/Banners/Banner"
 import CoreValues from "@/components/Sections/About/CoreValues"
 import TeamGallery from "@/components/Sections/About/TeamGallery"
 
-import Reviews from "./Reviews"
 import HorizontalParallax from "./horizontalParallax"
 
 // Little helpers ...

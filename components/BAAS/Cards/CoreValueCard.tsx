@@ -14,7 +14,7 @@ import {
 export default function CoreValueCard(props: {
   title: string
   subtext: string
-  icon: JSX.Element
+  icon?: JSX.Element
 }) {
   let { title, subtext, icon } = props
   return (

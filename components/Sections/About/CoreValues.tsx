@@ -1,6 +1,5 @@
 "use client"
 
-import { CoreValueCard } from "@/components/BAAS/Cards/CoreValueCard"
 import { SocialCard } from "@/components/BAAS/Cards/SocialCard"
 
 export default function CoreValues() {
