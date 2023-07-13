@@ -1,6 +1,7 @@
 import { Fade } from "react-awesome-reveal"
 
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 
 // export default function MainHeroSection() {
 //   return (
@@ -96,12 +97,9 @@ export default function MainHeroSection() {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Laborum sit cum iure qui, nostrum at sapiente ducimus.
                   </p>
-                  <a
-                    className="inline-block w-full md:w-auto mb-4 md:mr-6 py-2 px-8 text-sm font-bold uppercase border-2 border-transparent bg-gray-200 rounded hover:bg-gray-100 text-gray-800 transition duration-200"
-                    href="#"
-                  >
-                    start your free trial
-                  </a>
+                  <Button variant={"secondary"} className="outline">
+                    Let Us Help
+                  </Button>
                 </Fade>
               </div>
             </div>

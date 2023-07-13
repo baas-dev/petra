@@ -29,7 +29,7 @@ export default function Services() {
           cascade
           triggerOnce
           direction="up"
-          className="-mt-20"
+          className="mt-8 md:-mt-20"
         >
           <Card
             style={{ contain: "layout" }}
