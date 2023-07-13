@@ -23,7 +23,7 @@ export default function LongCardDetail(props: { title: string }) {
           startups
         </h3>
 
-        <p color="gray" className="font-normal ">
+        <p color="gray" className="font-normal overflow-hidden ">
           Like so many organizations these days, Autodesk is a company in
           transition. It was until recently a traditional boxed software company
           selling licenses. Yet its own business model disruption is only part
