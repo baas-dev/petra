@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import {
@@ -122,9 +123,10 @@ const FullWidthNavbar = () => {
       <header className="bg-white w-full">
         <div className=" mx-auto px-4 py-8 flex items-center">
           <div className="mr-auto md:w-48 flex-shrink-0">
-            <img
-              className="h-8 md:h-10"
-              src="https://i.ibb.co/98pHdFq/2021-10-27-15h51-15.png"
+            <Image
+              src={"/images/petra-blue.svg"}
+              height={50}
+              width={50}
               alt=""
             />
           </div>
