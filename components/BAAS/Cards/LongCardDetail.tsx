@@ -18,12 +18,12 @@ export default function LongCardDetail(props: { title: string }) {
           className="w-full h-full  object-cover"
         />
       </CardHeader>
-      <CardBody>
+      <CardBody className="overflow-hidden ">
         <h3 color="blue" className="uppercase text-2xl font-bold mb-4">
           startups
         </h3>
 
-        <p color="gray" className="font-normal overflow-hidden ">
+        <p color="gray" className="font-normal">
           Like so many organizations these days, Autodesk is a company in
           transition. It was until recently a traditional boxed software company
           selling licenses. Yet its own business model disruption is only part
