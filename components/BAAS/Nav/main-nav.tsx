@@ -125,8 +125,8 @@ const FullWidthNavbar = () => {
           <div className="mr-auto md:w-48 flex-shrink-0">
             <Image
               src={"/images/petra-blue.svg"}
-              height={50}
-              width={50}
+              height={75}
+              width={150}
               alt=""
             />
           </div>
