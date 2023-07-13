@@ -18,7 +18,7 @@ export default function IndexPage() {
     <>
       <div className="">
         <Hero1 />
-        <div className="block">
+        <div className=" bg-secondary">
           <Services />
           <News />
         </div>

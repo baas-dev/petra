@@ -72,7 +72,7 @@ export default function MobileNavSheet() {
             <MoreVertical /> Menu
           </Button>
         </SheetTrigger>
-        <SheetContent side={"left"} size="xl">
+        <SheetContent side={"left"}>
           <SheetHeader className="text-left">
             <SheetTitle>Site Navigation</SheetTitle>
             <SheetDescription>
@@ -80,7 +80,7 @@ export default function MobileNavSheet() {
             </SheetDescription>
           </SheetHeader>
           <div>
-            <MobileNavMenu />
+            <MobileNavMenu className={undefined} playlists={undefined} />
           </div>
           <SheetFooter>
             <p>Made by BAAS Software</p>
@@ -91,7 +91,7 @@ export default function MobileNavSheet() {
   )
 }
 
-const MobileNavMenu = ({ className, playlists }: SidebarProps) => {
+const MobileNavMenu = ({ className, playlists }) => {
   let router = useRouter()
   return (
     <div className={cn("pb-12", className)}>

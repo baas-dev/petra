@@ -2,21 +2,22 @@
 
 import React, { CSSProperties, useEffect, useState } from "react"
 import Image from "next/image"
-import { Parallax, ParallaxLayer } from "@react-spring/parallax"
 import {
-  AnimatedProps,
-  animated,
-  useSpringRef,
-  useTransition,
-} from "@react-spring/web"
+  Card,
+  CardBody,
+  CardHeader,
+  Typography,
+} from "@material-tailwind/react"
+import { Avatar } from "@radix-ui/react-avatar"
+import { Parallax, ParallaxLayer } from "@react-spring/parallax"
 import { Mail, MessageCircle, Phone, Smartphone, User } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import CoreValueCard from "@/components/BAAS/Cards/CoreValueCard"
-import ServiceCard from "@/components/BAAS/Cards/ServiceCard"
+import QuoteHero from "@/components/Sections/About/QuoteHero"
 
-import styles from "./styles.module.css"
+import CoreValuesSection from "./CoreValuesSection"
+import MainHeroSection from "./MainHeroSection"
 
 interface Teammate {
   name?: string
@@ -68,8 +69,9 @@ export default function IndexPage() {
     <>
       <div className="min-h-screen">
         <div className="md:hidden">
-          <CoreHero />
-          <div className="grid grid-cols-1 md:grid-cols-3  md:mt-16 mb-32">
+          <MainHeroSection />
+          <CoreValuesSection />
+          <div className="my-32 grid grid-cols-1 gap-2  md:grid-cols-3">
             {teammates.map((item, i) => (
               <TeamCard
                 key={i}
@@ -80,12 +82,23 @@ export default function IndexPage() {
               />
             ))}
           </div>
+          <div className="pb-4 w-full text-center">
+            <span className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-600">
+              Our Achievements
+            </span>
 
-          <Reviews />
+            <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
+              Awards & Merits
+            </h1>
+          </div>
+          <div className="mx-auto flex flex-wrap md:flex-nowrap h-full w-full">
+            <Merits />
+            <Achievements />
+          </div>
         </div>
         <div className="hidden md:block">
-          <Parallax pages={1.8}>
-            <ParallaxLayer offset={0.8} speed={0}>
+          <Parallax pages={3}>
+            <ParallaxLayer offset={0.6} speed={0.3}>
               <Image
                 src={"/images/mountains.png"}
                 alt=""
@@ -93,10 +106,12 @@ export default function IndexPage() {
                 className="opacity-25"
               />
             </ParallaxLayer>
-            <ParallaxLayer offset={0} speed={1.7}>
+            <ParallaxLayer offset={0} speed={1}>
               <div className="">
-                <CoreHero />
-                <div className="grid grid-cols-1 md:grid-cols-3  md:mt-16 mb-32">
+                <MainHeroSection />
+
+                <CoreValuesSection />
+                <div className="container mb-32 grid grid-cols-3 md:mt-16">
                   {teammates.map((item, i) => (
                     <TeamCard
                       key={i}
@@ -107,55 +122,42 @@ export default function IndexPage() {
                     />
                   ))}
                 </div>
-                <div className=" w-screen pt-32">
-                  <Reviews />
-                </div>
+                <section className="container mx-auto mb-32">
+                  <div className="pb-4 w-full text-center">
+                    <span className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-600">
+                      Our Achievements
+                    </span>
+
+                    <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
+                      Awards & Merits
+                    </h1>
+                  </div>
+                  <div className="mx-auto  flex  h-full w-full">
+                    <Merits />
+                    <Achievements />
+                  </div>
+                  <div className="flex">
+                    <div className="w-full"></div>
+                    <div className="mt-2 grid  grid-cols-4 gap-2"></div>
+                  </div>
+                </section>
+                <section className="container mx-auto">
+                  <div className="pb-4 text-center">
+                    <span className="mb-2 text-xs w-full text-center font-bold uppercase tracking-widest text-blue-600">
+                      Our Achievements
+                    </span>
+
+                    <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
+                      Proudly Serving Our Community
+                    </h1>
+                  </div>
+                </section>
               </div>
             </ParallaxLayer>
           </Parallax>
         </div>
       </div>
       {/* <AboutUsParallax /> */}
-    </>
-  )
-}
-
-const CoreHero = () => {
-  return (
-    <>
-      <div className="flex  w-full flex-wrap w-full md:pr-16">
-        <AboutHeroText />
-        <div className=" w-full h-full m-auto my-16 container">
-          <div className="grid grid-cols-1 md:grid-cols-3 w-full h-1/3  ">
-            <CoreValueCard
-              title="Called"
-              subtext="Passion + Purpose + Expertise = Results. It is our mission to use our knowledge to serve and help others with their lending needs."
-            />
-            <CoreValueCard
-              title="Centered"
-              subtext="Centered on the best rates and the best service. Centered on you. We strive to be balanced, fair, and responsible with home financing and financial plans for our customers."
-            />
-            <CoreValueCard
-              title="Committed"
-              subtext="Wholehearted dedication to our clients, our employees, and our partners. After all, that’s our family. 
-"
-            />
-          </div>
-          <br />
-          <div className="grid grid-cols-1 md:grid-cols-2 w-full h-1/3">
-            <CoreValueCard
-              title="Consultative"
-              subtext="Every client deserves the information, insight, and knowledge to make the best financing decision possible. 
-"
-            />
-            <CoreValueCard
-              title="Collaborative"
-              subtext="It takes a team. Partnerships matter. Working together in unison as a team is the key to success. We’re better together. 
-"
-            />
-          </div>
-        </div>
-      </div>
     </>
   )
 }
@@ -167,9 +169,9 @@ const TeamCard = (props: {
   rmloNumber?: string
 }) => {
   return (
-    <div className="w-full px-4 py-2">
+    <div className="w-full p-2">
       <div
-        className="rounded-lg shadow-lg bg-gray-600  flex flex-row flex-wrap p-4 antialiased w-full"
+        className="flex w-full flex-row  flex-wrap rounded-lg bg-gray-600 p-4 antialiased shadow-lg"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1578836537282-3171d77f8632?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')",
@@ -178,35 +180,35 @@ const TeamCard = (props: {
           backgroundBlendMode: "multiply",
         }}
       >
-        <div className="md:w-1/3 w-full">
+        <div className="w-1/2">
           <Image
-            className="mx-auto"
+            className="mx-auto rounded-xl"
             src={props.image ? props.image : ""}
-            height={300}
-            width={200}
+            height={400}
+            width={400}
             alt=""
           />
         </div>
-        <div className="md:w-2/3 w-full px-3 flex flex-row flex-wrap">
-          <div className="w-full text-right text-gray-700 font-semibold relative pt-3 md:pt-0">
-            <div className="text-2xl text-white leading-tight">
+        <div className="flex w-1/2 flex-row flex-wrap px-3">
+          <div className="relative w-full pt-3 text-right font-semibold text-gray-700 md:pt-0">
+            <div className="text-xl font-light leading-tight text-white">
               {props.title}
             </div>
-            <div className="text-normal text-gray-300 hover:text-gray-400 cursor-pointer">
+            <div className="text-normal cursor-pointer text-gray-300 hover:text-gray-400">
               <span className="border-b border-dashed border-gray-500 pb-1">
                 {props.description}
               </span>
             </div>
-            <div className="mt-4 flexflex-wrap float-right">
+            <div className="flexflex-wrap float-right mt-4">
               <div>
                 <Button>
                   <Mail />
                 </Button>
-                <Button className="bg-orange-500 ml-2">
+                <Button className="ml-2 bg-orange-500">
                   <MessageCircle />
                 </Button>
               </div>
-              <div className="text-sm text-gray-300 hover:text-gray-400 cursor-pointer md:absolute pt-3 md:pt-0 bottom-0 right-0">
+              <div className="bottom-0 right-0 cursor-pointer pt-3 text-sm text-gray-300 hover:text-gray-400 md:absolute md:pt-0">
                 RMLO#: {props.rmloNumber}
               </div>
             </div>
@@ -219,14 +221,14 @@ const TeamCard = (props: {
 
 const AboutHeroText = () => {
   return (
-    <div className="flex flex-wrap text-center w-full md:mb-16 px-8">
+    <div className="flex w-full flex-wrap px-8 text-center md:mb-16">
       <div className="m-auto mt-32">
-        <Badge className="bg-accent mx-auto">
+        <Badge className="mx-auto bg-accent">
           Your #1 Choice for Texas Home Lending
         </Badge>
         <h1 className="text-6xl font-bold">Petra Home Lending</h1>
 
-        <div className="w-full z-10 my-auto text-center ">
+        <div className="z-10 my-auto w-full text-center ">
           <h2 className=" text-4xl  ">
             Your <span className="font-bold">Home</span>, Our
             <span className="font-bold"> Calling</span>
@@ -235,17 +237,17 @@ const AboutHeroText = () => {
             height={20}
             width={50}
             alt={""}
-            className="block -mt-4 rounded-md w-1/2 mx-auto -z-10 "
+            className="-z-10 mx-auto -mt-4 block w-1/2 rounded-md "
             src={"/images/underline.svg"}
           />
         </div>
       </div>
-      <div className="m-auto mt-24 bg-primary p-8 rounded-lg">
-        <span className="uppercase text-secondary text-2xl">
+      <div className="m-auto mt-24 rounded-lg bg-primary p-8">
+        <span className="text-2xl uppercase text-secondary">
           Our Mission Statement
         </span>
 
-        <p className=" text-md font-light text-secondary md:text-lg max-w-xl">
+        <p className=" text-md max-w-xl font-light text-secondary md:text-lg">
           Our name comes from the Greek, meaning rock. We chose it because a
           rock-solid foundation undergirds all that we believe in and everything
           we do. We’re a small home mortgage lender, and that’s on purpose. So,
@@ -260,41 +262,86 @@ const AboutHeroText = () => {
   )
 }
 
-const quotes = [
-  {
-    id: 1,
-    name: "John Doe",
-    quote:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!",
-    image:
-      "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
-  },
-  // Add more quotes here...
-]
-
-const Reviews = () => {
+const Merits = () => {
   return (
-    <div className="m-auto  px-4 max-w-2xl mt-16">
-      <div className="w-full mx-auto my-auto py-4 px-4  bg-white shadow-lg rounded-lg ">
-        <div className="flex justify-center md:justify-end -mt-16">
-          <img
-            className="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
-            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-          />
+    <>
+      <div className=" mx-auto h-full w-full bg-white">
+        <div className="my-auto flex  w-full">
+          {/* first half */}
+          <div className="h-full w-full rounded-xl bg-black">
+            <CardWithBackground />
+          </div>
         </div>
+      </div>
+    </>
+  )
+}
+
+const CardWithBackground = () => {
+  return (
+    <Card
+      shadow={false}
+      className="relative grid h-[32rem] w-full  items-end justify-center overflow-hidden text-center"
+    >
+      <CardHeader
+        floated={false}
+        shadow={false}
+        color="transparent"
+        className="absolute inset-0 m-0 h-full w-full rounded-xl bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
+      >
+        <div className="to-bg-black-10 absolute inset-0 h-full w-full rounded-xl bg-gradient-to-t from-black/80 via-black/50" />
+      </CardHeader>
+      <CardBody className="relative px-6 py-14 md:px-12">
+        <h2
+          // variant="h2"
+          color="white"
+          className="mb-6 text-xl font-medium leading-[1.5] text-white"
+        >
+          How we design and code open-source projects?
+        </h2>
+        <Typography variant="h5" className="mb-4 text-gray-400">
+          Tania Andrew
+        </Typography>
+        <Avatar
+          // size="xl"
+          // variant="circular"
+          // alt="tania andrew"
+          className="border-2 border-white"
+          // src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+        />
+      </CardBody>
+    </Card>
+  )
+}
+
+const Achievements = () => {
+  return (
+    <div className="mt-16 flex  w-full bg-white">
+      <div className="flex w-full items-center px-8 text-center md:px-12 lg:text-left">
         <div>
-          <h2 className="text-gray-800 text-3xl font-semibold">Design Tools</h2>
-          <p className="mt-2 text-gray-600">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            dolores deserunt ea doloremque natus error, rerum quas odio quaerat
-            nam ex commodi hic, suscipit in a veritatis pariatur minus
-            consequuntur!
+          <h2 className="text-3xl font-semibold text-gray-800 md:text-4xl">
+            We are here for <span className="text-accent">You</span>
+          </h2>
+          <p className="mt-2 max-w-md text-sm text-gray-500 md:text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
+            commodi cum cupiditate ducimus, fugit harum id necessitatibus odio
+            quam quasi, quibusdam rem tempora voluptates. Cumque debitis
+            dignissimos id quam vel!
           </p>
-        </div>
-        <div className="flex justify-end mt-4">
-          <a href="#" className="text-xl font-medium text-indigo-500">
-            John Doe
-          </a>
+          <div className="mt-6 flex justify-center lg:justify-start">
+            <a
+              className="rounded bg-gray-900 px-4 py-3 text-xs font-semibold text-gray-200 hover:bg-gray-800"
+              href="#"
+            >
+              Get Started
+            </a>
+            <a
+              className="mx-4 rounded bg-gray-300 px-4 py-3 text-xs font-semibold text-gray-900 hover:bg-gray-400"
+              href="#"
+            >
+              Learn More
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ import {
 
 export default function AssistanceTrigger() {
   return (
-    <Sheet key={0} side={"top"}>
+    <Sheet key={0}>
       <SheetTrigger asChild>
         <Button variant="outline">{"Need Help?"}</Button>
       </SheetTrigger>

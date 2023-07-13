@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Fade, Slide, Zoom } from "react-awesome-reveal"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -36,12 +37,20 @@ export default function Hero1() {
             {/* Text */}
             <div className="w-full z-10 my-auto text-center ">
               <Badge className="bg-accent mx-auto">
-                Your #1 Choice for Texas Home Lending
+                <p>Your #1 Choice for Texas Home Lending</p>
               </Badge>
-              <h1 className=" text-6xl  ">
-                Your <span className="font-bold">Home</span>, <br /> Our{" "}
-                <span className="font-bold">Calling</span>
-              </h1>
+              <Fade cascade triggerOnce damping={0.1} direction="up">
+                <h1 className=" text-6xl font-light  ">
+                  Your <span className="font-bold">Home</span>, <br />
+                </h1>
+                <p className=" text-6xl  ">
+                  Our
+                  <span className="font-semibold">
+                    {" "}
+                    Calling<span className="text-primary">.</span>
+                  </span>
+                </p>
+              </Fade>
               <Image
                 height={20}
                 width={200}

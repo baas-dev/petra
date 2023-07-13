@@ -13,6 +13,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
+import { Separator } from "@/components/ui/separator"
 
 import { Album, playlists } from "./data"
 
@@ -38,7 +39,7 @@ export function NewsCard({
           {album.designation}
         </p>
 
-        <h3 className="text-xl leading-none">{album.title}</h3>
+        <h3 className="text-xl font-bold leading-none">{album.title}</h3>
       </div>
       <ContextMenu>
         <ContextMenuTrigger>
@@ -55,31 +56,6 @@ export function NewsCard({
             />
           </div>
         </ContextMenuTrigger>
-        <ContextMenuContent className="w-40">
-          <ContextMenuItem>Add to Library</ContextMenuItem>
-          <ContextMenuSub>
-            <ContextMenuSubTrigger>Add to Playlist</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="w-48">
-              <ContextMenuItem>
-                <PlusCircle className="mr-2 h-4 w-4" />
-                New Playlist
-              </ContextMenuItem>
-              <ContextMenuSeparator />
-              {playlists.map((playlist) => (
-                <ContextMenuItem key={playlist}>
-                  <ListMusic className="mr-2 h-4 w-4" /> {playlist}
-                </ContextMenuItem>
-              ))}
-            </ContextMenuSubContent>
-          </ContextMenuSub>
-          <ContextMenuSeparator />
-          <ContextMenuItem>Play Next</ContextMenuItem>
-          <ContextMenuItem>Play Later</ContextMenuItem>
-          <ContextMenuItem>Create Station</ContextMenuItem>
-          <ContextMenuSeparator />
-          <ContextMenuItem>Like</ContextMenuItem>
-          <ContextMenuItem>Share</ContextMenuItem>
-        </ContextMenuContent>
       </ContextMenu>
     </div>
   )

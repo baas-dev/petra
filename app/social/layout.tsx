@@ -33,7 +33,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <div className=" min-h-screen">
+      <div className=" min-h-screen bg-secondary md:pt-40">
         <Banner
           Title="Social Posts"
           Subtitle="News, Articles, and other happenings"

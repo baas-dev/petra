@@ -6,7 +6,7 @@ import AssistanceTrigger from "@/components/Assistant/AssistanceTrigger"
 import { Icons } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-import MainNav from "./main-nav"
+import MainNav from "./BAAS/Nav/main-nav"
 
 export function SiteHeader() {
   return (

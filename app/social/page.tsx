@@ -10,8 +10,8 @@ import Sidebar from "./sidebar"
 export default function AboutPage() {
   return (
     <section className="container max-w-6xl grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="grid grid-cols-1 md:grid-cols-8 px-4">
-        <div className="col-span-2 ">
+      <div className="grid grid-cols-1 align-center px-4">
+        <div className="">
           <Sidebar />
           {/* <SearchInput /> */}
         </div>
