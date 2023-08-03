@@ -62,7 +62,7 @@ export default function News() {
 
           <h3 className="text-xl leading-none">{"CNBC Mortgage"}</h3>
           {stories.map((item, i) => (
-            <LongCardDetail Title="" />
+            <LongCardDetail Title={item.title} />
           ))}
         </div>
       </section>
