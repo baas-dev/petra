@@ -32,7 +32,7 @@ function Example(props) {
       <Carousel
         autoPlay={true}
         interval={3000}
-        className=" justify-center items-center max-w-lg"
+        className=" justify-center items-center max-w-xl"
       >
         {items.map((item, i) => (
           <Item key={i} item={item} />

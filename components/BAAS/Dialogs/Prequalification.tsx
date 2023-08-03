@@ -35,6 +35,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   Select,
   SelectContent,
@@ -167,249 +168,262 @@ export default function PrequalificationInformationPopUpForm(props: {
           </div>
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-full max-w-4xl bg-secondary">
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+      <DialogContent className="w-full max-w-6xl bg-secondary">
+        <DialogHeader className="text-left">
+          <DialogTitle>Borrower Information</DialogTitle>
+          <DialogDescription className="max-w-lg">
+            <span className="font-bold uppercase">
+              This is not an actual prequalification process.
+            </span>
+            <br className="mb-2 text-primary" /> Make changes to individual
+            borrower's information here. Click the
+            <span className="uppercase font-bold"> save</span> button at the
+            bottom when you're done.
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="w-full flex gap-2">
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="firstname"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>First Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormDescription>
-                        This is your public display name.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="lastname"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Last Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormDescription>
-                        This is your public display name.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="w-full flex gap-2">
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="dateOfBirth"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Date of birth</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                "w-[240px] pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <FormDescription>
-                        Your date of birth is used to calculate your age.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="maritalStatus"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel> Marital Status</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a marriage status" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="Single">Single</SelectItem>
-                          <SelectItem value="Married">Married</SelectItem>
-                          <SelectItem value="Divorced">Divorced</SelectItem>
-                          <SelectItem value="Widowed">Widowed</SelectItem>
-                          <SelectItem value="Seperated">Seperated</SelectItem>
-                          <SelectItem value="Legal Partnership">
-                            Legal Partnership
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormDescription>
-                        You can manage email addresses in your{" "}
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <Separator />
-            <div className="w-full flex gap-2">
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="annualIncome"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Annual Income</FormLabel>
-                      <div className="flex">
-                        <DollarSign className="h-4 my-auto" />
+        <ScrollArea className="max-h-[500px]">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div className="w-full flex gap-2">
+                <div className="w-full">
+                  <FormField
+                    control={form.control}
+                    name="firstname"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>First Name</FormLabel>
                         <FormControl>
                           <Input
+                            placeholder="Robert"
                             {...field}
-                            onChange={(e) => {
-                              console.log(e.target.value)
-                              field.onChange(e.target.value)
-                            }}
-                            value={MoneyInput(field.value)}
+                            className="bg-white"
                           />
                         </FormControl>
-                      </div>
-                      <FormDescription>
-                        How much money you make in a year?
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="creditScoreRange"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Credit Score</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
+                        <FormDescription>First Legal Name</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="w-full">
+                  <FormField
+                    control={form.control}
+                    name="lastname"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Your Credit Score " />
-                          </SelectTrigger>
+                          <Input
+                            placeholder="McBuyer"
+                            {...field}
+                            className="bg-white"
+                          />
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="Below620">{`< 620`}</SelectItem>
-                          <SelectItem value="620690">{`620 - 699`}</SelectItem>
-                          <SelectItem value="700780">{`700 - 780`}</SelectItem>
-                          <SelectItem value="Above720">{`> 720`}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormDescription>
-                        You can manage email addresses in your{" "}
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="flex">
-              <div className="w-full">
-                <div className="flex w-full   mb-4">
-                  <Label htmlFor="name" className="mb-2 w-full border-none ">
-                    What are items that you pay for monthly,
-                    <br /> that affect your credit?
-                  </Label>
-                  <AddMonthlyItems index={props.index} />
+                        <FormDescription>Last Legal Name</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
-                <Label></Label>
-                <div className="h-48 rounded-xl overflow-y-scroll bg-white border-2 border-dashed w-full">
-                  {props.Borrower.Expenses.map((item, i) => {
-                    return (
-                      <>
-                        <div className="flex w-full">
-                          <div key={i} className="w-full">
+              </div>
+              <div className="w-full flex gap-2">
+                <div className="w-full">
+                  <FormField
+                    control={form.control}
+                    name="dateOfBirth"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col pt-2">
+                        <FormLabel className="">Date of birth</FormLabel>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <FormControl>
+                              <Button
+                                variant={"outline"}
+                                className={cn(
+                                  " pl-3 text-left bg-white font-normal",
+                                  !field.value && "text-muted-foreground"
+                                )}
+                              >
+                                {field.value ? (
+                                  format(field.value, "PPP")
+                                ) : (
+                                  <span>Pick a date</span>
+                                )}
+                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                              </Button>
+                            </FormControl>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0 " align="start">
+                            <Calendar
+                              mode="single"
+                              selected={field.value}
+                              onSelect={field.onChange}
+                              disabled={(date) =>
+                                date > new Date() ||
+                                date < new Date("1900-01-01")
+                              }
+                              initialFocus
+                            />
+                          </PopoverContent>
+                        </Popover>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="w-full">
+                  <FormField
+                    control={form.control}
+                    name="maritalStatus"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel> Marital Status</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="bg-white">
+                              <SelectValue placeholder="Select a marriage status" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="Single">Single</SelectItem>
+                            <SelectItem value="Married">Married</SelectItem>
+                            <SelectItem value="Divorced">Divorced</SelectItem>
+                            <SelectItem value="Widowed">Widowed</SelectItem>
+                            <SelectItem value="Seperated">Seperated</SelectItem>
+                            <SelectItem value="Legal Partnership">
+                              Legal Partnership
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormDescription></FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+              <div className="w-full flex gap-2">
+                <div className="w-full">
+                  <FormField
+                    control={form.control}
+                    name="annualIncome"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Annual Income</FormLabel>
+                        <div className="flex">
+                          <DollarSign className="h-4 my-auto" />
+                          <FormControl className="bg-white">
                             <Input
-                              defaultValue={item.key}
-                              className="border rounded-none"
+                              {...field}
                               onChange={(e) => {
-                                HandleExpenseKeyChange(i, e.target.value)
+                                console.log(e.target.value)
+                                field.onChange(e.target.value)
                               }}
+                              value={MoneyInput(field.value)}
                             />
-                          </div>
-                          <div className="w-full">
-                            <CurrencyInput
-                              id="input-example"
-                              name="input-name"
-                              placeholder="Please enter a number"
-                              defaultValue={0}
-                              decimalsLimit={2}
-                              className="w-full border border-gray-400 border-opacity-25"
-                              prefix="$"
-                              onValueChange={(value, name) => {
-                                HandleExpenseChange(i, value)
-                              }}
-                            />
-                          </div>
+                          </FormControl>
                         </div>
-                      </>
-                    )
-                  })}
+                        <FormDescription>
+                          How much money you make in a year?
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="w-full">
+                  <FormField
+                    control={form.control}
+                    name="creditScoreRange"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Credit Score</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="bg-white">
+                              <SelectValue placeholder="Your Credit Score " />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="Below620">{`Less Than 620`}</SelectItem>
+                            <SelectItem value="620690">{`620 - 699`}</SelectItem>
+                            <SelectItem value="700780">{`700 - 780`}</SelectItem>
+                            <SelectItem value="Above720">{`Greater than 720`}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormDescription>
+                          Give your best estimation of your most recent score
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
               </div>
-              <div className="w-full">
-                <FinancialPieChart borrower={props.Borrower} />
+              <div className="flex">
+                <div className="w-full">
+                  <div className="flex w-full   mb-4">
+                    <Label htmlFor="name" className="mb-2 w-full border-none ">
+                      What are items that you pay for monthly,
+                      <br /> that affect your credit?
+                    </Label>
+                    <AddMonthlyItems index={props.index} />
+                  </div>
+                  <Label></Label>
+                  <div className="h-48 rounded-xl overflow-y-scroll bg-white border-2 border-dashed w-full">
+                    {props.Borrower.Expenses.map((item, i) => {
+                      return (
+                        <>
+                          <div className="flex w-full">
+                            <div key={i} className="w-full">
+                              <Input
+                                defaultValue={item.key}
+                                className="border rounded-none"
+                                onChange={(e) => {
+                                  HandleExpenseKeyChange(i, e.target.value)
+                                }}
+                              />
+                            </div>
+                            <div className="w-full">
+                              <CurrencyInput
+                                id="input-example"
+                                name="input-name"
+                                placeholder="Please enter a number"
+                                defaultValue={0}
+                                decimalsLimit={2}
+                                className="w-full border border-gray-400 border-opacity-25"
+                                prefix="$"
+                                onValueChange={(value, name) => {
+                                  HandleExpenseChange(i, value)
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </>
+                      )
+                    })}
+                  </div>
+                </div>
+                <div className="w-full">
+                  <FinancialPieChart borrower={props.Borrower} />
+                </div>
               </div>
-            </div>
-            <Button type="submit">Submit</Button>
-          </form>
-        </Form>
+              <Button
+                className="bg-primary shadow-xl w-full text-lg"
+                type="submit"
+              >
+                Save Information
+              </Button>
+            </form>
+          </Form>
+        </ScrollArea>
         {/* <DialogFooter>
           <Button type="submit">Save changes</Button>
         </DialogFooter> */}

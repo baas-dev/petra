@@ -49,7 +49,7 @@ export default function TeamSection() {
     },
   ]
   return (
-    <section className="min-h-screen px-4 text-center container">
+    <section className="min-h-screen px-4 text-center container py-16">
       <span className="mb-2 text-xs font-bold tracking-widest text-primary uppercase">
         Team Merits
       </span>

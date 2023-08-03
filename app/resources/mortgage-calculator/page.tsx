@@ -85,23 +85,22 @@ export default function MortgageCalculatorPage() {
   }
 
   return (
-    <div className="container h-full w-full pt-48">
-      <div className=" h-full w-full ">
-        <span className="text-md block  font-semibold text-primary">
-          Borrower Snapshot
-        </span>
+    <div className="container h-full w-full pt-24">
+      <div className="  w-full mb-8">
+        <h1 className="text-md block  font-semibold text-primary">
+          An easy mortgage payment cost-estimate tool
+        </h1>
         <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
-          Prequalification
+          Mortgage Payment Calculator
         </h2>
-      </div>
-      <div className="h-full w-full max-w-md font-light ">
-        <p>
+        <p className="max-w-md   font-light">
           Fill out the contact form below, and we'll be in touch shortly to
           provide you with personalized guidance for your unique needs.
         </p>
       </div>
-      <div className="  flex items-center justify-center ">
-        <div className="m-auto mt-24 h-full w-full">
+
+      <div className="w-full flex  ">
+        <div className="m-auto  h-full w-full">
           <div className="flex flex-row pb-4 md:flex-row">
             <StatCard
               title={"Estimated Monthly Payment"}

@@ -1,5 +1,7 @@
+import Link from "next/link"
 import { Label } from "@radix-ui/react-menubar"
 import {
+  AlertCircle,
   AlertOctagon,
   AlertTriangle,
   Calculator,
@@ -36,45 +38,57 @@ export default function AssistanceTrigger() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="destructive" className="  rounded-lg">
-          <div className="flex justify-between  text-center ">
-            <MailQuestion className="mr-1 " />
-            <p className="">Assistance</p>
+        <Button variant="destructive" className="h-16 w-full rounded-full">
+          <div className="flex-wrap py-8 justify-between  text-center ">
+            <AlertCircle className="mr-1 w-6 mx-auto" />
+            <p className="">Help</p>
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-96">
-        <Command className="rounded-lg border shadow-md">
+      <PopoverContent className="w-80">
+        <Command className="rounded-lg">
           {/* <CommandInput placeholder="Type a command or search..." /> */}
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Have Questions?">
-              <CommandItem>
-                <Calendar className="mr-2 h-4 w-4" />
-                <span>Calendar</span>
-              </CommandItem>
-              <CommandItem>
-                <Smile className="mr-2 h-4 w-4" />
-                <span>Search Emoji</span>
-              </CommandItem>
-              <CommandItem>
-                <Calculator className="mr-2 h-4 w-4" />
-                <span>Calculator</span>
-              </CommandItem>
+
+            <CommandGroup heading="Looking For Support?">
+              <Link href="/contact">
+                <CommandItem className="hover:cursor-pointer">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  <span>Common Buyer Questions</span>
+                </CommandItem>
+              </Link>
+              <Link href="/resources/downloads">
+                <CommandItem className="hover:cursor-pointer">
+                  <Smile className="mr-2 h-4 w-4" />
+                  <span>Find Helpful Information</span>
+                </CommandItem>
+              </Link>
+              <Link href="/resources/mortage-calculator">
+                <CommandItem className="hover:cursor-pointer">
+                  <Calculator className="mr-2 h-4 w-4" />
+                  <span>Calculate Monthly Payment</span>
+                </CommandItem>
+              </Link>
             </CommandGroup>
             <CommandSeparator />
-            <CommandGroup heading="Settings">
-              <CommandItem>
-                <Phone className="mr-2 h-4 w-4" />
-                <span>Call Us</span>
-                {/* <CommandShortcut>⌘P</CommandShortcut> */}
-              </CommandItem>
-              <CommandItem>
-                <MailQuestion className="mr-2 h-4 w-4" />
-                <span>Message Us</span>
-                {/* <CommandShortcut>⌘B</CommandShortcut> */}
-              </CommandItem>
-              <CommandItem className=" border-2 border-blue-500">
+            <CommandGroup heading="Contact Us!">
+              <Link href="tel:12144320443">
+                <CommandItem className="hover:cursor-pointer">
+                  <Phone className="mr-2 h-4 w-4" />
+                  <span>Call Us</span>
+                  {/* <CommandShortcut>⌘P</CommandShortcut> */}
+                </CommandItem>
+              </Link>
+              <Link href="/contact">
+                <CommandItem className="hover:cursor-pointer">
+                  <MailQuestion className="mr-2 h-4 w-4" />
+                  <span>Message Us</span>
+                  {/* <CommandShortcut>⌘B</CommandShortcut> */}
+                </CommandItem>
+              </Link>
+
+              <CommandItem className=" border-2 border-blue-500 bg-blue-600 text-white">
                 <Facebook className="mr-2 h-4 w-4" />
                 <span>Message Us on Facebook</span>
                 {/* <CommandShortcut>⌘S</CommandShortcut> */}

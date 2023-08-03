@@ -189,8 +189,8 @@ const LeftSide = () => {
   ]
 
   return (
-    <div className="w-full flex flex-wrap px-4 h-full text-center py-16">
-      <div className="w-full mb-8 relative ">
+    <div className="w-full flex flex-wrap md:px-4 h-full text-center container mx-auto">
+      <div className="w-full mb-8 ">
         <span className="mb-2 text-xs font-bold tracking-widest text-primary uppercase">
           Team Merits
         </span>
@@ -199,22 +199,33 @@ const LeftSide = () => {
         </h1>
         <Separator />
       </div>
-      <div className="h-1/4 w-full mb-8 flex justify-between gap-2 container">
+      <div className="w-full flex mx-auto text-center justify-center items-center md:p-4">
         {data.map((item, i) => {
           return (
-            <div key={i}>
+            <div key={i} className="w-full">
               <Image
                 src={`/images/${item.path}`}
                 height={100}
                 width={100}
                 alt=""
+                className="mx-auto"
               />
             </div>
           )
         })}
       </div>
-      <div className="w-full flex">
-        <div className="mt-4 w-full md:w-1/2 h-full">
+      <div className="flex flex-wrap w-full justify-between items-center">
+        <div className="w-full max-w-sm md:w-1/4 px-4 md:max-w-lg flex flex-wrap justify-center items-center mt-8">
+          <Image
+            src={`/images/bbb.png`}
+            height={1920}
+            width={1080}
+            alt=""
+            className="md:h-full w-full rounded-lg"
+          />
+        </div>
+
+        <div className="mt-4 w-full md:w-1/2">
           <Image
             src={`/images/10.png`}
             height={1920}
@@ -223,21 +234,8 @@ const LeftSide = () => {
             className="h-1/4 md:h-full  rounded-lg"
           />
         </div>
-        <div className="w-full md:1/4 px-4 max-w-lg  mt-8">
-          <span className="mb-2 text-md font-bold tracking-widest text-primary uppercase">
-            What the Families we serve have been saying
-          </span>
-
+        <div className="w-full md:w-1/4 px-4 max-w-lg flex flex-wrap justify-center items-center">
           <Quotes />
-        </div>
-        <div className="mt-4 w-1/4 md:w-1/4 h-full">
-          <Image
-            src={`/images/bbb.png`}
-            height={1920}
-            width={1080}
-            alt=""
-            className="h-1/4 md:h-full  rounded-lg"
-          />
         </div>
       </div>
     </div>
@@ -251,7 +249,7 @@ const RightSide = () => {
 const Merits = () => {
   return (
     <>
-      <div className=" mx-auto h-screen w-full flex justify-center items-center gap-2 px-4  ">
+      <div className="mx-auto h-screen w-full flex justify-center items-center gap-2 px-4 bg-secondary py-24 ">
         <LeftSide />
         {/* <RightSide /> */}
       </div>

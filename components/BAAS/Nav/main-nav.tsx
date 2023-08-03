@@ -17,6 +17,7 @@ import {
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -132,15 +133,8 @@ const FullWidthNavbar = () => {
           </div>
 
           <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md  xl:flex items-center">
-            <select
-              className="bg-transparent uppercase font-bold text-sm p-4 mr-4"
-              name=""
-              id=""
-            >
-              <option>all categories</option>
-            </select>
-            <input
-              className=" border-gray-300 bg-transparent font-semibold text-sm pl-4"
+            <Input
+              className="border-none  bg-transparent font-semibold text-sm pl-4"
               type="text"
               placeholder="I'm searching for ..."
             />
@@ -219,13 +213,12 @@ const FullWidthNavbar = () => {
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         // href="/"
                       >
-                        <Icons.logo className="h-6 w-6" />
+                        {/* <Icons.logo className="h-6 w-6" /> */}
                         <div className="mb-2 mt-4 text-lg font-medium">
                           Resources for Homebuyers
                         </div>
                         <p className="text-sm leading-tight text-muted-foreground">
-                          Beautifully designed components built with Radix UI
-                          and Tailwind CSS.
+                          Tools to aid in your homebuying journey
                         </p>
                       </a>
                     </NavigationMenuLink>

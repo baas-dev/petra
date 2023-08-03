@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
 import {
   AlertCircle,
+  CalculatorIcon,
+  Download,
+  FileQuestion,
   Globe,
   Home,
   Info,
@@ -47,26 +50,11 @@ const SHEET_POSITIONS = ["top", "right", "bottom", "left"] as const
 type SheetPosition = (typeof SHEET_POSITIONS)[number]
 
 export default function MobileNavSheet() {
-  const [position, setPosition] = useState<SheetPosition>("left")
+  const [open, setOpen] = useState(false)
+
   return (
     <div className="w-full text-left">
-      {/* <RadioGroup
-        defaultValue={position}
-        onValueChange={(value) => setPosition(value as SheetPosition)}
-      >
-        <div className="grid grid-cols-2 gap-2">
-          {SHEET_POSITIONS.map((position, index) => (
-            <div
-              key={`${position}-${index}`}
-              className="flex items-center space-x-2"
-            >
-              <RadioGroupItem value={position} id={position} />
-              <Label htmlFor={position}>{position}</Label>
-            </div>
-          ))}
-        </div>
-      </RadioGroup> */}
-      <Sheet>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant={"ghost"} className="ml-2">
             <MoreVertical /> Menu
@@ -80,7 +68,7 @@ export default function MobileNavSheet() {
             </SheetDescription>
           </SheetHeader>
           <div>
-            <MobileNavMenu className={undefined} playlists={undefined} />
+            <MobileNavMenu setOpen={setOpen} />
           </div>
           <SheetFooter>
             <p>Made by BAAS Software</p>
@@ -91,10 +79,10 @@ export default function MobileNavSheet() {
   )
 }
 
-const MobileNavMenu = ({ className, playlists }) => {
+const MobileNavMenu = ({ setOpen }) => {
   let router = useRouter()
   return (
-    <div className={cn("pb-12", className)}>
+    <div className={cn("pb-12")}>
       <div className="space-y-4 py-4">
         <div className=" py-2">
           <h2 className="mb-2 text-lg font-semibold tracking-tight">
@@ -102,7 +90,9 @@ const MobileNavMenu = ({ className, playlists }) => {
           </h2>
           <div className="space-y-1">
             <Button
-              onClick={() => router.push("/")}
+              onClick={() => {
+                router.push("/"), setOpen(false)
+              }}
               variant={"ghost"}
               className="w-full justify-start"
             >
@@ -110,7 +100,9 @@ const MobileNavMenu = ({ className, playlists }) => {
               Home
             </Button>
             <Button
-              onClick={() => router.push("/about")}
+              onClick={() => {
+                router.push("/about"), setOpen(false)
+              }}
               variant="ghost"
               className="w-full justify-start"
             >
@@ -119,7 +111,9 @@ const MobileNavMenu = ({ className, playlists }) => {
             </Button>
             {/* <Link href="/social"> */}
             <Button
-              onClick={() => router.push("/social")}
+              onClick={() => {
+                router.push("/social"), setOpen(false)
+              }}
               variant="ghost"
               className="w-full justify-start"
             >
@@ -128,16 +122,40 @@ const MobileNavMenu = ({ className, playlists }) => {
             </Button>
             {/* </Link> */}
             <Button
-              onClick={() => router.push("/resources")}
+              onClick={() => {
+                router.push("/resources/mortgage-calculator"), setOpen(false)
+              }}
               variant="ghost"
               className="w-full justify-start"
             >
-              <Radio className="mr-2 h-4 w-4" />
-              Resource Center
+              <CalculatorIcon className="mr-2 h-4 w-4" />
+              Mortgage Calculator
+            </Button>
+            <Button
+              onClick={() => {
+                router.push("/resources/downloads"), setOpen(false)
+              }}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Downloads & Links
             </Button>
 
             <Button
-              onClick={() => router.push("/contact")}
+              onClick={() => {
+                router.push("/resources/faqs"), setOpen(false)
+              }}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <FileQuestion className="mr-2 h-4 w-4" />
+              FAQs
+            </Button>
+            <Button
+              onClick={() => {
+                router.push("/contact"), setOpen(false)
+              }}
               variant="ghost"
               className="w-full justify-start"
             >
@@ -145,7 +163,9 @@ const MobileNavMenu = ({ className, playlists }) => {
               Contact
             </Button>
             <Button
-              onClick={() => router.push("/prequalify")}
+              onClick={() => {
+                router.push("/prequalify"), setOpen(false)
+              }}
               variant="ghost"
               className="w-full justify-start"
             >

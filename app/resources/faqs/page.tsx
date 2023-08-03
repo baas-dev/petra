@@ -9,12 +9,24 @@ export default function FAQ() {
   return (
     <>
       <div className="min-h-screen">
-        <div className="container pt-24">
-          <h2 className="mb-2 text-center text-4xl font-semibold">FAQ</h2>
+        <div className="container  pt-24   ">
+          <div className="  w-full mb-8">
+            <h1 className="text-md block  font-semibold text-primary">
+              An easy mortgage payment cost-estimate tool
+            </h1>
+            <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
+              Frequently Asked Questions
+            </h2>
+            <p className="max-w-md   font-light">
+              Resources that the Petra Home Lending Team has pooled together in
+              order to provide the most helpful and accurate home buying
+              information
+            </p>
+          </div>
+          <section className=" grid ">
+            <AccordionDemo />
+          </section>
         </div>
-        <section className="container grid max-w-[800px] items-center gap-6 pb-8 pt-6 md:py-10">
-          <AccordionDemo />
-        </section>
       </div>
     </>
   )

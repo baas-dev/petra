@@ -22,9 +22,9 @@ import { Toggle } from "@/components/ui/toggle"
 function Sidebar() {
   return (
     <div className="w-full">
-      <div className="flex w-full gap-2">
-        <SearchComponent />
+      <SearchComponent />
 
+      <div className="flex w-full gap-1">
         <SortByComponent />
         <CategoryPopover />
       </div>
@@ -34,7 +34,7 @@ function Sidebar() {
 
 function SearchComponent() {
   return (
-    <div className="mb-4 w-1/2">
+    <div className="mb-4 w-full">
       <Label htmlFor="searchInput" className="text-lg">
         Search
       </Label>
@@ -52,12 +52,12 @@ function SearchComponent() {
 const CategoryPopover = () => {
   return (
     <>
-      <div className="w-1/4">
+      <div className="w-full">
         <Label className="text-lg ">Categories :</Label>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="outline" className="w-full bg-white text-left">
-              Select Cateogories
+              Categories
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-80">
@@ -138,7 +138,7 @@ const SourceChoice = () => {
 function SortByComponent() {
   return (
     <>
-      <div className="mb-4 w-1/4 ">
+      <div className="mb-4 w-full">
         {/* <Label htmlFor="searchInput" className="text-lg ">
           Sort By:
         </Label> */}

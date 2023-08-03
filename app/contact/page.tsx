@@ -16,9 +16,9 @@ import { Separator } from "@/components/ui/separator"
 const ContactUsBody = () => {
   return (
     <>
-      <section className="relative z-10 overflow-hidden bg-secondary h-screen flex justify-center items-center">
+      <section className="relative z-10   bg-secondary h-screen flex justify-center items-center">
         <div className="container">
-          <div className="-mx-4 flex flex-wrap lg:justify-between">
+          <div className="-mx-4 flex flex-wrap lg:justify-between pt-96">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
                 <span className="block text-base font-semibold text-primary">
@@ -35,41 +35,35 @@ const ContactUsBody = () => {
                   personalized guidance for your unique needs.
                 </p>
                 <Separator className="my-4" />
-                <div className="mb-8 flex w-full max-w-[370px]">
-                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary sm:h-[70px] sm:max-w-[70px]">
-                    <Locate className="h-12 w-12 text-white" />
+                <div className="mb-8 flex w-full max-w-[370px] items-center">
+                  <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
+                    <Locate className="h-6 w-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="text-dark mb-1 text-xl font-bold">
-                      Our Location
-                    </h4>
-                    <p className="text-body-color text-base">
+                    <h4 className="text-dark   text-lg">Our Location</h4>
+                    <p className="text-body-color text-md font-light">
                       3939 Belt Line Rd #150, Addison, TX 75001
                     </p>
                   </div>
                 </div>
-                <div className="mb-8 flex w-full max-w-[370px]">
-                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px]">
-                    <PhoneCall className="h-12 w-12 text-white" />
+                <div className="mb-8 flex w-full max-w-[370px] items-center">
+                  <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
+                    <PhoneCall className="h-6 w-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="text-dark mb-1 text-xl font-bold">
-                      Phone Number
-                    </h4>
-                    <p className="text-body-color text-base">
+                    <h4 className="text-dark   text-lg"> Phone Number</h4>
+                    <p className="text-body-color text-md font-light">
                       (+1) 214 432-0443
                     </p>
                   </div>
                 </div>
-                <div className="mb-8 flex w-full max-w-[370px]">
-                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary bg-opacity-5 text-primary sm:h-[70px] sm:max-w-[70px]">
-                    <MailIcon className="h-12 w-12 text-white" />
+                <div className="mb-8 flex w-full max-w-[370px] items-center">
+                  <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
+                    <MailIcon className="h-6 w-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="text-dark mb-1 text-xl font-bold">
-                      Email Address
-                    </h4>
-                    <p className="text-body-color text-base">
+                    <h4 className="text-dark   text-lg"> Email Address</h4>
+                    <p className="text-body-color text-md font-light">
                       info@petralending.com
                     </p>
                   </div>

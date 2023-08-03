@@ -12,6 +12,7 @@ import {
   PersonStanding,
   Plane,
   Plus,
+  SendIcon,
   User,
   UserPlus,
   UserX,
@@ -93,17 +94,17 @@ function FormPage() {
             </Label>
             <Input
               id="username"
-              value="123 Example St."
+              placeholder="123 Example St."
               className="w-full bg-white rounded-md"
             />
           </div>
           <div className="flex flex-wrap w-full">
             <Label htmlFor="username" className="text-right mb-2">
-              Location # (optional)
+              Suite/Apt #
             </Label>
             <Input
               id="username"
-              value="@peduarte"
+              placeholder="#123"
               className="col-span-3 bg-white rounded-md"
             />
           </div>
@@ -267,12 +268,12 @@ function SubmitForm() {
     >
       <div
         // onClick={handleStepChange}
-        className="flex flex-row justify-center h-8 w-full flex-wrap items-center  rounded-xl  hover:cursor-pointer "
+        className="flex justify-center w-full  items-center  rounded-xl  hover:cursor-pointer "
       >
-        <div>
-          <Plane className="mr-2" />
+        <div className="w-1/8">
+          <SendIcon className="mr-2" />
         </div>
-        <div className="">
+        <div className="w-7/8">
           <h4 className="mx-auto text-xl font-light ">Submit!</h4>
         </div>
       </div>
@@ -316,7 +317,7 @@ function BorrowerQuizTrigger() {
         })}
       </div>
       <div className="flex ">
-        <div className="w-1/3 mx-auto">
+        <div className="w-full md:w-1/3 mx-auto">
           <SubmitForm />
         </div>
       </div>
