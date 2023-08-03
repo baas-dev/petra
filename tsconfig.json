@@ -26,6 +26,12 @@
     ],
     "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/resources/mortgage-calculator/components/piechart.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -2,12 +2,9 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import Banner from "@/components/BAAS/Banners/Banner"
-import { SiteHeader } from "@/components/site-header"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
+
+import MortgageCalcProvider from "./mortgage-calculator/components/formContext"
 
 export const metadata: Metadata = {
   title: {
@@ -33,13 +30,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <div>
-        <Banner
-          Title="Resource Center"
-          Subtitle="Find Answers to Common Problems that Home Buyers Look For"
-        />
-        {children}
-      </div>
+      <MortgageCalcProvider>
+        <div className=" bg-secondary min-h-screen`">{children}</div>
+      </MortgageCalcProvider>
     </>
   )
 }

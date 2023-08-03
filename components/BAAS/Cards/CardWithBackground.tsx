@@ -6,30 +6,40 @@ import {
   Typography,
 } from "@material-tailwind/react"
 
-export default function CardWithBackground() {
+import { CardTitle } from "@/components/ui/card"
+import { CoreValue } from "@/app/about/CoreValuesSection"
+
+export default function CardWithBackground(props: CoreValue) {
   return (
     <Card
       shadow={false}
-      className="relative grid h-32 md:h-64  transition-all hover:scale-110 w-full  items-end justify-center overflow-hidden text-center"
+      className="relative grid h-64 md:h-[600px]  transition-all hover:scale-110 w-full  items-end justify-center overflow-hidden text-center"
     >
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="absolute inset-0 m-0 h-full w-full rounded-xl bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
+        className="absolute inset-0 m-0 h-full w-full rounded-xl 
+        
+      bg-no-repeat
+        bg-center"
+        style={{ backgroundImage: `url(${props?.image})` }}
       >
-        <div className="to-bg-black-10 absolute inset-0 h-full w-full rounded-xl bg-gradient-to-t from-black/80 via-black/50" />
+        <div className=" absolute inset-0 h-full w-full rounded-xl bg-gradient-to-t from-black/80 via-black/80 border-2" />
+        {/* <CardTitle className="pt-4 text-2xl text-white font-semibold">
+          {props.title}
+        </CardTitle> */}
       </CardHeader>
       <CardBody className="relative py-14 px-6 md:px-12">
         <h2
           // variant="h2"
           color="white"
-          className="text-xl text-white mb-6 font-medium leading-[1.5]"
+          className="text-lg  text-gray-200 mb-6  leading-[1.5]"
         >
-          How we design and code open-source projects?
+          {props.desc}
         </h2>
-        <Typography variant="h5" className="mb-4 text-gray-400">
-          III
+        <Typography variant="h5" className="mb-4  text-white">
+          {props.title}
         </Typography>
       </CardBody>
     </Card>

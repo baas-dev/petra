@@ -33,13 +33,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <div>
-        <Banner
-          Title="Form Entries"
-          Subtitle="Update secrets, settings, and more"
-        />
-        {children}
-      </div>
+      <div>{children}</div>
     </>
   )
 }

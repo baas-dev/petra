@@ -35,7 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <div>
         <Banner
-          Title="Media Management"
+          Title="Form Submissions"
           Subtitle="Update secrets, settings, and more"
         />
         {children}

@@ -1,104 +1,42 @@
 "use client"
 
-import React, { CSSProperties, useEffect, useState } from "react"
+import { useEffect } from "react"
 import Image from "next/image"
 import {
   Card,
   CardBody,
   CardHeader,
+  Carousel,
   Typography,
 } from "@material-tailwind/react"
 import { Avatar } from "@radix-ui/react-avatar"
 import { Parallax, ParallaxLayer } from "@react-spring/parallax"
 import { Mail, MessageCircle, Phone, Smartphone, User } from "lucide-react"
+import { initTE } from "tw-elements"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import QuoteHero from "@/components/Sections/About/QuoteHero"
 
 import CoreValuesSection from "./CoreValuesSection"
 import MainHeroSection from "./MainHeroSection"
+import Quotes from "./Quotes"
+import TeamSection from "./TeamSection"
 
-interface Teammate {
-  name?: string
-  image?: string
-  jobTitle?: string
-  rmloNumber?: string
-}
-
-const teammates: Teammate[] = [
-  {
-    name: "Jason O'Quinn",
-    jobTitle: "President",
-    rmloNumber: "293991",
-    image: "/images/jo.jpg",
-  },
-  {
-    name: "Kyle Kisselburg",
-    jobTitle: "Vice President",
-    rmloNumber: "331515",
-    image: "/images/kk.jpg",
-  },
-  {
-    name: "Mary Russell",
-    jobTitle: "Senior Loan Officer",
-    rmloNumber: "1120374",
-    image: "/images/mr.jpg",
-  },
-  {
-    name: "Joshua Hernandez",
-    jobTitle: "Senior Loan Officer",
-    rmloNumber: "284694",
-    image: "/images/jh.jpg",
-  },
-  {
-    name: "Josh Faris",
-    jobTitle: "Loan Officer",
-    rmloNumber: "2052019",
-    image: "/images/jf.jpg",
-  },
-  {
-    name: "Kevin Russell",
-    jobTitle: "Loan Officer",
-    rmloNumber: "195604",
-    image: "/images/kr.jpg",
-  },
-]
 export default function IndexPage() {
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-secondary">
         <div className="md:hidden">
           <MainHeroSection />
           <CoreValuesSection />
-          <div className="my-32 grid grid-cols-1 gap-2  md:grid-cols-3">
-            {teammates.map((item, i) => (
-              <TeamCard
-                key={i}
-                title={item.name}
-                description={item.jobTitle}
-                image={item.image}
-                rmloNumber={item.rmloNumber}
-              />
-            ))}
-          </div>
-          <div className="pb-4 w-full text-center">
-            <span className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-600">
-              Our Achievements
-            </span>
-
-            <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
-              Awards & Merits
-            </h1>
-          </div>
-          <div className="mx-auto flex flex-wrap md:flex-nowrap h-full w-full">
-            <Merits />
-            <Achievements />
-          </div>
+          <TeamSection />
+          <Merits />
         </div>
         <div className="hidden md:block">
-          <Parallax pages={3}>
-            <ParallaxLayer offset={0.6} speed={0.3}>
+          <Parallax pages={2.7}>
+            <ParallaxLayer offset={1} speed={0.3}>
               <Image
                 src={"/images/mountains.png"}
                 alt=""
@@ -106,53 +44,12 @@ export default function IndexPage() {
                 className="opacity-25"
               />
             </ParallaxLayer>
+            {/* Content Layer */}
             <ParallaxLayer offset={0} speed={1}>
-              <div className="">
-                <MainHeroSection />
-
-                <CoreValuesSection />
-                <div className="container mb-32 grid grid-cols-3 md:mt-16">
-                  {teammates.map((item, i) => (
-                    <TeamCard
-                      key={i}
-                      title={item.name}
-                      description={item.jobTitle}
-                      image={item.image}
-                      rmloNumber={item.rmloNumber}
-                    />
-                  ))}
-                </div>
-                <section className="container mx-auto mb-32">
-                  <div className="pb-4 w-full text-center">
-                    <span className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-600">
-                      Our Achievements
-                    </span>
-
-                    <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
-                      Awards & Merits
-                    </h1>
-                  </div>
-                  <div className="mx-auto  flex  h-full w-full">
-                    <Merits />
-                    <Achievements />
-                  </div>
-                  <div className="flex">
-                    <div className="w-full"></div>
-                    <div className="mt-2 grid  grid-cols-4 gap-2"></div>
-                  </div>
-                </section>
-                <section className="container mx-auto">
-                  <div className="pb-4 text-center">
-                    <span className="mb-2 text-xs w-full text-center font-bold uppercase tracking-widest text-blue-600">
-                      Our Achievements
-                    </span>
-
-                    <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
-                      Proudly Serving Our Community
-                    </h1>
-                  </div>
-                </section>
-              </div>
+              <MainHeroSection />
+              <CoreValuesSection />
+              <TeamSection />
+              <Merits />
             </ParallaxLayer>
           </Parallax>
         </div>
@@ -262,16 +159,101 @@ const AboutHeroText = () => {
   )
 }
 
+const LeftSide = () => {
+  interface ImageData {
+    path: string
+  }
+
+  let data: ImageData[] = [
+    {
+      path: "2016.jpg",
+    },
+    {
+      path: "2018.png",
+    },
+    {
+      path: "2019.jpg",
+    },
+    {
+      path: "2020.png",
+    },
+    {
+      path: "2021.jpg",
+    },
+    {
+      path: "2022.png",
+    },
+    {
+      path: "2023.jpg",
+    },
+  ]
+
+  return (
+    <div className="w-full flex flex-wrap px-4 h-full text-center py-16">
+      <div className="w-full mb-8 relative ">
+        <span className="mb-2 text-xs font-bold tracking-widest text-primary uppercase">
+          Team Merits
+        </span>
+        <h1 className="text-4xl font-bold mb-4 leading-none tracking-tighter text-neutral-600">
+          Our Achievements
+        </h1>
+        <Separator />
+      </div>
+      <div className="h-1/4 w-full mb-8 flex justify-between gap-2 container">
+        {data.map((item, i) => {
+          return (
+            <div key={i}>
+              <Image
+                src={`/images/${item.path}`}
+                height={100}
+                width={100}
+                alt=""
+              />
+            </div>
+          )
+        })}
+      </div>
+      <div className="w-full flex">
+        <div className="mt-4 w-full md:w-1/2 h-full">
+          <Image
+            src={`/images/10.png`}
+            height={1920}
+            width={1080}
+            alt=""
+            className="h-1/4 md:h-full  rounded-lg"
+          />
+        </div>
+        <div className="w-full md:1/4 px-4 max-w-lg  mt-8">
+          <span className="mb-2 text-md font-bold tracking-widest text-primary uppercase">
+            What the Families we serve have been saying
+          </span>
+
+          <Quotes />
+        </div>
+        <div className="mt-4 w-1/4 md:w-1/4 h-full">
+          <Image
+            src={`/images/bbb.png`}
+            height={1920}
+            width={1080}
+            alt=""
+            className="h-1/4 md:h-full  rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const RightSide = () => {
+  return <Quotes />
+}
+
 const Merits = () => {
   return (
     <>
-      <div className=" mx-auto h-full w-full bg-white">
-        <div className="my-auto flex  w-full">
-          {/* first half */}
-          <div className="h-full w-full rounded-xl bg-black">
-            <CardWithBackground />
-          </div>
-        </div>
+      <div className=" mx-auto h-screen w-full flex justify-center items-center gap-2 px-4  ">
+        <LeftSide />
+        {/* <RightSide /> */}
       </div>
     </>
   )

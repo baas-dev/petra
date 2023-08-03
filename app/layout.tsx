@@ -43,7 +43,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <SiteHeader />
-            <div className="">{children}</div>
+            <div className="min-h-screen">{children}</div>
             <Footer />
             <TailwindIndicator />
           </ThemeProvider>

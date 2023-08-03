@@ -3,8 +3,8 @@
 import { Button, Card, CardBody, CardHeader } from "@material-tailwind/react"
 import { ArrowRightIcon } from "lucide-react"
 
-export default function LongCardDetail(props: { title: string }) {
-  let { title } = props
+export default function LongCardDetail(props: { Title: string }) {
+  let { Title } = props
   return (
     <Card className="flex-row w-full mb-4 max-h-48 ">
       <CardHeader
@@ -20,7 +20,7 @@ export default function LongCardDetail(props: { title: string }) {
       </CardHeader>
       <CardBody className="overflow-hidden ">
         <h3 color="blue" className="uppercase text-2xl font-bold mb-4">
-          startups
+          {Title}
         </h3>
 
         <p color="gray" className="font-normal">

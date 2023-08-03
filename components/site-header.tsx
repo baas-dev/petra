@@ -1,11 +1,3 @@
-import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import AssistanceTrigger from "@/components/Assistant/AssistanceTrigger"
-import { Icons } from "@/components/icons"
-import { ThemeToggle } from "@/components/theme-toggle"
-
 import MainNav from "./BAAS/Nav/main-nav"
 
 export function SiteHeader() {

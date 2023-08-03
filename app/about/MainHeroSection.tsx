@@ -73,7 +73,7 @@ export default function MainHeroSection() {
   return (
     <>
       <div
-        className="w-full bg-center bg-cover h-screen"
+        className="w-full bg-center bg-cover h-screen "
         style={{
           clipPath: "polygon(0% 0%, 100% 0%, 100%  90%, 0% 100%)",
 
@@ -88,19 +88,20 @@ export default function MainHeroSection() {
                 <Badge className="bg-accent mb-2 text-xl">
                   The #1 Choice for Texas Home Lending
                 </Badge>
-                <Fade cascade damping={0.3} direction="up" triggerOnce>
-                  <h1 className="text-6xl text-white font-bold">
-                    Petra Home Lending
-                  </h1>
+                <h1 className="text-6xl text-white font-bold mb-2">
+                  Petra Home Lending
+                </h1>
 
-                  <p className="max-w-lg mx-auto mb-4 text-lg text-gray-300">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Laborum sit cum iure qui, nostrum at sapiente ducimus.
-                  </p>
-                  <Button variant={"secondary"} className="outline">
-                    Let Us Help
-                  </Button>
-                </Fade>
+                <p className="max-w-lg mx-auto mb-4 text-lg text-gray-300">
+                  Rooted in Greek, our name means "rock" - embodying our strong
+                  principles. As a small home mortgage lender, we provide
+                  rock-solid certainty for your first home, growing family
+                  needs, or downsizing plans. Let us assist you in finding the
+                  ideal home for your life's journey. Welcome to our family.
+                </p>
+                <Button variant={"secondary"} className="outline">
+                  Let Us Help
+                </Button>
               </div>
             </div>
           </div>
