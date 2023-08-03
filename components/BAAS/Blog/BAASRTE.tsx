@@ -53,7 +53,7 @@ const editorConfig = {
 export default function BAASRTE() {
   return (
     <>
-      <LexicalComposer initialConfig={editorConfig}>
+      {/* <LexicalComposer initialConfig={editorConfig}>
         <div className="editor-container">
           <ToolbarPlugin />
           <div className="editor-inner">
@@ -72,7 +72,7 @@ export default function BAASRTE() {
           </div>
           <ActionsPlugin />
         </div>
-      </LexicalComposer>
+      </LexicalComposer> */}
     </>
   )
 }

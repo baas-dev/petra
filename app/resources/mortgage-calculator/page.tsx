@@ -94,7 +94,7 @@ export default function MortgageCalculatorPage() {
           Mortgage Payment Calculator
         </h2>
         <p className="max-w-md   font-light">
-          Fill out the contact form below, and we'll be in touch shortly to
+          Fill out the contact form below, and we&#39ll be in touch shortly to
           provide you with personalized guidance for your unique needs.
         </p>
       </div>
@@ -142,7 +142,7 @@ export default function MortgageCalculatorPage() {
   )
 }
 
-function StatCard(props: { title: string; val: number }) {
+function StatCard(props: { title: string; val: string }) {
   return (
     <div className="w-full rounded-xl  border bg-white p-4">
       <p className="text-center text-sm font-light text-primary">

@@ -176,9 +176,9 @@ export default function PrequalificationInformationPopUpForm(props: {
               This is not an actual prequalification process.
             </span>
             <br className="mb-2 text-primary" /> Make changes to individual
-            borrower's information here. Click the
+            borrower&#39s information here. Click the
             <span className="uppercase font-bold"> save</span> button at the
-            bottom when you're done.
+            bottom when you&#39re done.
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="max-h-[500px]">
@@ -257,7 +257,7 @@ export default function PrequalificationInformationPopUpForm(props: {
                             <Calendar
                               mode="single"
                               selected={field.value}
-                              onSelect={field.onChange}
+                              // onSelect={field.onChange}
                               disabled={(date) =>
                                 date > new Date() ||
                                 date < new Date("1900-01-01")

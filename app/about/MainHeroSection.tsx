@@ -93,11 +93,11 @@ export default function MainHeroSection() {
                 </h1>
 
                 <p className="max-w-lg mx-auto mb-4 text-lg text-gray-300">
-                  Rooted in Greek, our name means "rock" - embodying our strong
-                  principles. As a small home mortgage lender, we provide
+                  Rooted in Greek, our name means {"'rock'"} - embodying our
+                  strong principles. As a small home mortgage lender, we provide
                   rock-solid certainty for your first home, growing family
                   needs, or downsizing plans. Let us assist you in finding the
-                  ideal home for your life's journey. Welcome to our family.
+                  ideal home for your life&#39s journey. Welcome to our family.
                 </p>
                 <Button variant={"secondary"} className="outline">
                   Let Us Help

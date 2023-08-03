@@ -32,7 +32,7 @@ export default async function DemoPage({ params }: { params: { id: string } }) {
   return (
     <>
       <div className="container my-4 max-w-2xl">
-        <QuoteForm data={data} />
+        <QuoteForm data={data[0]} />
       </div>
     </>
   )

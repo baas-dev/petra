@@ -47,8 +47,8 @@ export default function IndexPage() {
             </div>
             <div className="font-light h-full w-full max-w-md ">
               <p>
-                Fill out the contact form below, and we'll be in touch shortly
-                to provide you with personalized guidance for your unique needs.
+                This form helps our team determine the best options for your
+                lending
               </p>
             </div>
           </div>
@@ -228,7 +228,6 @@ function AddCoborrower() {
     let borrowers = data.Borrowers
     let len = borrowers.length
     borrowers.push({
-      ID: len,
       AnnualIncome: 0,
       CreditScore: "500-600",
       DOB: "",

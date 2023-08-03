@@ -31,7 +31,7 @@ const ContactUsBody = () => {
                   Get in Touch with Us Today! Have questions about your mortgage
                   options or need assistance with your home financing? Our
                   dedicated team is here to help. Fill out the contact form
-                  below, and we'll be in touch shortly to provide you with
+                  below, and we&#39ll be in touch shortly to provide you with
                   personalized guidance for your unique needs.
                 </p>
                 <Separator className="my-4" />
