@@ -45,7 +45,10 @@ import {
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import MoneyInput from "@/components/MoneyInput"
-import { Borrower, usePreqFormContext } from "@/app/prequalify/formContext"
+import {
+  Borrower,
+  usePreqFormContext,
+} from "@/app/prequalify/components/formContext"
 import MortgageCalculatorPage from "@/app/resources/mortgage-calculator/page"
 
 const MortgagePieChart = dynamic(() => import("@/components/Chart/piechart"), {

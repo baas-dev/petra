@@ -21,7 +21,7 @@ export const data = [
     color: "hsl(111, 70%, 50%)",
   },
 ]
-const MyResponsivePie = ({ data }) => (
+const MortgagePieChart = ({ data }) => (
   <>
     <ResponsivePie
       data={data}
@@ -62,4 +62,4 @@ const MyResponsivePie = ({ data }) => (
   </>
 )
 
-export default MyResponsivePie
+export default MortgagePieChart

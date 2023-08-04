@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Slider } from "@/components/ui/slider"
-import { usePreqFormContext } from "@/app/prequalify/formContext"
+import { usePreqFormContext } from "@/app/prequalify/components/formContext"
 
 import MortgageCalculations from "./MortgageCalculations"
 import { useMortgageCalcContext } from "./components/formContext"
