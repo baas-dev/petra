@@ -12,7 +12,7 @@ async function getData(): Promise<Resource[]> {
 }
 
 export default async function DemoPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
@@ -20,7 +20,7 @@ export default async function DemoPage() {
       <div className="container mx-auto mt-4 py-10">
         <TableActions path="/resources" />
 
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={[]} />
       </div>
     </>
   )

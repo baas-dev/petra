@@ -10,7 +10,7 @@ async function getData(): Promise<Quote[]> {
 }
 
 export default async function DemoPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
@@ -18,7 +18,7 @@ export default async function DemoPage() {
       <div className="container mx-auto mt-4 py-10">
         <TableActions path="/quotes" />
 
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={[]} />
       </div>
     </>
   )

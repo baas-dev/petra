@@ -1,7 +1,7 @@
 "use client"
 
 // import PrequalificationForm from "@/components/Sections/Forms/PrequalificationFormv1"
-import { AlertTriangle, Plus, SendIcon } from "lucide-react"
+import { AlertTriangle, Plus, Send } from "lucide-react"
 import CurrencyInput from "react-currency-input-field"
 
 import { Button } from "@/components/ui/button"
@@ -130,7 +130,7 @@ function FormPage() {
         <Label className="text-md mb-2 text-left text-primary underline">
           Estimated Value of Desired Property
         </Label>
-        {/* <CurrencyInput
+        <CurrencyInput
           id="input-example"
           name="input-name"
           placeholder="Please enter a number"
@@ -141,7 +141,7 @@ function FormPage() {
           onValueChange={(value, name) => {
             console.log(value)
           }}
-        /> */}
+        />
       </div>
       <div className=" mb-4 mt-8 flex w-full  flex-wrap justify-between rounded-xl bg-secondary p-4 text-left  ">
         <div className="w-1/2">
@@ -209,7 +209,7 @@ function SubmitForm() {
         className="flex w-full items-center  justify-center  rounded-xl  hover:cursor-pointer "
       >
         <div className="w-1/8">
-          <SendIcon className="mr-2" />
+          <Send className="mr-2" />
         </div>
         <div className="w-7/8">
           <h4 className="mx-auto text-xl font-light ">Submit!</h4>

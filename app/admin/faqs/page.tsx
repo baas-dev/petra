@@ -12,14 +12,14 @@ async function getData(): Promise<FAQ[]> {
 }
 
 export default async function FAQPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
       <div className="container my-4">{/* <SheetPosition /> */}</div>
       <div className="container mx-auto mt-4 py-10 ">
         <TableActions path="/faqs" />
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={[]} />
       </div>
     </>
   )

@@ -16,13 +16,13 @@ async function getData(): Promise<Payment[]> {
 }
 
 export default async function DemoPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
       <div className="container my-4">{/* <SheetPosition /> */}</div>
       <div className="container mx-auto mt-4 py-10">
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={[data]} />
       </div>
     </>
   )

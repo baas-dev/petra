@@ -15,7 +15,7 @@ async function getData(): Promise<FAQ[]> {
 }
 
 export default async function AdminComponentsPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
@@ -26,7 +26,7 @@ export default async function AdminComponentsPage() {
             <NavTabs />
           </div>
           <TableActions path="/faqs" />
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={[]} />
         </div>
       </ComponentViewProvider>
     </>

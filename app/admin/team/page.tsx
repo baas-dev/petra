@@ -14,14 +14,14 @@ async function getData(): Promise<TeamMember[]> {
 }
 
 export default async function DemoPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
       <div className="container my-4">{/* <SheetPosition /> */}</div>
       <div className="container mx-auto mt-4 py-10">
         <TableActions path="/team" />
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={[]} />
       </div>
     </>
   )
