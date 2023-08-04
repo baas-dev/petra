@@ -12,7 +12,7 @@ const ContactUsBody = () => {
     <>
       <section className="relative z-10   bg-secondary h-screen flex justify-center items-center">
         <div className="container">
-          <div className="-mx-4 flex flex-wrap lg:justify-between">
+          <div className="-mx-4 flex flex-wrap lg:justify-between pt-96 md:pt-0">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
                 <span className="block text-base font-semibold text-primary">
