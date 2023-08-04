@@ -12,14 +12,14 @@ async function getData(): Promise<Articles[]> {
 }
 
 export default async function BlogPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
       <div className="container my-4">{/* <SheetPosition /> */}</div>
       <div className="container mx-auto mt-4 py-10 ">
         <TableActions path="/posts" />
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={[]} />
       </div>
     </>
   )

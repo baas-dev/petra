@@ -22,7 +22,7 @@ export default async function DemoPage() {
     <>
       <div className="container my-4">{/* <SheetPosition /> */}</div>
       <div className="container mx-auto mt-4 py-10">
-        <DataTable columns={columns} data={[data]} />
+        <DataTable columns={columns} data={[]} />
       </div>
     </>
   )
