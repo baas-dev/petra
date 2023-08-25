@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { SidebarItems } from "@/app/asdfasfdsdfasdf/layout"
+import { SidebarItems } from "@/app/admin/layout"
 
 import MediaDialog from "./MediaDialog"
 

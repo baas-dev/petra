@@ -47,12 +47,15 @@ const PrequalFormSchema = z.object({
     Zip: z.string(),
   }),
 })
+const PrequalFormSchema2 = z.any()
 
 export default function IndexPage() {
   const PrequalificationFormCXT = useForm<z.infer<typeof PrequalFormSchema>>({
     resolver: zodResolver(PrequalFormSchema),
   })
-
+  const PrequalificationFormCXT2 = useForm<z.infer<typeof PrequalFormSchema2>>({
+    resolver: zodResolver(PrequalFormSchema2),
+  })
   return (
     <>
       <PrequalificationFormProvider>
@@ -74,7 +77,10 @@ export default function IndexPage() {
             </div>
           </div>
           <div className="mb-16 w-full rounded-xl">
-            <FormPage form={PrequalificationFormCXT} />
+            <FormPage
+              form={PrequalificationFormCXT}
+              form2={PrequalificationFormCXT2}
+            />
           </div>
         </div>
       </PrequalificationFormProvider>
@@ -82,7 +88,7 @@ export default function IndexPage() {
   )
 }
 
-function FormPage({ form }) {
+function FormPage({ form, form2 }) {
   const [showForm, setShowForm] = useState(true)
 
   function handleSetShowForm(val: boolean) {
@@ -99,11 +105,6 @@ function FormPage({ form }) {
 
   const sliderRef = useRef<any>()
 
-  const handlePrev = useCallback(() => {
-    if (!sliderRef.current) return
-    sliderRef.current.swiper.slidePrev()
-  }, [])
-
   const handleNext = useCallback(() => {
     if (!sliderRef.current) return
     sliderRef.current.swiper.slideNext()
@@ -119,11 +120,11 @@ function FormPage({ form }) {
           <Swiper slidesPerView={1} loop ref={sliderRef} className="mb-4">
             <SwiperSlide key={0}>
               <Question1
-                form={form}
+                form={showForm ? form : form2}
                 showForm={showForm}
                 handleSetShowForm={handleSetShowForm}
               />
-              <NextQuestion />
+              <NextQuestion action={handleNext} showForm={showForm}/>
             </SwiperSlide>
             <SwiperSlide key={0}>
               <Question2 />
@@ -135,9 +136,9 @@ function FormPage({ form }) {
   )
 }
 
-function NextQuestion() {
+function NextQuestion(props: {action: any,showForm: any}) {
   return (
-    <Button type="submit">
+    <Button type="submit" onClick={props.showForm ? null : props.action}>
       <CardTitle className="text-2xl">Continue!</CardTitle>
       <CardDescription className="text-xl ml-4 text-white">
         Go To Next Question
@@ -191,7 +192,7 @@ function Question1({ form, showForm, handleSetShowForm }) {
         </Card>
       </div>
       <div className="w-full px-4  text-left">
-        {showForm ? <LocationInput form={form} /> : <Question1Placeholder />}
+        {showForm ? <LocationInput form={...form} /> : <Question1Placeholder />}
       </div>
       {showForm ? (
         <div className="flex w-full flex-col px-4 text-left">

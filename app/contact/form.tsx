@@ -9,20 +9,26 @@ import { toast } from "@/components/ui/use-toast"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 
+import BACKEND from "../API"
 import { CreateNewFormSubmission, GetAllFormSubmissions } from "../API/FORMS"
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, "Please complete first name"),
   email: z.string().min(2, "Please complete second name"),
   message: z.string().min(2, "Please complete second name"),
+  type: z.string(),
 })
+
+const api = new BACKEND()
 
 export default function ContactForm() {
   const r = useRouter()
 
   const faqFormCXT = useForm<z.infer<typeof ContactFormSchema>>({
     resolver: zodResolver(ContactFormSchema),
-    defaultValues: {},
+    defaultValues: {
+      type: "contact",
+    },
   })
   async function onSubmit(data: z.infer<typeof ContactFormSchema>) {
     const result = ContactFormSchema.safeParse(data)
@@ -42,7 +48,13 @@ export default function ContactForm() {
     }
 
     if (result.success) {
-      let id = await CreateNewFormSubmission(data)
+      await api.CREATE({
+        Route: "forms",
+        Body: JSON.stringify({
+          SubmissionData: JSON.stringify(data),
+          Type: "contact",
+        }),
+      })
       toast({
         title: "Your Submission Was Successful!",
         description: (

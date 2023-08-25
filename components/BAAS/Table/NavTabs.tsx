@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
-import { useComponentViewContext } from "@/app/asdfasfdsdfasdf/components/hooks/ComponentViewContext"
+import { useComponentViewContext } from "@/app/admin/components/hooks/ComponentViewContext"
 
 export default function NavTabs() {
   const { selectedOption, setSelectedOption } = useComponentViewContext()

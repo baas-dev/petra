@@ -57,8 +57,8 @@ export default function MortgageCalculatorPage() {
 
   let Dataset = [
     {
-      id: "Principle",
-      label: "Princeple",
+      id: "Principal",
+      label: "Principal",
       value: mortgage
         .CalculatePrincipleAmount(
           financedAmount,
@@ -84,7 +84,7 @@ export default function MortgageCalculatorPage() {
   ]
 
   return (
-    <div className="container h-full w-full pt-24">
+    <div className="container h-full w-full py-24">
       <div className="  w-full mb-8">
         <h1 className="text-md block  font-semibold text-primary">
           An easy mortgage payment cost-estimate tool
@@ -98,7 +98,7 @@ export default function MortgageCalculatorPage() {
         </p>
       </div>
 
-      <div className="w-full flex  ">
+      <div className="w-full flex ">
         <div className="m-auto  h-full w-full">
           <div className="flex flex-col pb-4 md:flex-row gap-2">
             <StatCard
@@ -131,11 +131,11 @@ export default function MortgageCalculatorPage() {
             />
           </div>
           <div className=" flex flex-col w-full gap-2 h-full  md:flex-row  ">
-            <div className="md:w-1/3 rounded-xl bg-gray-200 py-8">
+            <div className=" w-full md:w-1/3 rounded-xl bg-gray-200 py-8">
               <MortgageCalculatorForm />
             </div>
 
-            <div className=" w-2/3 bg-white mx-auto px-4">
+            <div className="w-full md:w-2/3 bg-white mx-auto px-4">
               <MortgagePieChart data={Dataset} />
             </div>
           </div>

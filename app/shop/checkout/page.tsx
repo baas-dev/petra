@@ -121,20 +121,20 @@ export default function CheckoutPage() {
               form={CheckoutForm}
               useSameLocationAsBilling={useSameLocationAsBilling}
             />
-            {CartObject.items.length < 1 ? (
+            {CartObject.items.length === 0 ? (
+              <Button
+                type="submit"
+                disabled
+                className="text-2xl text-center bg-gray-500 hover:bg-accent"
+              >
+                Sorry, You need to add items to your cart in order to check out
+              </Button>
+            ) : (
               <Button
                 type="submit"
                 className="text-2xl bg-accent/60 hover:bg-accent"
               >
                 PLACE ORDER
-              </Button>
-            ) : (
-              <Button
-                type="submit"
-                disabled
-                className="text-2xl bg-gray-500 hover:bg-accent"
-              >
-                Sorry, You need to add items to your cart in order to check out
               </Button>
             )}
           </form>

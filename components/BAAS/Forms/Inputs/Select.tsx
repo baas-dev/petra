@@ -31,6 +31,7 @@ export default function SelectInput(props: {
   form: any
   options: SwitchOptions
 }) {
+  console.log(props.options.items)
   return (
     <FormField
       control={props.form.control}

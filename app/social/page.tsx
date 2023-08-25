@@ -34,10 +34,7 @@ export default async function BlogPage() {
 
   return (
     <section className="container max-w-6xl pt-24 grid items-center ">
-      <Banner
-        Title="Social Posts"
-        Subtitle="News, Articles, and other happenings"
-      />
+      <Banner Title="Social Posts" Subtitle="News" />
       <div className="grid grid-cols-1 align-center px-4">
         <div className="">
           <Sidebar />

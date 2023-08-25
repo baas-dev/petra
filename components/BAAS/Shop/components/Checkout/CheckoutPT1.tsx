@@ -9,6 +9,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
+import BigCard from "@/components/BAAS/Cards/BigCard"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 
 import { useCartContext } from "../../Context/CartContext"
@@ -18,11 +19,11 @@ export default function CheckoutPT1({ form }) {
   const { CartObject, setCartObject } = useCartContext()
 
   return (
-    <div className="flex justify-center items-center mx-auto w-full mt-8 gap-2  ">
-      <div className="w-1/2 h-full">
+    <div className="flex flex-wrap justify-center items-center mx-auto w-full mt-8 gap-2  ">
+      <div className="w-full h-full">
         <PricingSection form={form} />
       </div>
-      <div className="w-full space-y-2 max-h-[400px] border overflow-y-scroll">
+      <div className="w-full space-y-2  border overflow-y-scroll">
         {CartObject.items.map((item, i) => {
           return <CartItem data={item} />
         })}

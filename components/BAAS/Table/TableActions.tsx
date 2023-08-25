@@ -5,6 +5,7 @@ import { SearchInput } from "./Search"
 export interface TableActionOptions {
   apiPath: string
   formName: string
+  data?: any[]
 }
 
 export default function TableActions(props: TableActionOptions) {
@@ -14,7 +15,12 @@ export default function TableActions(props: TableActionOptions) {
         <SearchInput />
         <div className=" w-full flex justify-end gap-2">
           <CreateDialog
-            Form={<BodyRenderer ComponentName={props.formName} data={null} />}
+            Form={
+              <BodyRenderer
+                ComponentName={props.formName}
+                data={props.data ? props.data : null}
+              />
+            }
           />
         </div>
       </div>

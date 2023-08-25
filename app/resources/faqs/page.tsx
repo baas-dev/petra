@@ -4,8 +4,27 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
+import BACKEND from "@/app/API"
 
-export default function FAQ() {
+const api = new BACKEND()
+
+const GetData = async (route: string) => {
+  let val = await api.GET({
+    Route: route,
+  })
+
+  return val
+}
+
+interface FAQ {
+  Question: string
+  Answer: string
+  Published: string
+}
+export default async function FAQ() {
+  let res = await GetData(`faq`).then((val) => val)
+
   return (
     <>
       <div className="min-h-screen">
@@ -24,7 +43,7 @@ export default function FAQ() {
             </p>
           </div>
           <section className=" grid ">
-            <AccordionDemo />
+            <FAQAccordion data={res ? res.data : null} />
           </section>
         </div>
       </div>
@@ -32,29 +51,22 @@ export default function FAQ() {
   )
 }
 
-function AccordionDemo() {
+function FAQAccordion(props: { data: FAQ[] }) {
   return (
     <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that matches the other
-          components&#39; aesthetic.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It&#39;s animated by default, but you can disable it if you
-          prefer.
-        </AccordionContent>
-      </AccordionItem>
+      {props.data.length > 0 ? (
+        props.data.map((item, i) => (
+          <AccordionItem value={`item-${i}}`}>
+            <AccordionTrigger>{item.Question}</AccordionTrigger>
+            <AccordionContent>{item.Answer}</AccordionContent>
+          </AccordionItem>
+        ))
+      ) : (
+        <LongCardDetail
+          Title={"No FAQs Available!"}
+          Description={"Sorry, we are unable to get FAQs at this time."}
+        />
+      )}
     </Accordion>
   )
 }

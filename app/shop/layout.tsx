@@ -3,6 +3,8 @@ import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
 
+import Sidebar from "./headerBar"
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,

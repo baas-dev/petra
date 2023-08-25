@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import { ResourceFormSchema } from "@/app/asdfasfdsdfasdf/resources/form"
+import { ResourceFormSchema } from "@/app/admin/resources/form"
 
 export async function GetAllResources() {
   let response

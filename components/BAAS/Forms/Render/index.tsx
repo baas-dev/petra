@@ -1,13 +1,16 @@
 "use client"
 
-import ArticleAdminForm from "@/app/asdfasfdsdfasdf/articles/form"
-import FAQFullForm from "@/app/asdfasfdsdfasdf/faqs/[ID]/form"
-import FAQAdminForm from "@/app/asdfasfdsdfasdf/faqs/[ID]/form"
-import FAQInitForm from "@/app/asdfasfdsdfasdf/faqs/form"
-import ResourceFullForm from "@/app/asdfasfdsdfasdf/resources/[ID]/form"
-import ResourceInitForm from "@/app/asdfasfdsdfasdf/resources/form"
-import ProductFullForm from "@/app/asdfasfdsdfasdf/shop/products/[ID]/form"
-import ProductInitForm from "@/app/asdfasfdsdfasdf/shop/products/form"
+import ArticleAdminForm from "@/app/admin/articles/form"
+import FAQFullForm from "@/app/admin/faqs/[ID]/form"
+import FAQInitForm from "@/app/admin/faqs/form"
+import ResourceFullForm from "@/app/admin/resources/[ID]/form"
+import ResourceInitForm from "@/app/admin/resources/form"
+import AttributesForm from "@/app/admin/shop/attributes/[ID]/form"
+import AttributesInitForm from "@/app/admin/shop/attributes/form"
+import ProductFullForm from "@/app/admin/shop/products/[ID]/form"
+import ProductInitForm from "@/app/admin/shop/products/form"
+import TeamInitForm from "@/app/admin/team/form"
+import TestimonialsInitForm from "@/app/admin/testimonials/form"
 
 function RenderSwitch(ComponentName: string, data?) {
   switch (ComponentName) {
@@ -15,6 +18,11 @@ function RenderSwitch(ComponentName: string, data?) {
       return <FAQFullForm data={data} />
     case "faqInit":
       return <FAQInitForm />
+
+    case "attributeInit":
+      return <AttributesInitForm />
+    case "attribute":
+      return <AttributesForm data={data} />
 
     case "resourceInit":
       return <ResourceInitForm />
@@ -26,8 +34,12 @@ function RenderSwitch(ComponentName: string, data?) {
     case "article":
       return <ArticleAdminForm />
 
+    case "testimonialInit":
+      return <TestimonialsInitForm />
+    case "teamInit":
+      return <TeamInitForm />
     case "productInit":
-      return <ProductInitForm />
+      return <ProductInitForm data={data} />
     case "product":
       return <ProductFullForm data={data} />
     default:

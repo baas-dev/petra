@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ShoppingCart } from "lucide-react"
 
@@ -23,6 +24,7 @@ export default function Cart() {
   const router = useRouter()
   const { CartObject, setCartObject } = useCartContext()
 
+  const [open, setOpen] = useState(false)
   function GetSubtotal(): number {
     let subtotal = 0
     CartObject.items.forEach((item, i) => {
@@ -46,7 +48,7 @@ export default function Cart() {
     return res
   }
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button className="w-full bg-accent border mb-2">
           <ShoppingCart className="mr-4" /> View Cart ({CartObject.items.length}
@@ -101,7 +103,9 @@ export default function Cart() {
           </div>
         </div>
         <Button
-          onClick={() => router.push("/shop/checkout")}
+          onClick={() => {
+            router.push("/shop/checkout"), setOpen(false)
+          }}
           className="w-full text-lg"
           type="submit"
         >

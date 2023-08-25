@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import { ArticleFormSchema } from "@/app/asdfasfdsdfasdf/articles/form"
+import { ArticleFormSchema } from "@/app/admin/articles/form"
 
 export default async function CreateNewArticleSubmission(body) {
   try {

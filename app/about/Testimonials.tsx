@@ -152,13 +152,15 @@ const Testimonial = () => {
             </div>
           </div>
         </div>
-        <Image
-          src={`/images/10.png`}
-          height={1920}
-          width={1080}
-          alt=""
-          className="w-full  mx-auto"
-        />
+        <div className="container ">
+          <Image
+            src={`/images/10.png`}
+            height={1600}
+            width={800}
+            alt=""
+            className="w-3/4 pt-16  mx-auto rounded-xl"
+          />{" "}
+        </div>
       </section>
     </>
   )

@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import { FAQFormSchema } from "@/app/asdfasfdsdfasdf/faqs/form"
+import { FAQFormSchema } from "@/app/admin/faqs/form"
 
 export async function CreateFAQ(body: z.infer<typeof FAQFormSchema>) {
   console.log(body)
