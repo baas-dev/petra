@@ -16,16 +16,12 @@ async function getData(): Promise<z.infer<typeof FAQFormSchema>[]> {
 }
 
 export default async function FAQPage() {
-  const data = await getData()
+  // const data = await getData()
 
   return (
     <>
       <TableActions apiPath="categories" formName={"categoriesInit"} />
-      <DataTable
-        columns={columns}
-        data={data ? data : []}
-        routePath="/categoriess"
-      />
+      <DataTable columns={columns} data={[]} routePath="/categoriess" />
     </>
   )
 }

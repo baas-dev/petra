@@ -48,7 +48,7 @@ export default function ArticleAdminForm() {
       if (id != undefined) {
         toast({
           title: "You submitted the following values:",
-          description: <p>{id}</p>,
+          // description: <p>{id}</p>,
         })
         let addr = `/admin/articles/${id}`
         r.push(addr)
