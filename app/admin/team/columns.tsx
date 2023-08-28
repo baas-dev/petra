@@ -18,9 +18,9 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import RowActions from "@/components/BAAS/Table/RowActions"
 
-import { TestimonialsFormSchema } from "./form"
+import { TeamFormSchema } from "./form"
 
-export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
+export const columns: ColumnDef<z.infer<typeof TeamFormSchema>>[] = [
   {
     accessorKey: "Name",
     header: "Name",
