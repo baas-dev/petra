@@ -26,7 +26,12 @@ export default async function AdminComponentsPage() {
             <NavTabs />
           </div>
           <TableActions apiPath="/faqs" formName={""} />
-          <DataTable columns={columns} data={[]} routePath={""} />
+          <DataTable
+            columns={columns}
+            data={[]}
+            routePath={""}
+            form={undefined}
+          />
         </div>
       </ComponentViewProvider>
     </>
