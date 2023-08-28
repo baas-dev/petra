@@ -5,7 +5,7 @@ import { DataTable } from "@/components/BAAS/Table/DataTable"
 import TableActions from "@/components/BAAS/Table/TableActions"
 
 import { columns } from "./columns"
-import { AttributeFormSchema } from "./form"
+import AttributesInitForm, { AttributeFormSchema } from "./form"
 
 async function getData(): Promise<z.infer<typeof AttributeFormSchema>[]> {
   let data = await fetch("http://localhost:4000/product-attributes", {
@@ -22,7 +22,7 @@ export default async function AttributesPage() {
     <>
       <TableActions apiPath="product-attributes" formName={"attributeInit"} />
       <DataTable
-        sortFilters={["Name"]}
+        form={AttributesInitForm}
         columns={columns}
         data={data ? data : []}
         routePath="/shop/attributes"
