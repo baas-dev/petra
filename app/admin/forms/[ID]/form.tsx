@@ -14,26 +14,23 @@ import { FormConfig } from "@/components/BAAS/Forms/Types"
 
 export const ResourceFormSchema = z.object({
   ID: z.string(),
-  Title: z.string().min(2, "Please complete first name"),
-  Description: z.string().min(2, "Please complete second name"),
-  Link: z.string().min(2, "Please complete second name"),
+  Name: z.string(),
+  Email: z.string(),
+  Message: z.string(),
 })
 
-export default function ResourceFullForm(props: {
-  data: z.infer<typeof ResourceFormSchema>
-}) {
+export default function ContactForm(props: { data: any }) {
   const r = useRouter()
 
-  let { ID, Title, Description, Link } = props.data
+  let { name, email, message } = JSON.parse(props.data.SubmissionData)
 
-  console.log(props.data)
   const ResourceFormCXT = useForm<z.infer<typeof ResourceFormSchema>>({
     resolver: zodResolver(ResourceFormSchema),
     defaultValues: {
-      ID: ID,
-      Title: Title,
-      Description: Description,
-      Link: Link,
+      ID: props.data.ID,
+      Name: name,
+      Email: email,
+      Message: message,
     },
   })
 
@@ -64,25 +61,28 @@ export default function ResourceFullForm(props: {
         <TextInput
           form={ResourceFormCXT}
           options={{
-            name: "Title",
-            label: "Title",
-          }}
-        />
-        <TextAreaInput
-          form={ResourceFormCXT}
-          options={{
-            name: "Description",
-            label: "Description",
+            name: "Name",
+            label: "Name",
+            isDisabled: true,
           }}
         />
         <TextInput
           form={ResourceFormCXT}
           options={{
-            name: "Link",
-            label: "Link",
+            name: "Email",
+            label: "Email",
+            isDisabled: true,
           }}
         />
-        <Button type="submit">Save changes</Button>
+        <TextAreaInput
+          form={ResourceFormCXT}
+          options={{
+            name: "Message",
+            label: "Message",
+            isDisabled: true,
+          }}
+        />
+        {/* <Button type="submit">Save changes</Button> */}
       </form>
     </Form>
   )

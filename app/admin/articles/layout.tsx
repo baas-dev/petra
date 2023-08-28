@@ -34,10 +34,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <div className="max-w-4xl mx-auto">
-        <Banner
+        {/* <Banner
           Title={"Create Sharable Content for Your Site"}
           Subtitle={"Article Management"}
-        />
+        /> */}
         {children}
       </div>
     </>

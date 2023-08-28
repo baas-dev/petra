@@ -1,33 +1,35 @@
+import { z } from "zod"
+
 import Banner from "@/components/BAAS/Banners/Banner"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
 import TableActions from "@/components/BAAS/Table/TableActions"
-import { GetAllArticlesSubmissions } from "@/app/API/ARTICLES"
+import BACKEND from "@/app/API"
 
 import { columns } from "./columns"
+import ArticleCategoryForm from "./form"
 
-const GetData = async () => {
-  let val = await GetAllArticlesSubmissions()
+const api = new BACKEND()
 
-  return val
+async function getData() {
+  return api.GET({
+    Route: "categories?scope=articles",
+  })
 }
 
-export default async function AdminResourcePage() {
-  let data = await GetData()
+export default async function TestimonialsPage() {
+  let data = await getData()
+    .then((val) => val.data)
+    .catch((err) => [])
+
   return (
     <>
-      <div className="max-w-4xl mx-auto">
-        <Banner
-          Title={"Categorize Content For Your Users"}
-          Subtitle={"Article Category Management"}
-        />
-        <TableActions apiPath="/articles" formName="articleInit" />
-
-        <DataTable
-          columns={columns}
-          data={data ? data : []}
-          routePath="articles"
-        />
-      </div>
+      <DataTable
+        // form={TestimonialsForm}
+        form={ArticleCategoryForm}
+        columns={columns}
+        data={data ? data : []}
+        routePath="/categories"
+      />
     </>
   )
 }

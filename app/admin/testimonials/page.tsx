@@ -3,28 +3,32 @@ import { z } from "zod"
 import Banner from "@/components/BAAS/Banners/Banner"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
 import TableActions from "@/components/BAAS/Table/TableActions"
+import BACKEND from "@/app/API"
 
 import { columns } from "./columns"
 import TestimonialsAdminForm, { TestimonialsFormSchema } from "./form"
+import TestimonialsForm from "./form"
 
-async function getData(): Promise<z.infer<typeof TestimonialsFormSchema>[]> {
-  let data = await fetch("http://localhost:4000/quotes", {
-    cache: "no-cache",
+const api = new BACKEND()
+
+async function getData() {
+  return api.GET({
+    Route: "quotes",
   })
-
-  return await data.json()
 }
 
 export default async function TestimonialsPage() {
-  const data = await getData()
+  let data = await getData()
+    .then((val) => val.data)
+    .catch((err) => [])
 
   return (
     <>
-      <TableActions apiPath="quotes" formName={"testimonialInit"} />
       <DataTable
+        form={TestimonialsForm}
         columns={columns}
         data={data ? data : []}
-        routePath="/quotes"
+        routePath="/testimonials"
       />
     </>
   )

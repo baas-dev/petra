@@ -6,7 +6,7 @@ import SwitchInput from "@/components/BAAS/Forms/Inputs/Switch"
 export default function Status({ form }) {
   return (
     <div className=" rounded-xl w-full space-y-2 mb-8">
-      <SelectInput
+      {/* <SelectInput
         form={form}
         options={{
           name: "Status",
@@ -28,12 +28,12 @@ export default function Status({ form }) {
             },
           ],
         }}
-      />
+      /> */}
       <SwitchInput
         form={form}
         options={{
-          name: "visible",
-          description: "Publish this product live",
+          name: "Visible",
+          description: "Allow this to be publicly viewable",
           label: "Visible?",
         }}
       />

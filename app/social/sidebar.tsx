@@ -33,14 +33,14 @@ import {
 import { Toggle } from "@/components/ui/toggle"
 import { toast } from "@/components/ui/use-toast"
 
-function Sidebar() {
+function Sidebar({ items }) {
   return (
     <div className="w-full">
       <SearchComponent />
 
       <div className="flex w-full gap-1">
         <SortByComponent />
-        <CategoryPopover />
+        <CategoryPopover items={items} />
       </div>
     </div>
   )
@@ -63,7 +63,7 @@ function SearchComponent() {
   )
 }
 
-const CategoryPopover = () => {
+const CategoryPopover = ({ items }) => {
   const FormSchema = z.object({
     items: z.array(z.string()).refine((value) => value.some((item) => item), {
       message: "You have to select at least one item.",
@@ -87,28 +87,7 @@ const CategoryPopover = () => {
       ),
     })
   }
-  const items = [
-    {
-      id: "news",
-      label: "News",
-    },
-    {
-      id: "social",
-      label: "Social Media",
-    },
-    {
-      id: "podcasts",
-      label: "Podcasts",
-    },
-    {
-      id: "training",
-      label: "Training",
-    },
-    {
-      id: "events",
-      label: "Events",
-    },
-  ]
+
   return (
     <>
       <div className="w-full">

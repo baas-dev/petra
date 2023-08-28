@@ -11,7 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu"
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import moment from "moment"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -29,11 +30,23 @@ export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
     header: "Quote",
   },
   {
-    accessorKey: "Question",
-    header: "Question",
-  },
-  {
-    accessorKey: "Answer",
-    header: "Answer",
+    accessorKey: "CreatedAt",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="p-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Created At
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => {
+      const time: Date = row.getValue("CreatedAt")
+
+      return <div className="font-medium">{moment(time).calendar()}</div>
+    },
   },
 ]

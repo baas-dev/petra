@@ -68,12 +68,32 @@ function BigCards() {
   let InfoArray = [
     {
       Title: "Easy Mortgage Payment Calculator",
-      Description: "",
+      Description: "Calculate monthly payments on a loan",
       Button: true,
-      btnText: "Start figuring it out!",
-      bg: "bg-accent/60",
-      bgHover: "bg-accent",
+      btnText: "Try It Now",
+      bg: "bg-primary/60",
+      bgHover: "bg-primary",
       link: "/resources/mortgage-calculator",
+      image: "",
+    },
+    {
+      Title: "FAQs",
+      Description: "Common Questions From Homebuyers",
+      Button: true,
+      btnText: "We Have Answers",
+      bg: "bg-primary/60",
+      bgHover: "bg-primary",
+      link: "/resources/faqs",
+      image: "",
+    },
+    {
+      Title: "Downloads & Tools",
+      Description: "Viewable documents that help you purchase your home",
+      Button: true,
+      btnText: "Go Now",
+      bg: "bg-primary/60",
+      bgHover: "bg-primary",
+      link: "/resources/",
       image: "",
     },
     {
@@ -81,35 +101,15 @@ function BigCards() {
       Description: "",
       Button: true,
       btnText: "Start figuring it out!",
-      bg: "bg-accent/60",
-      bgHover: "bg-accent",
-      link: "/resources/mortgage-calculator",
-      image: "",
-    },
-    {
-      Title: "Easy Mortgage Payment Calculator",
-      Description: "",
-      Button: true,
-      btnText: "Start figuring it out!",
-      bg: "bg-accent/60",
-      bgHover: "bg-accent",
-      link: "/resources/mortgage-calculator",
-      image: "",
-    },
-    {
-      Title: "Easy Mortgage Payment Calculator",
-      Description: "",
-      Button: true,
-      btnText: "Start figuring it out!",
-      bg: "bg-accent/60",
-      bgHover: "bg-accent",
+      bg: "bg-primary/60",
+      bgHover: "bg-primary",
       link: "/resources/mortgage-calculator",
       image: "",
     },
   ]
 
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
       {InfoArray.map((item, i) => (
         <>
           <BigCard

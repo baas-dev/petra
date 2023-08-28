@@ -22,6 +22,7 @@ import NumberInput from "@/components/BAAS/Forms/Inputs/NumberInput"
 import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import AttributeEditing from "@/components/BAAS/Shop/Admin/Sections/AttributeEditing"
+import VariantTable from "@/components/BAAS/Shop/Admin/Sections/VariantTable"
 import BACKEND from "@/app/API"
 
 import { Attribute } from "./page"
@@ -113,6 +114,10 @@ export default function ProductFullForm(props: {
             label: "Description",
           }}
         />
+
+        <div className="w-full h-96 bg-white rounded-xl shadow-xl">
+          <VariantTable />
+        </div>
         {/* <NumberInput
           form={productFormCXT}
           options={{

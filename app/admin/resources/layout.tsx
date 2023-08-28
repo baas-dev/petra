@@ -35,8 +35,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <div className="max-w-4xl mx-auto">
         <Banner
-          Title={"Publicly Viewable Resources"}
-          Subtitle={"Resource Management"}
+          Title={"Resources Management"}
+          Subtitle={"Publicly available links for users"}
         />
         {children}
       </div>

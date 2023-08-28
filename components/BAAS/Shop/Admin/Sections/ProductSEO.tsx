@@ -1,40 +1,36 @@
 "use client"
 
+import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
+import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 
-export default function ProductSEO({ ProductForm }) {
+export default function SEOInformation({ form, items }) {
   return (
     <div className="container bg-white rounded-xl w-full py-8 mb-8">
       <TextInput
-        form={ProductForm}
+        form={form}
         options={{
-          name: "slug",
-          label: "URL Address",
-          placeholder: "product-name",
+          name: "Title",
+          label: "Title",
+          placeholder: "What the product is referred to as...",
         }}
       />
-      <TextInput
-        form={ProductForm}
+      <SelectInput
+        form={form}
         options={{
-          name: "name",
-          label: "Name",
-          placeholder: "Name of the product...",
+          name: "category",
+          label: "Category",
+          description: "Categorization of this product",
+          placeholder: "Choose a product category",
+          items: items,
         }}
       />
-      <TextInput
-        form={ProductForm}
+      <TextAreaInput
+        form={form}
         options={{
-          name: "name",
-          label: "Name",
-          placeholder: "Name of the product...",
-        }}
-      />
-      <TextInput
-        form={ProductForm}
-        options={{
-          name: "name",
-          label: "Name",
-          placeholder: "Name of the product...",
+          name: "Description",
+          label: "Description",
+          placeholder: "Describe your product...",
         }}
       />
     </div>

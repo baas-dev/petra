@@ -20,6 +20,7 @@ interface TextOptions {
   placeholder?: string
   label?: string
   description?: string
+  isDisabled?: boolean
 }
 
 export default function TextAreaInput(props: {
@@ -34,7 +35,11 @@ export default function TextAreaInput(props: {
         <FormItem>
           <FormLabel>{props.options.label}</FormLabel>
           <FormControl className="bg-white">
-            <Textarea placeholder={props.options.placeholder} {...field} />
+            <Textarea
+              placeholder={props.options.placeholder}
+              disabled={props.options.isDisabled}
+              {...field}
+            />
           </FormControl>
           <FormDescription>{props.options.description}</FormDescription>
           <FormMessage />

@@ -1,9 +1,7 @@
 "use client"
 
 import ArticleAdminForm from "@/app/admin/articles/form"
-import FAQFullForm from "@/app/admin/faqs/[ID]/form"
-import FAQInitForm from "@/app/admin/faqs/form"
-import ResourceFullForm from "@/app/admin/resources/[ID]/form"
+import FAQFullForm from "@/app/admin/faqs/form"
 import ResourceInitForm from "@/app/admin/resources/form"
 import AttributesForm from "@/app/admin/shop/attributes/[ID]/form"
 import AttributesInitForm from "@/app/admin/shop/attributes/form"
@@ -14,11 +12,6 @@ import TestimonialsInitForm from "@/app/admin/testimonials/form"
 
 function RenderSwitch(ComponentName: string, data?) {
   switch (ComponentName) {
-    case "faq":
-      return <FAQFullForm data={data} />
-    case "faqInit":
-      return <FAQInitForm />
-
     case "attributeInit":
       return <AttributesInitForm />
     case "attribute":
@@ -26,8 +19,6 @@ function RenderSwitch(ComponentName: string, data?) {
 
     case "resourceInit":
       return <ResourceInitForm />
-    case "resource":
-      return <ResourceFullForm data={data} />
 
     case "articleInit":
       return <ArticleAdminForm />

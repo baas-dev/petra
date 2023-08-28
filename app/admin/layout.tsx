@@ -1,11 +1,4 @@
-import { Metadata } from "next"
-import Image from "next/image"
 import {
-  Banknote,
-  Check,
-  Cog,
-  DollarSign,
-  Edit,
   FileQuestion,
   FormInput,
   Group,
@@ -20,13 +13,7 @@ import {
   Wrench,
 } from "lucide-react"
 
-import { Separator } from "@/components/ui/separator"
 import { Sidebar } from "@/components/BAAS/Dashboard/Sidebar"
-
-export const metadata: Metadata = {
-  title: "Forms",
-  description: "Advanced form example using react-hook-form and Zod.",
-}
 
 export interface SidebarItems {
   href: string
@@ -114,7 +101,7 @@ const shopNavItems: { title: string; items: SidebarItems[] } = {
 
     {
       title: "Coupons",
-      href: "/admin/team",
+      href: "/admin/shop/coupons",
       icon: <Percent />,
     },
     {
@@ -135,7 +122,12 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
       {/* Media Popover */}
       <div className="grid grid-cols-6 min-h-screen pt-24 gap-4 bg-secondary px-4">
         <Sidebar
-          items={[sidebarNavItems, formNavItems, articleNavItems, shopNavItems]}
+          items={[
+            sidebarNavItems,
+            formNavItems,
+            articleNavItems,
+            // shopNavItems
+          ]}
           className=""
         />
         <div className="w-full mx-auto rounded-lg col-span-5">{children}</div>

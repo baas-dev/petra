@@ -33,7 +33,13 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <div className=" mx-auto">{children}</div>
+      <div className="max-w-4xl mx-auto">
+        <Banner
+          Title={"Put Articles into Groups"}
+          Subtitle={"Article Categories"}
+        />
+        {children}
+      </div>
     </>
   )
 }

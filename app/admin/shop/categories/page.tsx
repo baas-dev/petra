@@ -3,25 +3,33 @@ import { z } from "zod"
 import Banner from "@/components/BAAS/Banners/Banner"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
 import TableActions from "@/components/BAAS/Table/TableActions"
+import BACKEND from "@/app/API"
 
 import { columns } from "./columns"
-import FAQAdminForm, { FAQFormSchema } from "./form"
+import ProductCategoryForm from "./form"
 
-async function getData(): Promise<z.infer<typeof FAQFormSchema>[]> {
-  let data = await fetch("http://localhost:4000/categories", {
-    cache: "no-cache",
+const api = new BACKEND()
+
+async function getData() {
+  return api.GET({
+    Route: "categories?scope=products",
   })
-
-  return await data.json()
 }
 
-export default async function FAQPage() {
-  // const data = await getData()
+export default async function TestimonialsPage() {
+  let data = await getData()
+    .then((val) => val.data)
+    .catch((err) => [])
 
   return (
     <>
-      <TableActions apiPath="categories" formName={"categoriesInit"} />
-      <DataTable columns={columns} data={[]} routePath="/categoriess" />
+      <DataTable
+        // form={TestimonialsForm}
+        form={ProductCategoryForm}
+        columns={columns}
+        data={data ? data : []}
+        routePath="/categories"
+      />
     </>
   )
 }

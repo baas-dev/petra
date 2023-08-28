@@ -1,27 +1,30 @@
-import { z } from "zod"
-
-import Banner from "@/components/BAAS/Banners/Banner"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
-import TableActions from "@/components/BAAS/Table/TableActions"
+import BACKEND from "@/app/API"
 
 import { columns } from "./columns"
-import TeamAdminForm, { TeamFormSchema } from "./form"
+import TeamForm from "./form"
 
-async function getData(): Promise<z.infer<typeof TeamFormSchema>[]> {
-  let data = await fetch("http://localhost:4000/team", {
-    cache: "no-cache",
+const api = new BACKEND()
+
+async function getData() {
+  return api.GET({
+    Route: "team",
   })
-
-  return await data.json()
 }
 
-export default async function TeamPage() {
-  const data = await getData()
+export default async function TestimonialsPage() {
+  let data = await getData()
+    .then((val) => val.data)
+    .catch((err) => [])
 
   return (
     <>
-      <TableActions apiPath="team" formName={"teamInit"} />
-      <DataTable columns={columns} data={data ? data : []} routePath="/team" />
+      <DataTable
+        form={TeamForm}
+        columns={columns}
+        data={data ? data : []}
+        routePath="/team"
+      />
     </>
   )
 }

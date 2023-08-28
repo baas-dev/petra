@@ -7,6 +7,7 @@ import BACKEND from "@/app/API"
 
 import { columns } from "./columns"
 import productsAdminForm, { productsFormSchema } from "./form"
+import ProductInitForm from "./form"
 
 async function getData(): Promise<z.infer<typeof productsFormSchema>[]> {
   let data = await fetch("http://localhost:4000/products", {
@@ -35,13 +36,16 @@ export default async function productsPage() {
 
   return (
     <>
-      <TableActions
+      {/* <TableActions
         apiPath="shop/products"
         formName={"productInit"}
         data={attributes ? attributes : []}
-      />
+      /> */}
       <DataTable
+        // form={TestimonialsForm}
+        form={ProductInitForm}
         columns={columns}
+        goToEditPage={true}
         data={data ? data : []}
         routePath="/shop/products"
       />

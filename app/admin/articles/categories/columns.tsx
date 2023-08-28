@@ -11,23 +11,16 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu"
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import moment from "moment"
+import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import RowActions from "@/components/BAAS/Table/RowActions"
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Articles = {
-  ID: string
-  Title: string
-  Description: string
-  Category: string
-  Status: string
-  tags: string[]
-}
+import { TestimonialsFormSchema } from "./form"
 
-export const columns: ColumnDef<Articles>[] = [
+export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
   {
     accessorKey: "Title",
     header: "Title",
@@ -37,21 +30,23 @@ export const columns: ColumnDef<Articles>[] = [
     header: "Description",
   },
   {
-    accessorKey: "Category",
-    header: "Category ",
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => {
-      const article = row.original
+    accessorKey: "CreatedAt",
+    header: ({ column }) => {
       return (
-        <RowActions
-          Model={{
-            ID: article.ID,
-            Path: "articles",
-          }}
-        />
+        <Button
+          variant="ghost"
+          className="p-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Created At
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
       )
+    },
+    cell: ({ row }) => {
+      const time: Date = row.getValue("CreatedAt")
+
+      return <div className="font-medium">{moment(time).calendar()}</div>
     },
   },
 ]

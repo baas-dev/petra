@@ -1,96 +1,75 @@
+"use client"
+
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
 import { Form } from "@/components/ui/form"
-import { toast } from "@/components/ui/use-toast"
+import { GetFormContext, SubmitForm } from "@/components/BAAS/Forms"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
-import BACKEND from "@/app/API"
-import CreateNewArticleSubmission from "@/app/API/ARTICLES"
+import { FormConfig } from "@/components/BAAS/Forms/Types"
 
 export const ArticleFormSchema = z.object({
-  Title: z.string().nonempty("Requirement for article generation"),
+  ID: z.string().optional(),
+  Title: z.string().min(2, "Please complete first name"),
 })
 
-export default function ArticleAdminForm() {
+export default function ArticleInitForm(props: {
+  data?: z.infer<typeof ArticleFormSchema>
+  // LoadDataFunc: () => z.infer<typeof ArticleFormSchema>
+}) {
   const r = useRouter()
 
-  const ArticleFormCXT = useForm<z.infer<typeof ArticleFormSchema>>({
+  const faqFormCXT = useForm<z.infer<typeof ArticleFormSchema>>({
     resolver: zodResolver(ArticleFormSchema),
-    defaultValues: {},
+    defaultValues: {
+      ID: props.data?.ID ? props.data.ID : "",
+      Title: props.data?.Title ? props.data.Title : "",
+    },
   })
 
   async function onSubmit(data: z.infer<typeof ArticleFormSchema>) {
-    const result = ArticleFormSchema.safeParse(data)
-
-    if (!result.success) {
-      toast({
-        title: "Errors Detected:",
-        description: <p>Please fix errors!</p>,
-      })
-    }
-
-    if (result.success) {
-      const api = new BACKEND()
-      let id = await api.CREATE({
-        Route: "articles",
-        Body: JSON.stringify(data),
-      })
-
-      if (id != undefined) {
-        toast({
-          title: "You submitted the following values:",
-          // description: <p>{id}</p>,
-        })
-        let addr = `/admin/articles/${id}`
-        r.push(addr)
-      }
-
-      if (id === undefined) {
-        toast({
-          variant: "destructive",
-          title: "Could not properly create your article",
-          description: <p>{id}</p>,
-        })
-      }
-    }
+    await SubmitForm({
+      APIRoute:
+        faqFormCXT.getValues("ID") === "0"
+          ? "articles"
+          : `articles/${faqFormCXT.getValues("ID")}`,
+      FormData: data,
+      FormSchema: ArticleFormSchema,
+      Router: r,
+      ClientPath: "/admin/articles",
+      OnSuccess: {
+        Message: "Your Testimonials Has Been Created",
+        GoToRecord: true,
+      },
+      OnFailure: {
+        Message: "Unable to Create This Right Now",
+      },
+      SubmitType: props.data ? "UPDATE" : "CREATE",
+    })
   }
-  // ID: string
-  // Question: string
-  // Answer: string
-  // Published: boolean
-  return (
-    <>
-      <DialogHeader>
-        <DialogTitle>Create New Article</DialogTitle>
-        <DialogDescription>
-          Enter the title, and create a new draft article
-        </DialogDescription>
-      </DialogHeader>
-      <Form {...ArticleFormCXT}>
-        <form
-          onSubmit={ArticleFormCXT.handleSubmit(onSubmit)}
-          className="w-full space-y-6"
-        >
-          <TextInput
-            form={ArticleFormCXT}
-            options={{
-              name: "Title",
-              label: "Title",
-            }}
-          />
 
-          <Button type="submit">Save changes</Button>
-        </form>
-      </Form>
-    </>
+  return (
+    <Form {...faqFormCXT}>
+      <form
+        onSubmit={faqFormCXT.handleSubmit(onSubmit)}
+        className="w-full space-y-6"
+      >
+        <TextInput
+          form={faqFormCXT}
+          options={{
+            name: "Title",
+            label: "Title",
+          }}
+        />
+
+        <Button type="submit">
+          {props.data ? "UPDATE" : "CREATE"} changes
+        </Button>
+      </form>
+    </Form>
   )
 }

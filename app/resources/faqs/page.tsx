@@ -23,7 +23,7 @@ interface FAQ {
   Published: string
 }
 export default async function FAQ() {
-  let res = await GetData(`faq`).then((val) => val)
+  let res = await GetData(`faq`).then((val) => val.data)
 
   return (
     <>
@@ -43,7 +43,7 @@ export default async function FAQ() {
             </p>
           </div>
           <section className=" grid ">
-            <FAQAccordion data={res ? res.data : null} />
+            <FAQAccordion data={res ? res : null} />
           </section>
         </div>
       </div>

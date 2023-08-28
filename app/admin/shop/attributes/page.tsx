@@ -22,6 +22,7 @@ export default async function AttributesPage() {
     <>
       <TableActions apiPath="product-attributes" formName={"attributeInit"} />
       <DataTable
+        sortFilters={["Name"]}
         columns={columns}
         data={data ? data : []}
         routePath="/shop/attributes"

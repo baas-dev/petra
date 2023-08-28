@@ -4,6 +4,13 @@ import StarterKit from "@tiptap/starter-kit"
 import { Bold, Italic, Redo, Strikethrough, Undo } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 
 type MenuBarItem = {
@@ -55,7 +62,90 @@ const MenuBar = () => {
 
   return (
     <>
-      <div>
+      {/* <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
+          clear marks
+        </button>
+        <button onClick={() => editor.chain().focus().clearNodes().run()}>
+          clear nodes
+        </button> */}
+      <div className="grid grid-cols-3">
+        <div className="w-full col-span-2">
+          <Select>
+            <SelectTrigger className="bg-white">
+              <SelectValue placeholder="Text Size" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="paragraph">
+                <button
+                  onClick={() => editor.chain().focus().setParagraph().run()}
+                  className={editor.isActive("paragraph") ? "is-active" : ""}
+                >
+                  paragraph
+                </button>
+              </SelectItem>
+              <SelectItem value="h2">
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 2 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 2 }) ? "is-active" : ""
+                  }
+                >
+                  h2
+                </button>
+              </SelectItem>
+              <SelectItem value="h3">
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 3 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 3 }) ? "is-active" : ""
+                  }
+                >
+                  h3
+                </button>
+              </SelectItem>
+              <SelectItem value="h4">
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 4 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 4 }) ? "is-active" : ""
+                  }
+                >
+                  h4
+                </button>
+              </SelectItem>
+              <SelectItem value="h5">
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 5 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 5 }) ? "is-active" : ""
+                  }
+                >
+                  h5
+                </button>
+              </SelectItem>
+              <SelectItem value="h6">
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 6 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 6 }) ? "is-active" : ""
+                  }
+                >
+                  h6
+                </button>
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         <div className="flex gap-1">
           {MenuBarItems.map((item, i) => (
             <Button
@@ -69,94 +159,20 @@ const MenuBar = () => {
             </Button>
           ))}
         </div>
-
-        {/* <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-          clear marks
-        </button>
-        <button onClick={() => editor.chain().focus().clearNodes().run()}>
-          clear nodes
-        </button> */}
-        <button
-          onClick={() => editor.chain().focus().setParagraph().run()}
-          className={editor.isActive("paragraph") ? "is-active" : ""}
-        >
-          paragraph
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 1 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 1 }) ? "is-active" : ""
-          }
-        >
-          h1
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 2 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 2 }) ? "is-active" : ""
-          }
-        >
-          h2
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 3 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 3 }) ? "is-active" : ""
-          }
-        >
-          h3
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 4 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 4 }) ? "is-active" : ""
-          }
-        >
-          h4
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 5 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 5 }) ? "is-active" : ""
-          }
-        >
-          h5
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 6 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 6 }) ? "is-active" : ""
-          }
-        >
-          h6
-        </button>
-
-        <button
+        {/* <button
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={editor.isActive("blockquote") ? "is-active" : ""}
         >
           blockquote
-        </button>
-        <button
+        </button> */}
+        {/* <button
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
         >
           horizontal rule
         </button>
         <button onClick={() => editor.chain().focus().setHardBreak().run()}>
           hard break
-        </button>
+        </button> */}
       </div>
       <Separator />
     </>
@@ -183,37 +199,18 @@ const content = `
 <p>
   this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
 </p>
-<ul>
-  <li>
-    That’s a bullet list with one …
-  </li>
-  <li>
-    … or two list items.
-  </li>
-</ul>
-<p>
-  Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-</p>
-<pre><code class="language-css">body {
-display: none;
-}</code></pre>
-<p>
-  I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-</p>
-<blockquote>
-  Wow, that’s amazing. Good work, boy! 👏
-  <br />
-  — Mom
-</blockquote>
+
 `
 
-export default () => {
+export default (props: { form: any }) => {
+  let content = props.form.getValues("Content")
   return (
     <div className="bg-white border">
       <EditorProvider
         slotBefore={<MenuBar />}
         extensions={extensions}
         content={content}
+        onUpdate={(ed) => props.form.setValue("Content", ed.editor.getHTML())}
       >
         <></>
       </EditorProvider>

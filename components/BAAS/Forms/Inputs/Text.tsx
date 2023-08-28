@@ -21,6 +21,7 @@ interface TextOptions {
   description?: string
   defaultValue?: string
   value?: string
+  isDisabled?: boolean
 }
 
 export default function TextInput(props: { form: any; options: TextOptions }) {
@@ -37,6 +38,7 @@ export default function TextInput(props: { form: any; options: TextOptions }) {
               value={props.options.value ? props.options.value : field.value}
               defaultValue={props.options.defaultValue}
               placeholder={props.options.placeholder}
+              disabled={props.options.isDisabled}
             />
           </FormControl>
           <FormDescription>{props.options.description}</FormDescription>

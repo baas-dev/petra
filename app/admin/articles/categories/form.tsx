@@ -1,91 +1,87 @@
+"use client"
+
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import {
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
 import { Form } from "@/components/ui/form"
-import { toast } from "@/components/ui/use-toast"
+import { GetFormContext, SubmitForm } from "@/components/BAAS/Forms"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
-import CreateNewArticleSubmission from "@/app/API/ARTICLES"
+import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
+import { FormConfig } from "@/components/BAAS/Forms/Types"
 
-export const ArticleFormSchema = z.object({
-  Title: z.string().nonempty("Requirement for article generation"),
+export const TestimonialsFormSchema = z.object({
+  ID: z.string().optional(),
+  Title: z.string().min(2),
+  Scope: z.string(),
+  Description: z.string().min(2),
 })
 
-export default function ArticleAdminForm() {
-  const r = useRouter()
-
-  const ArticleFormCXT = useForm<z.infer<typeof ArticleFormSchema>>({
-    resolver: zodResolver(ArticleFormSchema),
-    defaultValues: {},
+export default function ArticleCategoryForm(props: {
+  data?: z.infer<typeof TestimonialsFormSchema>
+}) {
+  const testimonialFormCXT = useForm<z.infer<typeof TestimonialsFormSchema>>({
+    resolver: zodResolver(TestimonialsFormSchema),
+    defaultValues: {
+      ID: props.data?.ID ? props.data.ID : "",
+      Scope: props.data?.Scope ? props.data.Scope : "articles",
+      Title: props.data?.Title ? props.data.Title : "",
+      Description: props.data?.Description ? props.data.Description : "",
+    },
   })
 
-  async function onSubmit(data: z.infer<typeof ArticleFormSchema>) {
-    const result = ArticleFormSchema.safeParse(data)
+  const r = useRouter()
 
-    if (!result.success) {
-      toast({
-        title: "Errors Detected:",
-        description: <p>Please fix errors!</p>,
-      })
-    }
-
-    if (result.success) {
-      let id = await CreateNewArticleSubmission(data)
-
-      if (id != undefined) {
-        toast({
-          title: "You submitted the following values:",
-          description: <p>{id}</p>,
-        })
-        let addr = `/admin/articles/${id}`
-        r.push(addr)
-      }
-
-      if (id === undefined) {
-        toast({
-          variant: "destructive",
-          title: "Could not properly create your article",
-          description: <p>{id}</p>,
-        })
-      }
-    }
+  async function onSubmit(data: z.infer<typeof TestimonialsFormSchema>) {
+    await SubmitForm({
+      APIRoute:
+        testimonialFormCXT.getValues("ID") === ""
+          ? "categories"
+          : `categories/${testimonialFormCXT.getValues("ID")}`,
+      FormData: data,
+      FormSchema: TestimonialsFormSchema,
+      Router: r,
+      ClientPath: "/admin/articles/categories",
+      OnSuccess: {
+        Message: "Your Testimonials Has Been Created",
+        GoToRecord: false,
+      },
+      OnFailure: {
+        Message: "Unable to Create This Right Now",
+      },
+      SubmitType: props.data ? "UPDATE" : "CREATE",
+    })
   }
-  // ID: string
-  // Question: string
-  // Answer: string
-  // Published: boolean
-  return (
-    <>
-      <DialogHeader>
-        <DialogTitle>Create New Article</DialogTitle>
-        <DialogDescription>
-          Enter the title, and create a new draft article
-        </DialogDescription>
-      </DialogHeader>
-      <Form {...ArticleFormCXT}>
-        <form
-          onSubmit={ArticleFormCXT.handleSubmit(onSubmit)}
-          className="w-full space-y-6"
-        >
-          <TextInput
-            form={ArticleFormCXT}
-            options={{
-              name: "Title",
-              label: "Title",
-            }}
-          />
 
-          <Button type="submit">Save changes</Button>
-        </form>
-      </Form>
-    </>
+  return (
+    <Form {...testimonialFormCXT}>
+      <form
+        onSubmit={testimonialFormCXT.handleSubmit(onSubmit)}
+        className="w-full space-y-6"
+      >
+        <TextInput
+          form={testimonialFormCXT}
+          options={{
+            name: "Title",
+            label: "Title",
+          }}
+        />
+
+        <TextAreaInput
+          form={testimonialFormCXT}
+          options={{
+            name: "Description",
+            label: "Description",
+          }}
+        />
+
+        <Button type="submit">
+          {props.data ? "UPDATE" : "CREATE"} changes
+        </Button>
+      </form>
+    </Form>
   )
 }

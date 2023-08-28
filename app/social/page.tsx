@@ -7,13 +7,14 @@ import Banner from "@/components/BAAS/Banners/Banner"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
 import { TeamCard } from "@/components/BAAS/Cards/TeamCard"
 
+import BACKEND from "../API"
 import Sidebar from "./sidebar"
 
 async function getData() {
   let response
 
   try {
-    response = await fetch("http://localhost:4000/blog", {
+    response = await fetch("http://localhost:4000/articles", {
       cache: "no-cache",
     })
   } catch (error) {
@@ -29,15 +30,39 @@ async function getData() {
   }
 }
 
+const api = new BACKEND()
+
+async function GetCategories() {
+  return api.GET({
+    Route: "categories?scope=articles",
+  })
+}
+
 export default async function BlogPage() {
   let data = await getData()
 
+  let Categories = await GetCategories()
+    .then((val) => val.data)
+    .catch((err) => [])
+
+  function GetItems(items) {
+    let res: any[] = []
+    items.forEach((item, i) => {
+      res.push({
+        label: item.Title,
+        value: item.ID,
+      })
+      return
+    })
+
+    return res
+  }
   return (
     <section className="container max-w-6xl pt-24 grid items-center ">
       <Banner Title="Social Posts" Subtitle="News" />
       <div className="grid grid-cols-1 align-center px-4">
         <div className="">
-          <Sidebar />
+          <Sidebar items={GetItems(Categories ? Categories : [])} />
           {/* <SearchInput /> */}
           <Separator className="mt-4" />
         </div>
@@ -49,7 +74,7 @@ export default async function BlogPage() {
           )}
           {data.map((item, i) => (
             <>
-              <Link href="/social/test">
+              <Link href={`/social/${item.ID}`}>
                 <LongCardDetail
                   Title={item.Title}
                   Description={item.Description}

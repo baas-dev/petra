@@ -1,15 +1,5 @@
 "use client"
 
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu"
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import moment from "moment"
@@ -22,12 +12,12 @@ import { TestimonialsFormSchema } from "./form"
 
 export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
   {
-    accessorKey: "Name",
-    header: "Name",
+    accessorKey: "Title",
+    header: "Title",
   },
   {
-    accessorKey: "QuoteText",
-    header: "Quote",
+    accessorKey: "Description",
+    header: "Description",
   },
   {
     accessorKey: "CreatedAt",

@@ -4,6 +4,7 @@ import Banner from "@/components/BAAS/Banners/Banner"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
 import TableActions from "@/components/BAAS/Table/TableActions"
 
+import ContactForm from "./[ID]/form"
 import { columns } from "./columns"
 
 async function getData(): Promise<any[]> {
@@ -19,7 +20,13 @@ export default async function ContactPage() {
 
   return (
     <>
-      <DataTable columns={columns} routePath="/forms" data={data ? data : []} />
+      <DataTable
+        disableCreate={true}
+        form={ContactForm}
+        columns={columns}
+        routePath="/forms"
+        data={data ? data : []}
+      />
     </>
   )
 }

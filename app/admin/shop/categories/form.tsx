@@ -1,60 +1,86 @@
+"use client"
+
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { GetFormContext, SubmitForm } from "@/components/BAAS/Forms"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
+import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 import { FormConfig } from "@/components/BAAS/Forms/Types"
 
-export const FAQFormSchema = z.object({
-  Question: z.string().min(2, "Please complete first name"),
-  Answer: z.string().min(2, "Please complete second name"),
+export const TestimonialsFormSchema = z.object({
+  ID: z.string().optional(),
+  Title: z.string().min(2),
+  Scope: z.string(),
+  Description: z.string().min(2),
 })
 
-export default function FAQInitForm() {
-  const faqFormCXT = GetFormContext(FAQFormSchema)
+export default function ProductCategoryForm(props: {
+  data?: z.infer<typeof TestimonialsFormSchema>
+}) {
+  const testimonialFormCXT = useForm<z.infer<typeof TestimonialsFormSchema>>({
+    resolver: zodResolver(TestimonialsFormSchema),
+    defaultValues: {
+      ID: props.data?.ID ? props.data.ID : "",
+      Scope: props.data?.Scope ? props.data.Scope : "products",
+      Title: props.data?.Title ? props.data.Title : "",
+      Description: props.data?.Description ? props.data.Description : "",
+    },
+  })
 
   const r = useRouter()
-  async function onSubmit(data: z.infer<typeof FAQFormSchema>) {
+
+  async function onSubmit(data: z.infer<typeof TestimonialsFormSchema>) {
     await SubmitForm({
-      APIRoute: "faq",
+      APIRoute:
+        testimonialFormCXT.getValues("ID") === ""
+          ? "categories"
+          : `categories/${testimonialFormCXT.getValues("ID")}`,
       FormData: data,
-      FormSchema: FAQFormSchema,
+      FormSchema: TestimonialsFormSchema,
       Router: r,
-      ClientPath: "/admin/faqs",
+      ClientPath: "/admin/shop/categories",
       OnSuccess: {
-        Message: "Your FAQ Has Been Created",
-        GoToRecord: true,
+        Message: "Your Testimonials Has Been Created",
+        GoToRecord: false,
       },
       OnFailure: {
         Message: "Unable to Create This Right Now",
       },
-      SubmitType: "CREATE",
+      SubmitType: props.data ? "UPDATE" : "CREATE",
     })
   }
 
   return (
-    <Form {...faqFormCXT}>
+    <Form {...testimonialFormCXT}>
       <form
-        onSubmit={faqFormCXT.handleSubmit(onSubmit)}
+        onSubmit={testimonialFormCXT.handleSubmit(onSubmit)}
         className="w-full space-y-6"
       >
         <TextInput
-          form={faqFormCXT}
+          form={testimonialFormCXT}
           options={{
-            name: "Question",
-            label: "Question",
+            name: "Title",
+            label: "Title",
           }}
         />
-        <TextInput
-          form={faqFormCXT}
+
+        <TextAreaInput
+          form={testimonialFormCXT}
           options={{
-            name: "Answer",
-            label: "Answer",
+            name: "Description",
+            label: "Description",
           }}
         />
-        <Button type="submit">Save changes</Button>
+
+        <Button type="submit">
+          {props.data ? "UPDATE" : "CREATE"} changes
+        </Button>
       </form>
     </Form>
   )

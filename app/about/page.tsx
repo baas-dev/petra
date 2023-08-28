@@ -19,7 +19,7 @@ export default function IndexPage() {
           <Testimonial />
         </div>
         <div className="hidden md:block">
-          <Parallax pages={3.2}>
+          <Parallax pages={2.8}>
             <ParallaxLayer offset={1} speed={0.3}>
               <Image
                 src={"/images/mountains.png"}

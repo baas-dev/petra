@@ -35,9 +35,12 @@ function SecondaryImages() {
   const divs = new Array(10).fill(null)
   return (
     <div className="py-2 flex justify-center gap-2">
-      <Button>{`Set Main Image`}</Button>
+      <Button type="button">{`Set Main Image`}</Button>
 
-      <Button variant={"outline"}>{`(0) Secondary Images`}</Button>
+      <Button
+        type="button"
+        variant={"outline"}
+      >{`(0) Secondary Images`}</Button>
     </div>
   )
 }
