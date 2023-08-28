@@ -56,7 +56,7 @@ export default async function FAQ() {
 function FAQAccordion(props: { data: FAQ[] }) {
   return (
     <Accordion type="single" collapsible className="w-full">
-      {props.data.length > 0 ? (
+      {props.data && props.data.length > 0 ? (
         props.data.map((item, i) => (
           <AccordionItem value={`item-${i}}`}>
             <AccordionTrigger>{item.Question}</AccordionTrigger>
