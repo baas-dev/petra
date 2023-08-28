@@ -23,7 +23,9 @@ interface FAQ {
   Published: string
 }
 export default async function FAQ() {
-  let res = await GetData(`faq`).then((val) => val.data)
+  let res = await GetData(`faq`)
+    .then((val) => val.data)
+    .catch((err) => [])
 
   return (
     <>
