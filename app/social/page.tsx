@@ -67,7 +67,7 @@ export default async function BlogPage() {
           <Separator className="mt-4" />
         </div>
         <div className="md:col-span-6 grid w-full grid-cols-1">
-          {data.length ? (
+          {data && data.length ? (
             <></>
           ) : (
             <p className="mx-auto mt-8">Could not load any results.</p>
