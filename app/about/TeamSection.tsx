@@ -87,7 +87,9 @@ const TeamCard = (props: {
               <h3 className="text-base font-semibold text-dark">
                 {props.title}
               </h3>
-              <p className="text-sm text-body-color">{props.rmloNumber}</p>
+              <p className="text-sm text-body-color">
+                RLMO #:{props.rmloNumber}
+              </p>
               <div>
                 <span className="absolute bottom-0 left-0">
                   <svg

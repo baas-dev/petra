@@ -180,6 +180,9 @@ function FooterBody() {
               </svg>
               +1 (214) 432-0443
             </p>
+            <p>
+              NMLS#: <b>211515</b>
+            </p>
           </div>
         </div>
       </div>

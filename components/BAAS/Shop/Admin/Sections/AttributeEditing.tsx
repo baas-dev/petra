@@ -1,22 +1,9 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-
-import { Button } from "@/components/ui/button"
-import { FormLabel } from "@/components/ui/form"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import MultiSelectInput from "@/components/BAAS/Forms/Inputs/MultiSelect"
 import BACKEND from "@/app/API"
 import {
   Attribute,
   AttributeChoices,
-} from "@/app/admin/shop/products/[ID]/page"
+} from "@/app/adminrrrrr/shop/products/[ID]/page"
 
 interface AttributeEditing {
   Attributes: Attribute[]
@@ -48,7 +35,7 @@ export default function AttributeEditing(props: AttributeEditing) {
           <MultiSelectInput
             form={props.formCxt}
             options={{
-              name: "ActiveAttributes",
+              name: "AttributesChosen",
               label: "Product Attributes Enabled",
               description:
                 "These will determine what is needed for the base product and variants",

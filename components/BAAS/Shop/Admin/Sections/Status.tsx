@@ -5,7 +5,7 @@ import SwitchInput from "@/components/BAAS/Forms/Inputs/Switch"
 
 export default function Status({ form }) {
   return (
-    <div className=" rounded-xl w-full space-y-2 mb-8">
+    <div className=" rounded-xl w-full space-y-2">
       {/* <SelectInput
         form={form}
         options={{

@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { SidebarItems } from "@/app/admin/layout"
+import { SidebarItems } from "@/app/adminrrrrr/layout"
 
 import MediaDialog from "./MediaDialog"
 
@@ -25,7 +25,7 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Sidebar({ className, items }: SidebarProps) {
   return (
     <div className={cn("pb-12 w-full", className)}>
-      <div className="space-y-4 py-4">
+      <div className="space-y-4 py-4 max-w-4xl mx-auto">
         <MediaDialog />
 
         <div className="space-y-1   ">

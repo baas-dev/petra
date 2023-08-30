@@ -41,6 +41,7 @@ interface DataTableActions {
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  extraData?
   routePath: string
   form: any
   goToEditPage?: boolean
@@ -50,6 +51,7 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
   data,
+  extraData,
   routePath,
   form,
   goToEditPage,
@@ -92,6 +94,7 @@ export function DataTable<TData, TValue>({
   let r = useRouter()
   return (
     <>
+      {console.log(data, extraData)}
       <Dialog open={showDialog} onOpenChange={HandleChange}>
         <DataTableDialog Component={form} data={formData} />
         {disableCreate ? (
@@ -99,7 +102,7 @@ export function DataTable<TData, TValue>({
         ) : (
           <Button
             className="bg-accent hover:bg-accent/50"
-            onClick={() => HandleDialog(null)}
+            onClick={() => HandleDialog(extraData ? extraData : null)}
           >
             Create New
           </Button>

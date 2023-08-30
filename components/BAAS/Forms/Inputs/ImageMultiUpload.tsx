@@ -1,8 +1,18 @@
 import Image from "next/image"
+import { Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { FormLabel } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { Separator } from "@/components/ui/separator"
+
+import TextInput from "./Text"
 
 interface ImageMultiUploadOptions {}
 
@@ -11,36 +21,68 @@ export default function ImageMultiUploadInput(props: {
   options: ImageMultiUploadOptions
 }) {
   return (
-    <div className="my-4 bg-white w-full px-4">
-      <FormLabel className="text-base">Media</FormLabel>
-      <MainImage />
-      <SecondaryImages />
-    </div>
-  )
-}
-
-function MainImage() {
-  return (
     <>
-      <div className="w-full mt-4">
-        <div className="w-48  mx-auto h-48 bg-gray-200">
-          <Image src={""} alt={""} />
+      <div className="flex  gap-2">
+        <div className="bg-white p-4 w-full md:w-1/3 rounded-xl shadow-md mb-4">
+          <div>
+            <MainImage form={props.form} />
+          </div>
+        </div>
+        <div className="bg-white p-4 w-full md:w-2/3 roundex-cl shadow-md mb-4">
+          <SecondaryImages />
         </div>
       </div>
     </>
   )
 }
 
-function SecondaryImages() {
-  const divs = new Array(10).fill(null)
+function MainImage({ form }: { form: any }) {
   return (
-    <div className="py-2 flex justify-center gap-2">
-      <Button type="button">{`Set Main Image`}</Button>
+    <>
+      <div className="w-full text-center">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button className="mx-auto text-center mb-2" type="button">
+              {`Set Main Image`}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-80">
+            <div className="flex gap-1 ">
+              <TextInput
+                form={form}
+                options={{
+                  name: "MainImage",
+                  placeholder: "Link to image...",
+                }}
+              />
+              <div className="mt-2">
+                <Button>
+                  <Plus className="" /> Save
+                </Button>
+              </div>
+            </div>
+          </PopoverContent>
 
-      <Button
-        type="button"
-        variant={"outline"}
-      >{`(0) Secondary Images`}</Button>
-    </div>
+          <div className="w-48 h-48 bg-gray-200 mx-auto">
+            <Image src={""} alt={""} />
+          </div>
+        </Popover>
+      </div>
+    </>
+  )
+}
+
+function SecondaryImages() {
+  return (
+    <>
+      <div className="w-full text-center">
+        <Button
+          type="button"
+          variant={"outline"}
+          className="mx-auto text-center"
+        >{`(0) Add Secondary Images`}</Button>
+        <div className="w-full h-48 mt-2 bg-gray-200 mx-auto mb-2"></div>
+      </div>
+    </>
   )
 }

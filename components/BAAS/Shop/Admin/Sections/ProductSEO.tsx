@@ -6,7 +6,7 @@ import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 
 export default function SEOInformation({ form, items }) {
   return (
-    <div className="container bg-white rounded-xl w-full py-8 mb-8">
+    <div className=" rounded-xl w-full">
       <TextInput
         form={form}
         options={{

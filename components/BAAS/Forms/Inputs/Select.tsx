@@ -42,7 +42,7 @@ export default function SelectInput(props: {
             onValueChange={field.onChange}
             defaultValue={field.value}
           >
-            <FormLabel className="text-base">{props.options.label}</FormLabel>
+            <FormLabel className="">{props.options.label}</FormLabel>
 
             <FormControl>
               <SelectTrigger className="bg-white w-full">
