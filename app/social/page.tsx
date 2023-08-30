@@ -72,16 +72,17 @@ export default async function BlogPage() {
           ) : (
             <p className="mx-auto mt-8">Could not load any results.</p>
           )}
-          {data.map((item, i) => (
-            <>
-              <Link href={`/social/${item.ID}`}>
-                <LongCardDetail
-                  Title={item.Title}
-                  Description={item.Description}
-                />
-              </Link>
-            </>
-          ))}
+          {data &&
+            data.map((item, i) => (
+              <>
+                <Link href={`/social/${item.ID}`}>
+                  <LongCardDetail
+                    Title={item.Title}
+                    Description={item.Description}
+                  />
+                </Link>
+              </>
+            ))}
         </div>
       </div>
     </section>
