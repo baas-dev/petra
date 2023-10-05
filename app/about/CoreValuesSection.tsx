@@ -10,27 +10,27 @@ export interface CoreValue {
 
 let coreValueData: CoreValue[] = [
   {
-    title: "Called",
+    title: "1. Called",
     desc: "Passion + Purpose + Expertise = Results. It is our mission to use our knowledge to serve and help others with their lending needs.",
     image: "/images/svg/called.svg",
   },
   {
-    title: "Centered",
+    title: "2. Centered",
     desc: "Centered on the best rates and the best service. Centered on you. We strive to be balanced, fair, and responsible with home financing and financial plans for our customers. ",
     image: "/images/svg/centered.svg",
   },
   {
-    title: "Committed",
+    title: "3. Committed",
     desc: "Wholehearted dedication to our clients, our employees, and our partners. After all, that’s our family.",
     image: "/images/svg/committed.svg",
   },
   {
-    title: "Consultative",
+    title: "4. Consultative",
     desc: "Every client deserves the information, insight, and knowledge to make the best financing decision possible.",
     image: "/images/svg/consultative.svg",
   },
   {
-    title: "Collaborative",
+    title: "5. Collaborative",
     desc: "It takes a team. Partnerships matter. Working together in unison as a team is the key to success. We’re better together. ",
     image: "/images/svg/collaborative.svg",
   },
@@ -49,10 +49,17 @@ export default function CoreValuesSection() {
               Defining Our Service
             </h1>
           </div>
-          <div className="flex flex-col  md:flex-row gap-2 h-full">
-            {coreValueData.map((item, i) => {
+          {/* {coreValueData.map((item, i) => {
               return <CardWithBackground {...item} />
-            })}
+            })} */}
+          <div className="w-full flex flex-col md:flex-row gap-2 md:container">
+            <CardWithBackground {...coreValueData[0]} />
+            <CardWithBackground {...coreValueData[1]} />
+          </div>
+          <div className="w-full flex flex-col md:flex-row gap-2  ">
+            <CardWithBackground {...coreValueData[2]} />
+            <CardWithBackground {...coreValueData[3]} />
+            <CardWithBackground {...coreValueData[4]} />
           </div>
         </div>
       </section>

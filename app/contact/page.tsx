@@ -14,21 +14,21 @@ import ContactForm from "./form"
 const ContactUsBody = () => {
   return (
     <>
-      <section className="relative z-10   bg-secondary h-screen flex justify-center items-center">
+      <section className="bg-secondary min-h-screen h-full pb-8 flex justify-center items-center">
         <div className="container">
-          <div className="-mx-4 flex flex-wrap lg:justify-between pt-96 md:pt-0">
-            <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
+          <div className="-mx-4 flex flex-wrap lg:justify-between pt-4 md:pt-0">
+            <div className="w-full px-2 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
                 <span className="block text-base font-semibold text-primary"></span>
-                <h2 className="text-dark text-[32px] font-bold uppercase ">
-                  GET IN TOUCH WITH US
+                <h2 className="text-4xl mb-2 text-primary  uppercase ">
+                  Get In Touch With Us
                 </h2>
                 <p className="text-body-color  font-light leading-relaxed">
-                  Get in Touch with Us Today! Have questions about your mortgage
-                  options or need assistance with your home financing? Our
-                  dedicated team is here to help. Fill out the contact form
-                  below, and {`we'll`} be in touch shortly to provide you with
-                  personalized guidance for your unique needs.
+                  Have questions about your mortgage options or need assistance
+                  with your home financing? Our dedicated team is here to help.
+                  Fill out the contact form below, and {`we'll`} be in touch
+                  shortly to provide you with personalized guidance for your
+                  unique needs.
                 </p>
                 <Separator className="my-4" />
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
@@ -67,9 +67,9 @@ const ContactUsBody = () => {
               </div>
             </div>
 
-            <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
+            <div className="w-full  lg:w-1/2 xl:w-5/12">
               <Slide direction="right">
-                <div className="relative rounded-lg bg-white p-8 shadow-lg sm:p-12">
+                <div className="rounded-lg bg-white p-8 shadow-lg sm:p-12">
                   <ContactForm />
                 </div>
               </Slide>

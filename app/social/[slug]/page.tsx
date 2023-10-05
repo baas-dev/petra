@@ -1,73 +1,80 @@
+import moment from "moment"
+
+import { Article } from "@/components/BAAS/Articles/Interfaces"
 import BACKEND from "@/app/API"
 
 const api = new BACKEND()
 
-async function GetArticles(ID: string) {
-  return api.GET({
-    Route: `articles/${ID}`,
-  })
+async function GetArticles(ID: string): Promise<Article | null> {
+  let res = await api
+    .GET({
+      Route: `articles/${ID}`,
+    })
+    .then((val) => {
+      return val.data
+    })
+    .catch((err) => {
+      let obj: Article
+      return null
+    })
+
+  return res
 }
+let TimeRep = (props: { time }) => <div>{moment(props.time).calendar()}</div>
 
 export default async function SocialDetailPage({ params }) {
   let data = await GetArticles(params.slug)
-    .then((val) => val.data)
+    .then((val) => val)
     .catch((err) => {})
 
-  console.log(data)
   return (
     <>
-      <div className="mb-4 pt-24 md:mb-0 w-full mx-auto relative container">
-        <div className="px-4 lg:px-0">
-          <h2 className="text-4xl font-semibold text-gray-800 leading-tight">
-            {data.Title}
-          </h2>
-          <h3>{data.Description}</h3>
-          {/* <a
-            href="#"
-            className="py-2 text-green-700 inline-flex items-center justify-center mb-2"
-          >
-            Cryptocurrency
-          </a> */}
-        </div>
-
-        {/* <img
-          src="https://images.unsplash.com/photo-1587614387466-0a72ca909e16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
-          className="w-full object-cover lg:rounded"
-          style={{ height: "28em" }}
-        /> */}
-      </div>
-
-      <div className="flex flex-col lg:flex-row lg:space-x-12 container">
-        <div className="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
-          {data.Content}
-        </div>
-
-        {/* <div className="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
-          <div className="p-4 border-t border-b md:border md:rounded">
-            <div className="flex py-2">
-              <img
-                src="https://randomuser.me/api/portraits/men/97.jpg"
-                className="h-10 w-10 rounded-full mr-2 object-cover"
-              />
-              <div>
-                <p className="font-semibold text-gray-700 text-sm">
-                  {" "}
-                  Mike Sullivan{" "}
-                </p>
-                <p className="font-semibold text-gray-600 text-xs"> Editor </p>
+      {data ? (
+        <>
+          <div className="md:pt-24 pt-4 max-w-6xl mx-auto ">
+            <div
+              className="relative overflow-hidden rounded-xl bg-cover bg-no-repeat"
+              // style={{
+              //   backgroundPosition: "50%",
+              //   backgroundImage: `url('${data.Image ? data.Image : '/images/petra-blue.svg'}')`,
+              //   height: "350px",
+              // }}
+            >
+              <div
+                className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
+                style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
+              >
+                <div className="flex h-full items-center justify-center">
+                  <div className="px-6 text-center text-white md:px-12">
+                    <h1 className="mb-6 text-4xl font-bold">{data.Title}</h1>
+                    <h3 className="mb-8 text-2xl  text-light">
+                      {data.Description}
+                    </h3>
+                    <div className="w-full">
+                      <strong className="block font-normal font-secondary">
+                        Published:
+                      </strong>
+                      <span className="text-sm font-light">
+                        <TimeRep time={data.CreatedAt} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <p className="text-gray-700 py-3">
-              Mike writes about technology Yourself required no at thoughts
-              delicate landlord it be. Branched dashwood do is whatever it.
-            </p>
-            <button className="px-2 py-1 text-gray-100 bg-green-700 flex w-full items-center justify-center rounded">
-              Follow
-              <i className="bx bx-user-plus ml-2"></i>
-            </button>
           </div>
-        </div> */}
-      </div>
+          <div className="flex flex-col lg:flex-row lg:space-x-12  pb-8 max-w-6xl mx-auto">
+            <div className="px-4 lg:px-0 mt-4 text-gray-700 text-lg leading-relaxed w-full ">
+              <div
+                className="bg-white p-4 rounded-xl shadow-sm w-full ProseMirror overflow-visible h-full "
+                dangerouslySetInnerHTML={{ __html: data.Content }}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   )
 }

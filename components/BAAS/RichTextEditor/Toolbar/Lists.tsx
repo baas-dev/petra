@@ -14,6 +14,8 @@ export function ListUnordered() {
       config={{
         Component: <List />,
         onClick: () => editor.chain().focus().toggleBulletList().run(),
+        Title: "Unordered List",
+        Desc: "Bullet point list of items",
       }}
     />
   )
@@ -30,6 +32,8 @@ export function ListOrdered() {
       config={{
         Component: <LOrdered />,
         onClick: () => editor.chain().focus().toggleOrderedList().run(),
+        Title: "Ordered List",
+        Desc: "Numbered list of items",
       }}
     />
   )

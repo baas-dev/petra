@@ -6,4 +6,7 @@ export type Article = {
   Status: string
   tags: string[]
   Visible: boolean
+  CreatedAt: Date
+  UpdatedAt: Date
+  Content: string
 }

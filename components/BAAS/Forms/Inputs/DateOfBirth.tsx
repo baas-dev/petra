@@ -5,9 +5,8 @@ import { Label } from "@/components/ui/label"
 
 import SelectInput from "./Select"
 
-export default function DateOfBirth({ form }) {
-  
-    form.watch( )
+export default function DateOfBirth({ form, index, selectedMonth }) {
+  form.watch()
 
   const months = () => {
     let m = moment.months()
@@ -27,7 +26,7 @@ export default function DateOfBirth({ form }) {
   }
 
   let days = () => {
-    let d = moment().month(form.getValues().DOB.month).daysInMonth()
+    let d = moment().month(selectedMonth).daysInMonth()
     let values: {
       label: string
       value: string
@@ -43,12 +42,11 @@ export default function DateOfBirth({ form }) {
   }
 
   let years = () => {
-    
     let values: {
       label: string
       value: string
     }[] = []
-        for (var i = 1900; i <= moment().year(); i++) {
+    for (var i = 1900; i <= moment().year(); i++) {
       values.push({
         label: i.toString(),
         value: i.toString(),
@@ -57,14 +55,14 @@ export default function DateOfBirth({ form }) {
     return values.reverse()
   }
   return (
-    <div className="w-full flex flex-wrap ">
+    <div className="w-full flex flex-wrap text-left">
       <Label className="w-full">Date of Birth</Label>
 
       <div className="w-1/3">
         <SelectInput
-          form={...form}
+          form={form}
           options={{
-            name: "DOB.month",
+            name: `Borrowers[${index}].DOB.Month`,
             description: "Month",
             items: months(),
           }}
@@ -74,10 +72,9 @@ export default function DateOfBirth({ form }) {
         <SelectInput
           form={form}
           options={{
-            name: "DOB.day",
+            name: `Borrowers[${index}].DOB.Day`,
             description: "Day",
             items: days(),
-
           }}
         />
       </div>
@@ -85,7 +82,7 @@ export default function DateOfBirth({ form }) {
         <SelectInput
           form={form}
           options={{
-            name: "DOB.year",
+            name: `Borrowers[${index}].DOB.Year`,
             description: "Year",
             items: years(),
           }}

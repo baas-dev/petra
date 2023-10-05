@@ -9,7 +9,6 @@ import { Form } from "@/components/ui/form"
 import { toast } from "@/components/ui/use-toast"
 import NumberInput from "@/components/BAAS/Forms/Inputs/NumberInput"
 import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
-import { CreateNewFormSubmission } from "@/app/API/FORMS"
 import { ContactFormSchema } from "@/app/contact/form"
 
 export const ShopItemForm = z.object({
@@ -40,7 +39,7 @@ export default function ProductPageForm() {
     }
 
     if (result.success) {
-      let id = await CreateNewFormSubmission(data)
+      // let id = await CreateNewFormSubmission(data)
       toast({
         title: "Your Submission Was Successful!",
         description: (

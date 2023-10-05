@@ -1,12 +1,16 @@
-"use client"
-
 import Link from "next/link"
-import { Card, CardFooter, CardHeader, Input } from "@material-tailwind/react"
-import { Label } from "@radix-ui/react-menubar"
 import { ArrowBigRight, Download, View } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { CardContent, CardDescription, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
 import BACKEND from "@/app/API"
 
@@ -26,9 +30,13 @@ interface Resource {
   Link: string
 }
 export default async function Downloads() {
-  let res = await GetData(`resources`).then((val) => val)
+  let res = await GetData(`resources`)
+    .then((val) => {
+      console.log(val.data)
+      return val.data
+    })
+    .catch((err) => [])
 
-  console.log(res.data)
   return (
     <>
       <div className="min-h-screen">
@@ -46,20 +54,29 @@ export default async function Downloads() {
               information
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
-            {res && res.data && res.data.length > 0 ? (
-              res.data.map((item: Resource, i) => (
-                <ResourceCard
-                  title={item.Title}
-                  type="PDF"
-                  description={item.Description}
-                />
-              ))
+          <div className="w-full flex flex-wrap">
+            {res && res.length > 0 ? (
+              <>
+                {res.map((item: Resource, i) => (
+                  <div className="w-full md:w-1/2">
+                    <ResourceCard
+                      key={i}
+                      title={item.Title}
+                      description={item.Description}
+                      link={item.Link}
+                    />
+                  </div>
+                ))}
+              </>
             ) : (
-              <LongCardDetail
-                Title="Resources Not Availble!"
-                Description="Sorry, we are unable to retrieve resources at this time."
-              />
+              //
+              // ))
+
+              <>
+                <h2 className="text-lg">
+                  Sorry! No resources are available at this time.
+                </h2>
+              </>
             )}
           </div>
         </div>
@@ -70,8 +87,8 @@ export default async function Downloads() {
 
 const ResourceCard = (props: {
   title: string
-  type: string
   description?: string
+  link: string
 }) => {
   return (
     <Card className="w-full bg-white">
@@ -81,14 +98,11 @@ const ResourceCard = (props: {
       <CardContent className="p-4">
         <CardDescription>{props.description}</CardDescription>
       </CardContent>
-      <CardFooter className="flex p-2 justify-between">
-        <Button variant="secondary">{props.type}</Button>
-        <Link
-          href="https://www.africau.edu/images/default/sample.pdf"
-          target="_blank"
-        >
+      <CardFooter className="flex p-2 text-right justify-between">
+        {/* <Button variant="secondary">{props.type}</Button> */}
+        <Link href={props.link} target="_blank">
           <Button>
-            <Label className="mr-2">Open</Label>
+            <Label className="mr-2">Open Resource</Label>
             <ArrowBigRight />
           </Button>
         </Link>

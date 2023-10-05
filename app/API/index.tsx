@@ -1,16 +1,29 @@
 import { CreateRequest, Response } from "./TYPES"
-import { GetRequest } from "./TYPES/request"
+import { DeleteRequest, GetRequest } from "./TYPES/request"
 
 export default class BACKEND {
   async GET(options: GetRequest): Promise<Response> {
     let res: Response = {
       data: null,
       error: null,
+      code: 0,
     }
     try {
+      let headers: HeadersInit = {
+        "Content-Type": "application/json",
+        Authorization: options.AccessToken
+          ? "Bearer " + options.AccessToken
+          : "Bearer ",
+      }
+
       let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
         cache: "no-cache",
+        headers: headers,
       })
+      res.code = apiResponse.status
+      if (res.code == 403) {
+        // localStorage.removeItem("authObject")
+      }
 
       if (apiResponse.ok) {
         res.data = await apiResponse.json()
@@ -29,17 +42,25 @@ export default class BACKEND {
     let res: Response = {
       data: null,
       error: null,
+      code: 0,
     }
 
     try {
+      let headers: HeadersInit = {
+        "Content-Type": "application/json",
+        Authorization: options.AccessToken
+          ? "Bearer " + options.AccessToken
+          : "Bearer ",
+      }
       let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-Articles-urlencoded',
-        },
+        headers: headers,
         body: options.Body,
       })
+      res.code = apiResponse.status
+      if (res.code == 403) {
+        // localStorage.removeItem("authObject")
+      }
 
       if (apiResponse.ok) {
         res.data = await apiResponse.json()
@@ -57,17 +78,26 @@ export default class BACKEND {
     let res: Response = {
       data: null,
       error: null,
+      code: 0,
     }
 
     try {
+      let headers: HeadersInit = {
+        "Content-Type": "application/json",
+        Authorization: options.AccessToken
+          ? "Bearer " + options.AccessToken
+          : "Bearer ",
+      }
       let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-Articles-urlencoded',
-        },
+        headers: headers,
         body: options.Body,
       })
+      res.code = apiResponse.status
+
+      if (res.code == 403) {
+        // localStorage.removeItem("authObject")
+      }
 
       if (apiResponse.ok) {
         res.data = await apiResponse.json()
@@ -81,5 +111,40 @@ export default class BACKEND {
     }
     return res
   }
-  DeleteRequest(options) {}
+  async DELETE(options: DeleteRequest): Promise<Response> {
+    let res: Response = {
+      data: null,
+      error: null,
+      code: 0,
+    }
+
+    try {
+      let headers: HeadersInit = {
+        "Content-Type": "application/json",
+        Authorization: options.AccessToken
+          ? "Bearer " + options.AccessToken
+          : "Bearer ",
+      }
+      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+        method: "DELETE",
+        headers: headers,
+        body: options.Body,
+      })
+      res.code = apiResponse.status
+      if (res.code == 403) {
+        // localStorage.removeItem("authObject")
+      }
+
+      if (apiResponse.ok) {
+        res.data = await apiResponse.json()
+      }
+
+      if (!apiResponse.ok) {
+        res.error = "Failed to Complete This Request"
+      }
+    } catch (err) {
+      res.error = "cannot process"
+    }
+    return res
+  }
 }

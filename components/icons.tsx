@@ -1,4 +1,12 @@
-import { LucideIcon, LucideProps, Moon, SunMedium, Twitter } from "lucide-react"
+import {
+  Eye,
+  EyeOff,
+  LucideIcon,
+  LucideProps,
+  Moon,
+  SunMedium,
+  Twitter,
+} from "lucide-react"
 
 export type Icon = LucideIcon
 
@@ -22,4 +30,6 @@ export const Icons = {
       ></path>
     </svg>
   ),
+  eye: Eye,
+  eyeOff: EyeOff,
 }

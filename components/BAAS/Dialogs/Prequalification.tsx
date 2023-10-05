@@ -256,7 +256,7 @@ export default function PrequalificationInformationPopUpForm(props: {
               </div>
               <div>
                 <div className="flex w-full gap-2">
-                  <DateOfBirth form={form} />
+                  <DateOfBirth form={form} index={index} />
                   <div className="w-full">
                     <FormField
                       control={form.control}

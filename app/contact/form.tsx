@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -6,11 +9,11 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { toast } from "@/components/ui/use-toast"
+import SubmitButton from "@/components/BAAS/Forms/Buttons/submit"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 
 import BACKEND from "../API"
-import { CreateNewFormSubmission, GetAllFormSubmissions } from "../API/FORMS"
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, "Please complete first name"),
@@ -23,6 +26,7 @@ const api = new BACKEND()
 
 export default function ContactForm() {
   const r = useRouter()
+  const [loading, setLoading] = useState(false)
 
   const faqFormCXT = useForm<z.infer<typeof ContactFormSchema>>({
     resolver: zodResolver(ContactFormSchema),
@@ -98,7 +102,7 @@ export default function ContactForm() {
             label: "What can we help you with?",
           }}
         />
-        <Button type="submit">Submit!</Button>
+        <SubmitButton loading={loading} />
       </form>
     </Form>
   )

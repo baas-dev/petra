@@ -6,7 +6,6 @@ import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
-import { CreateNewFormSubmission } from "@/app/API/FORMS"
 
 import { usePreqFormContext } from "./formContext"
 
@@ -43,7 +42,7 @@ export default function SubmitForm() {
         console.log(result.error.errors)
         // Handle the validation errors
       } else {
-        await CreateNewFormSubmission(data)
+        // await CreateNewFormSubmission(data)
         toast({
           title: "Your Submission Was Successful!",
           description: (

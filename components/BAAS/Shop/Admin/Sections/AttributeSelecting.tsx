@@ -10,26 +10,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Attribute } from "@/app/adminrrrrr/shop/products/[ID]/page"
+import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
+import { Attribute } from "@/app/admin/shop/products/[ID]/page"
 
 export default function AttributeSelecting(props: { Attributes: Attribute[] }) {
-  function AttributeOptions(arg: { item: string }) {
-    let obj = GetAttributeByID(arg.item)
-
-    return (
-      <>
-        {obj?.Choices && obj.Choices.length > 0 ? (
-          obj.Choices.map((choice, i) => (
-            <SelectItem key={choice?.ID} value={choice?.ID ? choice.ID : ""}>
-              {choice.Label}
-            </SelectItem>
-          ))
-        ) : (
-          <></>
-        )}
-      </>
-    )
-  }
   const AttributeSectionSchema = z.object({
     OptionsSelected: z.array(
       z.object({
@@ -38,29 +22,6 @@ export default function AttributeSelecting(props: { Attributes: Attribute[] }) {
       })
     ),
   })
-  function handleValChange(childValue: string, parentIndex: number): void {
-    let SelectedOptions = attributeFormCXT.getValues("OptionsSelected")
-    let recordIndex = SelectedOptions.findIndex(
-      (val) => val.key === props.Attributes[parentIndex].ID
-    )
-    if (recordIndex >= 0) {
-      SelectedOptions[recordIndex].value = childValue
-      attributeFormCXT.setValue("OptionsSelected", SelectedOptions)
-    }
-
-    if (recordIndex < 0) {
-      SelectedOptions.push({
-        key: props.Attributes[parentIndex].ID,
-        value: childValue,
-      })
-      attributeFormCXT.setValue("OptionsSelected", SelectedOptions)
-    }
-  }
-
-  function GetAttributeByID(ID: string) {
-    let obj = props.Attributes.find((x: Attribute) => x.ID === ID)
-    return obj
-  }
 
   const attributeFormCXT = useForm<z.infer<typeof AttributeSectionSchema>>({
     resolver: zodResolver(AttributeSectionSchema),
@@ -69,39 +30,38 @@ export default function AttributeSelecting(props: { Attributes: Attribute[] }) {
     },
   })
 
+  function FormatOptions(data: Attribute): {
+    value: string
+    label: string
+  }[] {
+    let items: any[] = []
+    if (data && data.Choices.length > 0) {
+      data.Choices.forEach((item) => {
+        items.push({
+          value: item.ID,
+          label: item.Label,
+        })
+      })
+    }
+    return items
+  }
+
   return (
     <div className="w-full">
-      {/* {attributeFormCXT.getValues("ActiveAttributes").map((item, i) => {
-        let index = props.Attributes.findIndex((attr) => attr.ID === item)
-
-        if (
-          props.Attributes[index].Choices &&
-          props.Attributes[index].Choices.length > 0
-        ) {
-          return (
-            <Select
-              // value={props.options.value ? props.options.value : field.value}
-              onValueChange={(val) => handleValChange(val, index)}
-
-              // defaultValue={field.value}
-            >
-              <FormLabel className="text-base">
-                {GetAttributeByID(item)
-                  ? `${GetAttributeByID(item)?.Name}`
-                  : ""}
-              </FormLabel>
-
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder={"Please select an option"} />
-              </SelectTrigger>
-              <SelectContent>
-                <AttributeOptions item={item} />
-              </SelectContent>
-            </Select>
-          )
-        }
-        return <></>
-      })} */}
+      {props.Attributes.map((item, i) => {
+        return (
+          <>
+            <SelectInput
+              form={attributeFormCXT}
+              options={{
+                name: `OptionsSelected[${i}]`,
+                label: item.Name,
+                items: FormatOptions(item),
+              }}
+            />
+          </>
+        )
+      })}
     </div>
   )
 }

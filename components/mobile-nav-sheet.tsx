@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { HoverCard } from "@radix-ui/react-hover-card"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
 import {
   AlertCircle,
@@ -32,6 +33,7 @@ import {
 
 import { playlists } from "./BAAS/Cards/data"
 import Cart from "./BAAS/Shop/components/Cart"
+import { HoverCardContent, HoverCardTrigger } from "./ui/hover-card"
 import { MenubarShortcut } from "./ui/menubar"
 
 const SHEET_POSITIONS = ["top", "right", "bottom", "left"] as const
@@ -151,26 +153,32 @@ const MobileNavMenu = ({ setOpen }) => {
               <Phone className="mr-2 h-4 w-4" />
               Contact
             </Button>
-            <Button
+            <HoverCard>
+              <HoverCardTrigger>
+                <Button
+                  onClick={() => {
+                    router.push("/prequalify"), setOpen(false)
+                  }}
+                  variant="ghost"
+                  className="w-full justify-start"
+                >
+                  <AlertCircle className="mr-2 h-4 w-4" />
+                  Get Prequalified
+                </Button>
+              </HoverCardTrigger>
+              <HoverCardContent></HoverCardContent>
+            </HoverCard>
+
+            {/* <Button
               onClick={() => {
-                router.push("/prequalify"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <AlertCircle className="mr-2 h-4 w-4" />
-              Get Prequalified
-            </Button>
-            <Button
-              onClick={() => {
-                router.push("/prequalify"), setOpen(false)
+                router.push("/shop"), setOpen(false)
               }}
               variant="ghost"
               className="w-full justify-start"
             >
               <DollarSign className="mr-2 h-4 w-4" />
               Shop
-            </Button>
+            </Button> */}
             <Cart />
           </div>
         </div>

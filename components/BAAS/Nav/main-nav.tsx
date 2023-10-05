@@ -3,6 +3,8 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Inspect, Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -11,6 +13,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -32,6 +35,7 @@ import AssistanceTrigger from "../../Assistant/AssistanceTrigger"
 import MobileNavSheet from "../../mobile-nav-sheet"
 import BigCard from "../Cards/BigCard"
 import Cart from "../Shop/components/Cart"
+import SiteSearch from "./SiteSearch"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -82,10 +86,14 @@ export default function MainNav() {
       <div className=" md:hidden w-full">
         <div className=" flex h-16  items-center space-x-4 justify-between sm:space-x-0">
           <MobileNavbar />
-          <div className="flex ">
+
+          <div className="flex p-2">
             {/* <ThemeToggle /> */}
             <AssistanceTrigger />
           </div>
+        </div>
+        <div className="w-full px-1 bg-gray-100 mb-1">
+          <SiteSearch />
         </div>
       </div>
     </>
@@ -119,6 +127,8 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem"
 
 const FullWidthNavbar = () => {
+  let path = usePathname()
+  console.log(path)
   return (
     <>
       <header className="bg-white w-full">
@@ -132,29 +142,16 @@ const FullWidthNavbar = () => {
             />
           </div>
 
-          <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md  xl:flex items-center">
+          <SiteSearch />
+          {/* <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md  xl:flex items-center">
             <Input
               className="border-none  bg-transparent font-semibold text-sm pl-4"
               type="text"
               placeholder="I'm searching for ..."
             />
-            <svg
-              className="ml-auto h-5 px-4 text-gray-500"
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="far"
-              data-icon="search"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              // className="svg-inline--fa fa-search fa-w-16 fa-9x"
-            >
-              <path
-                fill="currentColor"
-                d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
-              ></path>
-            </svg>
-          </div>
+
+            <Search className="w-8 mx-2" />
+          </div> */}
 
           <div className="ml-auto md:w-48  sm:flex text-right flex-col place-items-end">
             <span className="font-medium md:text-xl"> Petra Home Lending</span>
@@ -173,12 +170,16 @@ const FullWidthNavbar = () => {
         </div>
 
         <hr />
-        <NavigationMenu className="items-center text-center mx-auto">
+        <NavigationMenu className="items-center text-center mx-auto py-1">
           <NavigationMenuList>
             <NavigationMenuItem>
               <Link href="/" className="" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-cente items-center">
+                  <div
+                    className={`flex-wrap text-cente items-center  ${
+                      path == "/" ? "text-accent underline" : ""
+                    } `}
+                  >
                     <span> Home</span>
                   </div>
                 </NavigationMenuLink>
@@ -187,7 +188,11 @@ const FullWidthNavbar = () => {
             <NavigationMenuItem>
               <Link href="/about" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-center items-center ">
+                  <div
+                    className={`flex-wrap text-cente items-center  ${
+                      path == "/about" ? "text-accent underline" : ""
+                    } `}
+                  >
                     <span> About Petra</span>
                   </div>
                 </NavigationMenuLink>
@@ -196,8 +201,12 @@ const FullWidthNavbar = () => {
             <NavigationMenuItem>
               <Link href="/social" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-center items-center">
-                    <span>Social</span>
+                  <div
+                    className={`flex-wrap text-cente items-center  ${
+                      path == "/social" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    <span>Articles</span>
                   </div>
                 </NavigationMenuLink>
               </Link>
@@ -207,23 +216,24 @@ const FullWidthNavbar = () => {
               <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid gap-3 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] p-2">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
+                  <li className="row-span-3 h-full">
+                    <NavigationMenuLink asChild className="h-full">
+                      {/* <a
+                        className="flex py-0 my-0 h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
                         // href="/"
-                      >
-                        <BigCard
-                          bg={"bg-primary"}
-                          bgHover={"bg-primary/20"}
-                          link={"/resources/faq"}
-                          image={""}
-                          Title={"Resources For Homebuyers"}
-                          Description={"Useful tools to aid in your journey"}
-                          btn={false}
-                          btnText={null}
-                        />
-                      </a>
+                      > */}
+                      <BigCard
+                        bg={"bg-primary"}
+                        bgHover={"bg-primary/20"}
+                        link={"/resources/faqs"}
+                        image={""}
+                        Title={"Resources For Homebuyers"}
+                        Description={"Useful tools to aid in your journey"}
+                        btn={false}
+                        btnText={null}
+                        action={() => {}}
+                      />
+                      {/* </a> */}
                     </NavigationMenuLink>
                   </li>
                   <ListItem
@@ -251,23 +261,59 @@ const FullWidthNavbar = () => {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
-            <NavigationMenuItem>
+            <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-center items-center">
-                    <span> Contact Us</span>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-cente items-center  ${
+                      path == "/contact" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    Contact Us
                   </div>
-                </NavigationMenuLink>
+                </HoverCardTrigger>
               </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline  text-primary">
+                    Talk With The Team
+                  </Label>
+                  <p>We are eager to hear from you!</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/prequalify" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/prequalify" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    Get Prequalified
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Start Prequalification
+                  </Label>
+                  <p>
+                    Complete our short form to make your home buying experience
+                    as easy as possible
+                  </p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            {/* <NavigationMenuItem>
               <Link href="/prequalify" className="" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Get Prequalified
                 </NavigationMenuLink>
               </Link>
-            </NavigationMenuItem>
-            <HoverCard openDelay={0}>
+            </NavigationMenuItem> */}
+            {/* <HoverCard openDelay={0}>
               <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                 Shop
               </HoverCardTrigger>
@@ -287,7 +333,7 @@ const FullWidthNavbar = () => {
                   />
                 </Link>
               </HoverCardContent>
-            </HoverCard>
+            </HoverCard> */}
           </NavigationMenuList>
         </NavigationMenu>
         <hr />
@@ -299,7 +345,7 @@ const FullWidthNavbar = () => {
 const MobileNavbar = () => {
   return (
     <>
-      <div className="w-1/2">
+      <div className="w-1/3">
         <MobileNavSheet />
       </div>
     </>

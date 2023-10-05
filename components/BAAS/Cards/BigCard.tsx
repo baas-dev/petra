@@ -20,13 +20,16 @@ export default function BigCard({
   bgHover,
   image,
   link,
+  action,
 }) {
   const r = useRouter()
   return (
     <Card
       style={{ contain: "layout" }}
-      onClick={() => r.push(link)}
-      className={` ${bg} bg-opacity-20 w-full hover:${bgHover} hover:cursor-pointer`}
+      onClick={() => {
+        r.push(link), action()
+      }}
+      className={`${bg} w-full hover:${bgHover} hover:cursor-pointer `}
     >
       <Image
         src={"/images/background.svg"}

@@ -1,5 +1,6 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context"
-import { useRouter } from "next/navigation"
+
+import { AuthObjectType } from "@/app/admin/Context/AuthContext"
 
 export type FormConfig = {
   APIRoute: string
@@ -7,6 +8,7 @@ export type FormConfig = {
 
 export interface SubmitFormConfig {
   APIRoute: string
+  AuthObject?: AuthObjectType
   FormData: any
   FormSchema: any
   Router: AppRouterInstance

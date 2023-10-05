@@ -226,9 +226,10 @@ function SortByComponent() {
               <SelectValue placeholder="Date Posted" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Category</SelectItem>
-              <SelectItem value="dark">Date Posted</SelectItem>
-              <SelectItem value="system">Title</SelectItem>
+              <SelectItem value="light">Category (A-Z)</SelectItem>
+              <SelectItem value="light">Category (Z-A)</SelectItem>
+              <SelectItem value="dark">Date Posted (Newest First)</SelectItem>
+              <SelectItem value="dark">Date Posted (Oldest First)</SelectItem>
             </SelectContent>
           </Select>
         </div>

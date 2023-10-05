@@ -3,7 +3,7 @@ import BACKEND from "@/app/API"
 import {
   Attribute,
   AttributeChoices,
-} from "@/app/adminrrrrr/shop/products/[ID]/page"
+} from "@/app/admin/shop/products/[ID]/page"
 
 interface AttributeEditing {
   Attributes: Attribute[]
@@ -43,6 +43,12 @@ export default function AttributeEditing(props: AttributeEditing) {
               items: AttributeClass(),
             }}
           />
+
+          {AttributeClass().length == 0 ? (
+            <>No Attributes Have Been Created Yet.</>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

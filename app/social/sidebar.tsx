@@ -1,21 +1,14 @@
 "use client"
 
+import { useCallback, useEffect, useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Bold, Facebook } from "lucide-react"
+import { Bold, Facebook, Router } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -33,20 +26,71 @@ import {
 import { Toggle } from "@/components/ui/toggle"
 import { toast } from "@/components/ui/use-toast"
 
-function Sidebar({ items }) {
+function Sidebar({
+  items,
+  loadedParams,
+}: {
+  items
+  loadedParams: {
+    query: string | null
+    sort: string | null
+    categories: string | null
+  }
+}) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()!
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set(name, value)
+
+      return params.toString()
+    },
+    [searchParams]
+  )
   return (
     <div className="w-full">
-      <SearchComponent />
+      <SearchComponent
+        CreateQueryString={createQueryString}
+        router={router}
+        pathname={pathname}
+        query={loadedParams.query}
+      />
 
       <div className="flex w-full gap-1">
-        <SortByComponent />
-        <CategoryPopover items={items} />
+        <SortByComponent
+          CreateQueryString={createQueryString}
+          router={router}
+          pathname={pathname}
+        />
+        <CategoryPopover
+          CreateQueryString={createQueryString}
+          router={router}
+          pathname={pathname}
+          categories={loadedParams.categories}
+          items={items}
+        />
       </div>
     </div>
   )
 }
 
-function SearchComponent() {
+function SearchComponent({ CreateQueryString, router, pathname, query }) {
+  const [timer, setTimer] = useState<number | null>(null)
+  function HandleChange(value: string) {
+    if (timer !== null) {
+      window.clearTimeout(timer) // Clear the existing timer if there is one.
+    }
+
+    setTimer(
+      window.setTimeout(() => {
+        router.push(pathname + "?" + CreateQueryString("query", value))
+      }, 300)
+    )
+  }
+
   return (
     <div className="mb-4 w-full">
       <Label htmlFor="searchInput" className="text-lg">
@@ -57,35 +101,51 @@ function SearchComponent() {
           type="email"
           placeholder="Search titles, content, etc"
           className="bg-white rounded-lg"
+          defaultValue={query}
+          autoFocus
+          onChange={(e) => {
+            HandleChange(e.target.value)
+          }}
         />
       </div>
     </div>
   )
 }
 
-const CategoryPopover = ({ items }) => {
-  const FormSchema = z.object({
-    items: z.array(z.string()).refine((value) => value.some((item) => item), {
-      message: "You have to select at least one item.",
-    }),
-  })
+const CategoryPopover = ({
+  items,
+  router,
+  CreateQueryString,
+  pathname,
+  categories,
+}) => {
+  console.log(categories)
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  useEffect(() => {
+    if (categories) {
+      // If categories exist in the query params, split by '+' and set the state.
+      setSelectedCategories(categories ? categories.split("+") : [])
+    }
+  }, [categories])
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      items: ["recents", "home"],
-    },
-  })
+  const handleCheckboxChange = (checked: boolean, itemValue: string) => {
+    let updatedCategories = [...selectedCategories]
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    })
+    if (checked) {
+      updatedCategories.push(itemValue)
+    } else {
+      updatedCategories = updatedCategories.filter(
+        (value) => value !== itemValue
+      )
+    }
+
+    if (updatedCategories.length > 0) {
+      const queryString = updatedCategories.join(",")
+      router.push(`${pathname}?${CreateQueryString("categories", queryString)}`)
+    } else {
+      setSelectedCategories([]) // Set state to an empty array explicitly
+      router.push(pathname) // Navigate without the categories parameter in the URL
+    }
   }
 
   return (
@@ -99,64 +159,30 @@ const CategoryPopover = ({ items }) => {
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-80">
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8"
-              >
-                <FormField
-                  control={form.control}
-                  name="items"
-                  render={() => (
-                    <FormItem>
-                      <div className="mb-4">
-                        <FormLabel className="text-base">Sidebar</FormLabel>
-                        <FormDescription>
-                          Select the items you want to display in the sidebar.
-                        </FormDescription>
-                      </div>
-                      {items.map((item) => (
-                        <FormField
-                          key={item.id}
-                          control={form.control}
-                          name="items"
-                          render={({ field }) => {
-                            return (
-                              <FormItem
-                                key={item.id}
-                                className="flex flex-row items-start space-x-3 space-y-0"
-                              >
-                                <FormControl>
-                                  <Checkbox
-                                    checked={field.value?.includes(item.id)}
-                                    onCheckedChange={(checked) => {
-                                      return checked
-                                        ? field.onChange([
-                                            ...field.value,
-                                            item.id,
-                                          ])
-                                        : field.onChange(
-                                            field.value?.filter(
-                                              (value) => value !== item.id
-                                            )
-                                          )
-                                    }}
-                                  />
-                                </FormControl>
-                                <FormLabel className="font-normal">
-                                  {item.label}
-                                </FormLabel>
-                              </FormItem>
-                            )
-                          }}
-                        />
-                      ))}
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </form>
-            </Form>
+            {items.map((item, i) => {
+              return (
+                <div key={item.value} className="flex mb-2">
+                  <Checkbox
+                    checked={selectedCategories.includes(item.value)}
+                    value={item.value}
+                    id={item.value}
+                    onCheckedChange={(checked) => {
+                      console.log(typeof checked)
+                      if (typeof checked === "boolean") {
+                        handleCheckboxChange(checked, item.value)
+                      }
+                    }}
+                    className="mr-2"
+                  />
+                  <Label
+                    htmlFor={item.value}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    {item.label}
+                  </Label>
+                </div>
+              )
+            })}
           </PopoverContent>
         </Popover>
       </div>
@@ -189,7 +215,17 @@ const SourceChoice = () => {
   )
 }
 
-function SortByComponent() {
+function SortByComponent(props: {
+  CreateQueryString: Function
+  router
+  pathname
+}) {
+  function HandleChange(value: string) {
+    props.router.push(
+      props.pathname + "?" + props.CreateQueryString("sort", value)
+    )
+  }
+
   return (
     <>
       <div className="mb-4 w-full">
@@ -200,14 +236,19 @@ function SortByComponent() {
           Sort By:
         </Label>
         <div className="flex w-full">
-          <Select>
+          <Select onValueChange={(e) => HandleChange(e)}>
             <SelectTrigger className="bg-white">
               <SelectValue placeholder="Date Posted" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Category</SelectItem>
-              <SelectItem value="dark">Date Posted</SelectItem>
-              <SelectItem value="system">Title</SelectItem>
+              <SelectItem value="Title-asc">Title (A-Z)</SelectItem>
+              <SelectItem value="Title-desc">Title (Z-A)</SelectItem>
+              <SelectItem value="PublishedAt-asc">
+                Published (Newest First)
+              </SelectItem>
+              <SelectItem value="PublishedAt-desc">
+                Published (Oldest First)
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>

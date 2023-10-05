@@ -11,17 +11,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import TextInput from "./Text"
-import States from './states.json'
-import SelectInput from "./Select"
 
+import SelectInput from "./Select"
+import TextInput from "./Text"
+import States from "./states.json"
 
 function states() {
-  let res: {label:string,value:string}[] = []
-  States.states.forEach((item,i) => {
+  let res: { label: string; value: string }[] = []
+  States.states.forEach((item, i) => {
     res.push({
       label: item,
-      value: item
+      value: item,
     })
   })
 
@@ -30,11 +30,10 @@ function states() {
 
 let stateChoices = states()
 
-export default function LocationInput({ form }) {
-  
+export default function LocationInput({ form, Name }) {
   return (
     <>
-      <div className="flex flex-wrap my-8 bg-white rounded-xl p-4 w-full">
+      <div className="flex flex-wrap my-8 bg-white rounded-xl  py-4 w-full">
         <div className="w-full px-4 text-left">
           <Label className="text-md text-left text-primary underline ">
             Location Information
@@ -43,46 +42,53 @@ export default function LocationInput({ form }) {
         <div className="w-full px-4  text-left">
           <div className="mt-4 flex w-full gap-2">
             <div className="flex w-full flex-wrap">
-             
-              <TextInput form={...form} options={{
-                name: "ShippingInformation.Address",
-                label: "Street Address"
-              }} />
+              <TextInput
+                form={form}
+                options={{
+                  name: `${Name}.Address`,
+                  label: "Street Address",
+                }}
+              />
             </div>
             <div className="flex w-full flex-wrap">
-          
-              <TextInput form={...form} options={{
-                name: "ShippingInformation.SuiteNumber",
-                label: "Suite Number (Optional)"
-
-              }} />
+              <TextInput
+                form={form}
+                options={{
+                  name: `${Name}.SuiteNumber`,
+                  label: "Suite Number (Optional)",
+                }}
+              />
             </div>
           </div>
         </div>
         <div className="flex  w-full gap-2 p-4">
           <div className="flex w-full flex-wrap">
-           
-            <TextInput form={...form} options={{
-                name: "ShippingInformation.City",
-                label: "City"
-
-              }} />
+            <TextInput
+              form={form}
+              options={{
+                name: `${Name}.City`,
+                label: "City",
+              }}
+            />
           </div>
           <div className="flex w-full flex-wrap">
-          
-           <SelectInput form={form} options={{
-            name: "ShippingInformation.State",
-            label: "State",
-            items: [...stateChoices]
-          }} />
+            <SelectInput
+              form={form}
+              options={{
+                name: `${Name}.State`,
+                label: "State",
+                items: [...stateChoices],
+              }}
+            />
           </div>
           <div className="flex w-full flex-wrap">
-           
-            <TextInput form={...form} options={{
-                name: "ShippingInformation.Zip",
+            <TextInput
+              form={form}
+              options={{
+                name: `${Name}.Zip`,
                 label: "Zip",
-
-              }} />
+              }}
+            />
           </div>
         </div>
       </div>

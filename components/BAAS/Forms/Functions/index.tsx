@@ -1,6 +1,4 @@
-import { useRouter } from "next/router"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { collapse } from "@material-tailwind/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -34,6 +32,7 @@ export async function SubmitForm(Config: SubmitFormConfig) {
           res = await api.CREATE({
             Route: Config.APIRoute,
             Body: JSON.stringify(Config.FormData),
+            AccessToken: Config.AuthObject?.AccessToken,
           })
         }
 
@@ -41,6 +40,7 @@ export async function SubmitForm(Config: SubmitFormConfig) {
           res = await api.UPDATE({
             Route: Config.APIRoute,
             Body: JSON.stringify(Config.FormData),
+            AccessToken: Config.AuthObject?.AccessToken,
           })
         }
 

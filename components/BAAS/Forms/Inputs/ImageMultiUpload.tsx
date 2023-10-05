@@ -55,11 +55,6 @@ function MainImage({ form }: { form: any }) {
                   placeholder: "Link to image...",
                 }}
               />
-              <div className="mt-2">
-                <Button>
-                  <Plus className="" /> Save
-                </Button>
-              </div>
             </div>
           </PopoverContent>
 

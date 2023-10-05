@@ -17,30 +17,32 @@ import {
 
 import MediaDialogBody from "./MediaDialogBody"
 
-export default function MediaDialog() {
+export default function MediaDialog(userInfo: {}) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" className="w-full bg-accent shadow-md p-0">
+        <Button variant="outline" className=" bg-accent shadow-md ">
           <FileImage className="mr-2  text-white" />
 
           <span className="text-lg text-white">Browse Files</span>
         </Button>
       </SheetTrigger>
       <SheetContent side={"bottom"} className="bg-secondary h-screen w-screen">
-        <SheetHeader className="mb-4">
-          <SheetTitle>Edit profile</SheetTitle>
-          <SheetDescription>
-            Make changes to your profile here. Click save when you&#39re done.
-          </SheetDescription>
+        <SheetHeader className="mb-4 w-full">
+          <div className="flex w-full justify-between">
+            <div>
+              <SheetTitle>Media Files Uploaded</SheetTitle>
+              <SheetDescription>
+                Upload and manage files for your site
+              </SheetDescription>
+            </div>
+            {/* <div className="mr-4">
+              <Button className="bg-accent">Upload</Button>
+            </div> */}
+          </div>
         </SheetHeader>
         <Separator />
         <MediaDialogBody />
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   )

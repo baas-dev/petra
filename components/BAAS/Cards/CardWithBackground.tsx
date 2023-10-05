@@ -11,14 +11,17 @@ import { CoreValue } from "@/app/about/CoreValuesSection"
 
 export default function CardWithBackground(props: CoreValue) {
   return (
-    <div className="w-full px-4 md:w-1/2 lg:w-1/3 ">
-      <div className="mb-8 rounded-[20px] h-full bg-white p-10 shadow-md hover:shadow-lg md:px-7 xl:px-10">
-        <div
-          className={`mb-8 flex h-[70px] w-[70px] p-3 items-center justify-center rounded-2xl bg-primary`}
-          style={{ backgroundImage: `url(${props?.image})` }}
-        ></div>
-        <h4 className="mb-3 text-xl font-semibold text-dark">{props.title}</h4>
-        <p className="text-body-color">{props.desc}</p>
+    <div className="flex rounded-[20px] mx-auto items-center  mb-4 w-full md:w-1/2 h-full bg-white shadow-md hover:shadow-lg ">
+      <div
+        className={` flex h-40 w-1/3 items-center justify-center rounded-l-xl bg-primary`}
+        style={{ backgroundImage: `url(${props?.image})` }}
+      ></div>
+      <div className="w-2/3 p-2">
+        <h4 className="mb-2 underline text-primary text-xl font-accent">
+          {props.title}
+        </h4>
+
+        <p className="text-body-color text-sm">{props.desc}</p>
       </div>
     </div>
   )
