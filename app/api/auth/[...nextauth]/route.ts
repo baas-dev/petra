@@ -45,7 +45,7 @@ async function Authenticate(
   return res
 }
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
