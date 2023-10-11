@@ -80,23 +80,18 @@ export default function UserManagementForm() {
 
   console.log(adminTableCXT.Data)
   return (
-    <div className="container max-w-4xl mx-auto">
+    <div className="w-full mt-4 mx-auto">
       <Form {...usersFormCXT}>
         <form
           onSubmit={usersFormCXT.handleSubmit(onSubmit)}
           className="w-full space-y-6 "
         >
-          <FormHeader
-            title={"Managing " + adminTableCXT.Data.Name}
-            description={adminTableCXT.Data.Email}
-          />
-
           <Tabs defaultValue="role" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="role">Role</TabsTrigger>
               <TabsTrigger value="password">Password</TabsTrigger>
             </TabsList>
-            <TabsContent value="role">
+            <TabsContent value="role" className="w-full">
               <SelectInput
                 form={usersFormCXT}
                 options={{

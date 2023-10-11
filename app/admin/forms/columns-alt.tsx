@@ -7,7 +7,7 @@ import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 
-export const columns: ColumnDef<any>[] = [
+export const columnsAlt: ColumnDef<any>[] = [
   {
     id: "actions",
     header: () => {
@@ -28,37 +28,13 @@ export const columns: ColumnDef<any>[] = [
     },
   },
   {
-    id: "Team",
-    header: "Team Member(s) Credited",
-    cell: ({ row }) => {
-      let data = JSON.parse(row.original.SubmissionData)
-      console.log(data)
-      return (
-        <div>
-          {data &&
-            data.Team &&
-            data.Team.map((item, i) => {
-              return <p key={item}>{`${i + 1}) ${item}`}</p>
-            })}
-        </div>
-      )
-    },
-  },
-  {
     id: "Boroowers",
     header: "Borrower(s) Information Submitted",
     cell: ({ row }) => {
       let data = JSON.parse(row.original.SubmissionData)
       console.log(data)
-      return (
-        <div>
-          {data &&
-            data.Borrowers &&
-            data.Borrowers.map((item, i) => {
-              return <p key={i}>{`- ${item.FirstName} ${item.LastName}`}</p>
-            })}
-        </div>
-      )
+      // email, name, message
+      return <div>{data.email}</div>
     },
   },
   {

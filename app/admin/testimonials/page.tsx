@@ -48,6 +48,8 @@ export default function FAQAdmin() {
           Form={<TestimonialsForm />}
           data={null}
           Text={"Create"}
+          Title={"Testimonials Form"}
+          Description={"Public facing reviews managed here"}
         />
       </Banner>
       {loading ? (
@@ -59,6 +61,16 @@ export default function FAQAdmin() {
           scope={{
             TableName: "Quotes",
           }}
+          filters={[
+            {
+              label: "Name",
+              value: "Name",
+            },
+            {
+              label: "Quote",
+              value: "Quote",
+            },
+          ]}
         />
       )}
     </>

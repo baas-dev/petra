@@ -82,30 +82,31 @@ export default function TestimonialsForm(props: {
     <Form {...testimonialFormCXT}>
       <form
         onSubmit={testimonialFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6"
+        className="w-full space-y-6 mt-4 max-w-7xl mx-auto"
       >
-        <TextInput
-          form={testimonialFormCXT}
-          options={{
-            name: "Name",
-            label: "Name",
-          }}
-        />
-        <TextInput
-          form={testimonialFormCXT}
-          options={{
-            name: "Label",
-            label: "Label",
-          }}
-        />
-        <TextAreaInput
-          form={testimonialFormCXT}
-          options={{
-            name: "QuoteText",
-            label: "Quote Text",
-          }}
-        />
-
+        <div className="bg-white p-4 rounded-xl shadow-md">
+          <TextInput
+            form={testimonialFormCXT}
+            options={{
+              name: "Name",
+              label: "Name",
+            }}
+          />
+          <TextInput
+            form={testimonialFormCXT}
+            options={{
+              name: "Label",
+              label: "Label",
+            }}
+          />
+          <TextAreaInput
+            form={testimonialFormCXT}
+            options={{
+              name: "QuoteText",
+              label: "Quote Text",
+            }}
+          />
+        </div>
         <SubmitButton loading={loading} />
       </form>
     </Form>

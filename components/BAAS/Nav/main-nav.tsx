@@ -128,7 +128,6 @@ ListItem.displayName = "ListItem"
 
 const FullWidthNavbar = () => {
   let path = usePathname()
-  console.log(path)
   return (
     <>
       <header className="bg-white w-full">
@@ -154,9 +153,19 @@ const FullWidthNavbar = () => {
           </div> */}
 
           <div className="ml-auto md:w-48  sm:flex text-right flex-col place-items-end">
-            <span className="font-medium md:text-xl"> Petra Home Lending</span>
+            <span className="underline text-primary">
+              <a href="tel:214-432-0443" className="flex hover:underline">
+                +1 (214) 432-0443
+              </a>
+            </span>
+            <span className="font-light md:text-lg"> Petra Home Lending</span>
             <span className="font-normal text-sm text-gray-400">
-              3939 Belt Line Rd #150, Addison, TX 75001
+              <a
+                href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
+                className="hover:cursor-pointer hover:underline"
+              >
+                3939 Belt Line Rd #150, Addison, TX 75001
+              </a>
             </span>
           </div>
 
@@ -199,11 +208,11 @@ const FullWidthNavbar = () => {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/social" legacyBehavior passHref>
+              <Link href="/articles" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <div
                     className={`flex-wrap text-cente items-center  ${
-                      path == "/social" ? "text-accent underline" : ""
+                      path == "/articles" ? "text-accent underline" : ""
                     } `}
                   >
                     <span>Articles</span>

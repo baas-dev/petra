@@ -37,9 +37,12 @@ const ContactUsBody = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="text-dark   text-lg">Our Location</h4>
-                    <p className="text-body-color text-md font-light">
+                    <a
+                      href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
+                      className="text-body-color text-md font-light hover:underline"
+                    >
                       3939 Belt Line Rd #150, Addison, TX 75001
-                    </p>
+                    </a>
                   </div>
                 </div>
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
@@ -49,7 +52,12 @@ const ContactUsBody = () => {
                   <div className="w-full">
                     <h4 className="text-dark   text-lg"> Phone Number</h4>
                     <p className="text-body-color text-md font-light">
-                      (+1) 214 432-0443
+                      <a
+                        href="tel:214-432-0443"
+                        className="flex hover:underline"
+                      >
+                        (+1) 214 432-0443
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -60,7 +68,12 @@ const ContactUsBody = () => {
                   <div className="w-full">
                     <h4 className="text-dark   text-lg"> Email Address</h4>
                     <p className="text-body-color text-md font-light">
-                      info@petralending.com
+                      <a
+                        href="mailto:“contact-us@petralending.com”"
+                        className="flex hover:underline"
+                      >
+                        info@petralending.com
+                      </a>
                     </p>
                   </div>
                 </div>

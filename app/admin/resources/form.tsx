@@ -20,9 +20,9 @@ import { useAdminTableContext } from "../Context/TableContext"
 
 export const ResourceFormSchema = z.object({
   ID: z.string().optional(),
-  Title: z.string().min(2, "Please complete first name"),
-  Description: z.string().min(2, "Please complete second name"),
-  Link: z.string().min(2, "Please complete second name"),
+  Title: z.string().min(2, "Please Complete Title"),
+  Description: z.string(),
+  Link: z.string().url(),
 })
 
 export default function ResourcesForm(props: {
@@ -84,13 +84,9 @@ export default function ResourcesForm(props: {
     <Form {...faqFormCXT}>
       <form
         onSubmit={faqFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 container mx-auto"
+        className="w-full space-y-6 max-w-7xl  mx-auto"
       >
-        <FormHeader
-          title="Resource Editing"
-          description="Editing instance of resource"
-        />
-        <div className="p-4">
+        <div className="p-4 bg-white rounded-xl mt-4 shadow-md">
           <TextInput
             form={faqFormCXT}
             options={{
@@ -116,8 +112,8 @@ export default function ResourcesForm(props: {
           <div className="mb-2">
             <MediaDialog />
           </div>
-          <SubmitButton loading={loading} />
         </div>
+        <SubmitButton loading={loading} />
       </form>
     </Form>
   )

@@ -54,6 +54,8 @@ export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
             Text={"Edit"}
             Form={<TestimonialsForm />}
             data={row.original}
+            Title={"Testimonials Form"}
+            Description={"Public facing reviews managed here"}
           />
         </>
       )
@@ -66,6 +68,9 @@ export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
   {
     accessorKey: "QuoteText",
     header: "Quote",
+    cell: ({ row }) => {
+      return <p className="line-clamp-2">{row.original.QuoteText}</p>
+    },
   },
   {
     accessorKey: "CreatedAt",

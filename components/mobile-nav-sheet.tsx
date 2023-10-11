@@ -103,13 +103,13 @@ const MobileNavMenu = ({ setOpen }) => {
             {/* <Link href="/social"> */}
             <Button
               onClick={() => {
-                router.push("/social"), setOpen(false)
+                router.push("/articles"), setOpen(false)
               }}
               variant="ghost"
               className="w-full justify-start"
             >
               <Newspaper className="mr-2 h-4 w-4" />
-              Social
+              Articles
             </Button>
             {/* </Link> */}
             <Button
@@ -179,7 +179,7 @@ const MobileNavMenu = ({ setOpen }) => {
               <DollarSign className="mr-2 h-4 w-4" />
               Shop
             </Button> */}
-            <Cart />
+            {/* <Cart /> */}
           </div>
         </div>
       </div>

@@ -44,11 +44,18 @@ export default function FAQAdmin() {
 
   return (
     <>
-      <ManageDataDialog
-        Form={<FormSettingsForm />}
-        data={null}
-        Text={"Create"}
-      />
+      <Banner
+        Subtitle="Get a copy of forms entered on your site"
+        Title="Form Delivery Settings"
+      >
+        <ManageDataDialog
+          Form={<FormSettingsForm />}
+          data={null}
+          Text={"Create"}
+          Title={"Form Delivery Settings"}
+          Description={"Get a copy of forms entered on your site"}
+        />
+      </Banner>
 
       {loading ? (
         <TableLoading />
@@ -56,7 +63,6 @@ export default function FAQAdmin() {
         <DataTable
           columns={columns}
           data={data} // Use state-based data
-          routePath="/team"
         />
       )}
     </>

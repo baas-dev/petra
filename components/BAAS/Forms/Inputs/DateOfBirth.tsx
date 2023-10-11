@@ -58,7 +58,7 @@ export default function DateOfBirth({ form, index, selectedMonth }) {
     <div className="w-full flex flex-wrap text-left">
       <Label className="w-full">Date of Birth</Label>
 
-      <div className="w-1/3">
+      <div className="w-1/3 px-1">
         <SelectInput
           form={form}
           options={{
@@ -68,7 +68,7 @@ export default function DateOfBirth({ form, index, selectedMonth }) {
           }}
         />
       </div>
-      <div className="w-1/3">
+      <div className="w-1/3 px-1">
         <SelectInput
           form={form}
           options={{
@@ -78,7 +78,7 @@ export default function DateOfBirth({ form, index, selectedMonth }) {
           }}
         />
       </div>
-      <div className="w-1/3">
+      <div className="w-1/3 px-1">
         <SelectInput
           form={form}
           options={{

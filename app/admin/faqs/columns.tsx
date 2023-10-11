@@ -39,7 +39,7 @@ export const columns: ColumnDef<z.infer<typeof FAQFormSchema>>[] = [
   {
     id: "actions",
     enableResizing: true,
-    size: 10,
+    size: 5,
     cell: ({ row }) => {
       return (
         <>
@@ -47,6 +47,8 @@ export const columns: ColumnDef<z.infer<typeof FAQFormSchema>>[] = [
             Text={"Edit"}
             Form={<FAQFullForm />}
             data={row.original}
+            Title={"FAQ Admin Form"}
+            Description={"Answer common questions that your user's encounter"}
           />
         </>
       )
@@ -55,10 +57,16 @@ export const columns: ColumnDef<z.infer<typeof FAQFormSchema>>[] = [
   {
     accessorKey: "Question",
     header: "Question",
+    cell: ({ row }) => {
+      return <p className="line-clamp-2">{row.original.Question}</p>
+    },
   },
   {
     accessorKey: "Answer",
     header: "Answer",
+    cell: ({ row }) => {
+      return <p className="line-clamp-2">{row.original.Answer}</p>
+    },
   },
   {
     accessorKey: "CreatedAt",

@@ -51,6 +51,8 @@ export default function FAQAdmin() {
           Form={<ResourcesForm />}
           data={null}
           Text={"Create"}
+          Title={"Resources Form"}
+          Description={"Give visitors resources to succeed"}
         />
       </Banner>
 

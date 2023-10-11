@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Banner from "@/components/BAAS/Banners/Banner"
 import DeleteButton from "@/components/BAAS/Forms/Buttons/delete"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
 
@@ -30,6 +31,8 @@ export const columns: ColumnDef<z.infer<typeof FormSettingsFormSchema>>[] = [
             Text={"Edit"}
             Form={<FormSettingsForm />}
             data={row.original}
+            Title={undefined}
+            Description={undefined}
           />
         </>
       )

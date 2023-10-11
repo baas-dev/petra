@@ -92,35 +92,36 @@ export default function FormSettingsForm(props: {
     <Form {...formSettingCXT}>
       <form
         onSubmit={formSettingCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6"
+        className="w-full space-y-6 max-w-7xl mx-auto"
       >
-        <TextInput
-          form={formSettingCXT}
-          options={{
-            name: "Email",
-            label: "Email",
-          }}
-        />
-        <SwitchInput
-          form={formSettingCXT}
-          options={{
-            name: "OnContactSubmit",
-            label: "Contact Form",
-            description:
-              "Toggle if you would like to send a notification whenever a 'Contact Us' form is completed",
-          }}
-        />
+        <div className="bg-white rounded-xl shadow-md p-4 ">
+          <TextInput
+            form={formSettingCXT}
+            options={{
+              name: "Email",
+              label: "Email",
+            }}
+          />
+          <SwitchInput
+            form={formSettingCXT}
+            options={{
+              name: "OnContactSubmit",
+              label: "Contact Form",
+              description:
+                "Toggle if you would like to send a notification whenever a 'Contact Us' form is completed",
+            }}
+          />
 
-        <SwitchInput
-          form={formSettingCXT}
-          options={{
-            name: "OnPrequalificationSubmit",
-            label: "Prequalification Form",
-            description:
-              "Toggle if you would like to send a notification whenever a 'Prequalification' form is completed",
-          }}
-        />
-
+          <SwitchInput
+            form={formSettingCXT}
+            options={{
+              name: "OnPrequalificationSubmit",
+              label: "Prequalification Form",
+              description:
+                "Toggle if you would like to send a notification whenever a 'Prequalification' form is completed",
+            }}
+          />
+        </div>
         <SubmitButton loading={loading} />
       </form>
     </Form>

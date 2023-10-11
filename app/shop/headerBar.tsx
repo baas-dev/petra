@@ -93,8 +93,8 @@ const CategoryPopover = () => {
       label: "News",
     },
     {
-      id: "social",
-      label: "Social Media",
+      id: "articles",
+      label: "Articles",
     },
     {
       id: "podcasts",

@@ -45,8 +45,7 @@ export default function Hero1() {
               </h1>
               <p className=" text-6xl  ">
                 Our
-                <span className="font-semibold">
-                  {" "}
+                <span className="font-semibold ml-2 ">
                   Calling<span className="text-primary">.</span>
                 </span>
               </p>

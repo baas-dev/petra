@@ -15,7 +15,7 @@ import { FormConfig } from "@/components/BAAS/Forms/Types"
 
 export const ArticleFormSchema = z.object({
   ID: z.string().optional(),
-  Title: z.string().min(2, "Please complete first name"),
+  Title: z.string().min(2, "Please  Title for Article"),
 })
 
 export default function ArticleInitForm(props: {

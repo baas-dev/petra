@@ -77,38 +77,6 @@ export default function Step2Form(props: {
   Step2FormCXT.watch()
   return (
     <div className="w-full pt-8 pb-8 text-center ">
-      <div className="flex w-full gap-2 bg-none mb-4">
-        <Card
-          className={`w-full hover:cursor-pointer  `}
-          onClick={() => handleSetShowForm(true)}
-        >
-          <CardHeader
-            className={`bg-none py-4 ${
-              showForm ? "bg-green-300" : ""
-            }  hover:bg-green-200`}
-          >
-            <CardTitle className="text-2xl">Yes!</CardTitle>
-            <CardDescription className="text-xl">
-              I have a home in mind
-            </CardDescription>
-          </CardHeader>
-        </Card>
-        <Card
-          onClick={() => handleSetShowForm(false)}
-          className={` w-full hover:cursor-pointer `}
-        >
-          <CardHeader
-            className={`bg-none py-4 ${
-              showForm ? "" : "bg-green-300"
-            }  hover:bg-green-200`}
-          >
-            <CardTitle className="text-2xl">No, Not Yet!</CardTitle>
-            <CardDescription className="text-xl">
-              I am still looking for a place
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
       {showForm ? (
         <Form {...Step2FormCXT}>
           <form
@@ -119,7 +87,38 @@ export default function Step2Form(props: {
               title="Question 2"
               text="Do you have a property in mind?"
             />
-
+            <div className="flex w-full gap-2 bg-none mb-4">
+              <Card
+                className={`w-full hover:cursor-pointer  `}
+                onClick={() => handleSetShowForm(true)}
+              >
+                <CardHeader
+                  className={`bg-none py-4 ${
+                    showForm ? "bg-green-300" : ""
+                  }  hover:bg-green-200`}
+                >
+                  <CardTitle className="text-2xl">Yes!</CardTitle>
+                  <CardDescription className="text-xl">
+                    I have a home in mind
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card
+                onClick={() => handleSetShowForm(false)}
+                className={` w-full hover:cursor-pointer `}
+              >
+                <CardHeader
+                  className={`bg-none py-4 ${
+                    showForm ? "" : "bg-blue-300"
+                  }  hover:bg-blue-200`}
+                >
+                  <CardTitle className="text-2xl">No, Not Yet!</CardTitle>
+                  <CardDescription className="text-xl">
+                    I am still looking for a place
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
             <AddressQuestion
               form={Step2FormCXT}
               showForm={showForm}
@@ -142,7 +141,7 @@ export default function Step2Form(props: {
                 //     props.HandleNext()
                 //   }
                 // }}
-                className=" mb-4 flex hover:bg-green-300 h-full w-full flex-row items-center border-2 bg-green-200 mx-auto hover:scale-110 transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl  p-4  "
+                className=" mb-4 flex hover:bg-green-300 h-full w-full flex-row items-center border-2 bg-green-200 mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl  p-4  "
                 disabled={false}
               >
                 <div className="w-full">
@@ -156,13 +155,62 @@ export default function Step2Form(props: {
         </Form>
       ) : (
         <>
+          <div className="flex flex-wrap w-full gap-2 bg-none mb-4">
+            <QuestionHeader
+              title="Question 2"
+              text="Do you have a property in mind?"
+            />
+            <div className="flex gap-2 w-full">
+              <Card
+                className={`w-full hover:cursor-pointer  `}
+                onClick={() => handleSetShowForm(true)}
+              >
+                <CardHeader
+                  className={`bg-none py-4 ${
+                    showForm ? "bg-green-300" : ""
+                  }  hover:bg-green-200`}
+                >
+                  <CardTitle className="text-2xl">Yes!</CardTitle>
+                  <CardDescription className="text-xl">
+                    I have a home in mind
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card
+                onClick={() => handleSetShowForm(false)}
+                className={` w-full hover:cursor-pointer `}
+              >
+                <CardHeader
+                  className={`bg-none py-4 ${
+                    showForm ? "" : "bg-blue-100"
+                  }  hover:bg-blue-200`}
+                >
+                  <CardTitle className="text-2xl">No, Not Yet!</CardTitle>
+                  <CardDescription className="text-xl">
+                    I am still looking for a place
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
           <AddressPlaceholder />
           <div className="w-full flex justify-between gap-2">
             <PreviousQuestionButton
               action={props.HandlePrev}
               isDisabled={false}
             />
-            <QuestionNext action={props.HandleNext} />
+            <Button
+              type="button"
+              onClick={props.HandleNext}
+              className=" mb-4 flex hover:bg-green-300 h-full w-full flex-row items-center border-2 bg-green-200 mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl  p-4  "
+              disabled={false}
+            >
+              <div className="w-full">
+                <Label className="text-2xl text-black underline ">
+                  Next Question
+                </Label>
+              </div>
+            </Button>
           </div>
         </>
       )}
@@ -172,11 +220,11 @@ export default function Step2Form(props: {
 
 function AddressPlaceholder() {
   return (
-    <div className="text-center">
-      <p className="text-xl mb-8">
+    <div className="text-center bg-white py-4 my-8 p-4 rounded-xl">
+      <p className="text-2xl font-semibold">
         You have selected that you are not currently interested in any
         properties at this time. <br /> We are so excited to help you start your
-        home buying journey. 🏡
+        home buying journey! 🏡
       </p>
     </div>
   )

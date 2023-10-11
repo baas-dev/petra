@@ -176,7 +176,7 @@ function RenderResultBasedOnType(props: {
       case "articles":
         return (
           <Link
-            href={`/social/${Item.ID}`}
+            href={`/articles/${Item.ID}`}
             onClick={() => props.closeSearchResults()}
           >
             <CommandItem className="w-full p-4 rounded-none hover:cursor-pointer  flex justify-between border  max-w-2xl">

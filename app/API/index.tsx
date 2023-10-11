@@ -1,19 +1,23 @@
+import { Session } from "next-auth"
+import { getSession, signOut } from "next-auth/react"
+
 import { CreateRequest, Response } from "./TYPES"
 import { DeleteRequest, GetRequest } from "./TYPES/request"
 
 export default class BACKEND {
   async GET(options: GetRequest): Promise<Response> {
+    const session = await getSession()
+
     let res: Response = {
       data: null,
       error: null,
       code: 0,
     }
+
     try {
       let headers: HeadersInit = {
         "Content-Type": "application/json",
-        Authorization: options.AccessToken
-          ? "Bearer " + options.AccessToken
-          : "Bearer ",
+        Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
       let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
@@ -22,7 +26,10 @@ export default class BACKEND {
       })
       res.code = apiResponse.status
       if (res.code == 403) {
-        // localStorage.removeItem("authObject")
+        signOut({
+          redirect: true,
+          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
+        })
       }
 
       if (apiResponse.ok) {
@@ -39,6 +46,8 @@ export default class BACKEND {
   }
 
   async CREATE(options: CreateRequest): Promise<Response> {
+    const session = await getSession()
+
     let res: Response = {
       data: null,
       error: null,
@@ -48,9 +57,7 @@ export default class BACKEND {
     try {
       let headers: HeadersInit = {
         "Content-Type": "application/json",
-        Authorization: options.AccessToken
-          ? "Bearer " + options.AccessToken
-          : "Bearer ",
+        Authorization: session?.token ? "Bearer " + session.token : " ",
       }
       let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
         method: "POST",
@@ -59,7 +66,10 @@ export default class BACKEND {
       })
       res.code = apiResponse.status
       if (res.code == 403) {
-        // localStorage.removeItem("authObject")
+        signOut({
+          redirect: true,
+          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
+        })
       }
 
       if (apiResponse.ok) {
@@ -75,6 +85,8 @@ export default class BACKEND {
     return res
   }
   async UPDATE(options: CreateRequest): Promise<Response> {
+    const session = await getSession()
+
     let res: Response = {
       data: null,
       error: null,
@@ -84,9 +96,7 @@ export default class BACKEND {
     try {
       let headers: HeadersInit = {
         "Content-Type": "application/json",
-        Authorization: options.AccessToken
-          ? "Bearer " + options.AccessToken
-          : "Bearer ",
+        Authorization: session?.token ? "Bearer " + session.token : " ",
       }
       let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
         method: "PUT",
@@ -96,7 +106,10 @@ export default class BACKEND {
       res.code = apiResponse.status
 
       if (res.code == 403) {
-        // localStorage.removeItem("authObject")
+        signOut({
+          redirect: true,
+          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
+        })
       }
 
       if (apiResponse.ok) {
@@ -112,6 +125,8 @@ export default class BACKEND {
     return res
   }
   async DELETE(options: DeleteRequest): Promise<Response> {
+    const session = await getSession()
+
     let res: Response = {
       data: null,
       error: null,
@@ -121,9 +136,7 @@ export default class BACKEND {
     try {
       let headers: HeadersInit = {
         "Content-Type": "application/json",
-        Authorization: options.AccessToken
-          ? "Bearer " + options.AccessToken
-          : "Bearer ",
+        Authorization: session?.token ? "Bearer " + session.token : " ",
       }
       let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
         method: "DELETE",
@@ -132,7 +145,10 @@ export default class BACKEND {
       })
       res.code = apiResponse.status
       if (res.code == 403) {
-        // localStorage.removeItem("authObject")
+        signOut({
+          redirect: true,
+          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
+        })
       }
 
       if (apiResponse.ok) {

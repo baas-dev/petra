@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { index } from "@material-tailwind/react/types/components/select"
-import { Input } from "@mui/material"
-import { Plus, Trash } from "lucide-react"
+import { Loader2, Plus, Trash } from "lucide-react"
 import CurrencyInput from "react-currency-input-field"
 import { useForm } from "react-hook-form"
 import { boolean, z } from "zod"
@@ -19,6 +17,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { CardDescription, CardTitle } from "@/components/ui/card"
 import { Form, FormField, FormItem } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   Popover,
@@ -43,16 +42,16 @@ const api = new BACKEND()
 export const Step3FormSchema = z.object({
   Borrowers: z.array(
     z.object({
-      FirstName: z.string().min(2),
-      LastName: z.string().min(2),
+      FirstName: z.string().min(2, "Required "),
+      LastName: z.string().min(2, "Required "),
       DOB: z.object({
-        Month: z.string(),
-        Day: z.string(),
-        Year: z.string(),
+        Month: z.string().min(1, "Required "),
+        Day: z.string().min(1, "Required "),
+        Year: z.string().min(1, "Required "),
       }),
-      MaritalStatus: z.string(),
-      AnnualIncome: z.string(),
-      CreditScore: z.string(),
+      MaritalStatus: z.string().min(1, "Required "),
+      AnnualIncome: z.string().min(4, "Required "),
+      CreditScore: z.string().min(1, "Required "),
       Expenses: z.array(
         z.object({
           key: z.string(),
@@ -67,9 +66,9 @@ const defaultObj = {
   AnnualIncome: "",
   CreditScore: "",
   DOB: {
-    Day: "",
+    Day: "1",
     Month: "0",
-    Year: "",
+    Year: "2023",
   },
   Expenses: [],
   FirstName: "",
@@ -88,6 +87,7 @@ export default function Step3Form(props: {
   UpdateState
 }) {
   const [borrowerState, setBorrowerState] = useState<BorrowerState[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   const Step3FormCXT = useForm<z.infer<typeof Step3FormSchema>>({
     resolver: zodResolver(Step3FormSchema),
@@ -95,6 +95,7 @@ export default function Step3Form(props: {
       Borrowers: [defaultObj],
     },
   })
+  Step3FormCXT.watch()
 
   function handleBorrowerState(errors) {
     let newState: BorrowerState[] = []
@@ -106,7 +107,7 @@ export default function Step3Form(props: {
         })
       })
 
-      setBorrowerState(newState)
+      setBorrowerState([...newState])
     }
 
     if (!Array.isArray(errors)) {
@@ -116,14 +117,17 @@ export default function Step3Form(props: {
 
   async function SubmitFunc(e, errors) {
     e.preventDefault()
+    setLoading(true)
     handleBorrowerState(errors)
 
-    if (!Array.isArray(errors)) {
+    if (Step3FormCXT.formState.isValid) {
       props.UpdateState(3, {
         Borrowers: Step3FormCXT.getValues("Borrowers"),
       })
+
       props.HandleNext()
     }
+    setLoading(false)
   }
 
   function handleAdd(e) {
@@ -187,7 +191,7 @@ export default function Step3Form(props: {
                   <div className="grid grid-cols-3  items-center ">
                     <Label htmlFor="maxHeight border-none">{item}</Label>
                     <div></div>
-                    <Button onClick={() => HandleClick(item)}>
+                    <Button type={"button"} onClick={() => HandleClick(item)}>
                       <Plus />
                     </Button>
                   </div>
@@ -206,19 +210,26 @@ export default function Step3Form(props: {
     Step3FormCXT.setValue("Borrowers", data)
   }
 
-  Step3FormCXT.watch()
+  const triggerForm = async (e) => {
+    SubmitFunc(e, Step3FormCXT.formState.errors.Borrowers)
+
+    await Step3FormCXT.trigger("Borrowers")
+      .then(() => {
+        SubmitFunc(e, Step3FormCXT.formState.errors.Borrowers)
+      })
+      .catch((err) => {
+        // console.log(err)
+      })
+  }
+
+  useEffect(() => {}, [borrowerState])
   return (
     <div className="w-full pt-8 pb-8 text-center ">
       <Form {...Step3FormCXT}>
         <form
           onSubmit={(e) => {
-            Step3FormCXT.trigger("Borrowers")
-              .then((val) => {
-                SubmitFunc(e, Step3FormCXT.formState.errors.Borrowers)
-              })
-              .catch((err) => {
-                console.log(err)
-              })
+            e.preventDefault()
+            triggerForm(e)
           }}
           // onSubmit={onSubmit}
           className="w-full space-y-6"
@@ -238,16 +249,22 @@ export default function Step3Form(props: {
           />
 
           <div className="flex gap-2 justify-between">
-            <PreviousQuestionButton
-              action={props.HandlePrev}
-              isDisabled={false}
-            />
-            <Button
-              type="submit"
-              className=" mb-4 h-full bg-green-200 hover:bg-green-200 text-primary text-2xl underline flex w-full border-2 flex-row items-center mx-auto hover:scale-110 transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl p-4  "
-            >
-              Save
-            </Button>
+            {loading ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              <>
+                <PreviousQuestionButton
+                  action={props.HandlePrev}
+                  isDisabled={false}
+                />
+                <Button
+                  type="submit"
+                  className=" mb-4 h-full bg-green-200 hover:bg-green-200 text-primary text-2xl underline flex w-full border-2 flex-row items-center mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl p-4  "
+                >
+                  Save
+                </Button>
+              </>
+            )}
           </div>
         </form>
       </Form>
@@ -270,7 +287,7 @@ function BorrowerAccord({
   badItems: BorrowerState[]
   AddMonthlyItems
 }) {
-  function GetStyle(loc: index) {
+  function GetStyle(loc) {
     let priority = badItems.find((item) => item.index === loc)
 
     if (priority !== undefined) {
@@ -405,26 +422,48 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
       </div>
       <div className="flex w-full gap-2 mt-4">
         <div className="w-full text-left">
-          <Label className="my-4">Average Yearly Income</Label>
-          <br />
           <FormField
             control={form.control}
             name={`Borrowers[${index}].AnnualIncome`}
             render={({ field }) => (
               <>
                 <FormItem>
+                  <Label
+                    className={`${
+                      form.getFieldState(`Borrowers[${index}].AnnualIncome`)
+                        .invalid
+                        ? "text-red-600"
+                        : ""
+                    }`}
+                  >
+                    Average Yearly Income
+                  </Label>
+
                   <CurrencyInput
                     defaultValue={0}
                     name={field.name}
                     // value={parseInt(field.value)}
                     decimalsLimit={2}
-                    className="w-full max-w-sm border border-gray-400 border-opacity-25"
+                    className={`w-full mt-2 border border-gray-400 border-opacity-25 ${
+                      form.getFieldState(field.name).invalid
+                        ? "border border-red-500"
+                        : ""
+                    }`}
                     prefix="$"
                     value={field.value}
                     onValueChange={(value, name) => {
                       form.setValue(name, value)
                     }}
                   />
+                  <Label
+                    className={`${
+                      form.getFieldState(field.name).invalid
+                        ? " text-red-500"
+                        : "hidden"
+                    }`}
+                  >
+                    Required
+                  </Label>
                 </FormItem>
               </>
             )}
@@ -452,33 +491,31 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
           </div>
           <div className="h-48 w-full overflow-y-scroll rounded-xl border-2 border-dashed bg-white">
             {form.getValues(`Borrowers`)[index].Expenses.map((item, i) => {
-              console.log(item)
               return (
                 <>
                   <div className="flex w-full">
                     <div key={i} className="w-full">
                       <Input
                         defaultValue={item.key}
-                        className="rounded-none border"
+                        className="rounded-none w-full "
                         onChange={(e) => {
                           // HandleExpenseKeyChange(i, e.target.value)
                         }}
                       />
                     </div>
-                    <div className="w-full">
+                    <div className="w-full border">
                       <FormField
                         control={form.control}
                         name={`Borrowers[${index}].Expenses[${i}]`}
                         render={({ field }) => (
                           <>
-                            {console.log(form.getValues("Borrowers"))}
-                            <FormItem>
+                            <FormItem className=" ">
                               <CurrencyInput
                                 defaultValue={0}
                                 name={field.name}
                                 // value={parseInt(field.value)}
                                 decimalsLimit={2}
-                                className="w-full max-w-sm border border-gray-400 border-opacity-25"
+                                className="w-full border-none  "
                                 prefix="$"
                                 // value={field.value}
                                 onValueChange={(value, name) => {
@@ -508,7 +545,6 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
 }
 
 function FinancialPieChart(props: { borrower: Borrower }) {
-  console.log(props.borrower)
   let ExpenseData = props.borrower.Expenses
   let PieChartData: { id: string; label: string; value: number }[] = []
   ExpenseData.forEach((item, i) => {

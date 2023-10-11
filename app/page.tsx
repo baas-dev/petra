@@ -49,9 +49,16 @@ export default function IndexPage() {
     <>
       <Hero1 />
       <Services />
-      <div className="grid grid-cols-1 md:grid-cols-3 container">
-        <Graphs />
-        <LatestArticle article={article} testimonials={testimonials} />
+
+      <div className="bg-secondary ">
+        <div className="grid md:grid-cols-12 grid-cols-1 pb-16   gap-4 container mx-auto">
+          <div className="col-span-1 md:col-span-7">
+            <Graphs />
+          </div>
+          <div className="col-span-1 md:col-span-5">
+            <LatestArticle article={article} testimonials={testimonials} />
+          </div>
+        </div>
       </div>
     </>
   )
@@ -59,14 +66,21 @@ export default function IndexPage() {
 
 function Graphs() {
   return (
-    <div className="container h-full w-full flex flex-wrap justify-center items-center">
+    <div className="  h-full  w-full justify-center items-center">
+      <div
+        className="w-full object-contain "
+        style={{ scrollSnapAlign: "end" }}
+      >
+        <iframe
+          src="https://d3fy651gv2fhd3.cloudfront.net/embed/?s=usa3ymr&v=202309281616V20230410&w=200&h=200&d1=20131007&type=trend=2&h=200&w=600"
+          height="350"
+          width="100%"
+          className="object-contain  "
+        ></iframe>
+      </div>
       <div className=" overflow-x-hidden w-full">
         <iframe
-          src="//www.mortgagecalculator.org/rates-widgets/mortgages/widget.php"
-          className="h-96  w-96 overflow-hidden"
-        />
-        <iframe
-          className="h-96 mt-2 w-full"
+          className="h-72 mt-2 mx-auto bg-white w-full"
           src="//www.mortgagecalculator.org/rates-widgets/mortgages/text-widget.php?advanced&amp;data=30yr_fr|15yr_fr"
         />
       </div>
@@ -77,8 +91,8 @@ function Graphs() {
 function LatestArticle(props: { article: any; testimonials: any }) {
   console.log(props.article)
   return (
-    <div className=" w-full col-span-2">
-      {props.article ? (
+    <div className=" w-full  col-span-5">
+      {/* {props.article ? (
         <LongCardDetail
           Title={props.article.Title}
           Description={props.article.description}
@@ -87,10 +101,10 @@ function LatestArticle(props: { article: any; testimonials: any }) {
           CreatedAt={props.article.CreatedAt}
           UpdatedAt={props.article.UpdatedAt}
         />
-      ) : null}
-      <TestimonialSwiper data={props.testimonials} />
+      ) : null} */}
 
       <BigCards />
+      <TestimonialSwiper data={props.testimonials} />
     </div>
   )
 }
@@ -98,10 +112,40 @@ function LatestArticle(props: { article: any; testimonials: any }) {
 function BigCards() {
   let InfoArray = [
     {
-      Title: "Easy Mortgage Payment Calculator",
-      Description: "Calculate monthly payments on a loan",
+      Title: "Articles",
+      Description: "",
       Button: true,
-      btnText: "Try It Now",
+      btnText: "",
+      bg: "bg-primary/60",
+      bgHover: "bg-primary",
+      link: "/articles",
+      image: "",
+    },
+    {
+      Title: "About Us",
+      Description: "",
+      Button: true,
+      btnText: "",
+      bg: "bg-primary/60",
+      bgHover: "bg-primary",
+      link: "/about",
+      image: "",
+    },
+    {
+      Title: "Contact Us",
+      Description: "",
+      Button: true,
+      btnText: "",
+      bg: "bg-primary/60",
+      bgHover: "bg-primary",
+      link: "/contact",
+      image: "",
+    },
+    {
+      Title: " Mortgage Calculator",
+      Description: "",
+      Button: true,
+      btnText: "",
       bg: "bg-primary/60",
       bgHover: "bg-primary",
       link: "/resources/mortgage-calculator",
@@ -109,9 +153,9 @@ function BigCards() {
     },
     {
       Title: "FAQs",
-      Description: "Common Questions From Homebuyers",
+      Description: "",
       Button: true,
-      btnText: "We Have Answers",
+      btnText: "",
       bg: "bg-primary/60",
       bgHover: "bg-primary",
       link: "/resources/faqs",
@@ -119,14 +163,15 @@ function BigCards() {
     },
     {
       Title: "Downloads & Links",
-      Description: "Common Questions From Homebuyers",
+      Description: "",
       Button: true,
-      btnText: "We Have Answers",
+      btnText: "",
       bg: "bg-primary/60",
       bgHover: "bg-primary",
       link: "/resources/faqs",
       image: "",
     },
+
     // {
     //   Title: "Downloads & Tools",
     //   Description: "Viewable documents that help you purchase your home",
@@ -150,10 +195,11 @@ function BigCards() {
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4 mt-1">
       {InfoArray.map((item, i) => (
         <>
           <BigCard
+            key={i}
             Title={item.Title}
             Description={item.Description}
             btn={item.Button}

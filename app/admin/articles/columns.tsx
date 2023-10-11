@@ -133,7 +133,19 @@ export const columns: ColumnDef<Articles>[] = [
   },
   {
     accessorKey: "Published",
-    header: "Published",
+    // header: "Published",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="p-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Published
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       return row.original.Published ? (
         <Label className="text-green-500">Yes</Label>

@@ -105,17 +105,10 @@ export default function TeamForm(props: {
     <Form {...teamFormCXT}>
       <form
         onSubmit={teamFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 w-6xl pb-8"
+        className="w-full space-y-6 max-w-7xl mx-auto h-screen overflow-y-scroll py-8 pb-8"
       >
-        <div className="w-6xl">
-          <Status
-            form={teamFormCXT}
-            options={{
-              name: "Published",
-            }}
-          />
-
-          <div className="w-full">
+        <div className="bg-white  rounded-xl border shadow-lg  flex">
+          <div className="w-1/5">
             <ImageSingleUpload
               form={teamFormCXT}
               options={{
@@ -123,7 +116,14 @@ export default function TeamForm(props: {
               }}
             />
           </div>
-          <div className="w-full ">
+          <div className="w-4/5 my-auto pr-4">
+            <Status
+              form={teamFormCXT}
+              options={{
+                name: "Published",
+              }}
+            />
+
             <div className="flex gap-1">
               <TextInput
                 form={teamFormCXT}

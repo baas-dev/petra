@@ -140,7 +140,7 @@ const CategoryPopover = ({
     }
 
     if (updatedCategories.length > 0) {
-      const queryString = updatedCategories.join(",")
+      const queryString = updatedCategories.join("+")
       router.push(`${pathname}?${CreateQueryString("categories", queryString)}`)
     } else {
       setSelectedCategories([]) // Set state to an empty array explicitly

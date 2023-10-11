@@ -1,8 +1,5 @@
 export type Request = {
   Route: string
-  AccessToken?: string
-  RefreshToken?: string
-  RefreshFunc?: any
 }
 
 export interface DeleteRequest extends Request {

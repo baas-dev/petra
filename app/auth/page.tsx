@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react"
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
+import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Form } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { SubmitForm } from "@/components/BAAS/Forms"
 import PasswordInput from "@/components/BAAS/Forms/Inputs/PasswordInput"
@@ -13,129 +21,132 @@ import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TableLoading from "@/components/BAAS/Loading/TableLoading"
 
 import BACKEND from "../API"
-import { parseJwt, useAuthContext } from "../admin/Context/AuthContext"
 
 export const AuthFormSchema = z.object({
   Email: z.string().email(),
-  Password: z.string(),
+  Code: z.string().optional(),
 })
 const api = new BACKEND()
+
 export default function AuthPage() {
-  const [stateUserData, setUserData] = useState<{ ID: string | null }>({
-    ID: null,
-  })
-  const r = useRouter()
-  const { authObject, setAuthObject } = useAuthContext()
+  const [showAccessCodeEnter, setShowAccessCodeEnter] = useState<boolean>(false)
   const AuthFormCXT = useForm<z.infer<typeof AuthFormSchema>>({
     resolver: zodResolver(AuthFormSchema),
   })
 
-  async function getData() {
-    return await api.GET({
-      Route: "auth/me",
-      AccessToken: authObject.AccessToken,
+  async function onSubmitRequest(data: { Email: string }) {
+    let res = await api.CREATE({
+      Route: "auth/login/request",
+      Body: JSON.stringify(data),
     })
-  }
-  async function onSubmit(data: z.infer<typeof AuthFormSchema>) {
-    let res = await api
-      .CREATE({
-        Body: JSON.stringify(data),
-        Route: "auth/login",
-      })
-      .then((val) => {
-        console.log(val)
-        if (val.code !== 200) {
-          toast({
-            variant: "destructive",
-            title: "Login Failed!",
-            description: (
-              <>
-                <p>Could not sign in. Please try again! </p>
-                <p>If you continue to have issues, please contact an admin. </p>
-              </>
-              // <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              //   <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-              // </pre>
-            ),
-          })
-        }
-
-        return val.data
-      })
-      .catch((err) => {
-        return null
-      })
-
-    if (res) {
-      const jwtParsed = parseJwt(res.AccessToken || "") || {}
-
-      setAuthObject({
-        AccessToken: res.AccessToken,
-        RefreshToken: res.RefreshToken,
-        ID: jwtParsed.ID || "",
-        Role: jwtParsed.Roles || "",
-        Exp: jwtParsed.exp || 0,
-      })
-    }
+    setShowAccessCodeEnter(true)
   }
 
-  useEffect(() => {
-    setUserData({
-      ID: authObject.ID,
+  async function onSubmitLogin(data: z.infer<typeof AuthFormSchema>) {
+    await signIn("credentials", {
+      email: AuthFormCXT.getValues("Email"),
+      code: AuthFormCXT.getValues("Code"),
+      redirect: false,
+      callbackUrl: "/admin",
     })
-  }, [authObject])
+  }
+
   return (
-    <div className="flex flex-col bg-gray-100 max-w-lg mx-auto justify-center">
-      <div className="grid place-items-center  sm:my-auto">
-        <div
-          className="w-full container
-            px-6 py-10 sm:px-10 sm:py-6 
-            bg-white rounded-lg shadow-md lg:shadow-lg"
-        >
-          {stateUserData.ID !== null ? (
-            <Form {...AuthFormCXT}>
-              <form
-                onSubmit={AuthFormCXT.handleSubmit(onSubmit)}
-                className="w-full space-y-6"
-              >
-                <h2 className="text-center font-light text-1xl lg:text-4xl text-primary">
-                  Admin Portal Login
-                </h2>
+    <>
+      <div className="bg-gray-100 flex justify-center items-center h-screen">
+        <div className="w-1/2 h-screen hidden lg:block">
+          <div className="bg-primary w-full h-full flex items-center justify-center">
+            <div>
+              <div className="w-full z-10 my-auto text-center ">
+                <Image
+                  src="/images/petra-white.svg"
+                  height={500}
+                  width={500}
+                  alt=""
+                  className="mx-auto mb-4"
+                />
+                <Badge className="bg-accent mx-auto text-xl">
+                  <p>Your #1 Choice for Texas Home Lending</p>
+                </Badge>
 
-                <TextInput
-                  form={AuthFormCXT}
-                  options={{
-                    name: "Email",
-                    label: "Email Address",
-                    placeholder: "example@email.com",
-                  }}
+                {/* <Fade cascade triggerOnce damping={0.1} direction="up"> */}
+                {/* <h1 className=" text-6xl font-light  ">
+                  Your <span className="font-bold italic">Home</span>, Our{"  "}
+                  <span className="font-semibold italic">
+                    Calling <span className="text-primary ">.</span>
+                  </span>
+                </h1> */}
+
+                {/* </Fade> */}
+                <Image
+                  height={20}
+                  width={200}
+                  alt={""}
+                  className="block -mt-8 rounded-md w-full mx-auto -z-10 "
+                  src={"/images/underline.svg"}
                 />
-                <PasswordInput
-                  form={AuthFormCXT}
-                  options={{
-                    name: "Password",
-                    label: "Password",
-                    placeholder: "Enter your password...",
-                  }}
-                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+          <h1 className="text-2xl font-semibold mb-4">Login</h1>
+          {showAccessCodeEnter ? (
+            <Form {...AuthFormCXT}>
+              <form onSubmit={AuthFormCXT.handleSubmit(onSubmitLogin)}>
+                <div className="mb-4">
+                  <Input
+                    className="bg-white"
+                    disabled
+                    value={AuthFormCXT.getValues("Email")}
+                  />
+                  <TextInput
+                    form={AuthFormCXT}
+                    options={{
+                      name: "Code",
+                      label: "Code You Received",
+                      placeholder: "123456",
+                      description: "Enter the code sent to your email here.",
+                      defaultValue: AuthFormCXT.getValues("Code"),
+                    }}
+                  />
+                </div>
 
                 <Button
                   type="submit"
-                  className="w-full py-3 mt-10 bg-gray-800 rounded-sm
-                    font-medium text-white uppercase
-                    focus:outline-none hover:bg-gray-700 hover:shadow-none"
+                  className="  text-white font-semibold rounded-md py-2 px-4 w-full"
                 >
                   Login
                 </Button>
               </form>
             </Form>
           ) : (
-            <>
-              <TableLoading />
-            </>
+            <Form {...AuthFormCXT}>
+              <form onSubmit={AuthFormCXT.handleSubmit(onSubmitRequest)}>
+                <div className="mb-4">
+                  <TextInput
+                    form={AuthFormCXT}
+                    options={{
+                      name: "Email",
+                      label: "Email Address",
+                      placeholder: "example@email.com",
+                      description:
+                        "You will receive an access code to your email.",
+                    }}
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="  text-white font-semibold rounded-md py-2 px-4 w-full"
+                >
+                  Request Access Code
+                </Button>
+              </form>
+            </Form>
           )}
         </div>
       </div>
-    </div>
+    </>
   )
 }

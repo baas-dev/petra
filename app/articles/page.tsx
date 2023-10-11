@@ -4,8 +4,10 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import Banner from "@/components/BAAS/Banners/Banner"
+import Banner from "@/components/BAAS/Banners/BannerSite"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
 import Pagination from "@/components/BAAS/Table/Pagination"
 
@@ -15,7 +17,7 @@ import Sidebar from "./sidebar"
 const api = new BACKEND()
 
 export default function BlogPage() {
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories]: any[] = useState([])
 
   const [articles, setArticles] = useState<{
     Results: any[]
@@ -72,7 +74,7 @@ export default function BlogPage() {
     }
 
     if (sortParam) {
-      sortSplit = sortParam.split("-")
+      sortSplit = sortParam.split("+")
       SearchOBJ.orderBy = sortSplit[0]
       SearchOBJ.direction = sortSplit[1]
     }
@@ -107,7 +109,7 @@ export default function BlogPage() {
     params.set("limit", "5")
 
     if (SearchOBJ.categories) {
-      catSplit = SearchOBJ.categories.split("%")
+      catSplit = SearchOBJ.categories.split("+")
 
       console.log(catSplit)
 
@@ -139,33 +141,35 @@ export default function BlogPage() {
 
   console.log(articles?.Meta)
   return (
-    <section className="container max-w-6xl pt-24 grid items-center ">
-      <Banner Title="Social Posts" Subtitle="News">
+    <div className="min-h-screen pt-4 w-full md:pt-24  ">
+      <Banner
+        Title={"Article Posts"}
+        Subtitle={"News, Information, & More from the Petra Team"}
+      >
         <></>
       </Banner>
-      <div className="grid grid-cols-1 align-center">
-        <div className="">
-          <Sidebar
-            loadedParams={{
-              categories: searchParams.get("categories")
-                ? searchParams.get("categories")
-                : null,
-              query: searchParams.get("query")
-                ? searchParams.get("query")
-                : null,
-              sort: searchParams.get("sort") ? searchParams.get("sort") : null,
-            }}
-            items={GetItems(categories ? categories : [])}
-          />
-          <Separator className="my-4" />
-        </div>
-        <div className="md:col-span-6 grid w-full grid-cols-1 mb-4  ">
+
+      <div className="container">
+        <Sidebar
+          loadedParams={{
+            categories: searchParams.get("categories")
+              ? searchParams.get("categories")
+              : null,
+            query: searchParams.get("query") ? searchParams.get("query") : null,
+            sort: searchParams.get("sort") ? searchParams.get("sort") : null,
+          }}
+          items={GetItems(categories ? categories : [])}
+        />
+        <Separator className="my-4" />
+      </div>
+      <div className="grid grid-cols-4 align-center gap-2 container">
+        <div className=" grid w-full col-span-3 mb-4  ">
           {articles?.Results && articles.Results.length === 0 ? (
             <p className="mx-auto mt-8">Could not load any results.</p>
           ) : (
             <>
               {articles?.Results.map((item, i) => (
-                <Link href={`/social/${item.ID}`}>
+                <Link href={`/articles/${item.ID}`}>
                   <LongCardDetail
                     Key={i}
                     MainImage={item.Image}
@@ -182,14 +186,43 @@ export default function BlogPage() {
             </>
           )}
         </div>
-        <Pagination
-          TotalHits={articles?.Meta.TotalHits ? articles.Meta.TotalHits : 0}
-          TotalPages={articles?.Meta.TotalPages ? articles.Meta.TotalPages : 0}
-          CurrentPage={
-            articles?.Meta.CurrentPage ? articles.Meta.CurrentPage : 0
-          }
-        />
+        <div className="">
+          <div className=" w-full h-min mb-8 bg-white rounded-xl border p-4">
+            <h3 className="font-semibold mb-2 ">
+              Want to know more about Petra Lending?
+            </h3>
+            <p className="font-light mb-2">
+              We are excited to introduce our company & team to you!
+            </p>
+            <Separator className="border-2 mb-2" />
+            <Button className="w-full">Read Now</Button>
+          </div>
+          <div className=" w-full h-min bg-white rounded-xl border">
+            <ul className=" flex flex-col">
+              <Label className="p-4 font-bold bg-primary/20 rounded-t-xl">
+                Categories
+              </Label>
+              {categories.map((item, i) => {
+                return (
+                  <Link
+                    href={`/articles?categories=${item.ID}`}
+                    className="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                  >
+                    {item.Title}
+                  </Link>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <Separator className="my-4" />
+      <Pagination
+        TotalHits={articles?.Meta.TotalHits ? articles.Meta.TotalHits : 0}
+        TotalPages={articles?.Meta.TotalPages ? articles.Meta.TotalPages : 0}
+        CurrentPage={articles?.Meta.CurrentPage ? articles.Meta.CurrentPage : 0}
+      />
+    </div>
   )
 }

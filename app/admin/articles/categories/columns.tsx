@@ -42,6 +42,8 @@ export const columns: ColumnDef<z.infer<typeof ArticleCategorySchema>>[] = [
             Text={"Edit"}
             Form={<ArticleCategoryForm />}
             data={row.original}
+            Title={"Editing Category"}
+            Description={"Create categories to sort articles into groups"}
           />
         </>
       )

@@ -12,7 +12,18 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import { useSession } from "next-auth/react"
 
+import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import {
   Table,
   TableBody,
@@ -22,7 +33,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { useAuthContext } from "@/app/admin/Context/AuthContext"
 import { useAdminTableContext } from "@/app/admin/Context/TableContext"
 
 import { BatchDeleteButton } from "./BatchButtons"
@@ -43,18 +53,20 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   scope?: BatchDelete
+  filters?: { label: string; value: string }[]
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   scope,
+  filters,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [rowSelection, setRowSelection] = useState({})
-  const { authObject } = useAuthContext()
-
+  const [filterSelected, setFilterSelected] = useState(0)
+  const { data: session } = useSession()
   const table = useReactTable({
     data,
     columns,
@@ -64,9 +76,11 @@ export function DataTable<TData, TValue>({
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     onRowSelectionChange: setRowSelection,
+
     state: {
       sorting,
       rowSelection,
+      columnFilters,
     },
   })
 
@@ -77,21 +91,72 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      <Table className="mt-2 mb-16">
-        <TableHeader className="bg-white  font-bold text-primary">
+      {filters && filters?.length > 0 ? (
+        <div className="flex items-center py-4 gap-2">
+          <Input
+            placeholder={`Filtering by ${filters[filterSelected].value}...`}
+            value={
+              (table
+                .getColumn(filters[filterSelected].value)
+                ?.getFilterValue() as string) ?? ""
+            }
+            onChange={(event) =>
+              table
+                .getColumn(filters[filterSelected].value)
+                ?.setFilterValue(event.target.value)
+            }
+            className="w-full bg-white"
+          />
+          <Select
+            defaultValue={"0"}
+            onValueChange={(val) => {
+              console.log(columnFilters)
+              setColumnFilters([])
+              if (val == "") {
+                setFilterSelected(0)
+              }
+              if (val != "") {
+                setFilterSelected(parseInt(val))
+              }
+            }}
+          >
+            <SelectTrigger className="w-1/4 bg-white">
+              <SelectValue placeholder="Filter By" />
+            </SelectTrigger>
+            <SelectContent className="">
+              <SelectGroup>
+                <SelectLabel>Search Column</SelectLabel>
+
+                {filters.map((item, i) => {
+                  return (
+                    <>
+                      <SelectItem key={i} value={i.toString()}>
+                        {item.label}
+                      </SelectItem>
+                    </>
+                  )
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      ) : null}
+
+      <Table className="mt-2 mb-16 rounded-xl">
+        <TableHeader className="bg-white rounded-xl font-bold text-primary">
           {table.getHeaderGroups().map((headerGroup, i) => (
             <>
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header, index) => {
+                  let role = session?.user?.role
+
                   if (
                     index === 0 &&
-                    !(
-                      authObject.Role === "admin" ||
-                      authObject.Role === "superadmin"
-                    )
+                    !(role === "admin" || role === "superadmin")
                   ) {
                     return null
                   }
+
                   return (
                     <TableHead key={header.id}>
                       {header.isPlaceholder
@@ -122,15 +187,15 @@ export function DataTable<TData, TValue>({
                   }}
                 >
                   {row.getVisibleCells().map((cell, index) => {
+                    let role = session?.user?.role
+
                     if (
                       index === 0 &&
-                      !(
-                        authObject.Role === "admin" ||
-                        authObject.Role === "superadmin"
-                      )
+                      !(role === "admin" || role === "superadmin")
                     ) {
-                      return null // Skip rendering the cell at index 0 if the role isn't admin or superadmin
+                      return null
                     }
+
                     return (
                       <TableCell key={cell.id}>
                         {flexRender(
@@ -153,7 +218,8 @@ export function DataTable<TData, TValue>({
         </TableBody>
         <TableFooter className="flex gap-2 mt-4">
           {scope != undefined &&
-          (authObject.Role === "admin" || authObject.Role === "superadmin") ? (
+          (session?.user?.role === "admin" ||
+            session?.user?.role === "superadmin") ? (
             <BatchDeleteButton
               TableName={scope.TableName}
               SearchName={scope.SearchName ? scope.SearchName : ""}

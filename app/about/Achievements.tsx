@@ -38,7 +38,7 @@ export default function Achievements(props: {
   const sliderRef = useRef<any>()
 
   return (
-    <div className="bg-white py-40 relative min-h-screen h-full w-full dark:bg-gray-900">
+    <div className="bg-secondary py-40 relative min-h-screen h-full w-full dark:bg-gray-900">
       <div className="relative xl:container m-auto px-6 md:px-12 lg:px-6">
         <h1 className="text-4xl block font-bold relative text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">
           10x Texas Legend

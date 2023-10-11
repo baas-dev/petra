@@ -55,7 +55,7 @@ export default function BigCard({
       </CardHeader>
       {btn ? (
         <CardFooter className="mx-auto flex w-full text-center">
-          <label className="mx-auto text-secondary hover:cursor-pointer">{`${btnText} >`}</label>
+          <label className="mx-auto text-secondary hover:cursor-pointer">{`${btnText}`}</label>
           {/* <Button>Deploy</Button> */}
         </CardFooter>
       ) : (

@@ -6,7 +6,6 @@ import { Loader } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import BACKEND from "@/app/API"
-import { useAuthContext } from "@/app/admin/Context/AuthContext"
 
 interface BatchButton {
   TableName: string
@@ -18,7 +17,6 @@ interface BatchButton {
 const api = new BACKEND()
 
 export function BatchDeleteButton(props: BatchButton) {
-  const { authObject } = useAuthContext()
   const [loading, setLoading] = useState<boolean>(false)
 
   const BatchDelFunc = async (
@@ -30,7 +28,7 @@ export function BatchDeleteButton(props: BatchButton) {
     await api
       .DELETE({
         Route: "batch/delete",
-        AccessToken: authObject.AccessToken,
+        // AccessToken: authObject.AccessToken,
         Body: JSON.stringify({
           IDs: IDs,
           TableName: TableName,

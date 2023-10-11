@@ -10,7 +10,7 @@ import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
-import { AuthProvider } from "./admin/Context/AuthContext"
+import AuthProvider from "./authProvider"
 
 interface RootLayoutProps {
   children: React.ReactNode

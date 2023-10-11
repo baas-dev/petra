@@ -20,14 +20,16 @@ import {
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Slider } from "@/components/ui/slider"
+import Banner from "@/components/BAAS/Banners/BannerSite"
 import { usePreqFormContext } from "@/app/prequalify/components/formContext"
 
 import MortgageCalculations from "./MortgageCalculations"
 import { useMortgageCalcContext } from "./components/formContext"
+// const MortgagePieChart = dynamic(() => import("./components/piechart"), {
+//   ssr: false,
+// })
 
-const MortgagePieChart = dynamic(() => import("./components/piechart"), {
-  ssr: false,
-})
+import MortgagePieChart from "./components/piechart"
 
 let mortgage = new MortgageCalculations()
 
@@ -84,21 +86,15 @@ export default function MortgageCalculatorPage() {
   ]
 
   return (
-    <div className="container h-full w-full py-24">
-      <div className="  w-full mb-8">
-        <h1 className="text-md block  font-semibold text-primary">
-          An easy mortgage payment cost-estimate tool
-        </h1>
-        <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
-          Mortgage Payment Calculator
-        </h2>
-        <p className="max-w-md   font-light">
-          Fill out the contact form below, and {`we'll`} be in touch shortly to
-          provide you with personalized guidance for your unique needs.
-        </p>
-      </div>
+    <div className="min-h-screen pt-4 w-full md:pt-24  ">
+      <Banner
+        Title={"Mortgage Calculator"}
+        Subtitle={"An easy-to-use, mortgage estimation tool"}
+      >
+        <></>
+      </Banner>
 
-      <div className="w-full flex ">
+      <div className="w-full flex container">
         <div className="m-auto  h-full w-full">
           <div className="flex flex-col pb-4 md:flex-row gap-2">
             <StatCard
@@ -147,7 +143,7 @@ export default function MortgageCalculatorPage() {
 
 function StatCard(props: { title: string; val: string }) {
   return (
-    <div className="w-full rounded-xl  border bg-white p-4">
+    <div className="w-full rounded-xl  border bg-white p-2">
       <p className="text-center text-sm font-light text-primary">
         {props.title}
       </p>

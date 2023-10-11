@@ -30,7 +30,7 @@ export default function LongCardDetail(props: {
     setLoading(false)
   }
   return (
-    <Card className="mx-auto flex max-w-md flex-col rounded-xl border mb-2 bg-white shadow md:max-w-6xl md:flex-row md:items-center">
+    <Card className="mx-auto flex flex-col rounded-xl border mb-2 bg-white shadow  md:flex-row md:items-center">
       <div className="shrink-0  md:mr-8 md:max-w-sm">
         <Image
           className={`rounded-l-xl h-40 border-r w-96 object-cover bg-white`}

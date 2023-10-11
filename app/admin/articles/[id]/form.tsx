@@ -14,8 +14,6 @@ import RichTextEditor from "@/components/BAAS/RichTextEditor"
 import SEOInformation from "@/components/BAAS/Shop/Admin/Sections/SEO"
 import Status from "@/components/BAAS/Shop/Admin/Sections/Status"
 
-import { useAuthContext } from "../../Context/AuthContext"
-
 export const ArticleFormSchema = z.object({
   ID: z.string(),
   Title: z.string().nonempty("Requirement for article generation"),
@@ -33,7 +31,6 @@ export default function ArticleManagmentPage(props: {
 }) {
   const r = useRouter()
 
-  const { authObject } = useAuthContext()
   const ArticleFormCXT = useForm<z.infer<typeof ArticleFormSchema>>({
     resolver: zodResolver(ArticleFormSchema),
     defaultValues: {
@@ -48,7 +45,7 @@ export default function ArticleManagmentPage(props: {
     }
     await SubmitForm({
       APIRoute: `articles/${ArticleFormCXT.getValues("ID")}`,
-      AuthObject: authObject,
+      // AuthObject: authObject,
       FormData: data,
       FormSchema: ArticleFormSchema,
       Router: r,

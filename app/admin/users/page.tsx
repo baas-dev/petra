@@ -10,7 +10,6 @@ import TableLoading from "@/components/BAAS/Loading/TableLoading"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
 import BACKEND from "@/app/API"
 
-import { useAuthContext } from "../Context/AuthContext"
 import { useAdminTableContext } from "../Context/TableContext"
 import { columns } from "./columns"
 import UserManagementForm from "./form"
@@ -18,30 +17,21 @@ import UserManagementFormInit from "./formInit"
 
 const api = new BACKEND()
 
-async function getData(
-  authObject: { AccessToken: string; RefreshToken: string },
-  refresh
-) {
+async function getData() {
   return await api.GET({
     Route: "users",
-    AccessToken: authObject.AccessToken,
-    RefreshToken: authObject.RefreshToken,
-    RefreshFunc: refresh,
   })
 }
 
 export default function UsersAdmin() {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
-  const { authObject, RefreshToken } = useAuthContext()
 
   const LoadData = async () => {
-    await getData(authObject, RefreshToken)
+    await getData()
       .then((val) => {
-        if (val.code === 403) {
-          RefreshToken(authObject.RefreshToken)
-        }
         if (val.data && val.data.length > 0) {
+          console.log(val.data)
           setData(val.data)
         }
       })
@@ -56,18 +46,40 @@ export default function UsersAdmin() {
 
   return (
     <>
-      <Banner Title={"user Members"} Subtitle={"Show off Your user"}>
+      <Banner
+        Title={"Admin Portal Users"}
+        Subtitle={"Give site editing access to these individuals"}
+      >
         <ManageDataDialog
           Form={<UserManagementFormInit />}
           data={null}
           Text={"Create"}
+          Title={"Create New User"}
+          Description={"Add a new user to your system"}
         />
       </Banner>
 
       {loading ? (
         <TableLoading />
       ) : (
-        <DataTable columns={columns} data={data ? data : []} />
+        <DataTable
+          columns={columns}
+          data={data ? data : []}
+          filters={[
+            {
+              label: "Name",
+              value: "Name",
+            },
+            {
+              label: "Email",
+              value: "Email",
+            },
+            {
+              label: "Role",
+              value: "Role",
+            },
+          ]}
+        />
       )}
     </>
   )

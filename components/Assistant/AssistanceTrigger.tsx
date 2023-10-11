@@ -41,7 +41,7 @@ export default function AssistanceTrigger() {
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
-          className="h-16 w-full border-2 bg-primary/30 hover:text-black rounded-full"
+          className="h-16 w-full hover:bg-blue-300 border-2 bg-blue-100  hover:text-black rounded-full"
         >
           <div className="flex-wrap py-8 justify-between  text-center ">
             <HelpCircle className=" w-6  mx-auto" />

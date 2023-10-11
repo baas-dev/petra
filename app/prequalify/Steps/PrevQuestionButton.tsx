@@ -9,7 +9,7 @@ export default function PreviousQuestionButton(props: {
   return (
     <div
       onClick={props.action}
-      className=" mb-4 flex w-full border-2 flex-row items-center mx-auto hover:scale-110 transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl bg-white p-4  "
+      className=" mb-4 flex w-full border-2 flex-row items-center mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl bg-white p-4  "
     >
       <div className="w-full">
         <Label className="text-2xl text-primary underline ">

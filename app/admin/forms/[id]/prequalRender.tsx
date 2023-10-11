@@ -114,7 +114,13 @@ function AddressRender({
           </Table>
         </>
       ) : (
-        <></>
+        <>
+          <div className="w-full text-center h-full">
+            <p className="italic font-light my-auto ">
+              The option to add an address was declined.
+            </p>
+          </div>
+        </>
       )}
     </div>
   )
@@ -129,7 +135,7 @@ function BorrowerRender(props: { Borrowers: DataReceived["Borrowers"] }) {
         <>
           <Button
             variant={"outline"}
-            className={`${activeBorrower === i ? "bg-primary" : ""}`}
+            className={`${activeBorrower === i ? "bg-primary text-white" : ""}`}
           >
             {item.FirstName},{item.LastName}
           </Button>
@@ -145,15 +151,15 @@ function BorrowerRender(props: { Borrowers: DataReceived["Borrowers"] }) {
             <TableHead>Date of Birth</TableHead>
           </TableHeader>
           <TableBody>
-            <TableCell>{props.Borrowers[activeBorrower].FirstName}</TableCell>
-            <TableCell>{props.Borrowers[activeBorrower].LastName}</TableCell>
+            <TableCell>{props.Borrowers[activeBorrower]?.FirstName}</TableCell>
+            <TableCell>{props.Borrowers[activeBorrower]?.LastName}</TableCell>
             <TableCell>
-              {props.Borrowers[activeBorrower].MaritalStatus}
+              {props.Borrowers[activeBorrower]?.MaritalStatus}
             </TableCell>
             <TableCell>
-              {props.Borrowers[activeBorrower].DOB.Month}/
-              {props.Borrowers[activeBorrower].DOB.Day}/
-              {props.Borrowers[activeBorrower].DOB.Year}
+              {props.Borrowers[activeBorrower]?.DOB.Month}/
+              {props.Borrowers[activeBorrower]?.DOB.Day}/
+              {props.Borrowers[activeBorrower]?.DOB.Year}
             </TableCell>
           </TableBody>
           {/* {props.Borrowers.map((item, i) => (
@@ -169,11 +175,13 @@ function BorrowerRender(props: { Borrowers: DataReceived["Borrowers"] }) {
           </TableHeader>
           <TableBody>
             <TableCell>
-              {props.Borrowers[activeBorrower].AnnualIncome}
+              {props.Borrowers[activeBorrower]?.AnnualIncome}
             </TableCell>
-            <TableCell>{props.Borrowers[activeBorrower].CreditScore}</TableCell>
             <TableCell>
-              {props.Borrowers[activeBorrower].Expenses.map((expense, j) => {
+              {props.Borrowers[activeBorrower]?.CreditScore}
+            </TableCell>
+            <TableCell>
+              {props.Borrowers[activeBorrower]?.Expenses.map((expense, j) => {
                 return (
                   <div>
                     {expense.key}: {expense.amount}

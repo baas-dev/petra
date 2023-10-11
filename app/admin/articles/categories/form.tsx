@@ -51,9 +51,9 @@ export default function ArticleCategoryForm(props: {
       FormData: data,
       FormSchema: ArticleCategorySchema,
       Router: r,
-      ClientPath: "/admin/categoriess",
+      ClientPath: "/admin/categories",
       OnSuccess: {
-        Message: "Your Testimonials Has Been Created",
+        Message: "Your Category For Articles Has Been Saved",
         GoToRecord: false,
       },
       OnFailure: {
@@ -78,23 +78,17 @@ export default function ArticleCategoryForm(props: {
     <Form {...articleFormCXT}>
       <form
         onSubmit={articleFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6"
+        className="w-full max-w-7xl mx-auto m"
       >
-        <TextInput
-          form={articleFormCXT}
-          options={{
-            name: "Title",
-            label: "Title",
-          }}
-        />
-
-        <TextAreaInput
-          form={articleFormCXT}
-          options={{
-            name: "Description",
-            label: "Description",
-          }}
-        />
+        <div className="w-full space-y-6 my-4 bg-white p-4 rounded-xl border shadow-md mx-auto">
+          <TextInput
+            form={articleFormCXT}
+            options={{
+              name: "Title",
+              label: "Title",
+            }}
+          />
+        </div>
 
         <SubmitButton loading={loading} />
       </form>

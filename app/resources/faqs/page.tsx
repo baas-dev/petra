@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import Banner from "@/components/BAAS/Banners/BannerSite"
 import BACKEND from "@/app/API"
 
 const api = new BACKEND()
@@ -28,22 +29,14 @@ export default async function FAQ() {
 
   return (
     <>
-      <div className="min-h-screen">
-        <div className="container  pt-24   ">
-          <div className="  w-full mb-8">
-            <h1 className="text-md block  font-semibold text-primary">
-              An easy mortgage payment cost-estimate tool
-            </h1>
-            <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
-              Frequently Asked Questions
-            </h2>
-            <p className="max-w-lg   font-light">
-              Resources that the Petra Home Lending Team has pooled together in
-              order to provide the most helpful and accurate home buying
-              information
-            </p>
-          </div>
-          <section className=" grid ">
+      <div className="min-h-screen pt-4 w-full md:pt-24  ">
+        <Banner
+          Title={"Frequently Asked Questions"}
+          Subtitle={"Helping You with Home Lending Questions"}
+          children={undefined}
+        ></Banner>
+        <div className="container   ">
+          <section className=" grid bg-white p-4 rounded-xl shadow-md border-2">
             <FAQAccordion data={res ? res : []} />
           </section>
         </div>

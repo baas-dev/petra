@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
+import Banner from "@/components/BAAS/Banners/BannerSite"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
 import BACKEND from "@/app/API"
 
@@ -39,46 +40,40 @@ export default async function Downloads() {
 
   return (
     <>
-      <div className="min-h-screen">
-        <div className="container  pt-24   ">
-          <div className="  w-full mb-8">
-            <h1 className="text-md block  font-semibold text-primary">
-              Downloadabe Resources and Links for Homebuyers
-            </h1>
-            <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
-              Downloads & Links
-            </h2>
-            <p className="max-w-md   font-light">
-              Resources that the Petra Home Lending Team has pooled together in
-              order to provide the most helpful and accurate home buying
-              information
-            </p>
-          </div>
-          <div className="w-full flex flex-wrap">
-            {res && res.length > 0 ? (
-              <>
-                {res.map((item: Resource, i) => (
-                  <div className="w-full md:w-1/2">
-                    <ResourceCard
-                      key={i}
-                      title={item.Title}
-                      description={item.Description}
-                      link={item.Link}
-                    />
-                  </div>
-                ))}
-              </>
-            ) : (
-              //
-              // ))
+      <div className="min-h-screen pt-4 w-full md:pt-24 ">
+        <Banner
+          Title={"Downloads & Links"}
+          Subtitle={
+            " Resources that the Petra Home Lending Team has pooled together in order to provide the most helpful and accurate home buying information"
+          }
+        >
+          <></>
+        </Banner>
 
-              <>
-                <h2 className="text-lg">
-                  Sorry! No resources are available at this time.
-                </h2>
-              </>
-            )}
-          </div>
+        <div className="w-full flex flex-wrap  container">
+          {res && res.length > 0 ? (
+            <>
+              {res.map((item: Resource, i) => (
+                <div className="w-full md:w-1/2 px-2 mb-2">
+                  <ResourceCard
+                    key={i}
+                    title={item.Title}
+                    description={item.Description}
+                    link={item.Link}
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            //
+            // ))
+
+            <>
+              <h2 className="text-lg">
+                Sorry! No resources are available at this time.
+              </h2>
+            </>
+          )}
         </div>
       </div>
     </>
@@ -98,9 +93,10 @@ const ResourceCard = (props: {
       <CardContent className="p-4">
         <CardDescription>{props.description}</CardDescription>
       </CardContent>
-      <CardFooter className="flex p-2 text-right justify-between">
+      <CardFooter className="flex p-2 text-right w-full items-end">
         {/* <Button variant="secondary">{props.type}</Button> */}
-        <Link href={props.link} target="_blank">
+
+        <Link href={props.link} target="_blank" className="w-full">
           <Button>
             <Label className="mr-2">Open Resource</Label>
             <ArrowBigRight />

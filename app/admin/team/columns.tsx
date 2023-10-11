@@ -43,6 +43,8 @@ export const columns: ColumnDef<z.infer<typeof TeamFormSchema>>[] = [
             Text={"Edit"}
             Form={<TeamForm />}
             data={row.original}
+            Title={"Team Member Form"}
+            Description={"Managing individual biographies"}
           />
         </>
       )

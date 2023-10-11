@@ -44,7 +44,13 @@ export default function FAQAdmin() {
   return (
     <>
       <Banner Title={"FAQs"} Subtitle={"Frequently Asked Questions"}>
-        <ManageDataDialog Form={<FAQFullForm />} data={null} Text={"Create"} />
+        <ManageDataDialog
+          Form={<FAQFullForm />}
+          data={null}
+          Text={"Create"}
+          Title={"FAQs Form"}
+          Description={"Answer common questions that your user's encounter"}
+        />
       </Banner>
 
       {loading ? (
@@ -57,6 +63,16 @@ export default function FAQAdmin() {
             TableName: "FAQS",
             SearchName: "faqs",
           }}
+          filters={[
+            {
+              label: "Question",
+              value: "Question",
+            },
+            {
+              label: "Answer",
+              value: "Answer",
+            },
+          ]}
         />
       )}
     </>

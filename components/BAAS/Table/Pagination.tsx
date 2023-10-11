@@ -53,7 +53,7 @@ export default function Pagination({
   const endItem = Math.min(CurrentPage * 5, TotalHits)
 
   return (
-    <div className="flex mb-4 justify-between">
+    <div className="flex mb-4 justify-between container">
       <div className="text-light">
         Showing:
         <b>

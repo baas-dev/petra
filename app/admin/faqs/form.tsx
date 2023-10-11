@@ -15,13 +15,12 @@ import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 import { useTableContext } from "@/components/BAAS/Table/Context"
 
-import { useAuthContext } from "../Context/AuthContext"
 import { useAdminTableContext } from "../Context/TableContext"
 
 export const FAQFormSchema = z.object({
   ID: z.string().optional(),
-  Question: z.string().min(2, "Please complete first name"),
-  Answer: z.string().min(2, "Please complete second name"),
+  Question: z.string().min(2, "Please complete "),
+  Answer: z.string(),
 })
 
 export default function FAQFullForm(props: {
@@ -49,7 +48,6 @@ export default function FAQFullForm(props: {
     }
   }
 
-  const { authObject } = useAuthContext()
   const faqFormCXT = useForm<z.infer<typeof FAQFormSchema>>({
     resolver: zodResolver(FAQFormSchema),
     defaultValues: SetDefaultValues(),
@@ -63,7 +61,6 @@ export default function FAQFullForm(props: {
           ? "faq"
           : `faq/${faqFormCXT.getValues("ID")}`,
       FormData: data,
-      AuthObject: authObject,
 
       FormSchema: FAQFormSchema,
       Router: r,
@@ -79,7 +76,6 @@ export default function FAQFullForm(props: {
         faqFormCXT.getValues("ID") === undefined ? "CREATE" : "UPDATE",
     })
       .then((val) => {
-        console.log(val)
         if (window !== null || undefined) {
           window.location.reload()
         }
@@ -90,48 +86,48 @@ export default function FAQFullForm(props: {
   }
 
   return (
-    <div className="container">
-      <FormHeader
-        title={"FAQ Admin Form"}
-        description={"Answer common questions that your user's encounter"}
-      />
+    <div className=" h-full w-full container">
       <Form {...faqFormCXT}>
         <form
           onSubmit={faqFormCXT.handleSubmit(onSubmit)}
-          className="w-full space-y-6 p-4"
+          className="w-full  py-4 my-auto max-w-7xl mx-auto h-full"
         >
-          <TextInput
-            form={faqFormCXT}
-            options={{
-              name: "Question",
-              label: "Question",
-              description:
-                "Add words and terms that your users are looking for",
-            }}
-          />
-          <TextAreaInput
-            form={faqFormCXT}
-            options={{
-              name: "Answer",
-              label: "Answer",
-              description:
-                "The answer to the above question, adding further information",
-            }}
-          />
-          <div className="w-full flex justify-between">
-            {props.data ? (
-              <DeleteButton
-                DeleteOptions={{
-                  APIPath: "faq",
-                  ID: props.data?.ID,
+          <div className="p-4 bg-white rounded-xl my-4 shadow-md">
+            <div className="mb-8">
+              <TextInput
+                form={faqFormCXT}
+                options={{
+                  name: "Question",
+                  label: "Question",
+                  description:
+                    "Add words and terms that your users are looking for",
                 }}
               />
-            ) : (
-              <></>
-            )}
-
-            <SubmitButton loading={loading} />
+            </div>
+            <TextAreaInput
+              form={faqFormCXT}
+              options={{
+                name: "Answer",
+                label: "Answer",
+                description:
+                  "The answer to the above question, adding further information",
+              }}
+            />
+            <div className="w-full flex justify-between">
+              {props.data ? (
+                <DeleteButton
+                  DeleteOptions={{
+                    APIPath: "faq",
+                    ID: props.data?.ID,
+                  }}
+                />
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
+
+          <SubmitButton loading={loading} />
         </form>
       </Form>
     </div>

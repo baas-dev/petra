@@ -43,6 +43,8 @@ export const columns: ColumnDef<z.infer<typeof ResourceFormSchema>>[] = [
             Text={"Edit"}
             Form={<ResourcesForm />}
             data={row.original}
+            Title={"Resources Form"}
+            Description={"Give visitors resources to succeed"}
           />
         </>
       )
@@ -55,6 +57,9 @@ export const columns: ColumnDef<z.infer<typeof ResourceFormSchema>>[] = [
   {
     accessorKey: "Description",
     header: "Description",
+    cell: ({ row }) => {
+      return <p className="line-clamp-2">{row.original.Description}</p>
+    },
   },
   {
     accessorKey: "Link",
@@ -76,6 +81,26 @@ export const columns: ColumnDef<z.infer<typeof ResourceFormSchema>>[] = [
     },
     cell: ({ row }) => {
       const time: Date = row.getValue("CreatedAt")
+
+      return <div className="font-medium">{moment(time).calendar()}</div>
+    },
+  },
+  {
+    accessorKey: "UpdatedAt",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="p-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Last Updated
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => {
+      const time: Date = row.getValue("UpdatedAt")
 
       return <div className="font-medium">{moment(time).calendar()}</div>
     },

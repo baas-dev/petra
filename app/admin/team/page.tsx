@@ -46,7 +46,13 @@ export default function FAQAdmin() {
   return (
     <>
       <Banner Title={"Team Members"} Subtitle={"Show off Your Team"}>
-        <ManageDataDialog Form={<TeamForm />} data={null} Text={"Create"} />
+        <ManageDataDialog
+          Form={<TeamForm />}
+          data={null}
+          Text={"Create"}
+          Title={"Team Member Form"}
+          Description={"Managing individual biographies"}
+        />
       </Banner>
 
       {loading ? (

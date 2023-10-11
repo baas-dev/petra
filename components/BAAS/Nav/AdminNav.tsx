@@ -7,6 +7,7 @@ import {
   FormInput,
   Group,
   LogIn,
+  LogOut,
   Package,
   PanelTopClose,
   Pen,
@@ -17,6 +18,7 @@ import {
   Wallet,
   Wrench,
 } from "lucide-react"
+import { signOut } from "next-auth/react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -39,7 +41,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import BACKEND from "@/app/API"
-import { useAuthContext } from "@/app/admin/Context/AuthContext"
 
 import BigCard from "../Cards/BigCard"
 import MediaDialog from "../Dashboard/MediaDialog"
@@ -127,11 +128,18 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
 
       {
         title: "Users",
-        classes: "bg-red-100 hover:bg-red-300",
+        classes: "bg-purple-100 hover:bg-purple-300",
         description: "Accounts with admin capabilities",
         href: "/admin/users",
-        icon: <LogIn className="h-8 w-8 mr-2 " />,
+        icon: <Users className="h-8 w-8 mr-2 " />,
       },
+      // {
+      //   title: "Log Out",
+      //   classes: "bg-red-300 hover:bg-red-500",
+      //   description: "Accounts with admin capabilities",
+      //   href: "/admin/users",
+      //   icon: <LogIn className="h-8 w-8 mr-2 " />,
+      // },
     ],
   }
 
@@ -228,31 +236,8 @@ export default function AdminNav() {
     CreatedAt: "",
     Role: "",
   })
-  let { authObject, logout } = useAuthContext()
 
-  const LoadData = async () => {
-    let res = await api.GET({
-      Route: "auth/me",
-      AccessToken: authObject.AccessToken,
-    })
-
-    if (res.code === 403) {
-      logout()
-    }
-
-    return res.data
-  }
-
-  useEffect(() => {
-    LoadData()
-      .then((val) => {
-        setUserData(val)
-        return val
-      })
-      .catch((err) => {
-        return null
-      })
-  }, [authObject])
+  useEffect(() => {}, [])
 
   function handleChange() {
     if (!open) {
@@ -272,7 +257,7 @@ export default function AdminNav() {
       case "superadmin":
         return ContentItems
       default:
-        return EditorContentItems
+        return ContentItems
     }
   }
   let RoleView = RoleSwitch(userData.Role)
@@ -288,33 +273,16 @@ export default function AdminNav() {
         <SheetContent side={"bottom"} className="h-screen">
           <div className="flex w-full justify-between max-w-6xl mx-auto ">
             <SheetHeader className="mb-8 w-full ">
-              <SheetTitle>Your Sections</SheetTitle>
+              <SheetTitle>Admin Navigation</SheetTitle>
               <SheetDescription>
-                Make changes to your profile here. Click save when you're done.
+                Make changes to your site by targeting different scopes
               </SheetDescription>
             </SheetHeader>
-
-            <div className="w-1/4">
-              {userData != null ? (
-                <>
-                  <div className="flex flex-col text-center">
-                    <Label className="text-lg">
-                      Signed in as:{" "}
-                      <span className="font-light">{userData.Name}</span>
-                    </Label>
-                    <Button variant={"destructive"} onClick={logout}>
-                      Logout?
-                    </Button>
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
           </div>
           <ScrollArea className="h-full  max-w-6xl mx-auto">
             <div className=" mx-auto">
               <NavGroupSection {...RoleView} action={handleChange} />
+
               {/* <NavGroupSection {...FormItems} action={handleChange} />
               <NavGroupSection {...ArticleItems} action={handleChange} /> */}
               {/* <NavGroupSection {...ShopItems} action={handleChange} /> */}
@@ -359,6 +327,28 @@ function NavGroupSection(props: {
               </Link>
             </>
           ))}
+          <div
+            onClick={() => {
+              signOut({
+                redirect: true,
+                callbackUrl: "/admin",
+              })
+            }}
+          >
+            <Card
+              className={`w-full p-4 flex items-center hover:cursor-pointer bg-red-200 hover:bg-red-300`}
+            >
+              {<LogOut />}
+              <div>
+                <CardTitle className="text-md font-light">
+                  {`Log Out`}
+                </CardTitle>
+                <CardDescription className="text-sm">
+                  {`Sign out of your account`}
+                </CardDescription>
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </>

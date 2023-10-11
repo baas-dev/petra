@@ -47,6 +47,8 @@ export default function FAQAdmin() {
           Form={<ArticleInitForm />}
           data={null}
           Text={"Create Article"}
+          Title={undefined}
+          Description={undefined}
         />
       </Banner>
 
@@ -60,6 +62,16 @@ export default function FAQAdmin() {
             TableName: "BlogPosts",
             SearchName: "articles",
           }}
+          filters={[
+            {
+              label: "Title",
+              value: "Title",
+            },
+            {
+              label: "Description",
+              value: "Description",
+            },
+          ]}
         />
       )}
     </>

@@ -25,6 +25,7 @@ export default function FormsAdmin({ params }) {
   const [data, setData] = useState({
     SubmissionData: "",
     Type: "",
+    CreatedAt: "",
   })
 
   const LoadData = async () => {
@@ -37,13 +38,12 @@ export default function FormsAdmin({ params }) {
     LoadData()
   }, [])
 
-  console.log("data", data)
   return (
     <>
       {loading ? (
         <TableLoading />
       ) : data.Type == "contact" ? (
-        <ContactRender Data={data.SubmissionData} />
+        <ContactRender Data={data} />
       ) : (
         <PrequalRender Data={data.SubmissionData} />
       )}

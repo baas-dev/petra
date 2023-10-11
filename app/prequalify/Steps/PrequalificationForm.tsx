@@ -81,7 +81,7 @@ export default function PrequalificationForm() {
     r.push("/success")
   }
   return (
-    <div>
+    <div className="delay-0">
       <Swiper
         allowTouchMove={false}
         slidesPerView={1}

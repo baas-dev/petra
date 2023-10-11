@@ -21,7 +21,6 @@ export const UsersFormSchema = z.object({
   Name: z.string(),
   Email: z.string(),
   Role: z.string(),
-  Password: z.string(),
 })
 
 export default function UserManagementFormInit() {
@@ -70,7 +69,7 @@ export default function UserManagementFormInit() {
     <Form {...usersFormCXT}>
       <form
         onSubmit={usersFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6"
+        className="w-full space-y-6 max-w-7xl"
       >
         <TextInput
           form={usersFormCXT}
@@ -107,20 +106,7 @@ export default function UserManagementFormInit() {
             ],
           }}
         />
-        <PasswordInput
-          form={usersFormCXT}
-          options={{
-            name: "Password",
-            label: "Password",
-          }}
-        />
-        <SwitchInput
-          form={usersFormCXT}
-          options={{
-            name: "Disabled",
-            label: "User Active",
-          }}
-        />
+
         {/* <Status form={usersFormCXT} /> */}
 
         <Button type="submit">

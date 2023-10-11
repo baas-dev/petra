@@ -62,11 +62,11 @@ export default function Step1Form(props: { HandleNext: any; UpdateState }) {
   }, [])
 
   async function onSubmit(data: z.infer<typeof Step1FormSchema>) {
-    console.log(data)
+    // console.log(data)
   }
 
   function HandleSelected(ID: string) {
-    console.log(ID)
+    // console.log(ID)
     let indexSel = Step1FormCXT.getValues("TeamMembers").findIndex(
       (el) => el === ID
     )
@@ -89,7 +89,7 @@ export default function Step1Form(props: { HandleNext: any; UpdateState }) {
             title="Question 1"
             text="Was there a team member you are working with today?"
           />
-          <div className="grid grid-cols-3">
+          <div className={`grid grid-cols-6`}>
             {teamMembers.map((item, i) => {
               return (
                 <TeamCard
@@ -131,7 +131,7 @@ const TeamCard = (props: {
 }) => {
   return (
     <div
-      className={`w-full px-4 h-full animate hover:cursor-pointer hover:scale-110 transition`}
+      className={`w-full px-4 h-full animate hover:cursor-pointer hover:animate-pulse transition delay-0`}
       onClick={() => props.action(props.name)}
     >
       <div className="mx-auto mb-10 w-full ">

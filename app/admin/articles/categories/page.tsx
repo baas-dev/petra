@@ -51,7 +51,9 @@ export default function FAQAdmin() {
         <ManageDataDialog
           Form={<ArticleCategoryForm />}
           data={null}
-          Text={"Create"}
+          Title={"Creating Article Category"}
+          Description={"Classification for articles to be sorted"}
+          Text={"Create Article Category"}
         />
       </Banner>
 
@@ -64,6 +66,12 @@ export default function FAQAdmin() {
           scope={{
             TableName: "Categories",
           }}
+          filters={[
+            {
+              label: "Title",
+              value: "Title",
+            },
+          ]}
         />
       )}
     </>
