@@ -25,11 +25,12 @@ import { usePreqFormContext } from "@/app/prequalify/components/formContext"
 
 import MortgageCalculations from "./MortgageCalculations"
 import { useMortgageCalcContext } from "./components/formContext"
-// const MortgagePieChart = dynamic(() => import("./components/piechart"), {
-//   ssr: false,
-// })
 
-import MortgagePieChart from "./components/piechart"
+const MortgagePieChart = dynamic(() => import("./components/piechart"), {
+  ssr: false,
+})
+
+// import MortgagePieChart from "./components/piechart"
 
 let mortgage = new MortgageCalculations()
 

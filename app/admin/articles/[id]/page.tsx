@@ -26,10 +26,12 @@ export default function ArticlesEditPage() {
   let { id } = useParams()
 
   async function LoadData() {
-    await getArticleData(id).then((val) => {
-      let state = val.data
-      setArticleData(state) // Set the state directly
-    })
+    if (typeof id == "string") {
+      await getArticleData(id).then((val) => {
+        let state = val.data
+        setArticleData(state) // Set the state directly
+      })
+    }
   }
 
   function GetItems(data: any[]): { label: string; value: string }[] {

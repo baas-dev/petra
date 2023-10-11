@@ -1,6 +1,6 @@
 import "@/app/styles/globals.css"
 import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
+// import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import Footer from "@/components/BAAS/Nav/Footer"
@@ -23,8 +23,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
+            "min-h-screen bg-background font-sans antialiased"
+            // fontSans.variable
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

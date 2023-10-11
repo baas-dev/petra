@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Mulish");
 
 @layer base {
   :root {
@@ -70,7 +71,7 @@
   } */
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
@@ -78,6 +79,15 @@
     @apply bg-background text-foreground;
     font-feature-settings: "mulish" 1, "calt" 1;
   }
+} */
+
+/* From Public Directory */
+@font-face {
+  font-family: "Mulish";
+  src: url("/fonts/mulish.ttf");
+  font-style: medium;
+  font-weight: normal;
+  font-display: swap;
 }
 
 .hide-scrollbar::-webkit-scrollbar {

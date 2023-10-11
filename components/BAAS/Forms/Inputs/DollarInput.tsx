@@ -33,6 +33,7 @@ export default function DollarInput(props: {
             <DollarSign className="my-auto h-4" />
             <FormControl className="bg-white">
               <Input
+                crossOrigin={undefined}
                 {...field}
                 onChange={(e) => {
                   console.log(e.target.value)
