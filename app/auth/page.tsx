@@ -19,13 +19,10 @@ import { SubmitForm } from "@/components/BAAS/Forms"
 import PasswordInput from "@/components/BAAS/Forms/Inputs/PasswordInput"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TableLoading from "@/components/BAAS/Loading/TableLoading"
+import { AuthFormSchema } from "@/components/schemas"
 
 import BACKEND from "../API"
 
-export const AuthFormSchema = z.object({
-  Email: z.string().email(),
-  Code: z.string().optional(),
-})
 const api = new BACKEND()
 
 export default function AuthPage() {
