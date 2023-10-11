@@ -35,7 +35,7 @@ export default async function productsPage() {
 
   return (
     <>
-      <ManageDataDialog form={<ProductInitForm data={extraData} />}>
+      {/* <ManageDataDialog form={<ProductInitForm data={extraData} />}>
         Create Product
       </ManageDataDialog>
 
@@ -47,7 +47,7 @@ export default async function productsPage() {
         goToEditPage={true}
         data={data ? data : []}
         routePath="shop/products"
-      />
+      /> */}
     </>
   )
 }

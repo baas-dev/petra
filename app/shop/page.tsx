@@ -36,18 +36,18 @@ export default async function Page() {
             data.map((item, i) => {
               return (
                 <>
-                  <div className="w-full">
-                    <ProductCard data={item} key={i} />
+                  <div className="w-full" key={i}>
+                    <ProductCard data={item} />
                   </div>
                 </>
               )
             })
           ) : (
             <div className="w-full col-span-4">
-              <LongCardDetail
+              {/* <LongCardDetail
                 Title="Sorry!"
                 Description="No items have been made available at this time"
-              />
+              /> */}
             </div>
           )}
         </div>

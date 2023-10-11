@@ -70,7 +70,7 @@ export default function TeamForm(props: {
       >
         <div className="flex w-6xl">
           <div className="w-full">
-            <ImageSingleUpload form={testimonialFormCXT} options={{}} />
+            {/* <ImageSingleUpload form={testimonialFormCXT} options={{}} /> */}
           </div>
           <div className="w-full">
             <TextInput

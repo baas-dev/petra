@@ -109,7 +109,7 @@ export default function CheckoutPage() {
             className="w-full flex flex-wrap gap-2"
           >
             <CheckoutPT1 form={CheckoutForm} />
-            <LocationInput form={CheckoutForm} />
+            {/* <LocationInput form={CheckoutForm} /> */}
             <div className="w-full mb-8">
               <Switch
                 checked={useSameLocationAsBilling}

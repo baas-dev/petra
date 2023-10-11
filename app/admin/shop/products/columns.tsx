@@ -82,9 +82,9 @@ export const columns: ColumnDef<z.infer<typeof productsFormSchema>>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <ManageDataDialog path={"/admin/shop/products/" + row.original.ID}>
+            {/* <ManageDataDialog path={"/admin/shop/products/" + row.original.ID}>
               View Record
-            </ManageDataDialog>
+            </ManageDataDialog> */}
             <DropdownMenuSeparator />
             <DeleteButton
               DeleteOptions={{

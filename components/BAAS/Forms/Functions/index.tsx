@@ -32,7 +32,6 @@ export async function SubmitForm(Config: SubmitFormConfig) {
           res = await api.CREATE({
             Route: Config.APIRoute,
             Body: JSON.stringify(Config.FormData),
-            AccessToken: Config.AuthObject?.AccessToken,
           })
         }
 
@@ -40,7 +39,6 @@ export async function SubmitForm(Config: SubmitFormConfig) {
           res = await api.UPDATE({
             Route: Config.APIRoute,
             Body: JSON.stringify(Config.FormData),
-            AccessToken: Config.AuthObject?.AccessToken,
           })
         }
 

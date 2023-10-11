@@ -19,12 +19,12 @@ export default async function TestimonialsPage() {
 
   return (
     <>
-      <DataTable
+      {/* <DataTable
         form={TeamForm}
         columns={columns}
         data={data ? data : []}
         routePath="/team"
-      />
+      /> */}
     </>
   )
 }

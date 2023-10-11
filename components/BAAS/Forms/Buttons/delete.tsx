@@ -19,6 +19,7 @@ async function DeleteRecord(route, id) {
     .DELETE({
       Route: route,
       ID: id,
+      Body: {},
     })
     .then((val) => {
       return val

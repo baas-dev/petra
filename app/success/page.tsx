@@ -9,6 +9,7 @@ export default function Success() {
           <Banner
             Title="Thank you!"
             Subtitle="Our team has been notified, and will be in touch soon."
+            children={undefined}
           />
         </div>
         <div className="container  max-w-4xl  flex bg-secondary gap-2">
@@ -21,6 +22,7 @@ export default function Success() {
             bgHover={"bg-primary/20"}
             image={undefined}
             link={"/about"}
+            action={undefined}
           />
           <BigCard
             Title={"Contact Us"}
@@ -31,6 +33,7 @@ export default function Success() {
             bgHover={"bg-primary/20"}
             image={undefined}
             link={"/contact"}
+            action={undefined}
           />
         </div>
       </div>

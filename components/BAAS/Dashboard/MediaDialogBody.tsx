@@ -203,6 +203,7 @@ function FileCard({ name, type, url, id, size, reload }) {
     let res = await api.DELETE({
       Route: "media",
       ID: givenID,
+      Body: {},
     })
     if (res.data) {
       toast({

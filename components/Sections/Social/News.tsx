@@ -62,7 +62,14 @@ export default function News() {
 
           <h3 className="text-xl leading-none">{"CNBC Mortgage"}</h3>
           {stories.map((item, i) => (
-            <LongCardDetail Title={item.title} Description={""} />
+            <LongCardDetail
+              Title={item.title}
+              Description={""}
+              Key={0}
+              MainImage={""}
+              CreatedAt={new Date()}
+              UpdatedAt={new Date()}
+            />
           ))}
         </div>
       </section>

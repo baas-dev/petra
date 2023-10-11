@@ -42,18 +42,19 @@ export default async function FAQAdmin() {
 
   return (
     <>
-      <ManageDataDialog form={<ArticleCategoryForm />}>
+      {/* <ManageDataDialog form={<ArticleCategoryForm />}>
         Create Shop Category
-      </ManageDataDialog>
+      </ManageDataDialog> */}
       {loading ? (
         <TableLoading />
       ) : (
-        <DataTable
-          form={<ArticleCategoryForm />}
-          columns={columns}
-          data={dataRef.current ? dataRef.current : []}
-          routePath="/categories"
-        />
+        <></>
+        // <DataTable
+        //   form={<ArticleCategoryForm />}
+        //   columns={columns}
+        //   data={dataRef.current ? dataRef.current : []}
+        //   routePath="/categories"
+        // />
       )}
     </>
   )

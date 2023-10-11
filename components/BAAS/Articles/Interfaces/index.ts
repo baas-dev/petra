@@ -1,4 +1,5 @@
 export type Article = {
+  Image: any
   ID: string
   Title: string
   Description: string

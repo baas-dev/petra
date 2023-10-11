@@ -15,6 +15,7 @@ import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 
+import { SidebarItems } from "../Nav/AdminNav"
 import MediaDialog from "./MediaDialog"
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {

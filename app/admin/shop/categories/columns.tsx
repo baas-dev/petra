@@ -65,9 +65,9 @@ export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <ManageDataDialog form={<ArticleCategoryForm data={record} />}>
+            {/* <ManageDataDialog form={<ArticleCategoryForm data={record} />}>
               View Record
-            </ManageDataDialog>
+            </ManageDataDialog> */}
             <DropdownMenuSeparator />
             <DeleteButton
               DeleteOptions={{

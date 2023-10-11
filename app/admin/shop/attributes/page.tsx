@@ -26,10 +26,9 @@ export default async function AttributesPage() {
   return (
     <>
       <DataTable
-        form={AttributesInitForm}
+        // form={<AttributesInitForm />}
         columns={columns}
         data={data ? data : []}
-        routePath="/shop/attributes"
       />
     </>
   )
