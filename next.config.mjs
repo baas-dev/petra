@@ -8,6 +8,7 @@ const nextConfig = {
   //   domains: ["images.unsplash.com", "imagedelivery.net", "*"],
   // },
   images: {
+    path: "http://test.petralending.com",
     remotePatterns: [
       {
         protocol: "http",
