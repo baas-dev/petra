@@ -8,6 +8,7 @@ const nextConfig = {
   //   domains: ["images.unsplash.com", "imagedelivery.net", "*"],
   // },
   images: {
+    domains: ["*"],
     remotePatterns: [
       {
         protocol: "http",
