@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import ehpng from "@/public/images/equalhousinglogo.png"
 import { Home, Mail, Phone } from "lucide-react"
 import moment from "moment"
 
@@ -168,11 +167,11 @@ function MiddleSection() {
       </div>
       <div className="w-full flex  items-center mb-8 justify-end">
         <Image
-          src={ehpng}
+          src="/images/site/eh.png"
           alt=""
           width={500}
           height={500}
-          className="w-24 h-24 md:w-32 md:h-32 mx-auto  md:float-right "
+          className="w-24 h-24 md:w-32 md:h-32 mx-auto md:float-right "
         />
       </div>
     </div>
