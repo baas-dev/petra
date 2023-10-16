@@ -167,7 +167,7 @@ function MiddleSection() {
       </div>
       <div className="w-full flex  items-center mb-8 justify-end">
         <Image
-          src="/images/eh.png"
+          src={encodeURIComponent("/images/eh.png")}
           alt=""
           width={500}
           height={500}
