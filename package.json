@@ -1,6 +1,6 @@
 {
   "name": "petra-lending",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
@@ -79,7 +79,7 @@
     "loan-calc": "^0.2.1",
     "lucide-react": "^0.263.1",
     "moment": "^2.29.4",
-    "next": "^13.4.19",
+    "next": "^13.4.12",
     "next-auth": "^4.23.2",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
@@ -115,7 +115,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.51.0",
-    "eslint-config-next": "13.0.0",
+    "eslint-config-next": "13.4.12",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-tailwindcss": "^3.13.0",
