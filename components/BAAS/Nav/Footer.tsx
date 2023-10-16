@@ -166,7 +166,7 @@ function MiddleSection() {
         </div>
       </div>
       <div className="w-full flex  items-center mb-8 justify-end">
-        <img
+        <Image
           src="/images/eh.png"
           alt=""
           width={500}
