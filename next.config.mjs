@@ -1,15 +1,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  rewrites: {
-    async rewrites() {
-      return [
+
+  async redirects() {
+    return [
+      {
+        source: "/backend/:path*",
+        destination: "http://127.0.0.0:4000/:path*",
+        permanent: false,
+      },
+    ]
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
         {
-          source: "/api/:path*",
+          source: "/backend/:path*",
           destination: "http://127.0.0.0:4000/:path*",
         },
-      ]
-    },
+      ],
+    }
   },
   images: {
     domains: ["*"],

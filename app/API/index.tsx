@@ -19,7 +19,7 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      let apiResponse = await fetch(`/api/${options.Route}`, {
+      let apiResponse = await fetch(`/backend/${options.Route}`, {
         cache: "no-cache",
         headers: headers,
       })
@@ -58,7 +58,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`/api/${options.Route}`, {
+      let apiResponse = await fetch(`/backend/${options.Route}`, {
         method: "POST",
         headers: headers,
         body: options.Body,
@@ -97,7 +97,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`/api/${options.Route}`, {
+      let apiResponse = await fetch(`/backend/${options.Route}`, {
         method: "PUT",
         headers: headers,
         body: options.Body,
@@ -137,7 +137,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`/api/${options.Route}`, {
+      let apiResponse = await fetch(`/backend/${options.Route}`, {
         method: "DELETE",
         headers: headers,
         body: options.Body,

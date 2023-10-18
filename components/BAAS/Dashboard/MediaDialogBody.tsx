@@ -105,7 +105,7 @@ export default function MediaDialogBody() {
     })
 
     try {
-      const response = await fetch("/api/media", {
+      const response = await fetch("/backend/media", {
         method: "POST",
         body: formData,
       })
