@@ -105,7 +105,7 @@ export default function MediaDialogBody() {
     })
 
     try {
-      const response = await fetch("http://localhost:4000/media", {
+      const response = await fetch("/api/media", {
         method: "POST",
         body: formData,
       })

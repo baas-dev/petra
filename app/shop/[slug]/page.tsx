@@ -15,7 +15,7 @@ import AddToCart from "./addToCart"
 import ProductPageForm from "./form"
 
 async function getData(id): Promise<IProduct> {
-  let data = await fetch("http://localhost:4000/products/" + id, {
+  let data = await fetch("/api/products/" + id, {
     cache: "no-cache",
   })
 
