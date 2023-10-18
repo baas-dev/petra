@@ -36,7 +36,6 @@ export default function IndexPage() {
     let res = await api.GET({
       Route: "team",
     })
-    console.log(res.data)
     setTeam(res.data)
   }
   useEffect(() => {

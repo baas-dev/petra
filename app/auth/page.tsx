@@ -37,7 +37,7 @@ export default function AuthPage() {
   async function onSubmitRequest(data: { Email: string }) {
     setLoading(true)
     await api.CREATE({
-      Route: "auth/login/request",
+      Route: "/auth/login/request",
       Body: JSON.stringify(data),
     })
 
