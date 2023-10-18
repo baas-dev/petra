@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import {
   BellRing,
   Check,
@@ -34,33 +35,57 @@ import {
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import BACKEND from "@/app/API"
+import { Pagination } from "@/app/API/TYPES"
 
+import PaginationComponent from "../Table/PaginationComponent"
 import MediaStorage from "./MediaStorage"
 import MediaUploadBox, { FilePreview } from "./MediaUploadBox"
 
 const api = new BACKEND()
 
-const LoadData = async () => {
+const LoadData = async (page: string | null) => {
   let res = await api.GET({
-    Route: "media",
+    Route: page ? `media?limit=12&page=${page}` : `media?limit=12`,
   })
 
   return res
 }
 
 export default function MediaDialogBody() {
-  useEffect(() => {
-    LoadData().then((val) => {
-      if (val.data) {
-        setLoadedFiles(val.data)
-        console.log(val.data)
-      }
-    })
-  }, [])
+  let searchParams = useSearchParams()
 
   const [loadedFiles, setLoadedFiles] = useState<any[]>([])
   const [images, setImages] = useState<File[]>([])
   const [uploading, setUploading] = useState(false)
+  const [pagination, setPagination] = useState<Pagination>({
+    Limit: 12,
+    Page: 1,
+    Sort: "",
+    TotalPages: 1,
+    TotalRows: 0,
+  })
+
+  const [filesLoading, setFilesLoading] = useState(true)
+  useEffect(() => {
+    let sortParam = searchParams.get("MediaPage")
+    console.log(sortParam)
+    setFilesLoading(true)
+    LoadData(sortParam).then((val) => {
+      if (val.data) {
+        setLoadedFiles(val.data.rows)
+        setPagination({
+          ...pagination,
+          Limit: val.data.meta.Limit,
+          Page: val.data.meta.Page,
+          TotalPages: val.data.meta.TotalPages,
+          TotalRows: val.data.meta.TotalRows,
+        })
+        console.log(val.data)
+      }
+    })
+
+    setFilesLoading(false)
+  }, [searchParams])
 
   const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -91,12 +116,23 @@ export default function MediaDialogBody() {
         title: "Successfully uploaded!",
       })
     } catch (err) {}
-    LoadData().then((val) => {
+    LoadData(null).then((val) => {
+      setFilesLoading(true)
+
       if (val.data) {
         setLoadedFiles(val.data)
+        setPagination({
+          ...pagination,
+          Limit: val.data.meta.Limit,
+          Page: val.data.meta.Page,
+          TotalPages: val.data.meta.TotalPages,
+          TotalRows: val.data.meta.TotalRows,
+        })
+
         console.log(val.data)
       }
     })
+    setFilesLoading(false)
     setUploading(false)
   }
 
@@ -145,32 +181,49 @@ export default function MediaDialogBody() {
             <MediaStorage />
           </div> */}
         </div>
-        <div className=" md:col-span-2 w-full mb-4 max-h-[600px] overflow-y-scroll">
-          <div className="px-4  grid grid-cols-3 gap-2 w-full bg-white">
-            {loadedFiles && loadedFiles.length > 0 ? (
-              loadedFiles.map((item, i) => (
-                <FileCard
-                  name={item.FileName}
-                  type={item.FileType}
-                  url={item.URL}
-                  id={item.ID}
-                  size={item.FileSize}
-                  reload={() => {
-                    LoadData().then((val) => {
-                      if (val.data) {
-                        setLoadedFiles(val.data)
-                        console.log(val.data)
-                      }
-                    })
-                  }}
-                />
-              ))
-            ) : (
-              <div className="w-full col-span-3 flex justify-center items-center   border-2 border-gray-300 border-dashed rounded-lg shadow-sm bg-white">
-                <h3>No Files Found</h3>
+        <div className=" md:col-span-2 w-full mb-4 ">
+          {filesLoading ? (
+            <Loader2 className="text-accent text-2xl animate-spin m-auto" />
+          ) : (
+            <>
+              <div className="px-4  grid grid-cols-3 gap-2 w-full max-h-[600px] overflow-y-scroll ">
+                {loadedFiles && loadedFiles.length > 0 ? (
+                  <>
+                    {loadedFiles.map((item, i) => (
+                      <FileCard
+                        name={item.FileName}
+                        type={item.FileType}
+                        url={item.URL}
+                        id={item.ID}
+                        size={item.FileSize}
+                        reload={() => {
+                          LoadData(null).then((val) => {
+                            if (val.data) {
+                              setLoadedFiles(val.data)
+                              console.log(val.data)
+                            }
+                          })
+                        }}
+                      />
+                    ))}
+                  </>
+                ) : (
+                  <div className="w-full col-span-3 flex justify-center items-center h-full  border-2 border-gray-300 border-dashed rounded-lg shadow-sm bg-white">
+                    <h3>No Files Found</h3>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+              <div className="w-full bg-white pt-4 pb-4">
+                <PaginationComponent
+                  PageID="MediaPage"
+                  TotalHits={pagination.TotalRows}
+                  CurrentPage={pagination.Page}
+                  TotalPages={pagination.TotalPages}
+                  Limit={pagination.Limit}
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
@@ -216,8 +269,10 @@ function FileCard({ name, type, url, id, size, reload }) {
   }
 
   return (
-    <Card className="text-center p-2 w-full m-2">
-      <h3 className="text-sm mb-2 text-center font-semibold">{name}</h3>
+    <Card className="text-center p-2 w-full mb-2">
+      <h3 className="text-sm mb-2 text-center font-semibold underline">
+        {name}
+      </h3>
       {isImageByExtension(name) ? (
         <>
           <Image

@@ -81,11 +81,11 @@ const ContactUsBody = () => {
             </div>
 
             <div className="w-full  lg:w-1/2 xl:w-5/12">
-              <Slide direction="right">
-                <div className="rounded-lg bg-white p-8 shadow-lg sm:p-12">
-                  <ContactForm />
-                </div>
-              </Slide>
+              {/* <Slide direction="right"> */}
+              <div className="rounded-lg bg-white p-8 shadow-lg sm:p-12">
+                <ContactForm />
+              </div>
+              {/* </Slide> */}
             </div>
           </div>
         </div>

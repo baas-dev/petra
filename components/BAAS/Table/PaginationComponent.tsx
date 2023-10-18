@@ -13,18 +13,23 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export default function Pagination({
+export default function PaginationComponent({
   TotalHits,
   CurrentPage,
   TotalPages,
+  Limit,
+  PageID,
 }: {
   TotalHits: number
   CurrentPage: number
   TotalPages: number
+  Limit: number
+  PageID?: string
 }) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()!
+  console.log(CurrentPage)
   let MorePages: boolean = false
 
   const createQueryString = useCallback(
@@ -38,23 +43,31 @@ export default function Pagination({
   )
 
   function GoForward() {
+    let queryName = PageID ? PageID : "page"
     router.push(
-      `${pathname}?${createQueryString("page", (CurrentPage + 1).toString())}`
+      `${pathname}?${createQueryString(
+        queryName,
+        (CurrentPage + 1).toString()
+      )}`
     )
   }
   function GoBack() {
+    let queryName = PageID ? PageID : "page"
     router.push(
-      `${pathname}?${createQueryString("page", (CurrentPage - 1).toString())}`
+      `${pathname}?${createQueryString(
+        queryName,
+        (CurrentPage - 1).toString()
+      )}`
     )
   }
 
   // Calculate the starting and ending item numbers
-  const startItem = (CurrentPage - 1) * 5 + 1
-  const endItem = Math.min(CurrentPage * 5, TotalHits)
+  const startItem = (CurrentPage - 1) * Limit + 1
+  const endItem = Math.min(CurrentPage * Limit, TotalHits)
 
   return (
-    <div className="flex mb-4 justify-between container">
-      <div className="text-light">
+    <div className="flex mb-4 justify-between container w-full">
+      <div className="text-light w-full">
         Showing:
         <b>
           {startItem === endItem
@@ -74,9 +87,11 @@ export default function Pagination({
         <Button variant={"ghost"}>
           <Select
             onValueChange={(val) => {
-              router.push(`${pathname}?${createQueryString("page", val)}`)
+              let queryName = PageID ? PageID : "page"
+
+              router.push(`${pathname}?${createQueryString(queryName, val)}`)
             }}
-            defaultValue={CurrentPage ? CurrentPage.toString() : "1"}
+            value={CurrentPage ? CurrentPage.toString() : "1"}
           >
             <SelectTrigger className="bg-white">
               <SelectValue />
@@ -85,7 +100,7 @@ export default function Pagination({
               {Array.from({ length: TotalPages }, (_, index) => {
                 const page = index + 1
                 return (
-                  <SelectItem key={page} value={(index + 1).toString()}>
+                  <SelectItem key={index} value={(index + 1).toString()}>
                     {page}
                   </SelectItem>
                 )

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 
+import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Banner from "@/components/BAAS/Banners/Banner"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
@@ -66,24 +67,31 @@ export default function FormsAdmin() {
       ) : (
         <>
           <Tabs defaultValue="contact" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger className="active:bg-accent" value="contact">
-                Contact Form
-              </TabsTrigger>
-              <TabsTrigger value="prequalification">
-                Prequalification Form
-              </TabsTrigger>
-            </TabsList>
+            <div className="bg-white p-2 rounded-xl shadow-md">
+              <Label>Selected Records:</Label>
+              <TabsList className="grid w-full grid-cols-2 gap-2">
+                <TabsTrigger value="contact">Contact Form</TabsTrigger>
+                <TabsTrigger value="prequalification">
+                  Prequalification Form
+                </TabsTrigger>
+              </TabsList>
+            </div>
             <TabsContent value="contact" className="w-full">
               <DataTable
                 columns={columnsAlt}
                 data={contactData ? contactData : []}
+                scope={{
+                  TableName: "Forms",
+                }}
               />
             </TabsContent>
             <TabsContent value="prequalification">
               <DataTable
                 columns={columns}
                 data={prequalData ? prequalData : []}
+                scope={{
+                  TableName: "Forms",
+                }}
               />
             </TabsContent>
           </Tabs>

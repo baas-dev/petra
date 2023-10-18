@@ -6,7 +6,21 @@ import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 
-export default function SEOInformation({ form, items }) {
+interface SEOConfig {
+  Description?: {
+    Placeholder?: string
+  }
+}
+
+export default function SEOInformation({
+  form,
+  items,
+  options,
+}: {
+  form
+  items
+  options: SEOConfig
+}) {
   return (
     <div className=" rounded-xl w-full">
       <TextInput
@@ -32,7 +46,10 @@ export default function SEOInformation({ form, items }) {
         options={{
           name: "Description",
           label: "Description",
-          placeholder: "Describe your product...",
+          placeholder:
+            options.Description && options.Description.Placeholder
+              ? options.Description?.Placeholder
+              : "",
         }}
       />
     </div>

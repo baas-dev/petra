@@ -96,6 +96,7 @@
     "react-minimal-pie-chart": "^8.4.0",
     "react-multi-carousel": "^2.8.4",
     "react-multistep": "^5.5.9",
+    "react-phone-number-input": "^3.3.7",
     "react-responsive-carousel": "^3.2.23",
     "react-square-web-payments-sdk": "^3.2.1",
     "rechart": "^0.0.1",

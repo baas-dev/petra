@@ -69,16 +69,18 @@ export default function ArticlesEditPage() {
 
   return (
     <>
-      {articleData !== undefined ? (
-        <ArticleFullForm
-          data={articleData}
-          items={categoryData ? categoryData : []}
-        />
-      ) : (
-        <>
-          <TableLoading />
-        </>
-      )}
+      <div className="pb-8">
+        {articleData !== undefined ? (
+          <ArticleFullForm
+            data={articleData}
+            items={categoryData ? categoryData : []}
+          />
+        ) : (
+          <>
+            <TableLoading />
+          </>
+        )}
+      </div>
     </>
   )
 }

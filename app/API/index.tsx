@@ -1,4 +1,3 @@
-import { Session } from "next-auth"
 import { getSession, signOut } from "next-auth/react"
 
 import { CreateRequest, Response } from "./TYPES"
@@ -20,7 +19,7 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`http://127.0.0.1:4000/${options.Route}`, {
         cache: "no-cache",
         headers: headers,
       })
@@ -28,7 +27,7 @@ export default class BACKEND {
       if (res.code == 403) {
         signOut({
           redirect: true,
-          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
+          callbackUrl: `/admin`,
         })
       }
 
@@ -68,7 +67,7 @@ export default class BACKEND {
       if (res.code == 403) {
         signOut({
           redirect: true,
-          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
+          callbackUrl: `/admin`,
         })
       }
 

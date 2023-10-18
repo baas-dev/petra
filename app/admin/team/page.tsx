@@ -26,6 +26,7 @@ export default function FAQAdmin() {
   const r = useRouter()
 
   const [loading, setLoading] = useState(true)
+
   const { adminTableCXT, setAdminTableCXT } = useAdminTableContext()
   const dataRef = useRef()
   function setDataRef(data) {
@@ -64,6 +65,16 @@ export default function FAQAdmin() {
           scope={{
             TableName: "TeamMembers",
           }}
+          filters={[
+            {
+              label: "Name",
+              value: "Name",
+            },
+            {
+              label: "Title",
+              value: "Title",
+            },
+          ]}
         />
       )}
     </>

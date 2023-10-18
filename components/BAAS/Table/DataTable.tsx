@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -36,6 +36,7 @@ import {
 import { useAdminTableContext } from "@/app/admin/Context/TableContext"
 
 import { BatchDeleteButton } from "./BatchButtons"
+import Pagination from "./PaginationComponent"
 
 interface DataTableActions {
   Create: boolean
@@ -49,9 +50,17 @@ interface BatchDelete {
   SearchName?: string
 }
 
+interface IPagination {
+  TotalRows: number
+  TotalPages: number
+  CurrentPage: number
+  Limit: number
+}
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  pagination?: IPagination
   scope?: BatchDelete
   filters?: { label: string; value: string }[]
 }
@@ -61,6 +70,7 @@ export function DataTable<TData, TValue>({
   data,
   scope,
   filters,
+  pagination,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -85,9 +95,12 @@ export function DataTable<TData, TValue>({
   })
 
   let r = useRouter()
-
+  let searchParams = useSearchParams()
+  let pageParams = searchParams.get("page")
+  let queryParams = searchParams.get("query")
+  let queryScope = searchParams.get("queryScope")
+  let sortParams = searchParams.get("sort")
   const { setAdminTableCXT } = useAdminTableContext()
-  console.log(scope)
 
   return (
     <>
@@ -216,17 +229,27 @@ export function DataTable<TData, TValue>({
             </TableRow>
           )}
         </TableBody>
-        <TableFooter className="flex gap-2 mt-4">
-          {scope != undefined &&
-          (session?.user?.role === "admin" ||
-            session?.user?.role === "superadmin") ? (
-            <BatchDeleteButton
-              TableName={scope.TableName}
-              SearchName={scope.SearchName ? scope.SearchName : ""}
-              Items={rowSelection}
-              Rows={table.getRowModel().rows}
+        <TableFooter className="flex gap-2 justify-between mt-4 min-w-7xl">
+          <div className="w-full">
+            {scope != undefined &&
+            (session?.user?.role === "admin" ||
+              session?.user?.role === "superadmin") ? (
+              <BatchDeleteButton
+                TableName={scope.TableName}
+                SearchName={scope.SearchName ? scope.SearchName : ""}
+                Items={rowSelection}
+                Rows={table.getRowModel().rows}
+              />
+            ) : null}
+          </div>
+          {/* <div className="w-full">
+            <Pagination
+              Limit={pagination?.Limit ? pagination.Limit : 5}
+              TotalHits={pagination?.TotalRows ? pagination.TotalRows : 0}
+              TotalPages={pagination?.TotalPages ? pagination.TotalPages : 0}
+              CurrentPage={pagination?.CurrentPage ? pagination.CurrentPage : 0}
             />
-          ) : null}
+          </div> */}
         </TableFooter>
       </Table>
     </>

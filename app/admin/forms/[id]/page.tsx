@@ -31,6 +31,7 @@ export default function FormsAdmin({ params }) {
   const LoadData = async () => {
     await getData(params.id).then((val) => {
       setData(val.data)
+      console.log(JSON.parse(val.data.SubmissionData))
     })
     setLoading(false)
   }

@@ -16,6 +16,9 @@ import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 import RichTextEditor from "@/components/BAAS/RichTextEditor"
 import Status from "@/components/BAAS/Shop/Admin/Sections/Status"
 
+import "react-phone-number-input/style.css"
+import PhoneInput from "react-phone-number-input"
+
 import { useAdminTableContext } from "../Context/TableContext"
 
 export const TeamFormSchema = z.object({
@@ -36,7 +39,7 @@ export default function TeamForm(props: {
 }) {
   const { adminTableCXT } = useAdminTableContext()
   const [loading, setLoading] = useState(false)
-
+  const [value, setValue] = useState<any>()
   function SetDefaultValues() {
     if (adminTableCXT.Data == null) {
       return {}
@@ -148,12 +151,17 @@ export default function TeamForm(props: {
               />
             </div>
             <div className="flex gap-1">
-              <TextInput
+              {/* <TextInput
                 form={teamFormCXT}
                 options={{
                   name: "Phone",
                   label: "Phone #",
                 }}
+              /> */}
+              <PhoneInput
+                placeholder="Enter phone number"
+                value={value}
+                onChange={setValue}
               />
               <TextInput
                 form={teamFormCXT}

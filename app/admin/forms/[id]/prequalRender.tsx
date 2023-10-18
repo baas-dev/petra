@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -46,7 +48,6 @@ interface Expense {
 
 export default function PrequalRender(props: { Data: string }) {
   let data: DataReceived = JSON.parse(props.Data)
-  console.log(data)
   return (
     <>
       <BorrowerRender Borrowers={data.Borrowers} />
@@ -135,7 +136,11 @@ function BorrowerRender(props: { Borrowers: DataReceived["Borrowers"] }) {
         <>
           <Button
             variant={"outline"}
+            key={i}
             className={`${activeBorrower === i ? "bg-primary text-white" : ""}`}
+            onClick={() => {
+              setActiveBorrower(i)
+            }}
           >
             {item.FirstName},{item.LastName}
           </Button>

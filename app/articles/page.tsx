@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import Banner from "@/components/BAAS/Banners/BannerSite"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
-import Pagination from "@/components/BAAS/Table/Pagination"
+import Pagination from "@/components/BAAS/Table/PaginationComponent"
 
 import BACKEND from "../API"
 import Sidebar from "./sidebar"
@@ -23,7 +23,7 @@ export default function BlogPage() {
     Results: any[]
     Meta: {
       Limit: number
-      CurrentPage: 3
+      CurrentPage: number
       TotalHits: number
       TotalPages: number
     }
@@ -219,6 +219,7 @@ export default function BlogPage() {
 
       <Separator className="my-4" />
       <Pagination
+        Limit={articles?.Meta.Limit ? articles.Meta.Limit : 0}
         TotalHits={articles?.Meta.TotalHits ? articles.Meta.TotalHits : 0}
         TotalPages={articles?.Meta.TotalPages ? articles.Meta.TotalPages : 0}
         CurrentPage={articles?.Meta.CurrentPage ? articles.Meta.CurrentPage : 0}

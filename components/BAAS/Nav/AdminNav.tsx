@@ -112,7 +112,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
         href: "/admin/forms",
         description: "Form submissions recorded in your system.",
 
-        classes: "bg-green-100",
+        classes: "bg-green-100 hover:bg-green-300",
 
         icon: <FormInput className="h-8 w-8 mr-2 " />,
       },
@@ -121,7 +121,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
         href: "/admin/forms/settings",
         description: "Emails that receive copies of forms submitted",
 
-        classes: "bg-green-100",
+        classes: "bg-green-100 hover:bg-green-300",
 
         icon: <Cog className="h-8 w-8 mr-2 " />,
       },

@@ -68,7 +68,7 @@ export default function ArticleInitForm(props: {
     <Form {...faqFormCXT}>
       <form
         onSubmit={faqFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6"
+        className="w-full space-y-6 mt-4 max-w-7xl mx-auto"
       >
         <TextInput
           form={faqFormCXT}

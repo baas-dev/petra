@@ -14,8 +14,10 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Form } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { SubmitForm } from "@/components/BAAS/Forms"
+import NumberInput from "@/components/BAAS/Forms/Inputs/NumberInput"
 import PasswordInput from "@/components/BAAS/Forms/Inputs/PasswordInput"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TableLoading from "@/components/BAAS/Loading/TableLoading"
@@ -27,25 +29,37 @@ const api = new BACKEND()
 
 export default function AuthPage() {
   const [showAccessCodeEnter, setShowAccessCodeEnter] = useState<boolean>(false)
+  const [loading, setLoading] = useState(false)
   const AuthFormCXT = useForm<z.infer<typeof AuthFormSchema>>({
     resolver: zodResolver(AuthFormSchema),
   })
 
   async function onSubmitRequest(data: { Email: string }) {
-    let res = await api.CREATE({
+    setLoading(true)
+    await api.CREATE({
       Route: "auth/login/request",
       Body: JSON.stringify(data),
     })
+
     setShowAccessCodeEnter(true)
+    setLoading(false)
   }
 
   async function onSubmitLogin(data: z.infer<typeof AuthFormSchema>) {
+    setLoading(true)
     await signIn("credentials", {
       email: AuthFormCXT.getValues("Email"),
       code: AuthFormCXT.getValues("Code"),
       redirect: false,
       callbackUrl: "/admin",
     })
+      .then((val) => {
+        console.log(val)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    setLoading(false)
   }
 
   return (
@@ -92,29 +106,36 @@ export default function AuthPage() {
             <Form {...AuthFormCXT}>
               <form onSubmit={AuthFormCXT.handleSubmit(onSubmitLogin)}>
                 <div className="mb-4">
-                  <Input
-                    className="bg-white"
-                    disabled
-                    value={AuthFormCXT.getValues("Email")}
-                  />
-                  <TextInput
+                  <Label className="my-2 text-md  ">
+                    Code was sent to:
+                    <span className="font-normal text-primary ml-2">
+                      {AuthFormCXT.getValues("Email")}
+                    </span>
+                  </Label>
+                </div>
+                <div className="mb-4">
+                  <NumberInput
                     form={AuthFormCXT}
                     options={{
                       name: "Code",
-                      label: "Code You Received",
+                      label: "Enter The Code You Received",
                       placeholder: "123456",
                       description: "Enter the code sent to your email here.",
-                      defaultValue: AuthFormCXT.getValues("Code"),
                     }}
                   />
                 </div>
-
-                <Button
-                  type="submit"
-                  className="  text-white font-semibold rounded-md py-2 px-4 w-full"
-                >
-                  Login
-                </Button>
+                {loading ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  <>
+                    <Button
+                      type="submit"
+                      className="  text-white font-semibold rounded-md py-2 px-4 w-full"
+                    >
+                      Login
+                    </Button>
+                  </>
+                )}
               </form>
             </Form>
           ) : (
@@ -132,13 +153,18 @@ export default function AuthPage() {
                     }}
                   />
                 </div>
-
-                <Button
-                  type="submit"
-                  className="  text-white font-semibold rounded-md py-2 px-4 w-full"
-                >
-                  Request Access Code
-                </Button>
+                {loading ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  <>
+                    <Button
+                      type="submit"
+                      className="  text-white font-semibold rounded-md py-2 px-4 w-full"
+                    >
+                      Request Access Code
+                    </Button>
+                  </>
+                )}
               </form>
             </Form>
           )}

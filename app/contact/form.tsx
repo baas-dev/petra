@@ -35,6 +35,7 @@ export default function ContactForm() {
     },
   })
   async function onSubmit(data: z.infer<typeof ContactFormSchema>) {
+    setLoading(true)
     const result = ContactFormSchema.safeParse(data)
 
     if (!result.success) {
@@ -70,6 +71,7 @@ export default function ContactForm() {
       })
       r.push("/success")
     }
+    setLoading(false)
   }
   // ID: string
   // Question: string

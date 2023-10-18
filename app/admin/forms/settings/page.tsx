@@ -63,6 +63,9 @@ export default function FAQAdmin() {
         <DataTable
           columns={columns}
           data={data} // Use state-based data
+          scope={{
+            TableName: "FormSettings",
+          }}
         />
       )}
     </>

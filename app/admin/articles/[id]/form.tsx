@@ -67,7 +67,7 @@ export default function ArticleManagmentPage(props: {
         <Form {...ArticleFormCXT}>
           <form
             onSubmit={ArticleFormCXT.handleSubmit(onSubmit)}
-            className="w-full flex flex-col gap-2"
+            className="w-full flex flex-col gap-2  pb-8"
           >
             <div className="w-full h-full">
               <div className=" gap-2 ">{/* Name */}</div>
@@ -87,7 +87,15 @@ export default function ArticleManagmentPage(props: {
                       name: "Published",
                     }}
                   />
-                  <SEOInformation form={ArticleFormCXT} items={props.items} />
+                  <SEOInformation
+                    form={ArticleFormCXT}
+                    items={props.items}
+                    options={{
+                      Description: {
+                        Placeholder: "Describe what this article contains...",
+                      },
+                    }}
+                  />
                 </div>
               </div>
               <div className="mt-4">
@@ -100,7 +108,7 @@ export default function ArticleManagmentPage(props: {
               </div>
               {/* <RichTextEditorInput form={ArticleFormCXT} /> */}
             </div>
-            <Button type="submit">
+            <Button type="submit" className="mb-4">
               {props.data ? "UPDATE" : "CREATE"} changes
             </Button>
           </form>

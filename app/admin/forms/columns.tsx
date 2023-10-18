@@ -1,13 +1,37 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { ColumnDef } from "@tanstack/react-table"
+import { Loader2 } from "lucide-react"
 import moment from "moment"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 
 export const columns: ColumnDef<any>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+        className="w-6 h-6 rounded-full"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+        className="w-6 h-6 rounded-full"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
   {
     id: "actions",
     header: () => {
@@ -15,13 +39,19 @@ export const columns: ColumnDef<any>[] = [
     },
     cell: ({ row }) => {
       let data = JSON.parse(row.original.SubmissionData)
-      data.Team
+      const [loading, setLoading] = useState(false)
       return (
         <>
           <div className="max-w-8">
-            <Link href={`/admin/forms/${row.original.ID}`}>
-              <Button>View</Button>
-            </Link>
+            {loading ? (
+              <>{<Loader2 className="text-2xl animate-spin text-accent" />}</>
+            ) : (
+              <>
+                <Link href={`/admin/forms/${row.original.ID}`}>
+                  <Button>View</Button>
+                </Link>
+              </>
+            )}
           </div>
         </>
       )
@@ -32,7 +62,6 @@ export const columns: ColumnDef<any>[] = [
     header: "Team Member(s) Credited",
     cell: ({ row }) => {
       let data = JSON.parse(row.original.SubmissionData)
-      console.log(data)
       return (
         <div>
           {data &&
@@ -49,7 +78,6 @@ export const columns: ColumnDef<any>[] = [
     header: "Borrower(s) Information Submitted",
     cell: ({ row }) => {
       let data = JSON.parse(row.original.SubmissionData)
-      console.log(data)
       return (
         <div>
           {data &&
