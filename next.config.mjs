@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: "/backend/:path*",
-        destination: "http://127.0.0.0:4000/:path*",
+        destination: "http://127.0.0.1:4000/:path*",
         permanent: false,
       },
     ]
@@ -16,7 +16,7 @@ const nextConfig = {
       beforeFiles: [
         {
           source: "/backend/:path*",
-          destination: "http://127.0.0.0:4000/:path*",
+          destination: "http://127.0.0.1:4000/:path*",
         },
       ],
     }

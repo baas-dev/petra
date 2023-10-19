@@ -105,7 +105,7 @@ export default function MediaDialogBody() {
     })
 
     try {
-      const response = await fetch("http://127.0.0.1:4000/media", {
+      const response = await fetch("/backend/media", {
         method: "POST",
         credentials: "include",
         body: formData,
