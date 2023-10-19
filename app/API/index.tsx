@@ -19,7 +19,7 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`http://127.0.0.1:4000/${options.Route}`, {
         cache: "no-cache",
         credentials: "include",
         headers: headers,
@@ -59,7 +59,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`http://127.0.0.1:4000/${options.Route}`, {
         method: "POST",
         headers: headers,
         credentials: "include",
@@ -99,7 +99,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`http://127.0.0.1:4000/${options.Route}`, {
         method: "PUT",
         headers: headers,
         credentials: "include",
@@ -140,7 +140,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`http://127.0.0.1:4000/${options.Route}`, {
         method: "DELETE",
         headers: headers,
         credentials: "include",
