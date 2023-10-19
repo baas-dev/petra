@@ -26,10 +26,10 @@ export default function Footer() {
 function SocialBar() {
   return (
     <div className="flex items-center container justify-center p-2 lg:justify-between">
-      <div className="flex justify-center mx-auto">
+      <div className="flex justify-center mx-auto space-x-4">
         <a
           href="https://www.facebook.com/petralending/"
-          className="mr-6 text-neutral-600 dark:text-neutral-200"
+          className=" text-neutral-600 dark:text-neutral-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ function SocialBar() {
 
         <a
           href="https://www.instagram.com/petrahomelending/"
-          className="mr-6 text-neutral-600 dark:text-neutral-200"
+          className=" text-neutral-600 dark:text-neutral-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ function SocialBar() {
         </a>
         <a
           href="https://www.linkedin.com/company/petra-home-lending"
-          className="mr-6 text-neutral-600 dark:text-neutral-200"
+          className=" text-neutral-600 dark:text-neutral-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

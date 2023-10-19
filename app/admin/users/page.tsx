@@ -65,6 +65,9 @@ export default function UsersAdmin() {
         <DataTable
           columns={columns}
           data={data ? data : []}
+          scope={{
+            TableName: "Users",
+          }}
           filters={[
             {
               label: "Name",

@@ -11,6 +11,7 @@ import Services from "@/components/Sections/Services/Services"
 
 import BACKEND from "./API"
 import Testimonial, { TestimonialSwiper } from "./about/Testimonials"
+import ContactForm from "./contact/form"
 
 const api = new BACKEND()
 
@@ -59,6 +60,26 @@ export default function IndexPage() {
             <LatestArticle article={article} testimonials={testimonials} />
           </div>
         </div>
+        <section className="bg-white dark:bg-gray-900">
+          <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div className="mr-auto place-self-center lg:col-span-7">
+              <h1 className="max-w-2xl mb-4 text-2xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                We Are Here To Help
+              </h1>
+              <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                Our team is standing by, knowledgeable and ready to help you.
+                <br />
+                Fill Out our form to get started now.
+              </p>
+            </div>
+            <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
+              <ContactForm />
+            </div>
+          </div>
+        </section>
+        {/* <div className="container mx-auto max-w-md bg-white p-4 border rounded-xl">
+          <ContactForm />
+        </div> */}
       </div>
     </>
   )

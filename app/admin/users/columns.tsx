@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import {
   Select,
@@ -40,6 +41,30 @@ export const columns: ColumnDef<z.infer<typeof UsersFormSchema>>[] = [
   //     )
   //   },
   // },
+  {
+    id: "select",
+
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+        className="w-6 h-6 rounded-full"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+        className="w-6 h-6 rounded-full"
+      />
+    ),
+    enableResizing: true,
+    size: 10,
+    enableSorting: false,
+    enableHiding: false,
+  },
   {
     accessorKey: "Name",
     header: "Name",
