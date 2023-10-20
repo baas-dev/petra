@@ -29,10 +29,10 @@ export default class BACKEND {
       )
       res.code = apiResponse.status
       if (res.code == 403) {
-        // signOut({
-        //   redirect: true,
-        //   callbackUrl: `/admin`,
-        // })
+        signOut({
+          redirect: true,
+          callbackUrl: `/admin`,
+        })
       }
 
       if (apiResponse.ok) {
@@ -74,10 +74,10 @@ export default class BACKEND {
       res.code = apiResponse.status
       console.log(res)
       if (res.code == 403) {
-        // signOut({
-        //   redirect: true,
-        //   callbackUrl: `/admin`,
-        // })
+        signOut({
+          redirect: true,
+          callbackUrl: `/admin`,
+        })
       }
 
       if (apiResponse.ok) {
@@ -118,10 +118,10 @@ export default class BACKEND {
       res.code = apiResponse.status
 
       if (res.code == 403) {
-        // signOut({
-        //   redirect: true,
-        //   callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
-        // })
+        signOut({
+          redirect: true,
+          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}/admin`,
+        })
       }
 
       if (apiResponse.ok) {
@@ -161,10 +161,10 @@ export default class BACKEND {
       )
       res.code = apiResponse.status
       if (res.code == 403) {
-        // signOut({
-        //   redirect: true,
-        //   callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}`,
-        // })
+        signOut({
+          redirect: true,
+          callbackUrl: `${process?.env.NEXT_PUBLIC_LOGIN_PAGE}`,
+        })
       }
 
       if (apiResponse.ok) {
