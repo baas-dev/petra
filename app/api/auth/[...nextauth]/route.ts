@@ -68,7 +68,6 @@ const authOptions: AuthOptions = {
 
           if (res?.AccessToken) {
             let decoded: any = jwt_decode(res.AccessToken)
-            console.log(decoded.exp)
             return {
               ...user,
               token: res.AccessToken,
