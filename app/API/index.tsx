@@ -19,11 +19,14 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      let apiResponse = await fetch(`/backend/${options.Route}`, {
-        cache: "no-cache",
-        // credentials: "include",
-        headers: headers,
-      })
+      let apiResponse = await fetch(
+        `https://api.petralending.com/${options.Route}`,
+        {
+          cache: "no-cache",
+          // credentials: "include",
+          headers: headers,
+        }
+      )
       res.code = apiResponse.status
       if (res.code == 403) {
         // signOut({
@@ -59,13 +62,17 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`/backend/${options.Route}`, {
-        method: "POST",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `https://api.petralending.com/${options.Route}`,
+        {
+          method: "POST",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
+      console.log(res)
       if (res.code == 403) {
         // signOut({
         //   redirect: true,
@@ -99,12 +106,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`/backend/${options.Route}`, {
-        method: "PUT",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `https://api.petralending.com/${options.Route}`,
+        {
+          method: "PUT",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
 
       if (res.code == 403) {
@@ -140,12 +150,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`/backend/${options.Route}`, {
-        method: "DELETE",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `https://api.petralending.com/${options.Route}`,
+        {
+          method: "DELETE",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
       if (res.code == 403) {
         // signOut({
