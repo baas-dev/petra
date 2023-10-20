@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: "/backend/:path*",
-        destination: `http://${process.env.NEXT_PUBLIC_APIURL}/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_APIURL}/:path*`,
         permanent: false,
       },
     ]
@@ -16,7 +16,7 @@ const nextConfig = {
       beforeFiles: [
         {
           source: "/backend/:path*",
-          destination: `http://${process.env.NEXT_PUBLIC_APIURL}/:path*`,
+          destination: `${process.env.NEXT_PUBLIC_APIURL}/:path*`,
         },
       ],
     }
