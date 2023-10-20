@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: "/backend/:path*",
-        destination: `https://papi.petralending.com/:path*`,
+        destination: `https://api.petralending.com/:path*`,
         permanent: false,
       },
     ]
@@ -16,7 +16,7 @@ const nextConfig = {
       beforeFiles: [
         {
           source: "/backend/:path*",
-          destination: `https://papi.petralending.com/:path*`,
+          destination: `https://api.petralending.com/:path*`,
         },
       ],
     }
