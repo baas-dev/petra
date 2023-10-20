@@ -44,7 +44,7 @@ RUN pnpm install
 COPY . .
 COPY .env.staging ./.env
 
-RUN npm run build
+RUN pnpm run build
 
 # # ------------------ staging -------------------
 FROM node:18.13.0-alpine as staging
@@ -59,4 +59,4 @@ COPY --from=build_staging /app/node_modules/ ./node_modules/
 COPY --from=build_staging /app/public/ ./public/
 COPY --from=build_staging /app/.next/ ./.next/
 
-CMD ["/bin/sh", "-c", "npm start"]
+CMD ["/bin/sh", "-c", "pnpm start"]
