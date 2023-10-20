@@ -19,11 +19,14 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
-        cache: "no-cache",
-        // credentials: "include",
-        headers: headers,
-      })
+      let apiResponse = await fetch(
+        `http://${process.env.APIURL}/${options.Route}`,
+        {
+          cache: "no-cache",
+          // credentials: "include",
+          headers: headers,
+        }
+      )
       res.code = apiResponse.status
       if (res.code == 403) {
         signOut({
@@ -59,12 +62,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
-        method: "POST",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `http://${process.env.APIURL}/${options.Route}`,
+        {
+          method: "POST",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
       if (res.code == 403) {
         signOut({
@@ -99,12 +105,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
-        method: "PUT",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `http://${process.env.APIURL}/${options.Route}`,
+        {
+          method: "PUT",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
 
       if (res.code == 403) {
@@ -140,12 +149,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000${options.Route}`, {
-        method: "DELETE",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `http://${process.env.APIURL}${options.Route}`,
+        {
+          method: "DELETE",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
       if (res.code == 403) {
         signOut({
