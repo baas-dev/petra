@@ -50,8 +50,6 @@ export default function AuthPage() {
     await signIn("credentials", {
       email: AuthFormCXT.getValues("Email"),
       code: AuthFormCXT.getValues("Code"),
-      redirect: false,
-      callbackUrl: "/admin",
     })
       .then((val) => {
         console.log(val)
