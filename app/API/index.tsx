@@ -3,10 +3,11 @@ import { getSession, signOut } from "next-auth/react"
 import { CreateRequest, Response } from "./TYPES"
 import { DeleteRequest, GetRequest } from "./TYPES/request"
 
+const apiurl = "https://api.petralending.com"
+
 export default class BACKEND {
   async GET(options: GetRequest): Promise<Response> {
     const session = await getSession()
-
     let res: Response = {
       data: null,
       error: null,
@@ -19,7 +20,7 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
         cache: "no-cache",
         // credentials: "include",
         headers: headers,
@@ -59,7 +60,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
         method: "POST",
         headers: headers,
         // credentials: "include",
@@ -100,7 +101,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
         method: "PUT",
         headers: headers,
         // credentials: "include",
@@ -141,7 +142,7 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`http://localhost:4000/${options.Route}`, {
+      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
         method: "DELETE",
         headers: headers,
         // credentials: "include",
