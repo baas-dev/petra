@@ -92,12 +92,16 @@ export default function MainHeroSection() {
                   Petra Home Lending
                 </h1>
 
-                <p className="max-w-lg mx-auto mb-4 text-lg text-gray-300">
-                  Rooted in Greek, our name means {"'rock'"} - embodying our
-                  strong principles. As a small home mortgage lender, we provide
-                  rock-solid certainty for your first home, growing family
-                  needs, or downsizing plans. Let us assist you in finding the
-                  ideal home for your {`life's`} journey. Welcome to our family.
+                <p className="max-w-xl mx-auto mb-4 text-lg text-gray-300">
+                  {`Our name comes from the Greek, meaning rock. We chose it
+                  because a rock-solid foundation undergirds all that we believe
+                  in and everything we do. We’re a small home mortgage lender,
+                  and that’s on purpose. So, whether you’re buying your first
+                  home, need a larger home for your growing family, or are ready
+                  to downsize, our purpose is to provide that same rock-solid
+                  certainty with your mortgage. We are called to help you move
+                  into the home that’s right for you, right where you find
+                  yourself in life’s journey. Welcome to the family.`}
                 </p>
                 <Button variant={"secondary"} className="outline">
                   Let Us Help

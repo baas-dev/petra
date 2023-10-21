@@ -29,7 +29,7 @@ export default async function FAQ() {
 
   return (
     <>
-      <div className="min-h-screen pt-4 w-full md:pt-24  ">
+      <div className="min-h-screen pt-4 w-full md:pt-28  ">
         <Banner
           Title={"Frequently Asked Questions"}
           Subtitle={"Helping You with Home Lending Questions"}

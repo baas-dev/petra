@@ -1,9 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Home, Mail, Phone } from "lucide-react"
+import { Facebook, Home, Mail, Phone } from "lucide-react"
 import moment from "moment"
 
 import { Button } from "@/components/ui/button"
+import { CommandItem } from "@/components/ui/command"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 
@@ -110,9 +111,10 @@ function TopSection() {
           </h2>
         </div>
         <div className=" w-full text-center md:text-right md:mt-0 mt-4">
-          <Link href="/contact">
-            <Button className="bg-accent/80 hover:bg-accent">
-              Get Started!
+          <Link target="_blank" href="https://m.me/petralending">
+            <Button className=" hover:cursor-pointer border-2 border-blue-500 bg-blue-600 text-white">
+              <Facebook className="mr-2 h-4 w-4" />
+              <span>Message Us on Facebook</span>
             </Button>
           </Link>
         </div>

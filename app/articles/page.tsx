@@ -141,7 +141,7 @@ export default function BlogPage() {
 
   console.log(articles?.Meta)
   return (
-    <div className="min-h-screen pt-4 w-full md:pt-24  ">
+    <div className="min-h-screen pt-4 w-full md:pt-28 ">
       <Banner
         Title={"Article Posts"}
         Subtitle={"News, Information, & More from the Petra Team"}
@@ -162,7 +162,7 @@ export default function BlogPage() {
         />
         <Separator className="my-4" />
       </div>
-      <div className="grid grid-cols-4 align-center gap-2 container">
+      <div className="grid grid-cols-1 md:grid-cols-4 align-center gap-2 container">
         <div className=" grid w-full col-span-3 mb-4  ">
           {articles?.Results && articles.Results.length === 0 ? (
             <p className="mx-auto mt-8">Could not load any results.</p>

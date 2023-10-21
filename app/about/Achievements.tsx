@@ -6,6 +6,8 @@ import "swiper/css/pagination"
 import { Autoplay, EffectCards, Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 
+import { TestimonialSwiper } from "./Testimonials"
+
 export default function Achievements(props: {
   data: { Label; Name; QuoteText }[]
 }) {
@@ -50,25 +52,7 @@ export default function Achievements(props: {
         <div className="lg:flex">
           <div className="relative mt-8  space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
             {/* <div className="dark:text-gray-300">🔥🌟</div> */}
-            <Swiper
-              slidesPerView={1}
-              ref={sliderRef}
-              loop
-              effect="cards"
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
-              modules={[Autoplay, EffectCards]}
-              className=" mb-4 mySwiper"
-            >
-              {props.data &&
-                props.data.map((item, i) => (
-                  <SwiperSlide>
-                    <SingleTestimonial {...item} />
-                  </SwiperSlide>
-                ))}
-            </Swiper>
+            <TestimonialSwiper data={props.data} />
             <div className=" flex lg:w-full gap-1">
               {imgdata.map((item, i) => {
                 return (

@@ -89,6 +89,7 @@ export default function MainNav() {
 
           <div className="flex p-2">
             {/* <ThemeToggle /> */}
+
             <AssistanceTrigger />
           </div>
         </div>
@@ -126,100 +127,136 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
+function Info() {
+  return (
+    <div className=" md:w-full  sm:flex text-left flex-col">
+      <div>
+        <span className="underline text-primary">
+          <a href="tel:214-432-0443" className="flex hover:underline">
+            +1 (214) 432-0443
+          </a>
+        </span>
+      </div>
+      <div>
+        <span className="font-light md:text-lg"> Petra Home Lending</span>
+      </div>
+      <div>
+        <span className="font-normal text-sm text-gray-400">
+          <a
+            href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
+            className="hover:cursor-pointer hover:underline"
+          >
+            3939 Belt Line Rd #150, Addison, TX 75001
+          </a>
+        </span>
+      </div>
+      <div>
+        <span>NMLS#: 211515</span>
+      </div>
+    </div>
+  )
+}
+
 const FullWidthNavbar = () => {
   let path = usePathname()
   return (
     <>
       <header className="bg-white w-full">
-        <div className=" mx-auto px-4 py-2 flex items-center">
-          <div className="mr-auto md:w-48 flex-shrink-0">
-            <Image
-              src={"/images/petra-blue.svg"}
-              height={75}
-              width={100}
-              alt=""
-            />
+        <div className=" mx-auto px-4 py-2 items-center grid grid-cols-3">
+          <Info />
+          <div className="md:w-full text-center flex flex-wrap justify-center">
+            <div className="flex items-center justify-center  space-y-4 flex-wrap w-full">
+              <Image
+                src={"/images/petra-blue.svg"}
+                height={50}
+                width={100}
+                alt=" mx-auto  pb-4 mb-4 "
+              />
+              <SiteSearch />
+            </div>
           </div>
-
-          <SiteSearch />
-          {/* <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md  xl:flex items-center">
-            <Input
-              className="border-none  bg-transparent font-semibold text-sm pl-4"
-              type="text"
-              placeholder="I'm searching for ..."
-            />
-
-            <Search className="w-8 mx-2" />
-          </div> */}
-
-          <div className="ml-auto md:w-48  sm:flex text-right flex-col place-items-end">
-            <span className="underline text-primary">
-              <a href="tel:214-432-0443" className="flex hover:underline">
-                +1 (214) 432-0443
-              </a>
-            </span>
-            <span className="font-light md:text-lg"> Petra Home Lending</span>
-            <span className="font-normal text-sm text-gray-400">
-              <a
-                href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
-                className="hover:cursor-pointer hover:underline"
-              >
-                3939 Belt Line Rd #150, Addison, TX 75001
-              </a>
-            </span>
+          <div className="w-full flex items-center h-full justify-end">
+            <div>
+              <Image
+                src={"/images/eh.png"}
+                alt=""
+                width={500}
+                height={500}
+                className="w-20 mr-4 mx-auto md:float-right "
+              />
+            </div>
+            <div className="max-w-16 float-right">
+              <AssistanceTrigger />
+            </div>
           </div>
-
-          <nav className="contents">
-            <ul className="ml-4 flex items-center justify-end">
-              <li>
-                <AssistanceTrigger />
-              </li>
-            </ul>
-          </nav>
         </div>
 
         <hr />
         <NavigationMenu className="items-center text-center mx-auto py-1">
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <Link href="/" className="" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
-                    className={`flex-wrap text-cente items-center  ${
+                    className={`flex-wrap text-center items-center  ${
                       path == "/" ? "text-accent underline" : ""
                     } `}
                   >
-                    <span> Home</span>
+                    Home
                   </div>
-                </NavigationMenuLink>
+                </HoverCardTrigger>
               </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Home
+                  </Label>
+                  <p>Start here!</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
-                    className={`flex-wrap text-cente items-center  ${
+                    className={`flex-wrap text-center items-center  ${
                       path == "/about" ? "text-accent underline" : ""
                     } `}
                   >
-                    <span> About Petra</span>
+                    Meet Petra
                   </div>
-                </NavigationMenuLink>
+                </HoverCardTrigger>
               </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    About Us
+                  </Label>
+                  <p>Meet the team representing Petra Home Lending</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/articles" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
-                    className={`flex-wrap text-cente items-center  ${
+                    className={`flex-wrap text-center items-center  ${
                       path == "/articles" ? "text-accent underline" : ""
                     } `}
                   >
-                    <span>Articles</span>
+                    Articles
                   </div>
-                </NavigationMenuLink>
+                </HoverCardTrigger>
               </Link>
-            </NavigationMenuItem>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Articles
+                  </Label>
+                  <p>Helpful content produced by the Petra team</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
 
             <NavigationMenuItem>
               <NavigationMenuTrigger>Resources</NavigationMenuTrigger>

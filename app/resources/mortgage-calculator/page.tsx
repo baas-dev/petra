@@ -87,7 +87,7 @@ export default function MortgageCalculatorPage() {
   ]
 
   return (
-    <div className="min-h-screen pt-4 w-full md:pt-24  ">
+    <div className="min-h-screen pt-4 w-full md:pt-28  ">
       <Banner
         Title={"Mortgage Calculator"}
         Subtitle={"An easy-to-use, mortgage estimation tool"}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Item } from "@radix-ui/react-navigation-menu"
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax"
 
+import { Label } from "@/components/ui/label"
 import BigCard from "@/components/BAAS/Cards/BigCard"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
 import Hero1 from "@/components/BAAS/Heros/Hero1"
@@ -48,38 +49,50 @@ export default function IndexPage() {
 
   return (
     <>
-      <Hero1 />
-      <Services />
+      <div className="h-full w-full bg-secondary">
+        <Hero1 />
+        <Services />
 
-      <div className="bg-secondary ">
-        <div className="grid md:grid-cols-12 grid-cols-1 pb-16   gap-4 container mx-auto">
-          <div className="col-span-1 md:col-span-7">
-            <Graphs />
-          </div>
-          <div className="col-span-1 md:col-span-5">
-            <LatestArticle article={article} testimonials={testimonials} />
-          </div>
-        </div>
-        <section className="bg-white dark:bg-gray-900">
-          <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-            <div className="mr-auto place-self-center lg:col-span-7">
-              <h1 className="max-w-2xl mb-4 text-2xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                We Are Here To Help
-              </h1>
-              <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                Our team is standing by, knowledgeable and ready to help you.
-                <br />
-                Fill Out our form to get started now.
-              </p>
+        <div className="bg-secondary ">
+          <div className="grid  grid-cols-1 pb-16   gap-4 container mx-auto">
+            <div className="">
+              <h3>Mortgage Interest Rates</h3>
+              <Label>
+                The average rates of home loans acquired in the U.S.
+              </Label>
+              <Graphs />
             </div>
-            <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-              <ContactForm />
+            <div className="w-full">
+              <LatestArticle article={article} testimonials={testimonials} />
             </div>
           </div>
-        </section>
-        {/* <div className="container mx-auto max-w-md bg-white p-4 border rounded-xl">
+          <section className="bg-white dark:bg-gray-900">
+            <div className="grid grid-cols-1 md:grid-cols-2 container py-8 h-full">
+              <div className="w-full">
+                <h1 className="max-w-2xl mb-4 text-2xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                  We Are Here To Help
+                </h1>
+                <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                  Our team is standing by, knowledgeable and ready to help you.
+                  <br />
+                  Fill Out our form to get started now.
+                </p>
+                <div className="max-w-lg">
+                  <TestimonialSwiper data={testimonials} />
+                </div>
+              </div>
+              <div className=" border rounded bg-blue-100 p-4 shadow-md flex flex-wrap items-center">
+                <h3 className="text-light text-2xl underline">
+                  Send us a message!
+                </h3>
+                <ContactForm />
+              </div>
+            </div>
+          </section>
+          {/* <div className="container mx-auto max-w-md bg-white p-4 border rounded-xl">
           <ContactForm />
         </div> */}
+        </div>
       </div>
     </>
   )
@@ -87,7 +100,7 @@ export default function IndexPage() {
 
 function Graphs() {
   return (
-    <div className="  h-full  w-full justify-center items-center">
+    <div className="  h-full  flex flex-col md:flex-row w-full justify-center pb-8 items-center">
       <div
         className="w-full object-contain "
         style={{ scrollSnapAlign: "end" }}
@@ -99,7 +112,7 @@ function Graphs() {
           className="object-contain  "
         ></iframe>
       </div>
-      <div className=" overflow-x-hidden w-full">
+      <div className=" overflow-x-hidden w-full md:w-1/2">
         <iframe
           className="h-72 mt-2 mx-auto bg-white w-full"
           src="//www.mortgagecalculator.org/rates-widgets/mortgages/text-widget.php?advanced&amp;data=30yr_fr|15yr_fr"
@@ -125,7 +138,7 @@ function LatestArticle(props: { article: any; testimonials: any }) {
       ) : null} */}
 
       <BigCards />
-      <TestimonialSwiper data={props.testimonials} />
+      {/* <TestimonialSwiper data={props.testimonials} /> */}
     </div>
   )
 }
@@ -137,8 +150,8 @@ function BigCards() {
       Description: "",
       Button: true,
       btnText: "",
-      bg: "bg-primary/60",
-      bgHover: "bg-primary",
+      bg: "bg-primary",
+      bgHover: "bg-primary/60",
       link: "/articles",
       image: "",
     },
@@ -147,8 +160,8 @@ function BigCards() {
       Description: "",
       Button: true,
       btnText: "",
-      bg: "bg-primary/60",
-      bgHover: "bg-primary",
+      bg: "bg-primary",
+      bgHover: "bg-primary/60",
       link: "/about",
       image: "",
     },
@@ -157,8 +170,8 @@ function BigCards() {
       Description: "",
       Button: true,
       btnText: "",
-      bg: "bg-primary/60",
-      bgHover: "bg-primary",
+      bg: "bg-primary",
+      bgHover: "bg-primary/60",
       link: "/contact",
       image: "",
     },
@@ -167,8 +180,8 @@ function BigCards() {
       Description: "",
       Button: true,
       btnText: "",
-      bg: "bg-primary/60",
-      bgHover: "bg-primary",
+      bg: "bg-primary",
+      bgHover: "bg-primary/60",
       link: "/resources/mortgage-calculator",
       image: "",
     },
@@ -177,8 +190,8 @@ function BigCards() {
       Description: "",
       Button: true,
       btnText: "",
-      bg: "bg-primary/60",
-      bgHover: "bg-primary",
+      bg: "bg-primary",
+      bgHover: "bg-primary/60",
       link: "/resources/faqs",
       image: "",
     },
@@ -187,8 +200,8 @@ function BigCards() {
       Description: "",
       Button: true,
       btnText: "",
-      bg: "bg-primary/60",
-      bgHover: "bg-primary",
+      bg: "bg-primary",
+      bgHover: "bg-primary/60",
       link: "/resources/faqs",
       image: "",
     },

@@ -1,11 +1,23 @@
+import Banner from "@/components/BAAS/Banners/BannerSite"
+
 import PrequalificationForm from "./Steps/PrequalificationForm"
 import Step1Form from "./Steps/Step1Form"
 
 export default function PrequalificationPage() {
   return (
-    <div className="container pt-24 flex w-full flex-col min-h-screen">
-      <PrequalificationHeader />
-      <PrequalificationForm />
+    <div className="w-full pt-4 md:pt-28 ">
+      <Banner Title={"Prequalification"} Subtitle={"Borrower Snapshot"}>
+        <></>
+      </Banner>
+      <div className="container flex w-full flex-col min-h-screen">
+        <p className="w-full">
+          Not ready to apply now? Give us some basic info so we can decide what
+          type of loan might be the best fit for you. <br /> Don’t worry, we
+          won’t be pulling your credit or making any hard inquiries with this
+          step.
+        </p>
+        <PrequalificationForm />
+      </div>
     </div>
   )
 }
@@ -23,7 +35,9 @@ function PrequalificationHeader() {
       </div>
       <div className="h-full w-full max-w-md font-light ">
         <p>
-          This form helps our team determine the best options for your lending
+          Not ready to apply now? Give us some basic info so we can decide what
+          type of loan might be the best fit for you. Don’t worry, we won’t be
+          pulling your credit or making any hard inquiries with this step.
         </p>
       </div>
     </div>

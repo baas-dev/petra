@@ -22,7 +22,7 @@ const data = [
 export default function Services() {
   return (
     <div className="w-full ">
-      <div className="w-full  bg-secondary">
+      <div className="w-full  ">
         <section className="container z-20 text-center  pb-8 -pt-40    text-secondary">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ">
             <Card

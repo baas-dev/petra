@@ -2,8 +2,12 @@ import React, { useCallback, useRef } from "react"
 import Image from "next/image"
 
 import "swiper/css"
-import { Autoplay } from "swiper"
+import { Autoplay, Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
+
+import "swiper/css/pagination"
+import "swiper/css/navigation"
+import SwiperCore from "swiper"
 
 import { Separator } from "@/components/ui/separator"
 
@@ -100,16 +104,21 @@ const Testimonial = (props: { data: { Label; Name; QuoteText }[] }) => {
 
 export function TestimonialSwiper(props: { data }) {
   const sliderRef = useRef<any>()
-
-  return (
+  SwiperCore.use([Autoplay])
+  return props.data && props.data.length > 0 ? (
     <Swiper
       slidesPerView={1}
       ref={sliderRef}
       loop
       effect="cards"
-      autoplay={true}
+      autoplay={{
+        delay: 2000,
+      }}
       grabCursor
-      modules={[Autoplay]}
+      pagination={{
+        type: "progressbar",
+      }}
+      modules={[Autoplay, Pagination]}
       className=" mb-4 mySwiper"
     >
       {props.data &&
@@ -119,6 +128,8 @@ export function TestimonialSwiper(props: { data }) {
           </SwiperSlide>
         ))}
     </Swiper>
+  ) : (
+    <></>
   )
 }
 
