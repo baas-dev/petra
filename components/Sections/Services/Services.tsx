@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Fade } from "react-awesome-reveal"
 
 import { Button } from "@/components/ui/button"
@@ -20,14 +21,18 @@ const data = [
 ]
 
 export default function Services() {
+  const r = useRouter()
   return (
     <div className="w-full ">
       <div className="w-full  ">
-        <section className="container z-20 text-center  pb-8 -pt-40    text-secondary">
+        <section className=" z-20   pb-2   text-secondary">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ">
             <Card
+              onClick={() => {
+                r.push("/prequalify")
+              }}
               style={{ contain: "layout" }}
-              className="bg-primary bg-opacity-20"
+              className="bg-primary bg-opacity-20 hover:cursor-pointer"
             >
               <Image
                 src={"/images/background.svg"}
@@ -60,7 +65,13 @@ export default function Services() {
                 <label className="mx-auto text-secondary">{`Learn More >`}</label>
               </CardFooter> */}
             </Card>
-            <Card style={{ contain: "layout" }} className="bg-primary">
+            <Card
+              onClick={() => {
+                r.push("/prequalify")
+              }}
+              style={{ contain: "layout" }}
+              className="bg-primary bg-opacity-20 hover:cursor-pointer"
+            >
               <Image
                 src={"/images/background.svg"}
                 alt=""

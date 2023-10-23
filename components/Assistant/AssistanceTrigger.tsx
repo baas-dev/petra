@@ -55,27 +55,6 @@ export default function AssistanceTrigger() {
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
 
-            <CommandGroup heading="Looking For Support?">
-              <Link href="/contact">
-                <CommandItem className="hover:cursor-pointer">
-                  <Calendar className="mr-2 h-4 w-4" />
-                  <span>Common Buyer Questions</span>
-                </CommandItem>
-              </Link>
-              <Link href="/resources/downloads">
-                <CommandItem className="hover:cursor-pointer">
-                  <Smile className="mr-2 h-4 w-4" />
-                  <span>Find Helpful Information</span>
-                </CommandItem>
-              </Link>
-              <Link href="/resources/mortage-calculator">
-                <CommandItem className="hover:cursor-pointer">
-                  <Calculator className="mr-2 h-4 w-4" />
-                  <span>Calculate Monthly Payment</span>
-                </CommandItem>
-              </Link>
-            </CommandGroup>
-            <CommandSeparator />
             <CommandGroup heading="Contact Us!">
               <Link href="tel:12144320443">
                 <CommandItem className="hover:cursor-pointer">

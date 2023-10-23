@@ -123,3 +123,6 @@
   content: "";
   display: inline-block;
 }
+.tradingview-widget-copyright {
+  visibility: hidden;
+}

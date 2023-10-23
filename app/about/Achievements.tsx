@@ -6,6 +6,8 @@ import "swiper/css/pagination"
 import { Autoplay, EffectCards, Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 
+import StatCard from "@/components/BAAS/Cards/StatCard"
+
 import { TestimonialSwiper } from "./Testimonials"
 
 export default function Achievements(props: {
@@ -41,19 +43,19 @@ export default function Achievements(props: {
 
   return (
     <div className="bg-secondary py-40 relative min-h-screen h-full w-full dark:bg-gray-900">
-      <div className="relative xl:container m-auto px-6 md:px-12 lg:px-6">
+      <div className="relative  m-auto px-6 md:px-12 lg:px-6">
         <h1 className="text-4xl block font-bold relative text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">
-          10x Texas Legend
-          <br className="lg:block hidden" />{" "}
-          <span className="sm:mx-auto font-light sm:w-10/12 md:w-2/3 text-4xl text-blue-900 text-center  lg:w-auto lg:text-left  dark:text-white">
-            As Recognized by Texas Monthly
+          What Our Clients
+          <br className="block" />
+          <span className="sm:mx-auto font-light w-full text-4xl text-blue-900 text-center  lg:w-auto lg:text-left  dark:text-white">
+            Are Saying About Us
           </span>
         </h1>
-        <div className="lg:flex">
-          <div className="relative mt-8  space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
+        <div className="lg:flex space-y-4">
+          <div className="relative mt-8  space-y-8 md:w-full lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12 max-w-6xl">
             {/* <div className="dark:text-gray-300">🔥🌟</div> */}
             <TestimonialSwiper data={props.data} />
-            <div className=" flex lg:w-full gap-1">
+            {/* <div className=" flex lg:w-full gap-1">
               {imgdata.map((item, i) => {
                 return (
                   <div key={i} className="w-full h-full mx-auto">
@@ -67,8 +69,49 @@ export default function Achievements(props: {
                   </div>
                 )
               })}
+            </div> */}
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 justify-between gap-2 mb-4">
+              <StatCard
+                title={"D Magazine"}
+                description={"7x Recognized"}
+                image={`/images/dmag.png`}
+              />
+              <StatCard
+                title={"Texas Five Star"}
+                description={"2013-2023"}
+                image={`/images/fs.png`}
+              />
+              <StatCard
+                title={"Texas Five Star LEGENDS"}
+                description={"2022"}
+                image={`/images/fsl.png`}
+              />
+            </div>
+            <div className="flex gap-2 w-full mb-4">
+              <Image
+                src={"/images/ntxamp.png"}
+                alt=""
+                width={500}
+                height={500}
+                className="h-24 w-full object-contain"
+              />
+              <Image
+                src={"/images/NAMB-Logo.jpg"}
+                alt=""
+                width={500}
+                height={500}
+                className="h-24 w-full object-contain"
+              />
+              <Image
+                src={"/images/f.png"}
+                alt=""
+                width={500}
+                height={500}
+                className="h-24 w-full object-contain"
+              />
             </div>
           </div>
+
           <div className=" mt-12 md:mt-0 lg:absolute -right-10 lg:w-7/12">
             <div className="relative w-full">
               <div

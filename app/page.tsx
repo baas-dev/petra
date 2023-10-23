@@ -7,8 +7,12 @@ import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax"
 import { Label } from "@/components/ui/label"
 import BigCard from "@/components/BAAS/Cards/BigCard"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
+import StatCard from "@/components/BAAS/Cards/StatCard"
 import Hero1 from "@/components/BAAS/Heros/Hero1"
+import TradingViewWidget from "@/components/Sections/Home/TradingViewWidget"
 import Services from "@/components/Sections/Services/Services"
+import { TeamCard } from "@/components/Sections/Team/TeamCard"
+import TeamSection from "@/components/Sections/Team/TeamSections"
 
 import BACKEND from "./API"
 import Testimonial, { TestimonialSwiper } from "./about/Testimonials"
@@ -31,15 +35,16 @@ export default function IndexPage() {
   const getRecentArticle = async () => {
     let res = await api
       .GET({
-        Route: "search?limit=1&scopes=articles",
+        Route: "search/articles?direction=desc&limit=1",
       })
       .then((val) => {
-        console.log(val)
-        setArticle(val.data.results[0])
+        console.log(val.data)
+        setArticle(val.data.Results[0])
       })
       .catch((err) => {
         console.log(err)
       })
+    console.log(res)
   }
   useEffect(() => {
     GetTestimonials()
@@ -49,52 +54,73 @@ export default function IndexPage() {
 
   return (
     <>
-      <div className="h-full w-full bg-secondary">
+      <div className="h-full w-full bg-secondary pb-8 ">
         <Hero1 />
-        <Services />
-
-        <div className="bg-secondary ">
-          <div className="grid  grid-cols-1 pb-16   gap-4 container mx-auto">
-            <div className="">
-              <h3>Mortgage Interest Rates</h3>
-              <Label>
-                The average rates of home loans acquired in the U.S.
-              </Label>
-              <Graphs />
-            </div>
+        <div className="container">
+          <Awards />
+          {/* <Services /> */}
+          <div className="flex flex-col md:flex-row gap-2 ">
             <div className="w-full">
-              <LatestArticle article={article} testimonials={testimonials} />
+              <TradingViewWidget />
+            </div>
+            <div className="flex flex-col w-full ">
+              <Services />
+              {/* <LatestArticle article={article} /> */}
             </div>
           </div>
-          <section className="bg-white dark:bg-gray-900">
-            <div className="grid grid-cols-1 md:grid-cols-2 container py-8 h-full">
-              <div className="w-full">
-                <h1 className="max-w-2xl mb-4 text-2xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                  We Are Here To Help
-                </h1>
-                <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                  Our team is standing by, knowledgeable and ready to help you.
-                  <br />
-                  Fill Out our form to get started now.
-                </p>
-                <div className="max-w-lg">
-                  <TestimonialSwiper data={testimonials} />
-                </div>
-              </div>
-              <div className=" border rounded bg-blue-100 p-4 shadow-md flex flex-wrap items-center">
-                <h3 className="text-light text-2xl underline">
-                  Send us a message!
-                </h3>
-                <ContactForm />
-              </div>
-            </div>
-          </section>
-          {/* <div className="container mx-auto max-w-md bg-white p-4 border rounded-xl">
-          <ContactForm />
-        </div> */}
+
+          <TeamSection />
+          <ContactWidget testimonials={testimonials} />
         </div>
       </div>
     </>
+  )
+}
+
+function Awards() {
+  return (
+    <div className="w-full grid grid-cols-1 md:grid-cols-3 justify-between gap-2 mb-4">
+      <StatCard
+        title={"D Magazine"}
+        description={"7x Recognized"}
+        image={`/images/dmag.png`}
+      />
+      <StatCard
+        title={"Texas Five Star"}
+        description={"2013-2023"}
+        image={`/images/fs.png`}
+      />
+      <StatCard
+        title={"Texas Five Star LEGENDS"}
+        description={"2022"}
+        image={`/images/fsl.png`}
+      />
+    </div>
+  )
+}
+function ContactWidget({ testimonials }) {
+  return (
+    <section className="bg-white dark:bg-gray-900">
+      <div className="grid grid-cols-1 md:grid-cols-2 container py-8 h-full">
+        <div className="w-full">
+          <h1 className="max-w-2xl mb-4 text-2xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+            We Are Here To Help
+          </h1>
+          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+            Our team is standing by, knowledgeable and ready to help you.
+            <br />
+            Fill Out our form to get started now.
+          </p>
+          <div className="max-w-lg">
+            <TestimonialSwiper data={testimonials} />
+          </div>
+        </div>
+        <div className=" border rounded bg-blue-100 p-4 shadow-md flex flex-wrap items-center">
+          <h3 className="text-light text-2xl underline">Send us a message!</h3>
+          <ContactForm />
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -122,11 +148,10 @@ function Graphs() {
   )
 }
 
-function LatestArticle(props: { article: any; testimonials: any }) {
-  console.log(props.article)
+function LatestArticle(props: { article: any }) {
   return (
-    <div className=" w-full  col-span-5">
-      {/* {props.article ? (
+    <div className=" w-full  ">
+      {props.article ? (
         <LongCardDetail
           Title={props.article.Title}
           Description={props.article.description}
@@ -135,10 +160,7 @@ function LatestArticle(props: { article: any; testimonials: any }) {
           CreatedAt={props.article.CreatedAt}
           UpdatedAt={props.article.UpdatedAt}
         />
-      ) : null} */}
-
-      <BigCards />
-      {/* <TestimonialSwiper data={props.testimonials} /> */}
+      ) : null}
     </div>
   )
 }

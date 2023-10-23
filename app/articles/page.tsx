@@ -163,7 +163,7 @@ export default function BlogPage() {
         <Separator className="my-4" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 align-center gap-2 container">
-        <div className=" grid w-full col-span-3 mb-4  ">
+        <div className=" grid w-full col-span-3 mb-4 space-y-2 ">
           {articles?.Results && articles.Results.length === 0 ? (
             <p className="mx-auto mt-8">Could not load any results.</p>
           ) : (

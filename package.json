@@ -101,6 +101,7 @@
     "react-spring": "^9.7.3",
     "react-spring-3d-carousel": "^1.3.4",
     "react-square-web-payments-sdk": "^3.2.1",
+    "react-ts-tradingview-widgets": "^1.2.0",
     "rechart": "^0.0.1",
     "resize-observer-polyfill": "^1.5.1",
     "sharp": "^0.31.3",

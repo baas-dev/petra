@@ -61,9 +61,9 @@ export default function MobileNavSheet() {
           <div>
             <MobileNavMenu setOpen={setOpen} />
           </div>
-          <SheetFooter>
+          {/* <SheetFooter>
             <p>Made by BAAS Software</p>
-          </SheetFooter>
+          </SheetFooter> */}
         </SheetContent>
       </Sheet>
     </div>
@@ -163,7 +163,7 @@ const MobileNavMenu = ({ setOpen }) => {
                   className="w-full justify-start"
                 >
                   <AlertCircle className="mr-2 h-4 w-4" />
-                  Get Prequalified
+                  Snapshot Tool
                 </Button>
               </HoverCardTrigger>
               <HoverCardContent></HoverCardContent>

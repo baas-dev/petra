@@ -9,7 +9,7 @@ interface Banner {
 
 export default function Banner(props: Banner) {
   return (
-    <div className=" h-full w-full   items-center border shadow-md bg-white p-4 mb-4">
+    <div className=" h-full w-full mt-4   items-center border shadow-md bg-white p-4 mb-4">
       <div className="w-full container mx-auto">
         <h2 className="text-md block font-light text-primary">
           {props.Subtitle}

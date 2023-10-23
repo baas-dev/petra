@@ -85,10 +85,10 @@ export default function MainHeroSection() {
           <div className="text-center">
             <div className="container px-4 mx-auto">
               <div className="mx-auto text-center">
-                <Badge className="bg-accent mb-2 text-xl">
+                <Badge className="bg-accent mb-2 text-sm font-light md:text-xl">
                   The #1 Choice for Texas Home Lending
                 </Badge>
-                <h1 className="text-6xl text-white font-bold mb-2">
+                <h1 className="text-2xl md:text-4xl text-white font-bold mb-2">
                   Petra Home Lending
                 </h1>
 

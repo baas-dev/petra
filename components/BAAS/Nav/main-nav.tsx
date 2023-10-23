@@ -4,9 +4,10 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Inspect, Search } from "lucide-react"
+import { Facebook, Inspect, Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   HoverCard,
   HoverCardContent,
@@ -87,7 +88,7 @@ export default function MainNav() {
         <div className=" flex h-16  items-center space-x-4 justify-between sm:space-x-0">
           <MobileNavbar />
 
-          <div className="flex p-2">
+          <div className="flex p-2 m-2">
             {/* <ThemeToggle /> */}
 
             <AssistanceTrigger />
@@ -134,6 +135,14 @@ function Info() {
         <span className="underline text-primary">
           <a href="tel:214-432-0443" className="flex hover:underline">
             +1 (214) 432-0443
+          </a>
+        </span>
+        <span className="underline text-primary">
+          <a
+            href="mailto:“contactus@petralending.com”"
+            className="flex hover:underline"
+          >
+            contactus@petralending.com
           </a>
         </span>
       </div>
@@ -336,14 +345,14 @@ const FullWidthNavbar = () => {
                       path == "/prequalify" ? "text-accent underline" : ""
                     } `}
                   >
-                    Get Prequalified
+                    Snapshot Tool
                   </div>
                 </HoverCardTrigger>
               </Link>
               <HoverCardContent className="bg-white">
                 <div className="text-left">
                   <Label className="text-lg pb-2 underline text-primary ">
-                    Start Prequalification
+                    Snapshot Tool
                   </Label>
                   <p>
                     Complete our short form to make your home buying experience

@@ -266,6 +266,9 @@ dependencies:
   react-square-web-payments-sdk:
     specifier: ^3.2.1
     version: 3.2.1(react@18.2.0)
+  react-ts-tradingview-widgets:
+    specifier: ^1.2.0
+    version: 1.2.0(react-dom@18.2.0)(react@18.2.0)
   rechart:
     specifier: ^0.0.1
     version: 0.0.1
@@ -10541,6 +10544,16 @@ packages:
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-ts-tradingview-widgets@1.2.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9DlZ7QmpYxdmunLYYdPCnnE0DyAPMNdE0FDrlL7dnUeRXXSTzh6hm0jqV9p5AkSXTK5OaizRDIPLBAM7FKjQCg==}
+    peerDependencies:
+      react: ^17.0.2 || ^18.1.0
+      react-dom: ^17.0.2 || ^18.1.0
+    dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false

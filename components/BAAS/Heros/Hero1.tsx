@@ -24,13 +24,20 @@ export default function Hero1() {
         <div className="container max-w-4xl mx-auto px-4 sm:px-6">
           <div className="w-full gap-4 mx-auto">
             {/* Image */}
-            <div className="w-full z-40">
+            <div className="w-full grid grid-cols-1 z-20">
               <Image
                 height={1000}
                 width={2000}
                 alt={""}
                 className="block relative rounded-md w-full  float-right z-10 "
-                src={"/images/logotag.png"}
+                src={"/images/plogo.png"}
+              />
+              <Image
+                height={1000}
+                width={2000}
+                alt={""}
+                className="block relative rounded-md w-full  float-right z-10 "
+                src={"/images/tag.png"}
               />
             </div>
           </div>

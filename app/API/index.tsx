@@ -3,8 +3,6 @@ import { getSession, signOut } from "next-auth/react"
 import { CreateRequest, Response } from "./TYPES"
 import { DeleteRequest, GetRequest } from "./TYPES/request"
 
-const apiurl = "https://api.petralending.com"
-
 export default class BACKEND {
   async GET(options: GetRequest): Promise<Response> {
     const session = await getSession()
@@ -20,11 +18,14 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
-        cache: "no-cache",
-        // credentials: "include",
-        headers: headers,
-      })
+      let apiResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_APIURL}/${options.Route}`,
+        {
+          cache: "no-cache",
+          // credentials: "include",
+          headers: headers,
+        }
+      )
       res.code = apiResponse.status
       if (res.code == 403) {
         signOut({
@@ -60,12 +61,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
-        method: "POST",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_APIURL}/${options.Route}`,
+        {
+          method: "POST",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
       console.log(res)
       if (res.code == 403) {
@@ -101,12 +105,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
-        method: "PUT",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_APIURL}/${options.Route}`,
+        {
+          method: "PUT",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
 
       if (res.code == 403) {
@@ -142,12 +149,15 @@ export default class BACKEND {
         "Content-Type": "application/json",
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
-      let apiResponse = await fetch(`${apiurl}/${options.Route}`, {
-        method: "DELETE",
-        headers: headers,
-        // credentials: "include",
-        body: options.Body,
-      })
+      let apiResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_APIURL}/${options.Route}`,
+        {
+          method: "DELETE",
+          headers: headers,
+          // credentials: "include",
+          body: options.Body,
+        }
+      )
       res.code = apiResponse.status
       if (res.code == 403) {
         signOut({

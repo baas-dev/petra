@@ -30,43 +30,62 @@ export default function LongCardDetail(props: {
     setLoading(false)
   }
   return (
-    <Card className="mx-auto flex flex-col rounded-xl border mb-2 bg-white shadow  md:flex-row md:items-center">
-      <div className="shrink-0  md:mr-8 md:max-w-sm">
+    <Card className="mx-auto grid grid-cols-3 w-full h-full pb-2 space-y-2 mt-2 rounded-xl border bg-white shadow   md:items-center">
+      <div className="col-span-3 lg:col-span-1  w-full">
         <Image
-          className={`rounded-l-xl h-40 border-r w-96 object-cover bg-white`}
+          className={`xl:rounded-l-xl h-48 border-r w-full object-cover bg-white`}
           src={MainImage ? MainImage : "/images/petra-blue.svg"}
           onLoadingComplete={HandleLoad}
           alt=""
-          height={500}
-          width={500}
+          height={750}
+          width={1000}
         />
       </div>
-      <div className="h-full w-full">
-        <h2 className=" text-xl  text-primary font-light">{Title}</h2>
-        <p className="mb-4 font-light">{Description}</p>
-        <Separator orientation="horizontal" className="text-black mb-4" />
-        <div className="flex items-center justify-between w-full ">
+      <div className="h-full w-full p-4  col-span-3 lg:col-span-2 justify-end">
+        <div className="flex w-full items-center">
           <div className="w-full">
-            <p className=" w-56">
-              <strong className="block text-sm font-secondary">
-                Published:
-              </strong>
-              <span className="text-sm font-light">
-                <TimeRep />
-              </span>
-            </p>
+            <h2 className=" text-xl  text-primary font-light">{Title}</h2>
           </div>
-          <div className="mb-2 md:mr-8 w-full text-right">
-            {Category?.Title ? (
-              <>
-                <strong className="block font-normal font-secondary">
-                  Found In:
+          <div className="flex items-center w-full h-full text-right ">
+            <div className="w-full">
+              <p className="">
+                <strong className="block text-sm font-secondary">
+                  Last Updated:
                 </strong>
-                <h3 className=" text-sm font-light">{Category?.Title}</h3>
-              </>
-            ) : (
-              <></>
-            )}
+                <span className="text-sm font-light">
+                  <TimeRep />
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <Separator orientation="horizontal" className="text-black mb-4" />
+
+        <div className="bottom-0 align-bottom">
+          <p className="mb-4 font-light h-20 w-full">{Description}</p>
+          <div className="flex items-center h-full align-bottom bottom-0  justify-between w-full ">
+            <div className="w-full">
+              <p className=" w-56">
+                <strong className="block text-sm font-secondary">
+                  Published:
+                </strong>
+                <span className="text-sm font-light">
+                  <TimeRep />
+                </span>
+              </p>
+            </div>
+            <div className="mb-2 md:mr-8 w-full text-right">
+              {Category?.Title ? (
+                <>
+                  <strong className="block font-normal font-secondary">
+                    Found In:
+                  </strong>
+                  <h3 className=" text-sm font-light">{Category?.Title}</h3>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
       </div>

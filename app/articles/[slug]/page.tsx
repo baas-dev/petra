@@ -82,39 +82,9 @@ export default async function SocialDetailPage({ params }) {
           <div className="flex flex-col lg:flex-row lg:space-x-12  pb-8 max-w-6xl mx-auto">
             <div className="px-4 lg:px-0 mt-4 text-gray-700 text-lg leading-relaxed w-full ">
               <div
-                className="bg-white p-4 rounded-xl shadow-lg w-full border ProseMirror overflow-visible h-full "
+                className="bg-white p-4 rounded-xl shadow-lg w-full border ProseMirror  h-full "
                 dangerouslySetInnerHTML={{ __html: data.Content }}
               />
-            </div>
-            <div>
-              <div className=" w-full h-min mb-8 mt-4 bg-white rounded-xl border p-4">
-                <h3 className="font-semibold mb-2 ">
-                  Want to know more about Petra Lending?
-                </h3>
-                <p className="font-light mb-2">
-                  We are excited to introduce our company & team to you!
-                </p>
-                <Separator className="border-2 mb-2" />
-                <Button className="w-full">Read Now</Button>
-              </div>
-              <div className=" w-full h-min bg-white rounded-xl border">
-                <ul className=" flex flex-col">
-                  <Label className="p-4 font-bold bg-primary/20 rounded-t-xl">
-                    Categories
-                  </Label>
-                  {categories &&
-                    categories.map((item, i) => {
-                      return (
-                        <Link
-                          href=""
-                          className="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                        >
-                          {item.Title}
-                        </Link>
-                      )
-                    })}
-                </ul>
-              </div>
             </div>
           </div>
         </>

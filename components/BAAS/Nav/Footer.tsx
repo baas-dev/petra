@@ -12,10 +12,6 @@ export default function Footer() {
   return (
     <footer className=" mx-auto w-full relative text-center bg-white text-primary">
       <div className=" text-left p-4 border-t-2">
-        <TopSection />
-
-        <Separator className="border-2 mt-4" />
-
         <MiddleSection />
         <Separator className="border-2" />
         <Bottom />
@@ -26,23 +22,16 @@ export default function Footer() {
 
 function SocialBar() {
   return (
-    <div className="flex items-center container justify-center p-2 lg:justify-between">
+    <div className="flex items-center p-2 lg:justify-between">
       <div className="flex justify-center mx-auto space-x-4">
         <a
           href="https://www.facebook.com/petralending/"
           className=" text-neutral-600 dark:text-neutral-200"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-          </svg>
+          <Facebook className="text-lg" />
         </a>
 
-        <a
+        {/* <a
           href="https://www.instagram.com/petrahomelending/"
           className=" text-neutral-600 dark:text-neutral-200"
         >
@@ -54,7 +43,7 @@ function SocialBar() {
           >
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
           </svg>
-        </a>
+        </a> */}
         <a
           href="https://www.linkedin.com/company/petra-home-lending"
           className=" text-neutral-600 dark:text-neutral-200"
@@ -74,31 +63,33 @@ function SocialBar() {
 }
 function Bottom() {
   return (
-    <div className="mt-8 w-full flex flex-wrap">
-      <SocialBar />
+    <>
+      <div className="mt-8 w-full flex justify-between container">
+        {/* <SocialBar /> */}
 
-      <nav className="flex flex-wrap w-full text-center mx-auto max-w-3xl justify-center text-lg font-medium">
-        <div className="px-5 py-2 w-full md:w-1/3">
-          <a href="https://www.sml.texas.gov/wp-content/uploads/2021/07/rmlo_80_200_b_recovery_fund_notice.pdf">
-            Recovery Fund Notice
-          </a>
-        </div>
+        <nav className="flex flex-wrap w-full text-center mx-auto justify-center text-lg font-medium">
+          <div className="px-5 py-2 w-full md:w-1/3">
+            <a href="https://www.sml.texas.gov/wp-content/uploads/2021/07/rmlo_80_200_b_recovery_fund_notice.pdf">
+              Recovery Fund Notice
+            </a>
+          </div>
 
-        <div className="px-5 py-2 w-full md:w-1/3">
-          <a href="https://d1it9px5hinj36.cloudfront.net/Privacy%20Policy.pdf">
-            Privacy
-          </a>
-        </div>
-        <div className="px-5 py-2 w-full md:w-1/3">
-          <a href="https://d1it9px5hinj36.cloudfront.net/TermsOfService.pdf">
-            Terms
-          </a>
-        </div>
-      </nav>
+          <div className="px-5 py-2 w-full md:w-1/3">
+            <a href="https://d1it9px5hinj36.cloudfront.net/Privacy%20Policy.pdf">
+              Privacy
+            </a>
+          </div>
+          <div className="px-5 py-2 w-full md:w-1/3">
+            <a href="https://d1it9px5hinj36.cloudfront.net/TermsOfService.pdf">
+              Terms
+            </a>
+          </div>
+        </nav>
+      </div>
       <div className="w-full text-center">
         <p className="text-base ">© {moment().year()} Petra Lending</p>
       </div>
-    </div>
+    </>
   )
 }
 function TopSection() {
@@ -112,9 +103,9 @@ function TopSection() {
         </div>
         <div className=" w-full text-center md:text-right md:mt-0 mt-4">
           <Link target="_blank" href="https://m.me/petralending">
-            <Button className=" hover:cursor-pointer border-2 border-blue-500 bg-blue-600 text-white">
+            <Button className=" hover:cursor-pointer border-2 border-2 bg-primary text-white">
               <Facebook className="mr-2 h-4 w-4" />
-              <span>Message Us on Facebook</span>
+              <span className="text-lg">Message Us on Facebook</span>
             </Button>
           </Link>
         </div>
@@ -125,7 +116,7 @@ function TopSection() {
 
 function MiddleSection() {
   return (
-    <div className="flex flex-col text-center mt-4 md:flex-row w-full justify-between container">
+    <div className="flex flex-col text-center mt-4 md:flex-row w-full justify-between container items-center">
       <div className="w-full flex justify-between items-center">
         <Image
           src={"/images/petra-blue.svg"}
@@ -136,8 +127,15 @@ function MiddleSection() {
         />
       </div>
 
-      <div className="my-auto mt-4 md:text-left flex flex-col w-full">
-        <Label className="mb-4 text-xl uppercase mx-auto  ">Contact</Label>
+      <div className="my-auto mt-4 md:text-left flex flex-col w-full items-center h-full">
+        <div className="mb-2">
+          <Link target="_blank" href="https://m.me/petralending">
+            <Button className=" hover:cursor-pointer border-2  bg-primary text-white">
+              <Facebook className="mr-2 h-4 w-4" />
+              <span className="text-lg">Message Us on Facebook</span>
+            </Button>
+          </Link>
+        </div>
         <div className="mb-4  mx-auto flex  text-center">
           <Home className="mr-2" />
 

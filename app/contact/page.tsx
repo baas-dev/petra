@@ -2,9 +2,11 @@
 
 import React from "react"
 import Image from "next/image"
-import { Locate, Mail, PhoneCall } from "lucide-react"
+import Link from "next/link"
+import { Facebook, Locate, Mail, PhoneCall } from "lucide-react"
 import { Slide } from "react-awesome-reveal"
 
+import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Separator } from "@/components/ui/separator"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
@@ -23,26 +25,20 @@ const ContactUsBody = () => {
                 <h2 className="text-4xl mb-2 text-primary  uppercase ">
                   Get In Touch With Us
                 </h2>
-                <p className="text-body-color  font-light leading-relaxed">
-                  Have questions about your mortgage options or need assistance
-                  with your home financing? Our dedicated team is here to help.
-                  Fill out the contact form below, and {`we'll`} be in touch
-                  shortly to provide you with personalized guidance for your
-                  unique needs.
-                </p>
+
                 <Separator className="my-4" />
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
                   <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
                     <Locate className="h-6 w-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="text-dark   text-lg">Our Location</h4>
-                    <a
-                      href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
-                      className="text-body-color text-md font-light hover:underline"
-                    >
-                      3939 Belt Line Rd #150, Addison, TX 75001
-                    </a>
+                    <h4 className="text-dark   text-lg">Text Us</h4>
+                    <Link target="_blank" href="https://m.me/petralending">
+                      <Button className=" hover:cursor-pointer border-2  bg-primary text-white">
+                        <Facebook className="mr-2 h-4 w-4" />
+                        <span className="text-lg">Message Us on Facebook</span>
+                      </Button>
+                    </Link>
                   </div>
                 </div>
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
@@ -69,10 +65,10 @@ const ContactUsBody = () => {
                     <h4 className="text-dark   text-lg"> Email Address</h4>
                     <p className="text-body-color text-md font-light">
                       <a
-                        href="mailto:“contact-us@petralending.com”"
+                        href="mailto:“contactus@petralending.com”"
                         className="flex hover:underline"
                       >
-                        info@petralending.com
+                        contactus@petralending.com
                       </a>
                     </p>
                   </div>

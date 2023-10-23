@@ -51,28 +51,31 @@ function Sidebar({
     [searchParams]
   )
   return (
-    <div className="w-full">
-      <SearchComponent
+    <div className="w-full grid grid-cols-3 gap-2">
+      <div className="col-span-2">
+        <SearchComponent
+          CreateQueryString={createQueryString}
+          router={router}
+          pathname={pathname}
+          query={loadedParams.query}
+        />
+      </div>
+
+      <CategoryPopover
         CreateQueryString={createQueryString}
         router={router}
         pathname={pathname}
-        query={loadedParams.query}
+        categories={loadedParams.categories}
+        items={items}
       />
-
-      <div className="flex w-full gap-1">
+      {/* <div className="flex w-full gap-1">
         <SortByComponent
           CreateQueryString={createQueryString}
           router={router}
           pathname={pathname}
         />
-        <CategoryPopover
-          CreateQueryString={createQueryString}
-          router={router}
-          pathname={pathname}
-          categories={loadedParams.categories}
-          items={items}
-        />
-      </div>
+     
+      </div> */}
     </div>
   )
 }

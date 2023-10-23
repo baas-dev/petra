@@ -47,8 +47,10 @@ export default function FAQAdmin() {
           Form={<ArticleInitForm />}
           data={null}
           Text={"Create Article"}
-          Title={undefined}
-          Description={undefined}
+          Title={"Create A New Article"}
+          Description={
+            "The title of this article will result in the slugification of the URL (.../example-link)"
+          }
         />
       </Banner>
 
