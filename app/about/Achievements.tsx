@@ -87,7 +87,7 @@ export default function Achievements(props: {
                 image={`/images/fsl.png`}
               />
             </div>
-            <div className="flex gap-2 w-full mb-4">
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 justify-between gap-2 mb-4">
               <Image
                 src={"/images/ntxamp.png"}
                 alt=""
