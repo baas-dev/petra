@@ -105,13 +105,13 @@ export default function MediaDialogBody() {
     })
 
     try {
-      const response = await fetch("/backend/media", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_APIURL}/media`, {
         method: "POST",
         credentials: "include",
         body: formData,
       })
 
-      const data = await response.json()
+      // const data = await response.json()
       toast({
         className: "bg-primary text-white",
         title: "Successfully uploaded!",
