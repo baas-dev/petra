@@ -51,7 +51,7 @@ import MoneyInput from "@/components/MoneyInput"
 import {
   Borrower,
   usePreqFormContext,
-} from "@/app/prequalify/components/formContext"
+} from "@/app/prequalification/components/formContext"
 
 import DateOfBirth from "../Forms/Inputs/DateOfBirth"
 import SelectInput from "../Forms/Inputs/Select"

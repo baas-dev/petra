@@ -1,110 +1,46 @@
 import Image from "next/image"
-import { useRouter } from "next/navigation"
-import { Fade } from "react-awesome-reveal"
 
-import { Button } from "@/components/ui/button"
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-
-const data = [
-  {
-    title: "",
-    icon: "",
-    tagline: "",
-  },
-]
 
 export default function Services() {
-  const r = useRouter()
   return (
-    <div className="w-full ">
-      <div className="w-full  ">
-        <section className=" z-20   pb-2   text-secondary">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ">
-            <Card
-              onClick={() => {
-                r.push("/prequalify")
-              }}
-              style={{ contain: "layout" }}
-              className="bg-primary bg-opacity-20 hover:cursor-pointer"
-            >
-              <Image
-                src={"/images/background.svg"}
-                alt=""
-                height={50}
-                width={50}
-                className="w-full h-full absolute -z-10 opacity-30 "
-              />
-              <CardHeader>
-                <Image
-                  src={"/images/purchase.svg"}
-                  height={120}
-                  width={120}
-                  alt={""}
-                  className="mb-2 mx-auto "
-                />
-                <CardTitle className="text-2xl font-semibold text-secondary">
-                  Purchase a Home
-                </CardTitle>
-                <CardDescription className="text-secondary">
-                  Tired of renting? Ready to invest in your dream home?
-                </CardDescription>
-              </CardHeader>
-              {/* <CardContent>
-            <div>
-              <p>Create Project</p>
-            </div>
-          </CardContent> */}
-              {/* <CardFooter className="flex w-full mx-auto text-center">
-                <label className="mx-auto text-secondary">{`Learn More >`}</label>
-              </CardFooter> */}
-            </Card>
-            <Card
-              onClick={() => {
-                r.push("/prequalify")
-              }}
-              style={{ contain: "layout" }}
-              className="bg-primary bg-opacity-20 hover:cursor-pointer"
-            >
-              <Image
-                src={"/images/background.svg"}
-                alt=""
-                height={50}
-                width={50}
-                className="w-full h-full absolute -z-10 opacity-30 "
-              />
-              <CardHeader>
-                <Image
-                  src={"/images/refinance.svg"}
-                  height={120}
-                  width={120}
-                  alt={""}
-                  className="mb-2 mx-auto"
-                />
-                <CardTitle className="text-2xl font-semibold z-10 text-secondary">
-                  Refinance Your Home
-                </CardTitle>
-                <CardDescription className="text-secondary">
-                  Need cash for a home improvement or something else?
-                </CardDescription>
-              </CardHeader>
-              {/* <CardContent>
-            <div>
-              <p>Create Project</p>
-            </div>
-          </CardContent> */}
-              {/* <CardFooter className="flex w-full mx-auto text-center text-secondary"> */}
-              {/* <label className="mx-auto ">{`Learn More >`}</label> */}
-              {/* </CardFooter> */}
-            </Card>
-          </div>
-        </section>
+    <div className="w-full relative  h-full ">
+      <section className=" z-20   flex  pb-2   text-secondary">
+        <HoverCard
+          src={"/site/home/purchase.png"}
+          title={"Purchase a Home"}
+          desc=" Need cash for a home improvement or something else?"
+        />
+        <HoverCard
+          src={"/site/home/refinance.png"}
+          title={"Refinance Your Home"}
+          desc={"Need cash for a home improvement or something else?"}
+        />
+      </section>
+    </div>
+  )
+}
+
+function HoverCard({ src, title, desc }: { src: string; title; desc }) {
+  return (
+    <div className="w-full  h-full transform transition duration-500  hover:scale-110">
+      <Image
+        src={src}
+        height={1500}
+        width={500}
+        alt={""}
+        className="  object-fill  rounded-t-lg h-96 w-full max-w-sm mx-auto"
+      />
+      <div className="w-full max-w-sm p-4 mx-auto bg-secondary rounded-b-lg">
+        <CardTitle className="text-2xl text-black">{title}</CardTitle>
+        <CardDescription>{desc}</CardDescription>
       </div>
     </div>
   )

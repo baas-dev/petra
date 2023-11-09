@@ -1,3 +1,4 @@
+import Image from "next/image"
 import {
   Avatar,
   Card,
@@ -11,12 +12,15 @@ import { CoreValue } from "@/app/about/CoreValuesSection"
 
 export default function CardWithBackground(props: CoreValue) {
   return (
-    <div className="flex rounded-[20px] mx-auto items-center  mb-4 w-full md:w-1/2 h-full bg-white shadow-md hover:shadow-lg ">
-      <div
-        className={` flex h-40 w-1/3 items-center justify-center rounded-l-xl bg-primary`}
-        style={{ backgroundImage: `url(${props?.image})` }}
-      ></div>
-      <div className="w-2/3 p-2">
+    <div className=" rounded-[20px] mx-auto items-center  mb-4 w-full  h-full bg-white shadow-md hover:shadow-lg ">
+      <Image
+        src={props.image}
+        height={1000}
+        width={500}
+        alt={props.title + "Image"}
+        className="h-96 w-full"
+      />
+      <div className="w-full p-2 bg-gray-200 rounded-b-xl h-32">
         <h4 className="mb-2 underline text-primary text-xl font-accent">
           {props.title}
         </h4>

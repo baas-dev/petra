@@ -21,7 +21,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Slider } from "@/components/ui/slider"
 import Banner from "@/components/BAAS/Banners/BannerSite"
-import { usePreqFormContext } from "@/app/prequalify/components/formContext"
+import { usePreqFormContext } from "@/app/prequalification/components/formContext"
 
 import MortgageCalculations from "./MortgageCalculations"
 import { useMortgageCalcContext } from "./components/formContext"
@@ -87,7 +87,7 @@ export default function MortgageCalculatorPage() {
   ]
 
   return (
-    <div className="min-h-screen pt-4 w-full md:pt-28  ">
+    <div className="min-h-screen h-full w-full ">
       <Banner
         Title={"Mortgage Calculator"}
         Subtitle={"An easy-to-use, mortgage estimation tool"}

@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import {
@@ -56,6 +57,22 @@ export const columns: ColumnDef<z.infer<typeof TestimonialsFormSchema>>[] = [
             data={row.original}
             Title={"Testimonials Form"}
             Description={"Public facing reviews managed here"}
+          />
+        </>
+      )
+    },
+  },
+  {
+    id: "Image",
+    cell: ({ row }) => {
+      return (
+        <>
+          <Image
+            src={row.original.Image}
+            width={128}
+            height={128}
+            className="rounded-full bg-gray-200"
+            alt=""
           />
         </>
       )

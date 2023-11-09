@@ -9,7 +9,7 @@ import Achievements from "./Achievements"
 import CoreValuesSection from "./CoreValuesSection"
 import MainHeroSection from "./MainHeroSection"
 import TeamSection from "./TeamSection"
-import Testimonial from "./Testimonials"
+import { TestimonialSwiper } from "./Testimonials"
 
 const api = new BACKEND()
 export interface Teammate {
@@ -48,12 +48,11 @@ export default function IndexPage() {
       <div className="min-h-screen bg-secondary overflow-x-hidden">
         <div className="md:hidden">
           <MainHeroSection />
-          <CoreValuesSection />
           <TeamSection data={team} />
-          <Achievements data={testimonials} />
+          <Achievements />
         </div>
         <div className="hidden md:block">
-          <Parallax pages={2.5}>
+          <Parallax pages={3}>
             <ParallaxLayer offset={1} speed={0.3}>
               <Image
                 src={"/images/mountains.png"}
@@ -64,16 +63,16 @@ export default function IndexPage() {
             </ParallaxLayer>
             {/* Content Layer */}
             <ParallaxLayer offset={0} speed={1}>
+              <TeamSection data={team} />
+
+              <TestimonialSwiper data={testimonials} />
+              <Achievements />
               <MainHeroSection />
               <CoreValuesSection />
-              <TeamSection data={team} />
-              {/* <Testimonial data={testimonials} /> */}
-              <Achievements data={testimonials} />
             </ParallaxLayer>
           </Parallax>
         </div>
       </div>
-      {/* <AboutUsParallax /> */}
     </>
   )
 }

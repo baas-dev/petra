@@ -157,7 +157,7 @@ const MobileNavMenu = ({ setOpen }) => {
               <HoverCardTrigger>
                 <Button
                   onClick={() => {
-                    router.push("/prequalify"), setOpen(false)
+                    router.push("/snapshot"), setOpen(false)
                   }}
                   variant="ghost"
                   className="w-full justify-start"

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { GetFormContext, SubmitForm } from "@/components/BAAS/Forms"
 import SubmitButton from "@/components/BAAS/Forms/Buttons/submit"
+import ImageSingleUpload from "@/components/BAAS/Forms/Inputs/ImageSingleUpload"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 import { FormConfig } from "@/components/BAAS/Forms/Types"
@@ -22,6 +23,7 @@ export const TestimonialsFormSchema = z.object({
   QuoteText: z.string().min(2, "Please complete first name"),
   Name: z.string().min(2, "Please complete second name"),
   Label: z.string().min(2, "Please complete second name"),
+  Image: z.string(),
 })
 
 export default function TestimonialsForm(props: {
@@ -37,6 +39,7 @@ export default function TestimonialsForm(props: {
       QuoteText: adminTableCXT.Data?.QuoteText
         ? adminTableCXT.Data.QuoteText
         : "",
+      Image: adminTableCXT.Data?.Image ? adminTableCXT.Data.Image : "",
     },
   })
 
@@ -104,6 +107,12 @@ export default function TestimonialsForm(props: {
             options={{
               name: "QuoteText",
               label: "Quote Text",
+            }}
+          />
+          <ImageSingleUpload
+            form={testimonialFormCXT}
+            options={{
+              Name: "Image",
             }}
           />
         </div>

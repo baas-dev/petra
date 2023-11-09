@@ -20,12 +20,12 @@ import { Teammate } from "./page"
 
 export default function TeamSection({ data }: { data: Teammate[] }) {
   return (
-    <section className="min-h-screen px-4 text-center container  md:py-16">
-      <span className="mb-2 text-xs font-bold tracking-widest text-primary uppercase">
-        The People Who Make Petra Special
-      </span>
-      <h1 className="text-4xl font-bold mb-4 leading-none tracking-tighter text-neutral-600">
-        Our Team Members
+    <section className="h-full px-4 text-center container  md:py-16">
+      <h1 className="text-4xl block font-bold relative text-transparent bg-clip-text bg-gradient-to-r  from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">
+        Welcome
+        <span className="sm:mx-auto font-light w-full text-4xl text-blue-900 text-center pl-2   lg:w-auto lg:text-left  dark:text-white">
+          To the Family
+        </span>
       </h1>
       <div className="flex flex-wrap w-full">
         {data &&

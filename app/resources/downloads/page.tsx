@@ -40,7 +40,7 @@ export default async function Downloads() {
 
   return (
     <>
-      <div className="min-h-screen pt-4 w-full md:pt-28 ">
+      <div className="min-h-screen w-full ">
         <Banner
           Title={"Downloads & Links"}
           Subtitle={

@@ -80,7 +80,7 @@ export default function MainNav() {
   return (
     <>
       <div className="hidden md:block">
-        <div className="  h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <div className="items-center space-x-4 sm:justify-between sm:space-x-0">
           <FullWidthNavbar />
         </div>
       </div>
@@ -171,8 +171,7 @@ const FullWidthNavbar = () => {
   return (
     <>
       <header className="bg-white w-full">
-        <div className=" mx-auto px-4 py-2 items-center grid grid-cols-3">
-          <Info />
+        {/* <Info />
           <div className="md:w-full text-center flex flex-wrap justify-center">
             <div className="flex items-center justify-center  space-y-4 flex-wrap w-full">
               <Image
@@ -193,14 +192,11 @@ const FullWidthNavbar = () => {
                 height={500}
                 className="w-20 mr-4 mx-auto md:float-right "
               />
-            </div>
-            <div className="max-w-16 float-right">
+            </div> */}
+        {/* <div className="max-w-16 float-right">
               <AssistanceTrigger />
-            </div>
-          </div>
-        </div>
+            </div> */}
 
-        <hr />
         <NavigationMenu className="items-center text-center mx-auto py-1">
           <NavigationMenuList>
             <HoverCard openDelay={0} closeDelay={0}>
@@ -245,7 +241,7 @@ const FullWidthNavbar = () => {
                 </div>
               </HoverCardContent>
             </HoverCard>
-            <HoverCard openDelay={0} closeDelay={0}>
+            {/* <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/articles" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
@@ -265,57 +261,75 @@ const FullWidthNavbar = () => {
                   <p>Helpful content produced by the Petra team</p>
                 </div>
               </HoverCardContent>
+            </HoverCard> */}
+
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/resources" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/resources" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    Resources
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Resources
+                  </Label>
+                  <p>Helpful Tools & Information</p>
+                </div>
+              </HoverCardContent>
             </HoverCard>
 
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] p-2">
-                  <li className="row-span-3 h-full">
-                    <NavigationMenuLink asChild className="h-full">
-                      {/* <a
-                        className="flex py-0 my-0 h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
-                        // href="/"
-                      > */}
-                      <BigCard
-                        bg={"bg-primary"}
-                        bgHover={"bg-primary/20"}
-                        link={"/resources/faqs"}
-                        image={""}
-                        Title={"Resources For Homebuyers"}
-                        Description={"Useful tools to aid in your journey"}
-                        btn={false}
-                        btnText={null}
-                        action={() => {}}
-                      />
-                      {/* </a> */}
-                    </NavigationMenuLink>
-                  </li>
-                  <ListItem
-                    className="h-full"
-                    href="/resources/mortgage-calculator"
-                    title="Mortgage Calculator"
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/prequalification" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/prequalification" ? "text-accent underline" : ""
+                    } `}
                   >
-                    An easy to use payment calculator
-                  </ListItem>
-                  <ListItem
-                    className="h-full"
-                    href="/resources/downloads"
-                    title="Downloads & Links"
+                    Prequalification
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Prequalification
+                  </Label>
+                  <p>
+                    Complete our short form to make your home buying experience
+                    as easy as possible
+                  </p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="#" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center   items-center  ${
+                      path == "/apply" ? "text-accent underline " : ""
+                    } `}
                   >
-                    Public resources for homebuyers
-                  </ListItem>
-                  <ListItem
-                    className="h-full"
-                    href="/resources/faqs"
-                    title="FAQ's"
-                  >
-                    Common Questions, Our Answers
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
+                    Apply Now
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Apply Now!
+                  </Label>
+                  <p>Start our prequalification process, quickly and easily</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
             <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/contact" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
@@ -337,32 +351,8 @@ const FullWidthNavbar = () => {
                 </div>
               </HoverCardContent>
             </HoverCard>
-            <HoverCard openDelay={0} closeDelay={0}>
-              <Link href="/prequalify" legacyBehavior passHref>
-                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
-                  <div
-                    className={`flex-wrap text-center items-center  ${
-                      path == "/prequalify" ? "text-accent underline" : ""
-                    } `}
-                  >
-                    Snapshot Tool
-                  </div>
-                </HoverCardTrigger>
-              </Link>
-              <HoverCardContent className="bg-white">
-                <div className="text-left">
-                  <Label className="text-lg pb-2 underline text-primary ">
-                    Snapshot Tool
-                  </Label>
-                  <p>
-                    Complete our short form to make your home buying experience
-                    as easy as possible
-                  </p>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
             {/* <NavigationMenuItem>
-              <Link href="/prequalify" className="" legacyBehavior passHref>
+              <Link href="/snapshot" className="" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Get Prequalified
                 </NavigationMenuLink>

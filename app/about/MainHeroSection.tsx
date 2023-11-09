@@ -72,15 +72,7 @@ import { Button } from "@/components/ui/button"
 export default function MainHeroSection() {
   return (
     <>
-      <div
-        className="w-full bg-center bg-cover h-screen "
-        style={{
-          clipPath: "polygon(0% 0%, 100% 0%, 100%  90%, 0% 100%)",
-
-          backgroundImage:
-            "url(https://images.pexels.com/photos/2707756/pexels-photo-2707756.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)",
-        }}
-      >
+      <div className="w-full bg-center bg-cover h-screen bg-primary">
         <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 py-12">
           <div className="text-center">
             <div className="container px-4 mx-auto">

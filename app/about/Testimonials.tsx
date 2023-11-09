@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react"
-import Image from "next/image"
+import IMG from "next/image"
 
 import "swiper/css"
 import { Autoplay, Navigation, Pagination } from "swiper"
@@ -13,7 +13,7 @@ import { Separator } from "@/components/ui/separator"
 
 import { data } from "../resources/mortgage-calculator/components/piechart"
 
-const Testimonial = (props: { data: { Label; Name; QuoteText }[] }) => {
+const Testimonial = (props: { data: { Label; Name; QuoteText; Image }[] }) => {
   interface ImageData {
     path: string
   }
@@ -60,7 +60,7 @@ const Testimonial = (props: { data: { Label; Name; QuoteText }[] }) => {
           <div className="w-full container">
             <div className="flex gap-2 mb-8">
               <div className="w-full md:w-1/4">
-                <Image
+                <IMG
                   src={`/images/bbb.png`}
                   height={1920}
                   width={1080}
@@ -73,7 +73,7 @@ const Testimonial = (props: { data: { Label; Name; QuoteText }[] }) => {
                   {imgdata.map((item, i) => {
                     return (
                       <div key={i} className="w-full h-full">
-                        <Image
+                        <IMG
                           src={`/images/${item.path}`}
                           height={100}
                           width={100}
@@ -88,13 +88,13 @@ const Testimonial = (props: { data: { Label; Name; QuoteText }[] }) => {
             </div>
           </div>
           <div className="container ">
-            <Image
+            <IMG
               src={`/images/10.png`}
               height={1600}
               width={800}
               alt=""
               className="w-3/4 pt-16  mx-auto rounded-xl"
-            />{" "}
+            />
           </div>
         </section>
       </div>
@@ -106,28 +106,37 @@ export function TestimonialSwiper(props: { data }) {
   const sliderRef = useRef<any>()
   SwiperCore.use([Autoplay])
   return props.data && props.data.length > 0 ? (
-    <Swiper
-      slidesPerView={1}
-      ref={sliderRef}
-      loop
-      effect="cards"
-      autoplay={{
-        delay: 3000,
-      }}
-      grabCursor
-      pagination={{
-        type: "progressbar",
-      }}
-      modules={[Autoplay, Pagination]}
-      className=" mb-4 mySwiper"
-    >
-      {props.data &&
-        props.data.map((item, i) => (
-          <SwiperSlide>
-            <SingleTestimonial {...item} />
-          </SwiperSlide>
-        ))}
-    </Swiper>
+    <div className="p-8">
+      <h2 className="text-4xl mb-8 block font-bold relative text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">
+        What Our Clients
+        <br className="block" />
+        <span className="sm:mx-auto font-light w-full text-4xl text-blue-900 text-center  lg:w-auto lg:text-left  dark:text-white">
+          Are Saying About Us
+        </span>
+      </h2>
+      <Swiper
+        slidesPerView={1}
+        ref={sliderRef}
+        loop
+        effect="cards"
+        autoplay={{
+          delay: 3000,
+        }}
+        grabCursor
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Autoplay, Pagination]}
+        className=" mb-4 mySwiper"
+      >
+        {props.data &&
+          props.data.map((item, i) => (
+            <SwiperSlide>
+              <SingleTestimonial {...item} />
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </div>
   ) : (
     <></>
   )
@@ -135,24 +144,36 @@ export function TestimonialSwiper(props: { data }) {
 
 export default Testimonial
 
-export const SingleTestimonial = ({ Label, Name, QuoteText }) => {
+export const SingleTestimonial = ({ Label, Name, QuoteText, Image }) => {
+  console.log(Image)
   return (
-    <div className="relative flex justify-center min-h-64 border-2 shadow-md border-gray-100 rounded-xl">
-      <div className="relative w-full p-4 bg-white rounded-xl ">
+    <div className="relative flex justify-center min-h-64 border-2 shadow-md bg-gray-300 border-gray-100 rounded-xl">
+      <div className="relative w-full p-4 rounded-xl ">
         <div className="w-full">
           <div>
             {/* <div className="mb-7">
               <img src={reviewImg} alt={reviewAlt} />
             </div> */}
 
-            <blockquote className="border-l-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
-              <p className="text-sm md:text-xl italic font-light leading-relaxed text-gray-900 dark:text-white">
+            <blockquote className="border-l-8 p-8  !border-blue-300 rounded-md bg-blue-100">
+              <p className=" md:text-4xl italic font-light text-gray-900 ">
                 {QuoteText}
               </p>
             </blockquote>
+          </div>
+          <div className="mx-auto mt-8 text-center flex justify-center items-center gap-2">
+            {Image ? (
+              <IMG
+                src={Image}
+                width={128}
+                height={128}
+                className="rounded-full bg-gray-200"
+                alt=""
+              />
+            ) : null}
             <div className="">
-              <h4 className="text-dark text-lg font-semibold ">{Name}</h4>
-              <p className="text-body-color text-base">{Label}</p>
+              <h4 className="text-dark font-semibold text-2xl ">{Name}</h4>
+              <p className="text-body-color font-light text-xl">{Label}</p>
             </div>
           </div>
         </div>

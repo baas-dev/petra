@@ -5,34 +5,34 @@ import CardWithBackground from "@/components/BAAS/Cards/CardWithBackground"
 export interface CoreValue {
   title: string
   desc: string
-  image?: string
+  image: string
 }
 
 let coreValueData: CoreValue[] = [
   {
     title: "1. Called",
     desc: "Passion + Purpose + Expertise = Results. It is our mission to use our knowledge to serve and help others with their lending needs.",
-    image: "/images/svg/called.svg",
+    image: "/site/about/called.png",
   },
   {
     title: "2. Centered",
     desc: "Centered on the best rates and the best service. Centered on you. We strive to be balanced, fair, and responsible with home financing and financial plans for our customers. ",
-    image: "/images/svg/centered.svg",
+    image: "/site/about/centered.png",
   },
   {
     title: "3. Committed",
     desc: "Wholehearted dedication to our clients, our employees, and our partners. After all, that’s our family.",
-    image: "/images/svg/committed.svg",
+    image: "/site/about/committed.png",
   },
   {
     title: "4. Consultative",
     desc: "Every client deserves the information, insight, and knowledge to make the best financing decision possible.",
-    image: "/images/svg/consultative.svg",
+    image: "/site/about/consultative.png",
   },
   {
     title: "5. Collaborative",
     desc: "It takes a team. Partnerships matter. Working together in unison as a team is the key to success. We’re better together. ",
-    image: "/images/svg/collaborative.svg",
+    image: "/site/about/collaborative.png",
   },
 ]
 
@@ -49,14 +49,10 @@ export default function CoreValuesSection() {
               Defining Our Service
             </h1>
           </div>
-          {/* {coreValueData.map((item, i) => {
-              return <CardWithBackground {...item} />
-            })} */}
-          <div className="w-full flex flex-col md:flex-row gap-2 md:container">
+
+          <div className="w-full flex flex-col md:flex-row gap-2 ">
             <CardWithBackground {...coreValueData[0]} />
             <CardWithBackground {...coreValueData[1]} />
-          </div>
-          <div className="w-full flex flex-col md:flex-row gap-2  ">
             <CardWithBackground {...coreValueData[2]} />
             <CardWithBackground {...coreValueData[3]} />
             <CardWithBackground {...coreValueData[4]} />
