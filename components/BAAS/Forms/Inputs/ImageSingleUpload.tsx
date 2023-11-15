@@ -17,7 +17,7 @@ import TextInput from "./Text"
 
 interface ImageSingleUploadOptions {
   Name: string
-  Label: string
+  Label?: string
 }
 
 export default function ImageSingleUpload(props: {
@@ -30,7 +30,7 @@ export default function ImageSingleUpload(props: {
         <MainImage
           form={props.form}
           name={props.options.Name}
-          label={props.options.Label}
+          label={props.options.Label ? props.options.Label : ""}
         />
       </div>
     </>
