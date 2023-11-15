@@ -98,51 +98,48 @@ const MobileNavMenu = ({ setOpen }) => {
               className="w-full justify-start"
             >
               <Info className="mr-2 h-4 w-4" />
-              About
+              Meet Petra
             </Button>
             {/* <Link href="/social"> */}
-            <Button
-              onClick={() => {
-                router.push("/articles"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <Newspaper className="mr-2 h-4 w-4" />
-              Articles
-            </Button>
+
             {/* </Link> */}
             <Button
               onClick={() => {
-                router.push("/resources/mortgage-calculator"), setOpen(false)
+                router.push("/resources"), setOpen(false)
               }}
               variant="ghost"
               className="w-full justify-start"
             >
               <Calculator className="mr-2 h-4 w-4" />
-              Mortgage Calculator
-            </Button>
-            <Button
-              onClick={() => {
-                router.push("/resources/downloads"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Downloads & Links
+              Resources
             </Button>
 
             <Button
               onClick={() => {
-                router.push("/resources/faqs"), setOpen(false)
+                router.push("/apply"), setOpen(false)
               }}
               variant="ghost"
               className="w-full justify-start"
             >
-              <FileQuestion className="mr-2 h-4 w-4" />
-              FAQs
+              <Phone className="mr-2 h-4 w-4" />
+              Apply Now
             </Button>
+            <HoverCard>
+              <HoverCardTrigger>
+                <Button
+                  onClick={() => {
+                    router.push("/prequalification"), setOpen(false)
+                  }}
+                  variant="ghost"
+                  className="w-full justify-start"
+                >
+                  <AlertCircle className="mr-2 h-4 w-4" />
+                  Prequalification
+                </Button>
+              </HoverCardTrigger>
+              <HoverCardContent></HoverCardContent>
+            </HoverCard>
+
             <Button
               onClick={() => {
                 router.push("/contact"), setOpen(false)
@@ -151,35 +148,8 @@ const MobileNavMenu = ({ setOpen }) => {
               className="w-full justify-start"
             >
               <Phone className="mr-2 h-4 w-4" />
-              Contact
+              Contact Us
             </Button>
-            <HoverCard>
-              <HoverCardTrigger>
-                <Button
-                  onClick={() => {
-                    router.push("/snapshot"), setOpen(false)
-                  }}
-                  variant="ghost"
-                  className="w-full justify-start"
-                >
-                  <AlertCircle className="mr-2 h-4 w-4" />
-                  Snapshot Tool
-                </Button>
-              </HoverCardTrigger>
-              <HoverCardContent></HoverCardContent>
-            </HoverCard>
-
-            {/* <Button
-              onClick={() => {
-                router.push("/shop"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <DollarSign className="mr-2 h-4 w-4" />
-              Shop
-            </Button> */}
-            {/* <Cart /> */}
           </div>
         </div>
       </div>
