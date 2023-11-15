@@ -15,6 +15,7 @@ import {
   Info,
   MoreVertical,
   Newspaper,
+  Pen,
   Phone,
 } from "lucide-react"
 
@@ -121,7 +122,7 @@ const MobileNavMenu = ({ setOpen }) => {
               variant="ghost"
               className="w-full justify-start"
             >
-              <Phone className="mr-2 h-4 w-4" />
+              <Pen className="mr-2 h-4 w-4" />
               Apply Now
             </Button>
             <HoverCard>

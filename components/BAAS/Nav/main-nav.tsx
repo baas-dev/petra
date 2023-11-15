@@ -88,15 +88,14 @@ export default function MainNav() {
         <div className=" flex h-16  items-center space-x-4 justify-between sm:space-x-0">
           <MobileNavbar />
 
-          <div className="flex p-2 m-2">
-            {/* <ThemeToggle /> */}
+          {/* <div className="flex p-2 m-2">
 
             <AssistanceTrigger />
-          </div>
+          </div> */}
         </div>
-        <div className="w-full px-1 bg-gray-100 mb-1">
+        {/* <div className="w-full px-1 bg-gray-100 mb-1">
           <SiteSearch />
-        </div>
+        </div> */}
       </div>
     </>
   )
