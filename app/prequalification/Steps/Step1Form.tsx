@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Form } from "@/components/ui/form"
+import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 import { TeamCard } from "@/components/Sections/Team/TeamCard"
 import TeamMember from "@/components/interfaces/TeamMember.interface"
 import BACKEND from "@/app/API"
@@ -97,20 +98,29 @@ export default function Step1Form(props: { HandleNext: any; UpdateState }) {
           />
           {teamMembers.length > 0 ? (
             <>
-              <div className={`flex gap-2 w-full z-50 justify-center`}>
+              <div
+                className={`grid grid-cols-2 md:grid-cols-4 h-full gap-2 w-full z-50 justify-center`}
+              >
                 {teamMembers.map((item, i) => {
                   return (
-                    <TeamCard
-                      key={i}
-                      action={HandleTeamSelect}
-                      ID={item.ID}
-                      description={item.Biography}
-                      title={item.Name}
-                      name={item.Name}
-                      rmloNumber={item.RNumber.toString()}
-                      image={item.Image}
-                      isSelected={HandleSelected}
-                    />
+                    <RevealAnimation
+                      key={i} // Don't forget to add a unique key when mapping
+                      options={{
+                        delay: 0.2 * (i + 1),
+                      }}
+                    >
+                      <TeamCard
+                        key={i}
+                        action={HandleTeamSelect}
+                        ID={item.ID}
+                        description={item.Biography}
+                        title={item.Name}
+                        name={item.Name}
+                        rmloNumber={item.RNumber.toString()}
+                        image={item.Image}
+                        isSelected={HandleSelected}
+                      />
+                    </RevealAnimation>
                   )
                 })}
               </div>

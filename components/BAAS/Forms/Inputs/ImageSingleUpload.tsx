@@ -17,6 +17,7 @@ import TextInput from "./Text"
 
 interface ImageSingleUploadOptions {
   Name: string
+  Label: string
 }
 
 export default function ImageSingleUpload(props: {
@@ -26,13 +27,25 @@ export default function ImageSingleUpload(props: {
   return (
     <>
       <div className=" p-4 w-full mb-4">
-        <MainImage form={props.form} name={props.options.Name} />
+        <MainImage
+          form={props.form}
+          name={props.options.Name}
+          label={props.options.Label}
+        />
       </div>
     </>
   )
 }
 
-function MainImage({ form, name }: { form: any; name: string }) {
+function MainImage({
+  form,
+  name,
+  label,
+}: {
+  form: any
+  name: string
+  label: string
+}) {
   let val = form.getValues(name)
   let url
 
@@ -61,7 +74,15 @@ function MainImage({ form, name }: { form: any; name: string }) {
             )}
           </div>
           <div className="flex gap-2 w-full">
-            <Popover modal>
+            <TextInput
+              form={form}
+              options={{
+                name: name,
+                label: label,
+                placeholder: "Link to image...",
+              }}
+            />
+            {/* <Popover modal>
               <PopoverTrigger asChild>
                 <Button
                   className="mx-auto text-center text-lg mb-2"
@@ -71,7 +92,7 @@ function MainImage({ form, name }: { form: any; name: string }) {
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80">
-                <div className="flex gap-1 ">
+                <div className="flex gap-1 z-20">
                   <TextInput
                     form={form}
                     options={{
@@ -81,7 +102,7 @@ function MainImage({ form, name }: { form: any; name: string }) {
                   />
                 </div>
               </PopoverContent>
-            </Popover>
+            </Popover> */}
           </div>
         </div>
       </div>

@@ -92,21 +92,21 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
 
         icon: <Quote className="h-8 w-8 mr-2  font-light" />,
       },
-      {
-        title: "Articles",
-        href: "/admin/articles",
-        description: "Content posts to serve to your users",
-        classes: "bg-orange-100 hover:bg-orange-300",
+      // {
+      //   title: "Articles",
+      //   href: "/admin/articles",
+      //   description: "Content posts to serve to your users",
+      //   classes: "bg-orange-100 hover:bg-orange-300",
 
-        icon: <Pen className="h-8 w-8 mr-2 " />,
-      },
-      {
-        title: "Article Categories",
-        classes: "bg-orange-100 hover:bg-orange-300",
-        href: "/admin/articles/categories",
-        description: "Classification categories for article posts",
-        icon: <Group className="h-8 w-8 mr-2 " />,
-      },
+      //   icon: <Pen className="h-8 w-8 mr-2 " />,
+      // },
+      // {
+      //   title: "Article Categories",
+      //   classes: "bg-orange-100 hover:bg-orange-300",
+      //   href: "/admin/articles/categories",
+      //   description: "Classification categories for article posts",
+      //   icon: <Group className="h-8 w-8 mr-2 " />,
+      // },
       {
         title: "Form Submissions",
         href: "/admin/forms",
@@ -167,21 +167,21 @@ const EditorContentItems: {
       icon: <Wrench className="h-8 w-8 mr-2  font-light" />,
     },
 
-    {
-      title: "Articles",
-      href: "/admin/articles",
-      description: "Content posts to serve to your users",
-      classes: "bg-orange-100 hover:bg-orange-300",
+    // {
+    //   title: "Articles",
+    //   href: "/admin/articles",
+    //   description: "Content posts to serve to your users",
+    //   classes: "bg-orange-100 hover:bg-orange-300",
 
-      icon: <Pen className="h-8 w-8 mr-2 " />,
-    },
-    {
-      title: "Article Categories",
-      classes: "bg-orange-100 hover:bg-orange-300",
-      href: "/admin/articles/categories",
-      description: "Classification categories for article posts",
-      icon: <Group className="h-8 w-8 mr-2 " />,
-    },
+    //   icon: <Pen className="h-8 w-8 mr-2 " />,
+    // },
+    // {
+    //   title: "Article Categories",
+    //   classes: "bg-orange-100 hover:bg-orange-300",
+    //   href: "/admin/articles/categories",
+    //   description: "Classification categories for article posts",
+    //   icon: <Group className="h-8 w-8 mr-2 " />,
+    // },
     {
       title: "Form Submissions",
       href: "/admin/forms",
@@ -306,13 +306,13 @@ function NavGroupSection(props: {
 
   return (
     <>
-      <div className="mb-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 ">
+      <div className="mb-4 h-full">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2  h-full">
           {items.map((item, i) => (
             <>
               <Link href={item.href} onClick={props.action}>
                 <Card
-                  className={`w-full p-4 flex items-center hover:cursor-pointer ${item.classes}`}
+                  className={`w-full p-4 flex items-center hover:cursor-pointer  h-full ${item.classes}`}
                 >
                   {item.icon}
                   <div>

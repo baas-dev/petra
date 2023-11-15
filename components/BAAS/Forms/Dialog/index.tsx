@@ -79,7 +79,7 @@ export default function ManageDataDialog(props: {
         </SheetTrigger>
         <SheetContent
           side={"top"}
-          className="w-full h-full mx-auto  bg-secondary"
+          className="w-full h-full mx-auto  bg-secondary overflow-y-scroll"
         >
           <SheetHeader className="p-4 max-w-7xl mx-auto shadow-md border rounded-xl bg-white">
             <SheetTitle>{props.Title}</SheetTitle>

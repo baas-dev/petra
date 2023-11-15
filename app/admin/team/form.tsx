@@ -108,69 +108,66 @@ export default function TeamForm(props: {
     <Form {...teamFormCXT}>
       <form
         onSubmit={teamFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 max-w-7xl mx-auto h-screen overflow-y-scroll py-8 pb-8"
+        className="w-full space-y-6 max-w-7xl mx-auto h-4/5 overflow-y-scroll py-8 pb-8"
       >
-        <div className="bg-white  rounded-xl border shadow-lg  flex">
-          <div className="w-1/5">
-            <ImageSingleUpload
+        <div className="bg-white  rounded-xl border shadow-lg p-4  ">
+          <ImageSingleUpload
+            form={teamFormCXT}
+            options={{
+              Name: "Image",
+              Label: "Image URL",
+            }}
+          />
+          <Status
+            form={teamFormCXT}
+            options={{
+              name: "Published",
+            }}
+          />
+
+          <div className="flex gap-1">
+            <TextInput
               form={teamFormCXT}
               options={{
-                Name: "Image",
+                name: "Name",
+                label: "Name",
+              }}
+            />
+            <TextInput
+              form={teamFormCXT}
+              options={{
+                name: "RNumber",
+                label: "RMLO Number",
+              }}
+            />
+            <TextInput
+              form={teamFormCXT}
+              options={{
+                name: "Title",
+                label: "Position",
               }}
             />
           </div>
-          <div className="w-4/5 my-auto pr-4">
-            <Status
-              form={teamFormCXT}
-              options={{
-                name: "Published",
-              }}
-            />
-
-            <div className="flex gap-1">
-              <TextInput
-                form={teamFormCXT}
-                options={{
-                  name: "Name",
-                  label: "Name",
-                }}
-              />
-              <TextInput
-                form={teamFormCXT}
-                options={{
-                  name: "RNumber",
-                  label: "RMLO Number",
-                }}
-              />
-              <TextInput
-                form={teamFormCXT}
-                options={{
-                  name: "Title",
-                  label: "Position",
-                }}
-              />
-            </div>
-            <div className="flex gap-1">
-              {/* <TextInput
+          <div className="flex gap-1">
+            {/* <TextInput
                 form={teamFormCXT}
                 options={{
                   name: "Phone",
                   label: "Phone #",
                 }}
               /> */}
-              <PhoneInput
-                placeholder="Enter phone number"
-                value={value}
-                onChange={setValue}
-              />
-              <TextInput
-                form={teamFormCXT}
-                options={{
-                  name: "Email",
-                  label: "Email",
-                }}
-              />
-            </div>
+            <PhoneInput
+              placeholder="Enter phone number"
+              value={value}
+              onChange={setValue}
+            />
+            <TextInput
+              form={teamFormCXT}
+              options={{
+                name: "Email",
+                label: "Email",
+              }}
+            />
           </div>
         </div>
 

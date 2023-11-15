@@ -18,7 +18,7 @@ export default function CardWithBackground(props: CoreValue) {
         height={1000}
         width={500}
         alt={props.title + "Image"}
-        className="h-96 w-full"
+        className="h-96 w-full rounded-t-lg border ring-2 ring-primary"
       />
       <div className="w-full p-2 bg-gray-200 rounded-b-xl h-32">
         <h4 className="mb-2 underline text-primary text-xl font-accent">

@@ -1,6 +1,8 @@
 import { Fade } from "react-awesome-reveal"
 
+import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 import CardWithBackground from "@/components/BAAS/Cards/CardWithBackground"
+import HoverCard from "@/components/BAAS/Cards/HoverCard"
 
 export interface CoreValue {
   title: string
@@ -51,11 +53,18 @@ export default function CoreValuesSection() {
           </div>
 
           <div className="w-full flex flex-col md:flex-row gap-2 ">
-            <CardWithBackground {...coreValueData[0]} />
-            <CardWithBackground {...coreValueData[1]} />
-            <CardWithBackground {...coreValueData[2]} />
-            <CardWithBackground {...coreValueData[3]} />
-            <CardWithBackground {...coreValueData[4]} />
+            {coreValueData.map((item, i) => {
+              return (
+                <RevealAnimation
+                  key={i} // Don't forget to add a unique key when mapping
+                  options={{
+                    delay: 0.2 * (i + 1),
+                  }}
+                >
+                  <HoverCard {...item} />
+                </RevealAnimation>
+              )
+            })}
           </div>
         </div>
       </section>

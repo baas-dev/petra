@@ -20,9 +20,9 @@ import { useAdminTableContext } from "../Context/TableContext"
 
 export const TestimonialsFormSchema = z.object({
   ID: z.string().optional(),
-  QuoteText: z.string().min(2, "Please complete first name"),
-  Name: z.string().min(2, "Please complete second name"),
-  Label: z.string().min(2, "Please complete second name"),
+  QuoteText: z.string(),
+  Name: z.string(),
+  Label: z.string(),
   Image: z.string(),
 })
 
@@ -112,6 +112,7 @@ export default function TestimonialsForm(props: {
           <ImageSingleUpload
             form={testimonialFormCXT}
             options={{
+              Label: "Image URL",
               Name: "Image",
             }}
           />

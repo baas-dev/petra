@@ -24,7 +24,7 @@ export interface Teammate {
 }
 export default function IndexPage() {
   const [testimonials, setTestimonials] = useState([])
-  const [team, setTeam] = useState<any[]>([])
+  const [team, setTeam] = useState<[]>([])
 
   let GetTestimonials = async () => {
     let res = await api.GET({
@@ -47,18 +47,20 @@ export default function IndexPage() {
     <>
       <div className="min-h-screen bg-secondary overflow-x-hidden">
         <div className="md:hidden">
-          <MainHeroSection />
           <TeamSection data={team} />
+          <TestimonialSwiper data={testimonials} />
           <Achievements />
+          <MainHeroSection />
+          <CoreValuesSection />
         </div>
         <div className="hidden md:block">
-          <Parallax pages={3}>
+          <Parallax pages={2.8}>
             <ParallaxLayer offset={1} speed={0.3}>
               <Image
                 src={"/images/mountains.png"}
                 alt=""
                 fill
-                className="opacity-25"
+                className="opacity-50"
               />
             </ParallaxLayer>
             {/* Content Layer */}
