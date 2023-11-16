@@ -309,7 +309,7 @@ const FullWidthNavbar = () => {
               </HoverCardContent>
             </HoverCard>
             <HoverCard openDelay={0} closeDelay={0}>
-              <Link href="#" legacyBehavior passHref>
+              <Link href="/apply" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
                     className={`flex-wrap text-center   items-center  ${

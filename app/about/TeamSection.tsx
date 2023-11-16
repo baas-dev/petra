@@ -21,7 +21,7 @@ import { Teammate } from "./page"
 export default function TeamSection({ data }: { data: Teammate[] }) {
   useEffect(() => {}, [data])
   return (
-    <section className=" items-center h-full relative  px-4 text-center   md:py-16">
+    <section className=" items-center h-full min-h-screen relative  px-4 text-center   md:py-16">
       <h1 className="text-4xl py-8 block font-bold relative text-transparent bg-clip-text bg-gradient-to-r  from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">
         Welcome
         <span className="sm:mx-auto font-light w-full text-4xl text-blue-900 text-center pl-2   lg:w-auto lg:text-left  dark:text-white">

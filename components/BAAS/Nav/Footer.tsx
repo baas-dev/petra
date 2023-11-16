@@ -59,9 +59,9 @@ function MiddleSection() {
       <div className="my-auto mt-4 md:text-left flex flex-col w-full items-center h-full">
         <div className="mb-2">
           <Link target="_blank" href="https://m.me/petralending">
-            <Button className=" hover:cursor-pointer border-2  bg-primary text-white">
+            <Button className=" hover:cursor-pointer border-2 p-4 bg-primary text-white">
               <Facebook className="mr-2 h-4 w-4" />
-              <span className="text-lg">Message Us on Facebook</span>
+              <span className="text-sm lg:text-lg">Message Us on Facebook</span>
             </Button>
           </Link>
         </div>
