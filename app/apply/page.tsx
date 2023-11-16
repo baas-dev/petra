@@ -16,10 +16,6 @@ import QuestionHeader from "../prequalification/components/questionHeader"
 
 const api = new BACKEND()
 
-export const Step1FormSchema = z.object({
-  TeamMembers: z.array(z.string()),
-})
-
 export default function Step1Form(props: {}) {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
   function processString(inputString: string): string {
@@ -43,10 +39,6 @@ export default function Step1Form(props: {}) {
   useEffect(() => {
     LoadTeam()
   }, [])
-
-  async function onSubmit(data: z.infer<typeof Step1FormSchema>) {
-    // console.log(data)
-  }
 
   function LoadLength() {
     let length = teamMembers.length.toString()
