@@ -41,33 +41,80 @@ let coreValueData: CoreValue[] = [
 export default function CoreValuesSection() {
   return (
     <>
-      <section className="min-h-screen flex justify-center items-center px-4 py-16">
-        <div className="">
-          <div className="w-full h-24 relative text-center">
-            <span className="mb-2 text-xs font-bold tracking-widest text-primary uppercase">
-              Our Core Values
-            </span>
-            <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
-              Defining Our Service
-            </h1>
+      <div className="min-h-screen w-full justify-center items-center h-full  hidden lg:flex">
+        <div
+          id="big-circle"
+          className="circle big bg-blue-50 mx-auto text-center"
+        >
+          <div className=" circle one content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              One
+            </div>
           </div>
-
-          <div className="w-full flex flex-col md:flex-row gap-2 ">
-            {coreValueData.map((item, i) => {
-              return (
-                <RevealAnimation
-                  key={i} // Don't forget to add a unique key when mapping
-                  options={{
-                    delay: 0.2 * (i + 1),
-                  }}
-                >
-                  <HoverCard {...item} />
-                </RevealAnimation>
-              )
-            })}
+          <div className=" circle two content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              Two
+            </div>
+          </div>
+          <div className=" circle three content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              Three
+            </div>
+          </div>
+          <div className=" circle four content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              four
+            </div>
+          </div>
+          <div className=" circle five content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              five
+            </div>
+          </div>
+          <div className=" circle six content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              Six
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+      <div className="min-h-screen w-full justify-center items-center h-full  flex lg:hidden">
+        <div
+          id="big-circle"
+          className="circlemobile bigmobile bg-blue-50 mx-auto text-center"
+        >
+          <div className=" circlemobile onem content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              One
+            </div>
+          </div>
+          <div className=" circlemobile twom content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              Two
+            </div>
+          </div>
+          <div className=" circlemobile threem content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              Three
+            </div>
+          </div>
+          <div className=" circlemobile fourm content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              four
+            </div>
+          </div>
+          <div className=" circlemobile fivem content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              five
+            </div>
+          </div>
+          <div className=" circlemobile sixm content-center justify-center h-full w-full">
+            <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
+              Six
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

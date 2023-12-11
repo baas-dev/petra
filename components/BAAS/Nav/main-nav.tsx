@@ -169,7 +169,13 @@ const FullWidthNavbar = () => {
   let path = usePathname()
   return (
     <>
-      <header className="bg-white w-full">
+      <header className="bg-white w-full flex items-center container max-w-4xl justify-between">
+        <Image
+          src={"/images/petra-blue.svg"}
+          height={50}
+          width={100}
+          alt=" mx-auto  pb-4 mb-4 "
+        />
         {/* <Info />
           <div className="md:w-full text-center flex flex-wrap justify-center">
             <div className="flex items-center justify-center  space-y-4 flex-wrap w-full">
@@ -227,7 +233,7 @@ const FullWidthNavbar = () => {
                       path == "/about" ? "text-accent underline" : ""
                     } `}
                   >
-                    Meet Petra
+                    About Us
                   </div>
                 </HoverCardTrigger>
               </Link>
@@ -284,7 +290,7 @@ const FullWidthNavbar = () => {
               </HoverCardContent>
             </HoverCard>
 
-            <HoverCard openDelay={0} closeDelay={0}>
+            {/* <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/prequalification" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
@@ -307,8 +313,8 @@ const FullWidthNavbar = () => {
                   </p>
                 </div>
               </HoverCardContent>
-            </HoverCard>
-            <HoverCard openDelay={0} closeDelay={0}>
+            </HoverCard> */}
+            {/* <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/apply" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
@@ -328,7 +334,7 @@ const FullWidthNavbar = () => {
                   <p>Start our prequalification process, quickly and easily</p>
                 </div>
               </HoverCardContent>
-            </HoverCard>
+            </HoverCard> */}
             <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/contact" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
@@ -380,7 +386,9 @@ const FullWidthNavbar = () => {
             </HoverCard> */}
           </NavigationMenuList>
         </NavigationMenu>
-        <hr />
+        <Link href="/client-center">
+          <Button>Client Center</Button>
+        </Link>
       </header>
     </>
   )

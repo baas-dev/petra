@@ -126,3 +126,99 @@
 .tradingview-widget-copyright {
   visibility: hidden;
 }
+
+.circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  position: absolute;
+}
+
+.circlemobile {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  display: inline-block;
+  position: absolute;
+}
+
+.circle.big {
+  width: 350px;
+  height: 350px;
+  background-color: blue;
+  margin: 100px;
+}
+
+.circle.bigmobile {
+  width: 150px;
+  height: 150px;
+  background-color: blue;
+  margin: 100px;
+}
+.circlemobile.bigmobile {
+  width: 150px;
+  height: 150px;
+  background-color: blue;
+  margin: 100px;
+}
+
+.one {
+  left: -50px;
+  top: 15px;
+}
+
+.two {
+  top: -80px;
+  left: 100px;
+}
+
+.three {
+  right: -50px;
+  top: 15px;
+}
+
+.four {
+  left: -50px;
+  bottom: 15px;
+}
+
+.five {
+  bottom: -80px;
+  left: 100px;
+}
+
+.six {
+  right: -50px;
+  bottom: 15px;
+}
+
+.onem {
+  left: -50px;
+  top: 15px;
+}
+
+.twom {
+  top: -80px;
+  left: 100px;
+}
+
+.threem {
+  right: -50px;
+  top: 15px;
+}
+
+.fourm {
+  left: -50px;
+  bottom: 15px;
+}
+
+.fivem {
+  bottom: -80px;
+  left: 100px;
+}
+
+.sixm {
+  right: -50px;
+  bottom: 15px;
+}
