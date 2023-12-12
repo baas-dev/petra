@@ -129,16 +129,18 @@
 
 .circle {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   display: inline-block;
+  cursor: pointer;
   position: absolute;
+  border: 2px solid gray;
 }
 
 .circlemobile {
   border-radius: 50%;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   display: inline-block;
   position: absolute;
 }
@@ -146,20 +148,17 @@
 .circle.big {
   width: 350px;
   height: 350px;
-  background-color: blue;
   margin: 100px;
 }
 
 .circle.bigmobile {
   width: 150px;
   height: 150px;
-  background-color: blue;
   margin: 100px;
 }
 .circlemobile.bigmobile {
   width: 150px;
   height: 150px;
-  background-color: blue;
   margin: 100px;
 }
 
@@ -170,7 +169,7 @@
 
 .two {
   top: -80px;
-  left: 100px;
+  left: 80px;
 }
 
 .three {
@@ -185,7 +184,7 @@
 
 .five {
   bottom: -80px;
-  left: 100px;
+  left: 80px;
 }
 
 .six {

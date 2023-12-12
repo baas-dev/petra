@@ -4,35 +4,39 @@ import { CheckCircle } from "lucide-react"
 
 import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
+import CardList from "@/components/Sections/General/CardList"
+import IntroSection from "@/components/Sections/General/IntroSection"
+
+import BACKEND from "../API"
+
+const api = new BACKEND()
+
+const GetData = async (route: string) => {
+  let val = await api.GET({
+    Route: route,
+  })
+
+  return val
+}
 
 export default async function Resoures() {
+  let res = await GetData(`resources`)
+    .then((val) => {
+      console.log(val.data)
+      return val.data
+    })
+    .catch((err) => [])
   return (
     <>
-      <Image
-        src={"/site/resource/bg.png"}
-        height={2000}
-        width={4000}
-        alt=""
-        className=" mx-auto  pb-4 mb-4 max-h-[500px] object-cover"
-      />
+      <IntroSection ImageURL="/site/resource/bg.png" Title="Resources" />
+
       <h2 className="text-2xl text-center max-w-xl mx-auto">
         Buying a home shouldn’t be hard. Our team is here to support you every
         step of the way. <br className="mb-4" /> We have gathered a few
         resources to get you started.
       </h2>
-      <div className="grid grid-cols-2 mt-8 md:grid-cols-3 space-x-4 px-4 container gap-2">
-        <TitleWithIconCard
-          icon={<CheckCircle className="text-white" />}
-          title={"Home Loan Mortgage Checklist"}
-        />
-        <TitleWithIconCard
-          icon={<CheckCircle className="text-white" />}
-          title={"Home Loan Mortgage Checklist"}
-        />
-        <TitleWithIconCard
-          icon={<CheckCircle className="text-white" />}
-          title={"Home Loan Mortgage Checklist"}
-        />
+      <div className="grid grid-cols-2 mt-8 md:grid-cols-3 gap-2 px-4 container">
+        <CardList items={res} />
       </div>
     </>
     // <section className="py-12 min-h-screen items-center justify-center flex bg-secondary h-full sm:py-16 lg:py-20">

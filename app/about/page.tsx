@@ -1,11 +1,10 @@
-"use client"
-
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Parallax, ParallaxLayer } from "@react-spring/parallax"
-import { CheckCircle } from "lucide-react"
+import { Award, CheckCircle, Cog, Trophy, Users, Users2 } from "lucide-react"
 
 import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
+import IntroSection from "@/components/Sections/General/IntroSection"
 
 import BACKEND from "../API"
 import Achievements from "./Achievements"
@@ -27,29 +26,29 @@ export interface Teammate {
   Published?: string
 }
 export default function IndexPage() {
-  const [testimonials, setTestimonials] = useState([])
-  const [team, setTeam] = useState<[]>([])
+  // const [testimonials, setTestimonials] = useState([])
+  // const [team, setTeam] = useState<[]>([])
 
-  let GetTestimonials = async () => {
-    let res = await api.GET({
-      Route: "quotes",
-    })
-    setTestimonials(res.data)
-  }
-  let GetTeam = async () => {
-    let res = await api.GET({
-      Route: "team",
-    })
-    setTeam(res.data)
-  }
-  useEffect(() => {
-    // GetTestimonials()
-    // GetTeam()
-  }, [])
+  // let GetTestimonials = async () => {
+  //   let res = await api.GET({
+  //     Route: "quotes",
+  //   })
+  //   setTestimonials(res.data)
+  // }
+  // let GetTeam = async () => {
+  //   let res = await api.GET({
+  //     Route: "team",
+  //   })
+  //   setTeam(res.data)
+  // }
+  // useEffect(() => {
+  // GetTestimonials()
+  // GetTeam()
+  // }, [])
 
   return (
     <>
-      <IntroSection />
+      <Content />
       {/* Core Values Section */}
 
       {/* <div className="min-h-screen bg-secondary overflow-x-hidden">
@@ -86,17 +85,12 @@ export default function IndexPage() {
   )
 }
 
-function IntroSection() {
+function Content() {
   return (
     <>
+      <IntroSection ImageURL="/site/about/bg.jpg" />
+
       <section>
-        <Image
-          src={"/site/about/bg.jpg"}
-          height={2000}
-          width={4000}
-          alt=""
-          className=" mx-auto  pb-4 mb-4 max-h-[500px] object-cover"
-        />
         <h2 className="text-xl text-center max-w-4xl mx-auto">
           Our name comes from the Greek, meaning rock. We chose it because a
           rocksolid foundation undergirds all that we believe in and everything
@@ -109,16 +103,19 @@ function IntroSection() {
         </h2>
         <div className="grid grid-cols-2 mt-8 md:grid-cols-3 space-x-4 px-4 container gap-2">
           <TitleWithIconCard
-            icon={<CheckCircle className="text-white" />}
-            title={"Home Loan Mortgage Checklist"}
+            icon={<Cog className="w-32 h-32" />}
+            title={"Our Core Values"}
+            link={"/about/core-values"}
           />
           <TitleWithIconCard
-            icon={<CheckCircle className="text-white" />}
-            title={"Home Loan Mortgage Checklist"}
+            icon={<Users className="w-32 h-32" />}
+            title={"Meet the Team"}
+            link={"/about/team"}
           />
           <TitleWithIconCard
-            icon={<CheckCircle className="text-white" />}
-            title={"Home Loan Mortgage Checklist"}
+            icon={<Trophy className="w-32 h-32" />}
+            title={"Awards & Recognition"}
+            link={"/about/awards"}
           />
         </div>
       </section>
