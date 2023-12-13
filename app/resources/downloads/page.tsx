@@ -29,6 +29,7 @@ interface Resource {
   Title: string
   Description: string
   Link: string
+  LinkIcon?:string
 }
 export default async function Downloads() {
   let res = await GetData(`resources`)

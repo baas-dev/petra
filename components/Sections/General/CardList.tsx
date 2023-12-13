@@ -5,11 +5,13 @@ import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 
 export default function CardList(props: {
   items: {
-    Title: string
+    Title?: string
     Link?: string
-    Icon: ReactNode
+    Icon?: ReactNode
+    Delay?: number
   }[]
 }) {
+  console.log(props)
   return (
     <>
       {props.items &&

@@ -55,6 +55,22 @@ export const columns: ColumnDef<z.infer<typeof ResourceFormSchema>>[] = [
     header: "Title",
   },
   {
+    accessorKey: "Order",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="p-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Order
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    enableSorting: true,
+  },
+  {
     accessorKey: "Description",
     header: "Description",
     cell: ({ row }) => {

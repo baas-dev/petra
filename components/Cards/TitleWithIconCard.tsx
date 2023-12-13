@@ -12,8 +12,8 @@ export default function TitleWithIconCard({
   link,
   delay,
 }: {
-  title: string
-  icon: ReactNode
+  title?: string
+  icon?: ReactNode
   link?: string
   delay?: number
 }) {

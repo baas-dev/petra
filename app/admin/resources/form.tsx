@@ -12,6 +12,7 @@ import MediaDialog from "@/components/BAAS/Dashboard/MediaDialog"
 import { GetFormContext, SubmitForm } from "@/components/BAAS/Forms"
 import SubmitButton from "@/components/BAAS/Forms/Buttons/submit"
 import FormHeader from "@/components/BAAS/Forms/Components/FormHeader"
+import NumberInput from "@/components/BAAS/Forms/Inputs/NumberInput"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import { FormConfig } from "@/components/BAAS/Forms/Types"
 import { useTableContext } from "@/components/BAAS/Table/Context"
@@ -24,17 +25,16 @@ export const ResourceFormSchema = z.object({
   Description: z.string(),
   Link: z.string().url(),
   IconLink: z.string().url(),
+  Order: z.number(),
 })
 
-export default function ResourcesForm(props: {
-  data?: z.infer<typeof ResourceFormSchema>
-  // LoadDataFunc: () => z.infer<typeof ResourceFormSchema>
-}) {
+export default function ResourcesForm() {
   const r = useRouter()
   const { setTableCXT } = useTableContext()
   const { adminTableCXT } = useAdminTableContext()
 
   const [loading, setLoading] = useState(false)
+
   const faqFormCXT = useForm<z.infer<typeof ResourceFormSchema>>({
     resolver: zodResolver(ResourceFormSchema),
     defaultValues: {
@@ -44,6 +44,10 @@ export default function ResourcesForm(props: {
         ? adminTableCXT.Data.Description
         : "",
       Link: adminTableCXT.Data?.Link ? adminTableCXT.Data.Link : "",
+      IconLink: adminTableCXT.Data?.IconLink
+        ? adminTableCXT.Data?.IconLink
+        : "",
+      Order: adminTableCXT.Data?.Order ? adminTableCXT.Data.Order : 0,
     },
   })
 
@@ -115,6 +119,13 @@ export default function ResourcesForm(props: {
             options={{
               name: "IconLink",
               label: "Icon Link",
+            }}
+          />
+          <NumberInput
+            form={faqFormCXT}
+            options={{
+              name: "Order",
+              label: "Order",
             }}
           />
           <div className="mb-2">

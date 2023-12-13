@@ -49,6 +49,7 @@ export default function IndexPage() {
         <Dialog>
           <DialogTrigger className="w-full">
             <TitleWithIconCard
+              delay={0.2}
               icon={<DollarSign className="w-32 h-32" />}
               title={"Refinance"}
             />
