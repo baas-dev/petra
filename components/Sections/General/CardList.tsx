@@ -6,8 +6,7 @@ import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 export default function CardList(props: {
   items: {
     Title: string
-    Link: string
-
+    Link?: string
     Icon: ReactNode
   }[]
 }) {
@@ -18,7 +17,12 @@ export default function CardList(props: {
         props.items.map((item, i) => {
           return (
             <>
-              <TitleWithIconCard key={i} icon={item.Icon} title={item.Title} />
+              <TitleWithIconCard
+                key={i}
+                icon={item.Icon}
+                title={item.Title}
+                link={item.Link}
+              />
             </>
           )
         })}

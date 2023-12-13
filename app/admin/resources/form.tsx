@@ -23,6 +23,7 @@ export const ResourceFormSchema = z.object({
   Title: z.string().min(2, "Please Complete Title"),
   Description: z.string(),
   Link: z.string().url(),
+  IconLink: z.string().url(),
 })
 
 export default function ResourcesForm(props: {
@@ -107,6 +108,13 @@ export default function ResourcesForm(props: {
             options={{
               name: "Link",
               label: "Link",
+            }}
+          />
+          <TextInput
+            form={faqFormCXT}
+            options={{
+              name: "IconLink",
+              label: "Icon Link",
             }}
           />
           <div className="mb-2">

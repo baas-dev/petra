@@ -26,21 +26,6 @@ const ContactUsBody = () => {
                   Get In Touch With Us
                 </h2>
 
-                <Separator className="my-4" />
-                <div className="mb-8 flex w-full max-w-[370px] items-center">
-                  <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
-                    <Locate className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="w-full">
-                    <h4 className="text-dark   text-lg">Text Us</h4>
-                    <Link target="_blank" href="https://m.me/petralending">
-                      <Button className=" hover:cursor-pointer border-2  bg-primary text-white">
-                        <Facebook className="mr-2 h-4 w-4" />
-                        <span className="text-lg">Message Us on Facebook</span>
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
                   <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
                     <PhoneCall className="h-6 w-6 text-white" />
@@ -50,7 +35,7 @@ const ContactUsBody = () => {
                     <p className="text-body-color text-md font-light">
                       <a
                         href="tel:214-432-0443"
-                        className="flex hover:underline"
+                        className="flex hover:underline text-blue-600 underline text-xl"
                       >
                         (+1) 214 432-0443
                       </a>
@@ -66,7 +51,7 @@ const ContactUsBody = () => {
                     <p className="text-body-color text-md font-light">
                       <a
                         href="mailto:“contactus@petralending.com”"
-                        className="flex hover:underline"
+                        className="flex hover:underline text-blue-600 underline text-xl"
                       >
                         contactus@petralending.com
                       </a>

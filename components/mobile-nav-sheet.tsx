@@ -99,7 +99,7 @@ const MobileNavMenu = ({ setOpen }) => {
               className="w-full justify-start"
             >
               <Info className="mr-2 h-4 w-4" />
-              Meet Petra
+              About Us
             </Button>
             {/* <Link href="/social"> */}
 
@@ -117,32 +117,6 @@ const MobileNavMenu = ({ setOpen }) => {
 
             <Button
               onClick={() => {
-                router.push("/apply"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <Pen className="mr-2 h-4 w-4" />
-              Apply Now
-            </Button>
-            <HoverCard>
-              <HoverCardTrigger>
-                <Button
-                  onClick={() => {
-                    router.push("/prequalification"), setOpen(false)
-                  }}
-                  variant="ghost"
-                  className="w-full justify-start"
-                >
-                  <AlertCircle className="mr-2 h-4 w-4" />
-                  Prequalification
-                </Button>
-              </HoverCardTrigger>
-              <HoverCardContent></HoverCardContent>
-            </HoverCard>
-
-            <Button
-              onClick={() => {
                 router.push("/contact"), setOpen(false)
               }}
               variant="ghost"
@@ -150,6 +124,17 @@ const MobileNavMenu = ({ setOpen }) => {
             >
               <Phone className="mr-2 h-4 w-4" />
               Contact Us
+            </Button>
+
+            <Button
+              onClick={() => {
+                router.push("/client-center"), setOpen(false)
+              }}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <Pen className="mr-2 h-4 w-4" />
+              Client Center
             </Button>
           </div>
         </div>

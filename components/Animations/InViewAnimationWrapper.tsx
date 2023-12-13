@@ -83,7 +83,7 @@ export function SlideInAnimation({
     <motion.div
       ref={ref}
       className="box z-10 w-full"
-      initial={{ y: 200, opacity: 0 }}
+      initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{
         duration: 1,

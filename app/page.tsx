@@ -18,7 +18,7 @@ export default function IndexPage() {
   return (
     <>
       <IntroSection ImageURL="/site/home/bg.png" Title="" />
-      <div className="container flex gap-4 max-w-4xl mb-16">
+      <div className="container flex flex-col md:flex-row gap-4 max-w-4xl mb-16">
         <Dialog>
           <DialogTrigger className="w-full">
             <TitleWithIconCard

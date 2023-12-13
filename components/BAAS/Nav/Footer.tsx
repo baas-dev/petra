@@ -35,7 +35,7 @@ function MiddleSection() {
         <div className="w-full flex flex-wrap justify-between container">
           {/* <SocialBar /> */}
 
-          <nav className="flex flex-wrap w-full text-center mx-auto justify-center text-lg font-medium">
+          {/* <nav className="flex flex-wrap w-full text-center mx-auto justify-center text-lg font-medium">
             <div className="px-5 py-2 w-full ">
               <a href="https://www.sml.texas.gov/wp-content/uploads/2021/07/rmlo_80_200_b_recovery_fund_notice.pdf">
                 Recovery Fund Notice
@@ -52,19 +52,19 @@ function MiddleSection() {
                 Terms
               </a>
             </div>
-          </nav>
+          </nav> */}
         </div>
       </div>
 
       <div className="my-auto mt-4 md:text-left flex flex-col w-full items-center h-full">
-        <div className="mb-2">
+        {/* <div className="mb-2">
           <Link target="_blank" href="https://m.me/petralending">
             <Button className=" hover:cursor-pointer border-2 p-4 bg-primary text-white">
               <Facebook className="mr-2 h-4 w-4" />
               <span className="text-sm lg:text-lg">Message Us on Facebook</span>
             </Button>
           </Link>
-        </div>
+        </div> */}
         <div className="mb-2    mx-auto flex  text-center">
           <Home className="mr-2" />
 
@@ -93,14 +93,24 @@ function MiddleSection() {
         <div className="mb-2 mx-auto  flex  text-center">
           NMLS#: <b className="ml-2">211515</b>
         </div>
+        <div>
+          <Image
+            src={"/images/tag.png"}
+            alt=""
+            width={1000}
+            height={500}
+            className="w-full md:h-24 bottom-0 mx-auto md:float-right "
+          />
+        </div>
       </div>
-      <div className="w-full flex  items-center mb-8 justify-end">
+
+      <div className="w-full flex h-full  items-baseline mb-8 justify-end">
         <Image
           src={"/images/eh.png"}
           alt=""
           width={500}
           height={500}
-          className="w-16 h-16 md:w-28 md:h-28 mx-auto md:float-right "
+          className="w-16 h-16 md:w-16 md:h-16 bottom-0 mx-auto md:float-right "
         />
       </div>
     </div>

@@ -16,15 +16,18 @@ export default async function ClientCenterPage() {
               <Stamp className="w-20 h-20 rotate-45 " />
             </div>
           }
-          title={"Purchase"}
+          title={"Get Prequalified"}
+          link={"/prequalification"}
         />
         <TitleWithIconCard
           icon={
-            <div className="flex p-4 mt-8">
-              <Keyboard className="w-72 h-32" />
+            <div className="flex p-4 ">
+              <Keyboard className="w-32 h-32" />
             </div>
           }
-          title={"Purchase"}
+          title={"Apply Now"}
+          link={"/apply"}
+          delay={0.2}
         />
       </div>
     </>

@@ -10,7 +10,7 @@ interface IntroSection {
 export default function IntroSection(props: IntroSection) {
   return (
     <>
-      <section className="relative w-full  lg:h-[65vh] mb-8">
+      <section className="relative w-full h-50vh min-h-[200px]  lg:h-[65vh] mb-8">
         <Image
           src={props.ImageURL}
           fill

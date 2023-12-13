@@ -101,7 +101,7 @@ function Content() {
           help you move into the home that’s right for you, right where you find
           yourself in life’s journey. Welcome to the family.
         </h2>
-        <div className="grid grid-cols-2 mt-8 md:grid-cols-3 space-x-4 px-4 container gap-2">
+        <div className="grid grid-cols-1 mt-8 md:grid-cols-3 px-4 container gap-2">
           <TitleWithIconCard
             icon={<Cog className="w-32 h-32" />}
             title={"Our Core Values"}
@@ -111,11 +111,13 @@ function Content() {
             icon={<Users className="w-32 h-32" />}
             title={"Meet the Team"}
             link={"/about/team"}
+            delay={0.2}
           />
           <TitleWithIconCard
             icon={<Trophy className="w-32 h-32" />}
             title={"Awards & Recognition"}
             link={"/about/awards"}
+            delay={0.4}
           />
         </div>
       </section>

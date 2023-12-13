@@ -1,6 +1,5 @@
 import { Fade } from "react-awesome-reveal"
 
-import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import {
   Sheet,
@@ -64,13 +63,11 @@ export default function CoreValuesPage() {
           >
             <PopUpDialog
               trigger={
-                <Button variant={"link"} className="hover:bg-none">
-                  <div className=" circle one opacity-80 content-center justify-center h-full w-full">
-                    <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
-                      <p className="!opacity-100 text-black text-2xl">Called</p>
-                    </div>
+                <div className=" circle one opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-2xl">Called</p>
                   </div>
-                </Button>
+                </div>
               }
               text={`Passion + Purpose +
               Expertise = Results.
@@ -83,15 +80,11 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <Button variant={"link"}>
-                  <div className=" circle two opacity-80 content-center justify-center h-full w-full">
-                    <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
-                      <p className="!opacity-100 text-black text-2xl">
-                        Centered
-                      </p>
-                    </div>
+                <div className=" circle two opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-2xl">Centered</p>
                   </div>
-                </Button>
+                </div>
               }
               text={`Passion + Purpose +
               Expertise = Results.
@@ -103,15 +96,13 @@ export default function CoreValuesPage() {
             />
             <PopUpDialog
               trigger={
-                <Button variant={"link"}>
-                  <div className=" circle three opacity-80 content-center justify-center h-full w-full">
-                    <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
-                      <p className="!opacity-100 text-black text-2xl">
-                        Committed
-                      </p>
-                    </div>
+                <div className=" circle three opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-2xl">
+                      Committed
+                    </p>
                   </div>
-                </Button>
+                </div>
               }
               text={`Wholehearted
               dedication to our
@@ -122,15 +113,13 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <Button variant={"link"}>
-                  <div className=" circle four opacity-80 content-center justify-center h-full w-full">
-                    <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
-                      <p className="!opacity-100 text-black text-2xl">
-                        Consultative
-                      </p>
-                    </div>
+                <div className=" circle four opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-2xl">
+                      Consultative
+                    </p>
                   </div>
-                </Button>
+                </div>
               }
               text={`Every client deserves
               the information,
@@ -141,15 +130,13 @@ export default function CoreValuesPage() {
             />
             <PopUpDialog
               trigger={
-                <Button variant={"link"}>
-                  <div className=" circle five opacity-80 content-center justify-center h-full w-full">
-                    <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
-                      <p className="!opacity-100 text-black text-2xl">
-                        Collaborative
-                      </p>
-                    </div>
+                <div className=" circle five opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-2xl">
+                      Collaborative
+                    </p>
                   </div>
-                </Button>
+                </div>
               }
               text={`It takes a team.
               Partnerships matter.
@@ -161,15 +148,13 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <Button variant={"link"}>
-                  <div className=" circle six opacity-80 content-center justify-center h-full w-full">
-                    <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
-                      <p className="!opacity-100 text-black text-2xl">
-                        Connected
-                      </p>
-                    </div>
+                <div className=" circle six opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-2xl">
+                      Connected
+                    </p>
                   </div>
-                </Button>
+                </div>
               }
               text={`Strong connections in our
               community network put
@@ -186,36 +171,106 @@ export default function CoreValuesPage() {
             id="big-circle"
             className="circlemobile bigmobile bg-blue-50 mx-auto text-center"
           >
-            <div className=" circlemobile onem content-center justify-center h-full w-full">
-              <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
-                One
-              </div>
-            </div>
-            <div className=" circlemobile twom content-center justify-center h-full w-full">
-              <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
-                Two
-              </div>
-            </div>
-            <div className=" circlemobile threem content-center justify-center h-full w-full">
-              <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
-                Three
-              </div>
-            </div>
-            <div className=" circlemobile fourm content-center justify-center h-full w-full">
-              <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
-                four
-              </div>
-            </div>
-            <div className=" circlemobile fivem content-center justify-center h-full w-full">
-              <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
-                five
-              </div>
-            </div>
-            <div className=" circlemobile sixm content-center justify-center h-full w-full">
-              <div className="my-auto h-full flex justify-center items-center rounded-full bg-blue-200">
-                Six
-              </div>
-            </div>
+            <PopUpDialog
+              trigger={
+                <div className="circlemobile onem opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-md">Called</p>
+                  </div>
+                </div>
+              }
+              text={`Centered on the best
+              rates and the best
+              service. Centered on
+              you. We strive to be
+              balanced, fair, and
+              responsible with home
+              financing and financial
+              plans for our customers.`}
+            />
+
+            <PopUpDialog
+              trigger={
+                <div className="circlemobile twom opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-md">Centered</p>
+                  </div>
+                </div>
+              }
+              text={`Passion + Purpose +
+              Expertise = Results.
+              It is our mission to use
+              our knowledge to
+              serve and help others
+              with their lending
+              needs.`}
+            />
+            <PopUpDialog
+              trigger={
+                <div className=" circlemobile threem opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-md">Committed</p>
+                  </div>
+                </div>
+              }
+              text={`Wholehearted
+              dedication to our
+              clients, our employees,
+              and our partners. After
+              all, that’s our family.`}
+            />
+
+            <PopUpDialog
+              trigger={
+                <div className=" circlemobile fourm opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-md">
+                      Consultative
+                    </p>
+                  </div>
+                </div>
+              }
+              text={`Every client deserves
+              the information,
+              insight, and
+              knowledge to make
+              the best financing
+              decision possible.`}
+            />
+            <PopUpDialog
+              trigger={
+                <div className=" circlemobile fivem opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-md">
+                      Collaborative
+                    </p>
+                  </div>
+                </div>
+              }
+              text={`It takes a team.
+              Partnerships matter.
+              Working together in
+              unison as a team is the
+              key to success. We’re
+              better together.`}
+            />
+
+            <PopUpDialog
+              trigger={
+                <div className=" circlemobile sixm opacity-80 content-center justify-center h-full w-full">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                    <p className="!opacity-100 text-black text-md">Connected</p>
+                  </div>
+                </div>
+              }
+              text={`Strong connections in our
+              community network put
+              extensive resources at your
+              fingertips. But at the heart
+              of our business we want to
+              be connected to you, your
+              desires, and goals.`}
+            />
           </div>
         </div>
       </Dialog>
