@@ -28,14 +28,17 @@
 
 
     # Use an official Node.js, and it should be version 16 and above
-FROM node:20-alpine
+FROM node:18.13.0-alpine
 # Set the working directory in the container
-WORKDIR /app
-
 ENV NODE_ENV=staging
+
+WORKDIR /app
+COPY .env.staging ./.env
+
 
 # Copy package.json and pnpm-lock.yaml
 COPY pnpm-lock.yaml package.json ./
+
 # Install app dependencies using PNPM
 RUN npm install -g pnpm
 # Install dependencies
