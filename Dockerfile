@@ -1,62 +1,89 @@
-# # ------------------ dev build -------------------
-FROM node:18.13.0-alpine as build_dev
-RUN npm install -g pnpm
+# Use the official Node.js 14 image as the base image
+	FROM node:18.13.0-alpine
+	 
+	# Set environment variables for configuration
+	ENV NODE_ENV=production
+	ENV PORT=3000
+	 
+	# Set a default value for the environment variable
+	ARG API_URL=https://api.example.com
+	 
+	# Set labels for better maintainability
+	LABEL maintainer="Your Name <your.email@example.com>"
+	LABEL version="1.0"
+	LABEL description="Dockerfile for a NextJS app using PNPM"
+	 
+	# Set the working directory inside the container
+	WORKDIR /app
+	 
+	# Copy the package.json and pnpm-lock.yaml files to the working directory
+	COPY package.json pnpm-lock.yaml ./
+	 
+	# Install dependencies using PNPM
+	RUN npm install -g pnpm
+	RUN pnpm install
+	 
+	# Copy the rest of the app's files to the working directory
+	COPY . .
+ # # ------------------ dev build -------------------
+# FROM node:18.13.0-alpine as build_dev
+# RUN npm install -g pnpm
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package.json ./
-COPY pnpm-lock.yaml ./
-RUN pnpm install
+# COPY package.json ./
+# COPY pnpm-lock.yaml ./
+# RUN pnpm install
 
-COPY . .
-COPY .env.dev ./.env
+# COPY . .
+# COPY .env.dev ./.env
 
-RUN npm run build
+# RUN npm run build
 
-# # ------------------dev -------------------
+# # # ------------------dev -------------------
 
-FROM node:18.13.0-alpine as dev
+# FROM node:18.13.0-alpine as dev
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY --from=build_dev /app/.env .
-COPY --from=build_dev /app/package.json .
-COPY --from=build_dev /app/pnpm-lock.yaml .
-COPY --from=build_dev /app/next.config.mjs ./next.config.mjs
-COPY --from=build_dev /app/node_modules/ ./node_modules/
-COPY --from=build_dev /app/public/ ./public/
-COPY --from=build_dev /app/.next/ ./.next/
+# COPY --from=build_dev /app/.env .
+# COPY --from=build_dev /app/package.json .
+# COPY --from=build_dev /app/pnpm-lock.yaml .
+# COPY --from=build_dev /app/next.config.mjs ./next.config.mjs
+# COPY --from=build_dev /app/node_modules/ ./node_modules/
+# COPY --from=build_dev /app/public/ ./public/
+# COPY --from=build_dev /app/.next/ ./.next/
 
-CMD ["/bin/sh", "-c", "npm start"]
+# CMD ["/bin/sh", "-c", "npm start"]
 
 
-# # ------------------staging build-------------------
+# # # ------------------staging build-------------------
 
-FROM node:18.13.0-alpine as build_staging
-RUN npm install -g pnpm
+# FROM node:18.13.0-alpine as build_staging
+# RUN npm install -g pnpm
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package.json ./
-COPY pnpm-lock.yaml ./
-RUN pnpm install
+# COPY package.json ./
+# COPY pnpm-lock.yaml ./
+# RUN pnpm install
 
-COPY . .
-COPY .env.staging ./.env
+# COPY . .
+# COPY .env.staging ./.env
 
-RUN npm run build
+# RUN npm run build
 
-# # ------------------ staging -------------------
-FROM node:18.13.0-alpine as staging
+# # # ------------------ staging -------------------
+# FROM node:18.13.0-alpine as staging
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY --from=build_staging /app/.env .
-COPY --from=build_staging /app/package.json .
-COPY --from=build_staging /app/pnpm-lock.yaml .
-COPY --from=build_staging /app/next.config.mjs ./next.config.mjs
-COPY --from=build_staging /app/node_modules/ ./node_modules/
-COPY --from=build_staging /app/public/ ./public/
-COPY --from=build_staging /app/.next/ ./.next/
+# COPY --from=build_staging /app/.env .
+# COPY --from=build_staging /app/package.json .
+# COPY --from=build_staging /app/pnpm-lock.yaml .
+# COPY --from=build_staging /app/next.config.mjs ./next.config.mjs
+# COPY --from=build_staging /app/node_modules/ ./node_modules/
+# COPY --from=build_staging /app/public/ ./public/
+# COPY --from=build_staging /app/.next/ ./.next/
 
-CMD ["/bin/sh", "-c", "npm start"]
+# CMD ["/bin/sh", "-c", "npm start"]
