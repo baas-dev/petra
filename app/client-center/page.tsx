@@ -8,7 +8,7 @@ export default async function ClientCenterPage() {
     <>
       <IntroSection ImageURL={"/site/cc/bg.png"} />
       <h1 className="text-4xl text-center">{`Let's Get Started!`}</h1>
-      <div className="flex gap-4 max-w-4xl container mt-8 mb-16">
+      <div className="flex gap-4 max-w-4xl flex-col md:flex-row container mt-8 mb-16">
         <TitleWithIconCard
           icon={
             <div className="flex bottom-0">

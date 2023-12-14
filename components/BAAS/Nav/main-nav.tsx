@@ -397,9 +397,7 @@ const FullWidthNavbar = () => {
 const MobileNavbar = () => {
   return (
     <>
-      <div className="w-1/3">
-        <MobileNavSheet />
-      </div>
+      <MobileNavSheet />
     </>
   )
 }

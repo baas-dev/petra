@@ -43,7 +43,7 @@ export default async function Resoures() {
           if (a.Order && b.Order) {
             return a.Order - b.Order
           }
-          return 0
+          return 1
         })
         console.log(data)
         data.forEach((item, i) => {

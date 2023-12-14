@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { HoverCard } from "@radix-ui/react-hover-card"
@@ -36,6 +37,7 @@ import { playlists } from "./BAAS/Cards/data"
 import Cart from "./BAAS/Shop/components/Cart"
 import { HoverCardContent, HoverCardTrigger } from "./ui/hover-card"
 import { MenubarShortcut } from "./ui/menubar"
+import { Separator } from "./ui/separator"
 
 const SHEET_POSITIONS = ["top", "right", "bottom", "left"] as const
 
@@ -45,20 +47,37 @@ export default function MobileNavSheet() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="w-full text-left">
+    <div className="w-full text-left flex items-center justify-between">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant={"ghost"} className="ml-2">
-            <MoreVertical /> Menu
+            <MoreVertical />
           </Button>
         </SheetTrigger>
         <SheetContent side={"left"}>
           <SheetHeader className="text-left">
-            <SheetTitle>Site Navigation</SheetTitle>
+            <SheetTitle>
+              <Image
+                src={"/images/petra-blue.svg"}
+                height={50}
+                width={100}
+                alt=" mx-auto pl-8 mx-auto w-full absolute pb-4 mb-4 "
+              />
+            </SheetTitle>
             <SheetDescription>
-              We are excited to help you with your mortgage lending
+              <div className="w-full h-16">
+                <Image
+                  src={"/images/tag.png"}
+                  height={500}
+                  width={1000}
+                  className=" mx-auto w-full  pb-4 mb-4  "
+                  alt=""
+                />{" "}
+              </div>
             </SheetDescription>
           </SheetHeader>
+          <Separator className="bg-background border w-full text-primary" />
+
           <div>
             <MobileNavMenu setOpen={setOpen} />
           </div>
@@ -67,6 +86,14 @@ export default function MobileNavSheet() {
           </SheetFooter> */}
         </SheetContent>
       </Sheet>
+      <div className="w-full flex items-center">
+        <Image
+          src={"/images/petra-blue.svg"}
+          height={50}
+          width={100}
+          alt=" mx-auto pl-8 mx-auto w-full absolute pb-4 mb-4 "
+        />
+      </div>
     </div>
   )
 }
