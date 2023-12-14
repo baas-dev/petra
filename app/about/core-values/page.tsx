@@ -196,7 +196,7 @@ export default function CoreValuesPage() {
             <PopUpDialog
               trigger={
                 <div className="circlemobile twom opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-primary/60">
                     <p className="!opacity-100 text-black text-md">Centered</p>
                   </div>
                 </div>
@@ -227,7 +227,7 @@ export default function CoreValuesPage() {
             <PopUpDialog
               trigger={
                 <div className=" circlemobile fourm opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-sky-600">
                     <p className="!opacity-100 text-black text-md">
                       Consultative
                     </p>
@@ -244,7 +244,7 @@ export default function CoreValuesPage() {
             <PopUpDialog
               trigger={
                 <div className=" circlemobile fivem opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full">
+                  <div className="my-auto transition bg-blue-300 hover:scale-125 z-10 h-full flex justify-center items-center rounded-full">
                     <p className="!opacity-100 text-black text-md">
                       Collaborative
                     </p>
@@ -262,7 +262,7 @@ export default function CoreValuesPage() {
             <PopUpDialog
               trigger={
                 <div className=" circlemobile sixm opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
+                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-teal-500">
                     <p className="!opacity-100 text-black text-md">Connected</p>
                   </div>
                 </div>
