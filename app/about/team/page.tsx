@@ -9,5 +9,5 @@ export default async function TeamPage() {
     Route: "team",
   })
 
-  return <TeamSection data={res.data} />
+  return <TeamSection data={res.data ? res.data : []} />
 }
