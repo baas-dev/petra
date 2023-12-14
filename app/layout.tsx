@@ -30,13 +30,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <AuthProvider>
               <TableContextProvider>
-                {/* <CartProvider> */}
-                <SiteHeader />
-                <Toaster />
-                <div className="min-h-screen w-full">{children}</div>
-                <Footer />
-                <TailwindIndicator />
-                {/* </CartProvider> */}
+                <CartProvider>
+                  <SiteHeader />
+                  <Toaster />
+                  <div className="min-h-screen w-full">{children}</div>
+                  <Footer />
+                  <TailwindIndicator />
+                </CartProvider>
               </TableContextProvider>
             </AuthProvider>
           </ThemeProvider>

@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react"
 
 import { CardTitle } from "@/components/ui/card"
-import { CoreValue } from "@/app/about/CoreValuesSection"
+import { CoreValue } from "@/app/about/core-values/page"
 
 export default function CardWithBackground(props: CoreValue) {
   return (
