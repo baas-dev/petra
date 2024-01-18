@@ -1,11 +1,13 @@
-import { Mulish as FontMono, Inter as FontSans } from "next/font/google"
+// import { Mulish as FontMono, Mulish as FontSans } from "next/font"
 
-export const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+// export const fontSans = FontSans({
+//   subsets: ["latin"],
+//   variable: "--font-sans",
+// })
 
-export const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+// export const fontMono = FontMono({
+//   subsets: ["latin"],
+//   variable: "--font-mono",
+// })
+
+export {}

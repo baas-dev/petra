@@ -1,32 +1,23 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { HoverCard } from "@radix-ui/react-hover-card"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
 import {
   AlertCircle,
-  CalculatorIcon,
+  Calculator,
+  DollarSign,
   Download,
   FileQuestion,
-  Globe,
   Home,
   Info,
-  LayoutGrid,
-  Library,
-  ListMusic,
-  Menu,
-  MenuIcon,
-  Mic,
-  Mic2,
-  MoreHorizontal,
   MoreVertical,
-  Music2,
   Newspaper,
+  Pen,
   Phone,
-  PlayCircle,
-  Radio,
-  User,
 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -43,7 +34,10 @@ import {
 } from "@/components/ui/sheet"
 
 import { playlists } from "./BAAS/Cards/data"
+import Cart from "./BAAS/Shop/components/Cart"
+import { HoverCardContent, HoverCardTrigger } from "./ui/hover-card"
 import { MenubarShortcut } from "./ui/menubar"
+import { Separator } from "./ui/separator"
 
 const SHEET_POSITIONS = ["top", "right", "bottom", "left"] as const
 
@@ -53,28 +47,53 @@ export default function MobileNavSheet() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="w-full text-left">
+    <div className="w-full text-left flex items-center justify-between">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant={"ghost"} className="ml-2">
-            <MoreVertical /> Menu
+            <MoreVertical />
           </Button>
         </SheetTrigger>
         <SheetContent side={"left"}>
           <SheetHeader className="text-left">
-            <SheetTitle>Site Navigation</SheetTitle>
+            <SheetTitle>
+              <Image
+                src={"/images/petra-blue.svg"}
+                height={50}
+                width={100}
+                alt=" mx-auto pl-8 mx-auto w-full absolute pb-4 mb-4 "
+              />
+            </SheetTitle>
             <SheetDescription>
-              We are excited to help you with your mortgage lending
+              <div className="w-full h-16">
+                <Image
+                  src={"/images/tag.png"}
+                  height={500}
+                  width={1000}
+                  className=" mx-auto w-full  pb-4 mb-4  "
+                  alt=""
+                />{" "}
+              </div>
             </SheetDescription>
           </SheetHeader>
+          <Separator className="bg-background border w-full text-primary" />
+
           <div>
             <MobileNavMenu setOpen={setOpen} />
           </div>
-          <SheetFooter>
+          {/* <SheetFooter>
             <p>Made by BAAS Software</p>
-          </SheetFooter>
+          </SheetFooter> */}
         </SheetContent>
       </Sheet>
+      <div className="w-full flex items-center">
+        <Image
+          src={"/images/petra-blue.svg"}
+          height={50}
+          width={100}
+          alt=" mx-auto pl-8 mx-auto w-full absolute pb-4 mb-4 "
+        />
+      </div>
     </div>
   )
 }
@@ -107,51 +126,22 @@ const MobileNavMenu = ({ setOpen }) => {
               className="w-full justify-start"
             >
               <Info className="mr-2 h-4 w-4" />
-              About
+              About Us
             </Button>
             {/* <Link href="/social"> */}
-            <Button
-              onClick={() => {
-                router.push("/social"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <Newspaper className="mr-2 h-4 w-4" />
-              Social
-            </Button>
+
             {/* </Link> */}
             <Button
               onClick={() => {
-                router.push("/resources/mortgage-calculator"), setOpen(false)
+                router.push("/resources"), setOpen(false)
               }}
               variant="ghost"
               className="w-full justify-start"
             >
-              <CalculatorIcon className="mr-2 h-4 w-4" />
-              Mortgage Calculator
-            </Button>
-            <Button
-              onClick={() => {
-                router.push("/resources/downloads"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Downloads & Links
+              <Calculator className="mr-2 h-4 w-4" />
+              Resources
             </Button>
 
-            <Button
-              onClick={() => {
-                router.push("/resources/faqs"), setOpen(false)
-              }}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              <FileQuestion className="mr-2 h-4 w-4" />
-              FAQs
-            </Button>
             <Button
               onClick={() => {
                 router.push("/contact"), setOpen(false)
@@ -160,17 +150,18 @@ const MobileNavMenu = ({ setOpen }) => {
               className="w-full justify-start"
             >
               <Phone className="mr-2 h-4 w-4" />
-              Contact
+              Contact Us
             </Button>
+
             <Button
               onClick={() => {
-                router.push("/prequalify"), setOpen(false)
+                router.push("/client-center"), setOpen(false)
               }}
               variant="ghost"
               className="w-full justify-start"
             >
-              <AlertCircle className="mr-2 h-4 w-4" />
-              Get Prequalified
+              <Pen className="mr-2 h-4 w-4" />
+              Client Center
             </Button>
           </div>
         </div>

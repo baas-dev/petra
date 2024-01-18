@@ -1,30 +1,16 @@
-import "@/styles/globals.css"
-import { Metadata } from "next"
-
+import "@/app/styles/globals.css"
 import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
+// import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/toaster"
 import Footer from "@/components/BAAS/Nav/Footer"
+import { CartProvider } from "@/components/BAAS/Shop/Context/CartContext"
+import { TableContextProvider } from "@/components/BAAS/Table/Context"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-}
+import AuthProvider from "./authProvider"
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -37,15 +23,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
+            "min-h-screen h-full font-sans antialiased"
+            // fontSans.variable
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <SiteHeader />
-            <div className="min-h-screen">{children}</div>
-            <Footer />
-            <TailwindIndicator />
+            <AuthProvider>
+              <TableContextProvider>
+                <CartProvider>
+                  <SiteHeader />
+                  <Toaster />
+                  <div className="min-h-screen w-full">{children}</div>
+                  <Footer />
+                  <TailwindIndicator />
+                </CartProvider>
+              </TableContextProvider>
+            </AuthProvider>
           </ThemeProvider>
         </body>
       </html>

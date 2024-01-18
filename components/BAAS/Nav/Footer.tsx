@@ -1,154 +1,118 @@
-"use client"
-
 import Image from "next/image"
-import { usePathname } from "next/navigation"
+import Link from "next/link"
+import { Facebook, Home, Mail, Phone } from "lucide-react"
+import moment from "moment"
+
+import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 
 export default function Footer() {
-  let path = usePathname()
-
-  console.log(path)
-  return path == "/" || "/about" ? <></> : <FooterBody />
-}
-
-function FooterBody() {
   return (
-    <footer className="bg-gray-100 text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-        <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
-          <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg> */}
-            <span className="text-xl">Petra Lending</span>
-          </a>
-          <p className="mt-2 text-sm font-semibold text-gray-500">
-            Your Home, Our Calling
-          </p>
-          <p className="mt-2 text-sm font-semibold text-gray-500">
-            contactus@petralending.com
-          </p>
-          <p className="mt-2 text-sm font-semibold text-gray-500">
-            (214) 432-0443
-          </p>
-          <p className="mt-2 text-sm font-semibold text-gray-500">
-            NMLS: 211515
-          </p>
-          <p className="mt-2 text-sm font-semibold text-gray-500">
-            3939 Belt Line Rd #150 <br /> Addison, TX 75001
-          </p>
-        </div>
-        <div className="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
-          <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              DIRECTORY
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-              </li>
-            </nav>
-          </div>
-
-          <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              LEGAL
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-              </li>
-            </nav>
-          </div>
-          <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-              </li>
-              <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-              </li>
-            </nav>
-          </div>
-        </div>
-      </div>
-      <div className="bg-gray-100">
-        <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-          <p className="text-gray-500 text-sm text-center sm:text-left">
-            © 2023 Petra Lending —
-            <a
-              href="https://baas.dev"
-              rel="noopener noreferrer"
-              className="text-gray-600 ml-1"
-              target="_blank"
-            >
-              BAAS Software
-            </a>
-          </p>
-          <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-            <a className="text-gray-500">
-              <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-              </svg>
-            </a>
-            <a className="ml-3 text-gray-500">
-              <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-              </svg>
-            </a>
-            <a className="ml-3 text-gray-500">
-              <svg fill="none" className="w-5 h-5" viewBox="0 0 24 24">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-              </svg>
-            </a>
-            <a className="ml-3 text-gray-500">
-              <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-                <path
-                  stroke="none"
-                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                ></path>
-                <circle cx="4" cy="4" r="2" stroke="none"></circle>
-              </svg>
-            </a>
-          </span>
-        </div>
+    <footer className=" mx-auto w-full relative text-center bg-secondary border-t-4-blue-300 text-primary">
+      <div className=" text-left p-4">
+        <MiddleSection />
+        <Separator className="border-2 mb-4" />
+        <Bottom />
       </div>
     </footer>
+  )
+}
+
+function Bottom() {
+  return (
+    <>
+      <div className="w-full text-center mt-4">
+        <p className="text-base ">© {moment().year()} Petra Lending</p>
+      </div>
+    </>
+  )
+}
+
+function MiddleSection() {
+  return (
+    <div className="flex flex-col text-center mt-4 md:flex-row w-full justify-between container items-center">
+      <div className="w-full flex justify-between items-center">
+        <div className="w-full flex flex-wrap justify-between container">
+          {/* <SocialBar /> */}
+
+          {/* <nav className="flex flex-wrap w-full text-center mx-auto justify-center text-lg font-medium">
+            <div className="px-5 py-2 w-full ">
+              <a href="https://www.sml.texas.gov/wp-content/uploads/2021/07/rmlo_80_200_b_recovery_fund_notice.pdf">
+                Recovery Fund Notice
+              </a>
+            </div>
+
+            <div className="px-5 py-2 w-full ">
+              <a href="https://d1it9px5hinj36.cloudfront.net/Privacy%20Policy.pdf">
+                Privacy
+              </a>
+            </div>
+            <div className="px-5 py-2 w-full">
+              <a href="https://d1it9px5hinj36.cloudfront.net/TermsOfService.pdf">
+                Terms
+              </a>
+            </div>
+          </nav> */}
+        </div>
+      </div>
+
+      <div className="my-auto mt-4 md:text-left flex flex-col w-full items-center h-full">
+        {/* <div className="mb-2">
+          <Link target="_blank" href="https://m.me/petralending">
+            <Button className=" hover:cursor-pointer border-2 p-4 bg-primary text-white">
+              <Facebook className="mr-2 h-4 w-4" />
+              <span className="text-sm lg:text-lg">Message Us on Facebook</span>
+            </Button>
+          </Link>
+        </div> */}
+        <div className="mb-2    mx-auto flex  text-center">
+          <Home className="mr-2" />
+
+          <a
+            href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
+            className="hover:cursor-pointer hover:underline"
+          >
+            3939 Belt Line Rd #150, Addison, TX 75001
+          </a>
+        </div>
+        <div className="mb-2 mx-auto  flex  text-center">
+          <a
+            href="mailto:“contact-us@petralending.com”"
+            className="flex hover:underline"
+          >
+            <Mail className="mr-2" />
+            contact-us@petralending.com
+          </a>
+        </div>
+        <div className="mb-2 mx-auto  flex  text-center">
+          <a href="tel:214-432-0443" className="flex hover:underline">
+            <Phone className="mr-2" />
+            +1 (214) 432-0443
+          </a>
+        </div>
+        <div className="mb-2 mx-auto  flex  text-center">
+          NMLS#: <b className="ml-2">211515</b>
+        </div>
+        <div>
+          <Image
+            src={"/images/tag.png"}
+            alt=""
+            width={1000}
+            height={500}
+            className="w-full md:h-24 bottom-0 mx-auto md:float-right "
+          />
+        </div>
+      </div>
+
+      <div className="w-full flex h-full  items-baseline mb-8 justify-end">
+        <Image
+          src={"/images/eh.png"}
+          alt=""
+          width={500}
+          height={500}
+          className="w-16 h-16 md:w-16 md:h-16 bottom-0 mx-auto md:float-right "
+        />
+      </div>
+    </div>
   )
 }

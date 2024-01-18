@@ -1,4 +1,7 @@
 export default function MoneyInput(input: string): string {
+  if (!input) {
+    input = "0"
+  }
   // Remove any commas from the input string
   const sanitizedInput = input.replace(/,/g, "")
 

@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { FileImage } from "lucide-react"
 
@@ -12,106 +14,87 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { SidebarItems } from "@/app/admin/layout"
 
+import { SidebarItems } from "../Nav/AdminNav"
 import MediaDialog from "./MediaDialog"
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  items: SidebarItems[]
-  adminItems: SidebarItems[]
+  items: { title: string; items: SidebarItems[] }[]
 }
 
-export function Sidebar({ className, items, adminItems }: SidebarProps) {
+export function Sidebar({ className, items }: SidebarProps) {
   return (
-    <div className={cn("pb-12", className)}>
-      <div className="space-y-4 py-4">
+    <div className={cn("pb-12 w-full", className)}>
+      <div className="space-y-4 py-4 max-w-4xl mx-auto">
         <MediaDialog />
 
-        <div className="py-2">
-          <h2 className="relative text-lg font-semibold tracking-tight">
-            Site Content
-          </h2>
-          <div className="space-y-1   ">
-            {items?.map((item, i) => (
-              <>
-                {item.children && item.children?.length > 0 ? (
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className="w-full items-start py-0"
-                  >
-                    <AccordionItem value="item-1 text-left">
-                      <AccordionTrigger className="text-left py-2">
-                        {item.icon}
-                        <span className="text-md pl-4">{item.title}</span>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        {item.children.map((subitem, j) => (
-                          <Link href={`${subitem.href}`}>
-                            <Button
-                              key={`${subitem}-${j}`}
-                              variant="ghost"
-                              className="w-full justify-start"
-                            >
-                              <span className="text-md pl-4">
-                                {subitem.title}
-                              </span>
-                            </Button>
-                          </Link>
-                        ))}
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                ) : (
-                  <Link href={`${item.href}`}>
-                    <Button
-                      key={`${item}-${i}`}
-                      variant="ghost"
-                      className="w-full p-0 justify-start font-normal"
-                    >
-                      {item.icon}
-                      <span className="text-md pl-4  ">{item.title}</span>
-                    </Button>
-                    <Separator />
-                  </Link>
-                )}
-              </>
-            ))}
-          </div>
-        </div>
-        <div className="py-2">
-          <h2 className="relative text-lg font-semibold tracking-tight">
-            Admin Managment
-          </h2>
-          <div className="space-y-1">
-            {adminItems?.map((item, i) => (
-              <>
-                <Button
-                  key={`${item}-${i}`}
-                  variant="ghost"
-                  className="w-full justify-start p-0 font-bold"
-                >
-                  {item.icon}
-                  <span className="text-md pl-2">{item.title}</span>
-                </Button>
-                {item.children && item.children?.length > 0 ? (
-                  item.children.map((subitem, j) => (
-                    <Button
-                      key={`${subitem}-${j}`}
-                      variant="ghost"
-                      className="w-full justify-start font-normal"
-                    >
-                      <span className="text-md pl-4">{subitem.title}</span>
-                    </Button>
-                  ))
-                ) : (
-                  <></>
-                )}
-              </>
-            ))}
-          </div>
+        <div className="space-y-1   ">
+          {items.map((item, i) => (
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className=" border bg-white shadow-md rounded-lg">
+                  <h2 className="relative text-md font-semibold tracking-tight pl-4">
+                    {item.title}
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 mt-2 ">
+                  <RenderSidebarItems items={item.items} />
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ))}
         </div>
       </div>
     </div>
+  )
+}
+
+function RenderSidebarItems(props: { items: SidebarItems[] }) {
+  return (
+    <>
+      {props.items &&
+        props.items.map((item, i) =>
+          item.children && item.children?.length > 0 ? (
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full items-start py-2 mt-2"
+            >
+              <AccordionItem value="item-1 text-left">
+                <AccordionTrigger className="text-left bg-white">
+                  {item.icon}
+                  <span className="font-normal text-sm pl-4">{item.title}</span>
+                </AccordionTrigger>
+                <AccordionContent className="bg-white rounded-xl">
+                  {item.children.map((subitem, j) => (
+                    <Link href={`${subitem.href}`}>
+                      <Button
+                        key={`${subitem}-${j}`}
+                        variant="ghost"
+                        className="w-full justify-start"
+                      >
+                        <span className="text-md pl-4">{subitem.title}</span>
+                      </Button>
+                    </Link>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ) : (
+            <Link href={`${item.href}`} className="w-full ">
+              <div className="w-full  hover:bg-gray-500/20 mb-1 text-white bg-white border shadow-sm hover:cursor-pointer">
+                <Button
+                  key={`${item}-${i}`}
+                  variant="link"
+                  className="w-ful p-0 justify-start font-normal ml-2  rounded-lg hover:no-underline "
+                >
+                  <span className="pl-4">{item.icon}</span>
+                  <span className="text-md pl-2  ">{item.title}</span>
+                </Button>
+              </div>
+            </Link>
+          )
+        )}
+    </>
   )
 }

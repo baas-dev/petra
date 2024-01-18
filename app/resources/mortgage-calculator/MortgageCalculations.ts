@@ -1,3 +1,5 @@
+"use client"
+
 import LoanCalc from "loan-calc"
 
 export default class MortgageCalculations {

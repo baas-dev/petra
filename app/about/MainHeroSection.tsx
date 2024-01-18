@@ -72,32 +72,28 @@ import { Button } from "@/components/ui/button"
 export default function MainHeroSection() {
   return (
     <>
-      <div
-        className="w-full bg-center bg-cover h-screen "
-        style={{
-          clipPath: "polygon(0% 0%, 100% 0%, 100%  90%, 0% 100%)",
-
-          backgroundImage:
-            "url(https://images.pexels.com/photos/2707756/pexels-photo-2707756.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)",
-        }}
-      >
+      <div className="w-full bg-center bg-cover h-screen bg-primary">
         <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 py-12">
           <div className="text-center">
             <div className="container px-4 mx-auto">
               <div className="mx-auto text-center">
-                <Badge className="bg-accent mb-2 text-xl">
+                <Badge className="bg-accent mb-2 text-sm font-light md:text-xl">
                   The #1 Choice for Texas Home Lending
                 </Badge>
-                <h1 className="text-6xl text-white font-bold mb-2">
+                <h1 className="text-2xl md:text-4xl text-white font-bold mb-2">
                   Petra Home Lending
                 </h1>
 
-                <p className="max-w-lg mx-auto mb-4 text-lg text-gray-300">
-                  Rooted in Greek, our name means {"'rock'"} - embodying our
-                  strong principles. As a small home mortgage lender, we provide
-                  rock-solid certainty for your first home, growing family
-                  needs, or downsizing plans. Let us assist you in finding the
-                  ideal home for your life&#39s journey. Welcome to our family.
+                <p className="max-w-xl mx-auto mb-4 text-lg text-gray-300">
+                  {`Our name comes from the Greek, meaning rock. We chose it
+                  because a rock-solid foundation undergirds all that we believe
+                  in and everything we do. We’re a small home mortgage lender,
+                  and that’s on purpose. So, whether you’re buying your first
+                  home, need a larger home for your growing family, or are ready
+                  to downsize, our purpose is to provide that same rock-solid
+                  certainty with your mortgage. We are called to help you move
+                  into the home that’s right for you, right where you find
+                  yourself in life’s journey. Welcome to the family.`}
                 </p>
                 <Button variant={"secondary"} className="outline">
                   Let Us Help

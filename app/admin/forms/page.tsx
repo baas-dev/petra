@@ -1,29 +1,102 @@
-import { DataTable } from "@/components/ui/dataTable"
+"use client"
 
-import { Payment, columns } from "./columns"
+import { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
 
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ]
+import { Label } from "@/components/ui/label"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Banner from "@/components/BAAS/Banners/Banner"
+import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
+import TableLoading from "@/components/BAAS/Loading/TableLoading"
+import { DataTable } from "@/components/BAAS/Table/DataTable"
+import BACKEND from "@/app/API"
+
+import { columns } from "./columns"
+import { columnsAlt } from "./columns-alt"
+
+const api = new BACKEND()
+
+async function getData() {
+  return await api.GET({
+    Route: "forms",
+  })
 }
 
-export default async function DemoPage() {
-  // const data = await getData()
+export default function FormsAdmin() {
+  const r = useRouter()
+  const [contactData, setContactData] = useState([])
+  const [prequalData, setPrequalData] = useState([])
+
+  const [loading, setLoading] = useState(true)
+
+  const LoadData = async () => {
+    await getData().then((val) => {
+      if (val.data && val.data.length > 0) {
+        let contactArr: any = []
+        let prequalArr: any = []
+        console.log(val.data)
+        val.data.forEach((item, i) => {
+          if (item.Type == "contact") {
+            contactArr.push(item)
+          }
+          if (item.Type == "prequalification") {
+            prequalArr.push(item)
+          }
+        })
+        setContactData(contactArr)
+        setPrequalData(prequalArr)
+      }
+    })
+    setLoading(false)
+  }
+  useEffect(() => {
+    LoadData()
+  }, [])
 
   return (
     <>
-      <div className="container my-4">{/* <SheetPosition /> */}</div>
-      <div className="container mx-auto mt-4 py-10">
-        <DataTable columns={columns} data={[]} />
-      </div>
+      <Banner
+        Title={"Forms"}
+        Subtitle={"Most common questions for the public to understand"}
+      >
+        <></>
+      </Banner>
+
+      {loading ? (
+        <TableLoading />
+      ) : (
+        <>
+          <Tabs defaultValue="contact" className="w-full">
+            <div className="bg-white p-2 rounded-xl shadow-md">
+              <Label>Selected Records:</Label>
+              <TabsList className="grid w-full grid-cols-2 gap-2">
+                <TabsTrigger value="contact">Contact Form</TabsTrigger>
+                <TabsTrigger value="prequalification">
+                  Prequalification Form
+                </TabsTrigger>
+              </TabsList>
+            </div>
+            <TabsContent value="contact" className="w-full">
+              <DataTable
+                columns={columnsAlt}
+                data={contactData ? contactData : []}
+                scope={{
+                  TableName: "Forms",
+                }}
+              />
+            </TabsContent>
+            <TabsContent value="prequalification">
+              <DataTable
+                columns={columns}
+                data={prequalData ? prequalData : []}
+                scope={{
+                  TableName: "Forms",
+                }}
+              />
+            </TabsContent>
+          </Tabs>
+        </>
+      )}
     </>
   )
 }

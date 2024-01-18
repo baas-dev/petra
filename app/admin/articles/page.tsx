@@ -1,26 +1,81 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import { z } from "zod"
+
+import Banner from "@/components/BAAS/Banners/Banner"
+import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
+import TableLoading from "@/components/BAAS/Loading/TableLoading"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
-import TableActions from "@/components/BAAS/Table/TableActions"
+import BACKEND from "@/app/API"
 
-import { Articles, columns } from "./columns"
+import { columns } from "./columns"
+import ArticleInitForm, { ArticleFormSchema } from "./form"
 
-async function getData(): Promise<Articles[]> {
-  let data = await fetch("http://localhost:4000/faq", {
-    cache: "no-cache",
+const api = new BACKEND()
+
+async function getData() {
+  return await api.GET({
+    Route: "articles",
   })
-
-  return await data.json()
 }
 
-export default async function BlogPage() {
-  // const data = await getData()
+export default function FAQAdmin() {
+  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState<any[]>([])
 
+  async function LoadData() {
+    setLoading(true)
+    await getData().then((val) => {
+      if (val.data && val.data.length > 0) {
+        let state = val.data
+
+        setData(state) // Set the state directly
+      }
+    })
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    LoadData()
+  }, [])
   return (
     <>
-      <div className="container my-4">{/* <SheetPosition /> */}</div>
-      <div className="container mx-auto mt-4 py-10 ">
-        <TableActions path="/posts" />
-        <DataTable columns={columns} data={[]} />
-      </div>
+      <Banner Title={"Articles"} Subtitle={"Posts available to your community"}>
+        <ManageDataDialog
+          Form={<ArticleInitForm />}
+          data={null}
+          Text={"Create Article"}
+          Title={"Create A New Article"}
+          Description={
+            "The title of this article will result in the slugification of the URL (.../example-link)"
+          }
+        />
+      </Banner>
+
+      {loading ? (
+        <TableLoading />
+      ) : (
+        <DataTable
+          columns={columns}
+          data={data ? data : []}
+          scope={{
+            TableName: "BlogPosts",
+            SearchName: "articles",
+          }}
+          filters={[
+            {
+              label: "Title",
+              value: "Title",
+            },
+            {
+              label: "Description",
+              value: "Description",
+            },
+          ]}
+        />
+      )}
     </>
   )
 }

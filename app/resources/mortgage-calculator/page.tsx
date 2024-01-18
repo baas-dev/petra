@@ -3,7 +3,7 @@
 import React, { useEffect } from "react"
 import dynamic from "next/dynamic"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CalculatorIcon, DollarSign, PercentIcon } from "lucide-react"
+import { DollarSign, PercentIcon } from "lucide-react"
 import CurrencyInput from "react-currency-input-field"
 import { useForm } from "react-hook-form"
 
@@ -20,7 +20,8 @@ import {
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Slider } from "@/components/ui/slider"
-import { usePreqFormContext } from "@/app/prequalify/components/formContext"
+import Banner from "@/components/BAAS/Banners/BannerSite"
+import { usePreqFormContext } from "@/app/prequalification/components/formContext"
 
 import MortgageCalculations from "./MortgageCalculations"
 import { useMortgageCalcContext } from "./components/formContext"
@@ -28,6 +29,8 @@ import { useMortgageCalcContext } from "./components/formContext"
 const MortgagePieChart = dynamic(() => import("./components/piechart"), {
   ssr: false,
 })
+
+// import MortgagePieChart from "./components/piechart"
 
 let mortgage = new MortgageCalculations()
 
@@ -52,56 +55,53 @@ export default function MortgageCalculatorPage() {
     totalCost,
     propertyTaxPercentage
   )
-  const DataSet = () => {
-    let result = [
-      {
-        id: "Principle",
-        label: "Princeple",
-        value: mortgage
-          .CalculatePrincipleAmount(
-            totalCost -
-              mortgage.CalculateDownPayment(totalCost, downPaymentPercentage),
-            interestPercentage,
-            loanDurationTerm
-          )
-          .toFixed(2),
-      },
-      {
-        id: "Interest",
-        label: "interest",
-        value: mortgage
-          .CalculateInterestAmount(totalCost, interestPercentage)
-          .toFixed(2),
-      },
-      {
-        id: "Property Tax",
-        label: "Property Tax",
-        value: mortgage
-          .CalculatePropertyTaxAmount(totalCost, propertyTaxPercentage)
-          .toFixed(2),
-      },
-    ]
-    return result
-  }
+  let financedAmount =
+    totalCost - mortgage.CalculateDownPayment(totalCost, downPaymentPercentage)
+
+  let Dataset = [
+    {
+      id: "Principal",
+      label: "Principal",
+      value: mortgage
+        .CalculatePrincipleAmount(
+          financedAmount,
+          interestPercentage,
+          loanDurationTerm
+        )
+        .toFixed(2),
+    },
+    {
+      id: "Interest",
+      label: "interest",
+      value: mortgage
+        .CalculateInterestAmount(financedAmount, interestPercentage)
+        .toFixed(2),
+    },
+    {
+      id: "Property Tax",
+      label: "Property Tax",
+      value: mortgage
+        .CalculatePropertyTaxAmount(totalCost, propertyTaxPercentage)
+        .toFixed(2),
+    },
+  ]
 
   return (
-    <div className="container h-full w-full pt-24">
-      <div className="  w-full mb-8">
-        <h1 className="text-md block  font-semibold text-primary">
-          An easy mortgage payment cost-estimate tool
-        </h1>
-        <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
-          Mortgage Payment Calculator
-        </h2>
-        <p className="max-w-md   font-light">
-          Fill out the contact form below, and we&#39ll be in touch shortly to
-          provide you with personalized guidance for your unique needs.
-        </p>
-      </div>
+    <div className="min-h-screen h-full w-full ">
+      <Banner
+        Title={"Mortgage Calculator"}
+        Subtitle={"An easy-to-use, mortgage estimation tool"}
+      >
+        <></>
+      </Banner>
 
-      <div className="w-full flex  ">
+      <div className="w-full flex container">
         <div className="m-auto  h-full w-full">
-          <div className="flex flex-row pb-4 md:flex-row">
+          <div className="flex flex-col pb-4 md:flex-row gap-2">
+            <StatCard
+              title={"Total Amount Financed"}
+              val={financedAmount.toFixed(2)}
+            />
             <StatCard
               title={"Estimated Monthly Payment"}
               val={(answer + propertyTaxAmt).toFixed(2)}
@@ -123,17 +123,17 @@ export default function MortgageCalculatorPage() {
             <StatCard
               title={"Interest Paid Each Monthy"}
               val={mortgage
-                .CalculateInterestAmount(totalCost, interestPercentage)
+                .CalculateInterestAmount(financedAmount, interestPercentage)
                 .toFixed(2)}
             />
           </div>
           <div className=" flex flex-col w-full gap-2 h-full  md:flex-row  ">
-            <div className="md:w-1/3 rounded-xl bg-gray-200 py-8">
+            <div className=" w-full md:w-1/3 rounded-xl bg-gray-200 py-8">
               <MortgageCalculatorForm />
             </div>
 
-            <div className=" w-2/3 bg-white px-4">
-              <MortgagePieChart data={DataSet ? DataSet() : []} />
+            <div className="w-full md:w-2/3 bg-white mx-auto px-4">
+              <MortgagePieChart data={Dataset} />
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function MortgageCalculatorPage() {
 
 function StatCard(props: { title: string; val: string }) {
   return (
-    <div className="w-full rounded-xl  border bg-white p-4">
+    <div className="w-full rounded-xl  border bg-white p-2">
       <p className="text-center text-sm font-light text-primary">
         {props.title}
       </p>

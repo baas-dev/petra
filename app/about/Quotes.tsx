@@ -65,11 +65,5 @@ function Item(props) {
         <p className="text-xs text-gray-500 text-center">@scott.windon</p>
       </div>
     </div>
-    // <Paper>
-    //   <h2>{props.item.name}</h2>
-    //   <p>{props.item.description}</p>
-
-    //   <Button className="CheckButton">Check it out!</Button>
-    // </Paper>
   )
 }

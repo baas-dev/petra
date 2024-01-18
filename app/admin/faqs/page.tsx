@@ -1,26 +1,80 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
+
+import { Button } from "@/components/ui/button"
+import Banner from "@/components/BAAS/Banners/Banner"
+import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
+import TableLoading from "@/components/BAAS/Loading/TableLoading"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
-import TableActions from "@/components/BAAS/Table/TableActions"
+import BACKEND from "@/app/API"
 
-import { FAQ, columns } from "./columns"
+import { useAdminTableContext } from "../Context/TableContext"
+import { columns } from "./columns"
+import FAQForm from "./form"
+import FAQFullForm from "./form"
 
-async function getData(): Promise<FAQ[]> {
-  let data = await fetch("http://localhost:4000/faq", {
-    cache: "no-cache",
+const api = new BACKEND()
+
+async function getData() {
+  return await api.GET({
+    Route: "faq",
   })
-
-  return await data.json()
 }
 
-export default async function FAQPage() {
-  // const data = await getData()
+export default function FAQAdmin() {
+  const r = useRouter()
+
+  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState<any[]>([])
+
+  const LoadData = async () => {
+    await getData().then((val) => {
+      if (val.data && val.data.length > 0) {
+        setData(val.data)
+      }
+    })
+    setLoading(false)
+  }
+  useEffect(() => {
+    LoadData()
+  }, [])
 
   return (
     <>
-      <div className="container my-4">{/* <SheetPosition /> */}</div>
-      <div className="container mx-auto mt-4 py-10 ">
-        <TableActions path="/faqs" />
-        <DataTable columns={columns} data={[]} />
-      </div>
+      <Banner Title={"FAQs"} Subtitle={"Frequently Asked Questions"}>
+        <ManageDataDialog
+          Form={<FAQFullForm />}
+          data={null}
+          Text={"Create"}
+          Title={"FAQs Form"}
+          Description={"Answer common questions that your user's encounter"}
+        />
+      </Banner>
+
+      {loading ? (
+        <TableLoading />
+      ) : (
+        <DataTable
+          columns={columns}
+          data={data ? data : []}
+          scope={{
+            TableName: "FAQS",
+            SearchName: "faqs",
+          }}
+          filters={[
+            {
+              label: "Question",
+              value: "Question",
+            },
+            {
+              label: "Answer",
+              value: "Answer",
+            },
+          ]}
+        />
+      )}
     </>
   )
 }

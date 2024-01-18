@@ -1,62 +1,80 @@
-"use client"
-
-import { useRef } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax"
+import { DollarSign, Home } from "lucide-react"
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import Hero1 from "@/components/BAAS/Heros/Hero1"
-import Services from "@/components/Sections/Services/Services"
-import News from "@/components/Sections/Social/News"
+import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
+import IntroSection from "@/components/Sections/General/IntroSection"
 
 export default function IndexPage() {
-  const parallax = useRef<IParallax>(null!)
-
   return (
     <>
-      <div className="">
-        <Hero1 />
-        <div className="bg-secondary">
-          <Services />
-          <News />
-        </div>
+      <IntroSection ImageURL="/site/home/bg.png" Title="" />
+      <div className="container flex flex-col md:flex-row gap-4 max-w-4xl mb-16">
+        <Dialog>
+          <DialogTrigger className="w-full">
+            <TitleWithIconCard
+              icon={<Home className="w-32 h-32" />}
+              title={"Purchase"}
+            />
+          </DialogTrigger>
+          <DialogContent className=" flex flex-wrap max-w-4xl">
+            <Image
+              src={"/site/home/purbg.png"}
+              fill
+              className="object-contain w-full  !relative"
+              alt="finance image"
+            />
+            <DialogDescription className="text-center">
+              Ready to purchase a home? Maybe your family is growing, or you are
+              ready to downsize your empty nest. There are many reasons you may
+              be ready to shop, and many factors that need to be considered. No
+              matter if it’s your first time or you are a seasoned real estate
+              investor, we are here to help by finding you the perfect loan for
+              your needs.
+            </DialogDescription>
+            <DialogFooter style={{ justifyContent: "center" }}>
+              <p>Welcome to the Family!</p>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+        <Dialog>
+          <DialogTrigger className="w-full">
+            <TitleWithIconCard
+              delay={0.2}
+              icon={<DollarSign className="w-32 h-32" />}
+              title={"Refinance"}
+            />
+          </DialogTrigger>
+          <DialogContent className=" flex flex-wrap max-w-4xl">
+            <Image
+              src={"/site/home/refbg.png"}
+              fill
+              className="object-contain w-full h-48 !relative"
+              alt="finance image"
+            />
+            <DialogDescription className="text-center">
+              Ready to refinance your home? Maybe you need cash for home
+              improvements, or something else. There are many reasons to
+              refinance, and many factors that need to be considered. No matter
+              if you are beginning a new season of life, or just want a new
+              kitchen, we are here to help by finding you the perfect loan for
+              your needs.
+            </DialogDescription>
+            <DialogFooter style={{ justifyContent: "center" }}>
+              <p>Welcome to the Family!</p>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
-    </>
-  )
-}
-
-const BackgroundLayer = () => {
-  const helpurl = (name: string, wrap = false) =>
-    `${
-      wrap ? "url(" : ""
-    }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
-      wrap ? ")" : ""
-    }`
-  return (
-    <>
-      <ParallaxLayer offset={0} speed={0.3} style={{ opacity: 0.75 }}>
-        <Image
-          src={"/images/dots.svg"}
-          height={500}
-          width={1000}
-          alt={""}
-          className="-z-10 "
-          style={{ display: "block", marginLeft: "-35%" }}
-        />
-      </ParallaxLayer>
-
-      {/* <ParallaxLayer offset={2.6} speed={0.4} style={{ opacity: 0.6 }}>
-        <img
-          src={helpurl("cloud")}
-          style={{ display: "block", width: "20%", marginLeft: "5%" }}
-        />
-        <img
-          src={helpurl("cloud")}
-          style={{ display: "block", width: "15%", marginLeft: "75%" }}
-        />
-      </ParallaxLayer> */}
     </>
   )
 }

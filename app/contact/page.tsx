@@ -1,45 +1,29 @@
-"use client"
-
 import React from "react"
 import Image from "next/image"
-import { Locate, Mail, PhoneCall } from "lucide-react"
+import Link from "next/link"
+import { Facebook, Locate, Mail, PhoneCall } from "lucide-react"
 import { Slide } from "react-awesome-reveal"
 
+import { Button } from "@/components/ui/button"
+import { Form } from "@/components/ui/form"
 import { Separator } from "@/components/ui/separator"
+import TextInput from "@/components/BAAS/Forms/Inputs/Text"
+
+import ContactForm from "./form"
 
 const ContactUsBody = () => {
   return (
     <>
-      <section className="relative z-10   bg-secondary h-screen flex justify-center items-center">
+      <section className="bg-secondary min-h-screen h-full pb-8 flex justify-center items-center">
         <div className="container">
-          <div className="-mx-4 flex flex-wrap lg:justify-between pt-96 md:pt-0">
-            <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
+          <div className="-mx-4 flex flex-wrap lg:justify-between pt-4 md:pt-0">
+            <div className="w-full px-2 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
-                <span className="block text-base font-semibold text-primary">
-                  Contact Us
-                </span>
-                <h2 className="text-dark text-[32px] font-bold uppercase ">
-                  GET IN TOUCH WITH US
+                <span className="block text-base font-semibold text-primary"></span>
+                <h2 className="text-4xl mb-2 text-primary  uppercase ">
+                  Get In Touch With Us
                 </h2>
-                <p className="text-body-color  font-light leading-relaxed">
-                  Get in Touch with Us Today! Have questions about your mortgage
-                  options or need assistance with your home financing? Our
-                  dedicated team is here to help. Fill out the contact form
-                  below, and we&#39ll be in touch shortly to provide you with
-                  personalized guidance for your unique needs.
-                </p>
-                <Separator className="my-4" />
-                <div className="mb-8 flex w-full max-w-[370px] items-center">
-                  <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
-                    <Locate className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="w-full">
-                    <h4 className="text-dark   text-lg">Our Location</h4>
-                    <p className="text-body-color text-md font-light">
-                      3939 Belt Line Rd #150, Addison, TX 75001
-                    </p>
-                  </div>
-                </div>
+
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
                   <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity-20 text-primary">
                     <PhoneCall className="h-6 w-6 text-white" />
@@ -47,7 +31,12 @@ const ContactUsBody = () => {
                   <div className="w-full">
                     <h4 className="text-dark   text-lg"> Phone Number</h4>
                     <p className="text-body-color text-md font-light">
-                      (+1) 214 432-0443
+                      <a
+                        href="tel:214-432-0443"
+                        className="flex hover:underline text-blue-600 underline text-xl"
+                      >
+                        (+1) 214 432-0443
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -58,49 +47,24 @@ const ContactUsBody = () => {
                   <div className="w-full">
                     <h4 className="text-dark   text-lg"> Email Address</h4>
                     <p className="text-body-color text-md font-light">
-                      info@petralending.com
+                      <a
+                        href="mailto:“contactus@petralending.com”"
+                        className="flex hover:underline text-blue-600 underline text-xl"
+                      >
+                        contactus@petralending.com
+                      </a>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-              <Slide direction="right">
-                <div className="relative rounded-lg bg-white p-8 shadow-lg sm:p-12">
-                  <form>
-                    <ContactInputBox
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                    />
-                    <ContactInputBox
-                      type="text"
-                      name="email"
-                      placeholder="Your Email"
-                    />
-                    <ContactInputBox
-                      type="text"
-                      name="phone"
-                      placeholder="Your Phone"
-                    />
-                    <ContactTextArea
-                      row="6"
-                      placeholder="Your Message"
-                      name="details"
-                      defaultValue=""
-                    />
-                    <div>
-                      <button
-                        type="submit"
-                        className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </Slide>
+            <div className="w-full  lg:w-1/2 xl:w-5/12">
+              {/* <Slide direction="right"> */}
+              <div className="rounded-lg bg-white p-8 shadow-lg sm:p-12">
+                <ContactForm />
+              </div>
+              {/* </Slide> */}
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import {
   Avatar,
   Card,
@@ -7,41 +8,25 @@ import {
 } from "@material-tailwind/react"
 
 import { CardTitle } from "@/components/ui/card"
-import { CoreValue } from "@/app/about/CoreValuesSection"
+import { CoreValue } from "@/app/about/core-values/page"
 
 export default function CardWithBackground(props: CoreValue) {
   return (
-    <Card
-      shadow={false}
-      className="relative grid h-64 md:h-[600px]  transition-all hover:scale-110 w-full  items-end justify-center overflow-hidden text-center"
-    >
-      <CardHeader
-        floated={false}
-        shadow={false}
-        color="transparent"
-        className="absolute inset-0 m-0 h-full w-full rounded-xl 
-        
-      bg-no-repeat
-        bg-center"
-        style={{ backgroundImage: `url(${props?.image})` }}
-      >
-        <div className=" absolute inset-0 h-full w-full rounded-xl bg-gradient-to-t from-black/80 via-black/80 border-2" />
-        {/* <CardTitle className="pt-4 text-2xl text-white font-semibold">
+    <div className=" rounded-[20px] mx-auto items-center  mb-4 w-full  h-full bg-white shadow-md hover:shadow-lg ">
+      <Image
+        src={props.image}
+        height={1000}
+        width={500}
+        alt={props.title + "Image"}
+        className="h-96 w-full rounded-t-lg border ring-2 ring-primary"
+      />
+      <div className="w-full p-2 bg-gray-200 rounded-b-xl h-32">
+        <h4 className="mb-2 underline text-primary text-xl font-accent">
           {props.title}
-        </CardTitle> */}
-      </CardHeader>
-      <CardBody className="relative py-14 px-6 md:px-12">
-        <h2
-          // variant="h2"
-          color="white"
-          className="text-lg  text-gray-200 mb-6  leading-[1.5]"
-        >
-          {props.desc}
-        </h2>
-        <Typography variant="h5" className="mb-4  text-white">
-          {props.title}
-        </Typography>
-      </CardBody>
-    </Card>
+        </h4>
+
+        <p className="text-body-color text-sm">{props.desc}</p>
+      </div>
+    </div>
   )
 }

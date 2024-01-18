@@ -1,28 +1,82 @@
-import { DataTable } from "@/components/ui/dataTable"
-import TableActions from "@/components/BAAS/Table/TableActions"
+"use client"
 
-// import { SheetPosition } from "@/components/Assistant/Sheet"
+import { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
 
-import { TeamMember, columns } from "./columns"
+import { Button } from "@/components/ui/button"
+import Banner from "@/components/BAAS/Banners/Banner"
+import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
+import TableLoading from "@/components/BAAS/Loading/TableLoading"
+import { DataTable } from "@/components/BAAS/Table/DataTable"
+import BACKEND from "@/app/API"
 
-async function getData(): Promise<TeamMember[]> {
-  let data = await fetch("http://localhost:4000/team", {
-    cache: "no-cache",
+import { useAdminTableContext } from "../Context/TableContext"
+import { columns } from "./columns"
+import TeamForm from "./form"
+
+const api = new BACKEND()
+
+async function getData() {
+  return await api.GET({
+    Route: "team",
   })
-
-  return await data.json()
 }
 
-export default async function DemoPage() {
-  // const data = await getData()
+export default function FAQAdmin() {
+  const r = useRouter()
+
+  const [loading, setLoading] = useState(true)
+
+  const { adminTableCXT, setAdminTableCXT } = useAdminTableContext()
+  const dataRef = useRef()
+  function setDataRef(data) {
+    dataRef.current = data
+  }
+  const LoadData = async () => {
+    await getData().then((val) => {
+      if (val.data && val.data.length > 0) {
+        setDataRef([...val.data])
+      }
+    })
+    setLoading(false)
+  }
+  useEffect(() => {
+    LoadData()
+  }, [])
 
   return (
     <>
-      <div className="container my-4">{/* <SheetPosition /> */}</div>
-      <div className="container mx-auto mt-4 py-10">
-        <TableActions path="/team" />
-        <DataTable columns={columns} data={[]} />
-      </div>
+      <Banner Title={"Team Members"} Subtitle={"Show off Your Team"}>
+        <ManageDataDialog
+          Form={<TeamForm />}
+          data={null}
+          Text={"Create"}
+          Title={"Team Member Form"}
+          Description={"Managing individual biographies"}
+        />
+      </Banner>
+
+      {loading ? (
+        <TableLoading />
+      ) : (
+        <DataTable
+          columns={columns}
+          data={dataRef.current ? dataRef.current : []}
+          scope={{
+            TableName: "TeamMembers",
+          }}
+          filters={[
+            {
+              label: "Name",
+              value: "Name",
+            },
+            {
+              label: "Title",
+              value: "Title",
+            },
+          ]}
+        />
+      )}
     </>
   )
 }

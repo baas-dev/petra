@@ -3,21 +3,18 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import {
-  FileQuestion,
-  Hand,
-  Home,
-  HomeIcon,
-  MessageSquare,
-  PhoneCall,
-  Sticker,
-} from "lucide-react"
+import { usePathname } from "next/navigation"
+import { Facebook, Inspect, Search } from "lucide-react"
 
-import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -27,11 +24,19 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import { Icons } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 import AssistanceTrigger from "../../Assistant/AssistanceTrigger"
 import MobileNavSheet from "../../mobile-nav-sheet"
+import BigCard from "../Cards/BigCard"
+import Cart from "../Shop/components/Cart"
+import SiteSearch from "./SiteSearch"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -75,18 +80,22 @@ export default function MainNav() {
   return (
     <>
       <div className="hidden md:block">
-        <div className="  h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <div className="items-center space-x-4 sm:justify-between sm:space-x-0">
           <FullWidthNavbar />
         </div>
       </div>
       <div className=" md:hidden w-full">
         <div className=" flex h-16  items-center space-x-4 justify-between sm:space-x-0">
           <MobileNavbar />
-          <div className="flex ">
-            {/* <ThemeToggle /> */}
+
+          {/* <div className="flex p-2 m-2">
+
             <AssistanceTrigger />
-          </div>
+          </div> */}
         </div>
+        {/* <div className="w-full px-1 bg-gray-100 mb-1">
+          <SiteSearch />
+        </div> */}
       </div>
     </>
   )
@@ -118,165 +127,268 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
+function Info() {
+  return (
+    <div className=" md:w-full  sm:flex text-left flex-col">
+      <div>
+        <span className="underline text-primary">
+          <a href="tel:214-432-0443" className="flex hover:underline">
+            +1 (214) 432-0443
+          </a>
+        </span>
+        <span className="underline text-primary">
+          <a
+            href="mailto:“contactus@petralending.com”"
+            className="flex hover:underline"
+          >
+            contactus@petralending.com
+          </a>
+        </span>
+      </div>
+      <div>
+        <span className="font-light md:text-lg"> Petra Home Lending</span>
+      </div>
+      <div>
+        <span className="font-normal text-sm text-gray-400">
+          <a
+            href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
+            className="hover:cursor-pointer hover:underline"
+          >
+            3939 Belt Line Rd #150, Addison, TX 75001
+          </a>
+        </span>
+      </div>
+      <div>
+        <span>NMLS#: 211515</span>
+      </div>
+    </div>
+  )
+}
+
 const FullWidthNavbar = () => {
+  let path = usePathname()
   return (
     <>
-      <header className="bg-white w-full">
-        <div className=" mx-auto px-4 py-2 flex items-center">
-          <div className="mr-auto md:w-48 flex-shrink-0">
-            <Image
-              src={"/images/petra-blue.svg"}
-              height={75}
-              width={100}
-              alt=""
-            />
+      <header className="bg-white w-full flex items-center container max-w-4xl justify-between">
+        <Image
+          src={"/images/petra-blue.svg"}
+          height={50}
+          width={100}
+          alt=" mx-auto  pb-4 mb-4 "
+        />
+        {/* <Info />
+          <div className="md:w-full text-center flex flex-wrap justify-center">
+            <div className="flex items-center justify-center  space-y-4 flex-wrap w-full">
+              <Image
+                src={"/images/petra-blue.svg"}
+                height={50}
+                width={100}
+                alt=" mx-auto  pb-4 mb-4 "
+              />
+              <SiteSearch />
+            </div>
           </div>
+          <div className="w-full flex items-center h-full justify-end">
+            <div>
+              <Image
+                src={"/images/eh.png"}
+                alt=""
+                width={500}
+                height={500}
+                className="w-20 mr-4 mx-auto md:float-right "
+              />
+            </div> */}
+        {/* <div className="max-w-16 float-right">
+              <AssistanceTrigger />
+            </div> */}
 
-          <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md  xl:flex items-center">
-            <Input
-              className="border-none  bg-transparent font-semibold text-sm pl-4"
-              type="text"
-              placeholder="I'm searching for ..."
-            />
-            <svg
-              className="ml-auto h-5 px-4 text-gray-500"
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="far"
-              data-icon="search"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              // className="svg-inline--fa fa-search fa-w-16 fa-9x"
-            >
-              <path
-                fill="currentColor"
-                d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
-              ></path>
-            </svg>
-          </div>
-
-          <div className="ml-auto md:w-48  sm:flex text-right flex-col place-items-end">
-            <span className="font-medium md:text-xl"> Petra Home Lending</span>
-            <span className="font-normal text-sm text-gray-400">
-              3939 Belt Line Rd #150, Addison, TX 75001
-            </span>
-          </div>
-
-          <nav className="contents">
-            <ul className="ml-4 flex items-center justify-end">
-              <li>
-                <AssistanceTrigger />
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <hr />
-        <NavigationMenu className="items-center text-center mx-auto">
+        <NavigationMenu className="items-center text-center mx-auto py-1">
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <Link href="/" className="" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-cente items-center">
-                    <span> Home</span>
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    Home
                   </div>
-                </NavigationMenuLink>
+                </HoverCardTrigger>
               </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Home
+                  </Label>
+                  <p>Start here!</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-center items-center ">
-                    <span> About Petra</span>
-                  </div>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/social" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-center items-center">
-                    <span>Social</span>
-                  </div>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                        // href="/"
-                      >
-                        {/* <Icons.logo className="h-6 w-6" /> */}
-                        <div className="mb-2 mt-4 text-lg font-medium">
-                          Resources for Homebuyers
-                        </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
-                          Tools to aid in your homebuying journey
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <ListItem
-                    href="/resources/mortgage-calculator"
-                    title="Mortgage Calculator"
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/about" ? "text-accent underline" : ""
+                    } `}
                   >
-                    Re-usable components built using Radix UI and Tailwind CSS.
-                  </ListItem>
-                  <ListItem
-                    href="/resources/downloads"
-                    title="Downloads & Links"
+                    About Us
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    About Us
+                  </Label>
+                  <p>Meet the team representing Petra Home Lending</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            {/* <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/articles" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/articles" ? "text-accent underline" : ""
+                    } `}
                   >
-                    How to install dependencies and structure your app.
-                  </ListItem>
-                  <ListItem href="/resources/faqs" title="FAQ's">
-                    Styles for headings, paragraphs, lists...etc
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            {/* <NavigationMenuItem>
-              <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}
-                    >
-                      {component.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem> */}
+                    Articles
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Articles
+                  </Label>
+                  <p>Helpful content produced by the Petra team</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard> */}
 
-            <NavigationMenuItem>
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/resources" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/resources" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    Resources
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Resources
+                  </Label>
+                  <p>Helpful Tools & Information</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+
+            {/* <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/prequalification" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center items-center  ${
+                      path == "/prequalification" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    Prequalification
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Prequalification
+                  </Label>
+                  <p>
+                    Complete our short form to make your home buying experience
+                    as easy as possible
+                  </p>
+                </div>
+              </HoverCardContent>
+            </HoverCard> */}
+            {/* <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/apply" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-center   items-center  ${
+                      path == "/apply" ? "text-accent underline " : ""
+                    } `}
+                  >
+                    Apply Now
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline text-primary ">
+                    Apply Now!
+                  </Label>
+                  <p>Start our prequalification process, quickly and easily</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard> */}
+            <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <div className="flex-wrap text-center items-center">
-                    <span> Contact Us</span>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`flex-wrap text-cente items-center  ${
+                      path == "/contact" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    Contact Us
                   </div>
-                </NavigationMenuLink>
+                </HoverCardTrigger>
               </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/prequalify" className="" legacyBehavior passHref>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="text-lg pb-2 underline  text-primary">
+                    Talk With The Team
+                  </Label>
+                  <p>We are eager to hear from you!</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            {/* <NavigationMenuItem>
+              <Link href="/snapshot" className="" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Get Prequalified
                 </NavigationMenuLink>
               </Link>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
+            {/* <HoverCard openDelay={0}>
+              <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                Shop
+              </HoverCardTrigger>
+              <HoverCardContent className="bg-secondary">
+                <Cart />
+
+                <Link href="/shop" className="font-light hover:cursor-pointer">
+                  <BigCard
+                    Title={"Shop Our Store"}
+                    Description={"Awesome Reality Merch Available in Stock Now"}
+                    btnText={"Shop Now"}
+                    btn={true}
+                    bg={"bg-primary"}
+                    link={"/shop"}
+                    bgHover={"bg-primary/60"}
+                    image={undefined}
+                  />
+                </Link>
+              </HoverCardContent>
+            </HoverCard> */}
           </NavigationMenuList>
         </NavigationMenu>
-        <hr />
+        <Link href="/client-center">
+          <Button>Client Center</Button>
+        </Link>
       </header>
     </>
   )
@@ -285,9 +397,7 @@ const FullWidthNavbar = () => {
 const MobileNavbar = () => {
   return (
     <>
-      <div className="w-1/2">
-        <MobileNavSheet />
-      </div>
+      <MobileNavSheet />
     </>
   )
 }

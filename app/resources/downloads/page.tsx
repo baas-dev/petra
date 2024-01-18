@@ -1,50 +1,80 @@
-"use client"
-
 import Link from "next/link"
-import { Card, CardFooter, CardHeader, Input } from "@material-tailwind/react"
-import { Label } from "@radix-ui/react-menubar"
 import { ArrowBigRight, Download, View } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { CardContent, CardDescription, CardTitle } from "@/components/ui/card"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import Banner from "@/components/BAAS/Banners/BannerSite"
+import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
+import BACKEND from "@/app/API"
 
-export default function Downloads() {
+const api = new BACKEND()
+
+const GetData = async (route: string) => {
+  let val = await api.GET({
+    Route: route,
+  })
+
+  return val
+}
+
+interface Resource {
+  Title: string
+  Description: string
+  Link: string
+  LinkIcon?:string
+}
+export default async function Downloads() {
+  let res = await GetData(`resources`)
+    .then((val) => {
+      console.log(val.data)
+      return val.data
+    })
+    .catch((err) => [])
+
   return (
     <>
-      {/* <div className="container">
-        <h2 className="text-4xl font-semibold mb-2 text-center">
-          Resource Links
-        </h2>
-      </div> */}
-      <div className="min-h-screen">
-        <div className="container  pt-24   ">
-          <div className="  w-full mb-8">
-            <h1 className="text-md block  font-semibold text-primary">
-              An easy mortgage payment cost-estimate tool
-            </h1>
-            <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
-              Downloads & Links
-            </h2>
-            <p className="max-w-md   font-light">
-              Resources that the Petra Home Lending Team has pooled together in
-              order to provide the most helpful and accurate home buying
-              information
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
-            <ResourceCard
-              title="Example PDF"
-              type="PDF"
-              description="Just an example upload to show how the system works."
-            />
-          </div>
+      <div className="min-h-screen w-full ">
+        <Banner
+          Title={"Downloads & Links"}
+          Subtitle={
+            " Resources that the Petra Home Lending Team has pooled together in order to provide the most helpful and accurate home buying information"
+          }
+        >
+          <></>
+        </Banner>
+
+        <div className="w-full flex flex-wrap  container">
+          {res && res.length > 0 ? (
+            <>
+              {res.map((item: Resource, i) => (
+                <div className="w-full md:w-1/2 px-2 mb-2">
+                  <ResourceCard
+                    key={i}
+                    title={item.Title}
+                    description={item.Description}
+                    link={item.Link}
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            //
+            // ))
+
+            <>
+              <h2 className="text-lg">
+                Sorry! No resources are available at this time.
+              </h2>
+            </>
+          )}
         </div>
       </div>
     </>
@@ -53,24 +83,23 @@ export default function Downloads() {
 
 const ResourceCard = (props: {
   title: string
-  type: string
   description?: string
+  link: string
 }) => {
   return (
     <Card className="w-full bg-white">
       <CardHeader className="shadow-none py-2 mt-4 px-4 ">
-        <CardTitle>{props.title}</CardTitle>
-        <CardDescription>D{props.description}</CardDescription>
+        <CardTitle className="pb-2">{props.title}</CardTitle>
       </CardHeader>
-      <CardContent></CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="secondary">{props.type}</Button>
-        <Link
-          href="https://www.africau.edu/images/default/sample.pdf"
-          target="_blank"
-        >
+      <CardContent className="p-4">
+        <CardDescription>{props.description}</CardDescription>
+      </CardContent>
+      <CardFooter className="flex p-2 text-right w-full items-end">
+        {/* <Button variant="secondary">{props.type}</Button> */}
+
+        <Link href={props.link} target="_blank" className="w-full">
           <Button>
-            <Label className="mr-2">Open</Label>
+            <Label className="mr-2">Open Resource</Label>
             <ArrowBigRight />
           </Button>
         </Link>

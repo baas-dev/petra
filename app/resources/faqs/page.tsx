@@ -4,27 +4,40 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import Banner from "@/components/BAAS/Banners/BannerSite"
+import BACKEND from "@/app/API"
 
-export default function FAQ() {
+const api = new BACKEND()
+
+const GetData = async (route: string) => {
+  let val = await api.GET({
+    Route: route,
+  })
+
+  return val.data
+}
+
+interface FAQ {
+  Question: string
+  Answer: string
+  Published: string
+}
+export default async function FAQ() {
+  let res = await GetData(`faq`)
+    .then((val) => val)
+    .catch((err) => [])
+
   return (
     <>
-      <div className="min-h-screen">
-        <div className="container  pt-24   ">
-          <div className="  w-full mb-8">
-            <h1 className="text-md block  font-semibold text-primary">
-              An easy mortgage payment cost-estimate tool
-            </h1>
-            <h2 className="text-dark mx-auto text-left  text-2xl  font-medium uppercase ">
-              Frequently Asked Questions
-            </h2>
-            <p className="max-w-md   font-light">
-              Resources that the Petra Home Lending Team has pooled together in
-              order to provide the most helpful and accurate home buying
-              information
-            </p>
-          </div>
-          <section className=" grid ">
-            <AccordionDemo />
+      <div className="min-h-screen w-full h-full  ">
+        <Banner
+          Title={"Frequently Asked Questions"}
+          Subtitle={"Helping You with Home Lending Questions"}
+          children={undefined}
+        ></Banner>
+        <div className="container   ">
+          <section className=" grid bg-white p-4 rounded-xl shadow-md border-2">
+            <FAQAccordion data={res ? res : []} />
           </section>
         </div>
       </div>
@@ -32,29 +45,17 @@ export default function FAQ() {
   )
 }
 
-function AccordionDemo() {
+function FAQAccordion(props: { data: FAQ[] }) {
   return (
     <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that matches the other
-          components&#39; aesthetic.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It&#39;s animated by default, but you can disable it if you
-          prefer.
-        </AccordionContent>
-      </AccordionItem>
+      {props.data && props.data.length > 0
+        ? props.data.map((item, i) => (
+            <AccordionItem value={`item-${i}}`} key={i}>
+              <AccordionTrigger>{item.Question}</AccordionTrigger>
+              <AccordionContent>{item.Answer}</AccordionContent>
+            </AccordionItem>
+          ))
+        : null}
     </Accordion>
   )
 }
