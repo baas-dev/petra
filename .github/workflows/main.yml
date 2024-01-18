@@ -35,7 +35,7 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
           IMAGE_TAG: v1
         run: |
-          docker build -t petra-client:latest 851725386152.dkr.ecr.us-east-1.amazonaws.com/petra-client:latest .
+          docker build -t 851725386152.dkr.ecr.us-east-1.amazonaws.com/petra-client:latest .
           docker push 851725386152.dkr.ecr.us-east-1.amazonaws.com/petra-client:latest
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
   # deploy:
