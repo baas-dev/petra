@@ -38,6 +38,6 @@ jobs:
           docker build -t 851725386152.dkr.ecr.us-east-1.amazonaws.com/petra-api:latest .
           docker push 851725386152.dkr.ecr.us-east-1.amazonaws.com/petra-api:latest
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
+  # deploy:
+  #   name: Deploy
+  #   runs-on: ubuntu-latest
