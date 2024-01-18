@@ -7,10 +7,10 @@ import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 export default function ArticleDescriptionInput({ ProductForm }) {
   return (
     <>
-      <div className="p-4  bg-white rounded-xl w-full mb-4">
+      <div className="mb-4  w-full rounded-xl bg-white p-4">
         <FormLabel className="text-base">Information</FormLabel>
 
-        <div className="w-full mt-2">
+        <div className="mt-2 w-full">
           <TextInput
             form={ProductForm}
             options={{

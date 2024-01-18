@@ -79,13 +79,13 @@ export default function ManageDataDialog(props: {
         </SheetTrigger>
         <SheetContent
           side={"top"}
-          className="w-full h-full mx-auto  bg-secondary overflow-y-scroll"
+          className="mx-auto h-full w-full  overflow-y-scroll bg-secondary"
         >
-          <SheetHeader className="p-4 max-w-7xl mx-auto shadow-md border rounded-xl bg-white">
+          <SheetHeader className="mx-auto max-w-7xl rounded-xl border bg-white p-4 shadow-md">
             <SheetTitle>{props.Title}</SheetTitle>
             <SheetDescription>{props.Description}</SheetDescription>
           </SheetHeader>
-          <div className="flex items-center align-middle my-auto">
+          <div className="my-auto flex items-center align-middle">
             {props.Form}
           </div>
         </SheetContent>

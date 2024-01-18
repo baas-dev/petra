@@ -4,10 +4,10 @@ export default function QuestionNext({ action }) {
   return (
     <div
       onClick={action}
-      className=" flex w-full flex-row items-center border-2 bg-green-200 mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl  p-4  "
+      className=" mx-auto flex w-full flex-row items-center rounded-xl border-2 bg-green-200 p-4 text-center transition hover:animate-pulse hover:cursor-pointer md:w-1/2  "
     >
       <div className="w-full">
-        <Label className="text-2xl text-dark underline ">Next Question</Label>
+        <Label className="text-dark text-2xl underline ">Next Question</Label>
       </div>
     </div>
   )

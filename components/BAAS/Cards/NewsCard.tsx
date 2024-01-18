@@ -34,7 +34,7 @@ export function NewsCard({
 }: AlbumArtworkProps) {
   return (
     <div className={cn("space-y-3", className)} {...props}>
-      <div className="space-y-1 text-sm mb-1">
+      <div className="mb-1 space-y-1 text-sm">
         <p className="text-md font-semibold text-muted-foreground">
           {album.designation}
         </p>

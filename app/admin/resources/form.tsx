@@ -89,9 +89,9 @@ export default function ResourcesForm() {
     <Form {...faqFormCXT}>
       <form
         onSubmit={faqFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 max-w-7xl  mx-auto"
+        className="mx-auto w-full max-w-7xl  space-y-6"
       >
-        <div className="p-4 bg-white rounded-xl mt-4 shadow-md">
+        <div className="mt-4 rounded-xl bg-white p-4 shadow-md">
           <TextInput
             form={faqFormCXT}
             options={{

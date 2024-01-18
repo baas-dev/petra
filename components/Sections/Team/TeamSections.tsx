@@ -34,7 +34,7 @@ export default function TeamSection() {
         {teamMember.length > 0 ? (
           teamMember.map((item, i) => (
             <>
-              <div className="w-1/2 md:w-full px-2">
+              <div className="w-1/2 px-2 md:w-full">
                 <TeamCard
                   key={i}
                   action={() => null}

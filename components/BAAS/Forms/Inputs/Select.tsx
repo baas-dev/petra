@@ -36,7 +36,7 @@ export default function SelectInput(props: {
       control={props.form.control}
       name={props.options.name}
       render={({ field }) => (
-        <FormItem className=" rounded-xl w-full   ">
+        <FormItem className=" w-full rounded-xl   ">
           <Select
             value={props.options.value ? props.options.value : field.value}
             onValueChange={field.onChange}
@@ -45,7 +45,7 @@ export default function SelectInput(props: {
             <FormLabel className="">{props.options.label}</FormLabel>
 
             <FormControl>
-              <SelectTrigger className="bg-white w-full">
+              <SelectTrigger className="w-full bg-white">
                 <SelectValue
                   defaultValue={props.options.defaultValue}
                   placeholder={props.options.placeholder}

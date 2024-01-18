@@ -1,24 +1,12 @@
 // PreqFormContext.tsx
+
 import React, { createContext, useContext, useState } from "react"
+
+import { Borrower } from "@/app/prequalification/components/formContext"
 
 export interface Expense {
   key: string
   amount: number
-}
-
-export interface Borrower {
-  FirstName: string
-  LastName: string
-  DOB: string
-  MaritalStatus:
-    | "single"
-    | "married"
-    | "divorced"
-    | "seperated"
-    | "domestic partnership"
-  AnnualIncome: number
-  CreditScore: string
-  Expenses: Expense[]
 }
 
 export interface PreqForm {
@@ -39,11 +27,15 @@ const PrequalificationFormProvider = ({ children }) => {
       {
         FirstName: "Main",
         LastName: "Borrower",
-        DOB: "",
         MaritalStatus: "single",
-        AnnualIncome: 0,
         CreditScore: "",
         Expenses: [],
+        AnnualIncome: "0",
+        DOB: {
+          day: "",
+          month: "",
+          year: "",
+        },
       },
     ],
     Address: null,

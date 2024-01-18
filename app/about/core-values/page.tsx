@@ -14,9 +14,9 @@ import CardWithBackground from "@/components/BAAS/Cards/CardWithBackground"
 import HoverCard from "@/components/BAAS/Cards/HoverCard"
 
 export interface CoreValue {
-  title: string
-  desc: string
-  image: string
+  title?: string
+  desc?: string
+  image?: string
 }
 
 let coreValueData: CoreValue[] = [
@@ -51,21 +51,21 @@ export default function CoreValuesPage() {
   return (
     <>
       <Dialog>
-        <div className="min-h-screen w-full justify-center items-center h-full  hidden lg:flex">
-          <h1 className="text-2xl text-white z-20 text-center uppercase font-bold">
+        <div className="hidden h-full min-h-screen w-full items-center  justify-center lg:flex">
+          <h1 className="z-20 text-center text-2xl font-bold uppercase text-white">
             Core <br />
             Values
           </h1>
 
           <div
             id="big-circle"
-            className="circle big !bg-primary mx-auto text-center"
+            className="circle big mx-auto !bg-primary text-center"
           >
             <PopUpDialog
               trigger={
-                <div className=" circle one opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-200">
-                    <p className="!opacity-100 text-black text-2xl">Called</p>
+                <div className=" circle one h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-blue-200 transition hover:scale-125">
+                    <p className="text-2xl text-black !opacity-100">Called</p>
                   </div>
                 </div>
               }
@@ -80,9 +80,9 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <div className=" circle two opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-blue-300">
-                    <p className="!opacity-100 text-black text-2xl">Centered</p>
+                <div className=" circle two h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-blue-300 transition hover:scale-125">
+                    <p className="text-2xl text-black !opacity-100">Centered</p>
                   </div>
                 </div>
               }
@@ -96,9 +96,9 @@ export default function CoreValuesPage() {
             />
             <PopUpDialog
               trigger={
-                <div className=" circle three opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-teal-200">
-                    <p className="!opacity-100 text-black text-2xl">
+                <div className=" circle three h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-teal-200 transition hover:scale-125">
+                    <p className="text-2xl text-black !opacity-100">
                       Committed
                     </p>
                   </div>
@@ -113,9 +113,9 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <div className=" circle four opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-sky-500">
-                    <p className="!opacity-100 text-black text-2xl">
+                <div className=" circle four h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-sky-500 transition hover:scale-125">
+                    <p className="text-2xl text-black !opacity-100">
                       Consultative
                     </p>
                   </div>
@@ -130,9 +130,9 @@ export default function CoreValuesPage() {
             />
             <PopUpDialog
               trigger={
-                <div className=" circle five opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 h-full flex justify-center items-center rounded-full bg-primary/30 z-20">
-                    <p className="!opacity-100 text-black text-2xl">
+                <div className=" circle five h-full w-full content-center justify-center opacity-80">
+                  <div className="z-20 my-auto flex h-full items-center justify-center rounded-full bg-primary/30 transition hover:scale-125">
+                    <p className="text-2xl text-black !opacity-100">
                       Collaborative
                     </p>
                   </div>
@@ -148,9 +148,9 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <div className=" circle six opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-purple-300">
-                    <p className="!opacity-100 text-black text-2xl">
+                <div className=" circle six h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-purple-300 transition hover:scale-125">
+                    <p className="text-2xl text-black !opacity-100">
                       Connected
                     </p>
                   </div>
@@ -166,20 +166,20 @@ export default function CoreValuesPage() {
             />
           </div>
         </div>
-        <div className="min-h-screen  w-full justify-center items-center h-full flex lg:hidden">
-          <h1 className="text-2xl  z-20 text-center uppercase font-bold">
+        <div className="flex  h-full min-h-screen w-full items-center justify-center lg:hidden">
+          <h1 className="z-20  text-center text-2xl font-bold uppercase">
             Core <br />
             Values
           </h1>
           <div
             id="big-circle"
-            className="circlemobile bigmobile mx-auto text-center  bg-blue-500"
+            className="circlemobile bigmobile mx-auto bg-blue-500  text-center"
           >
             <PopUpDialog
               trigger={
-                <div className="circlemobile onem opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-teal-200">
-                    <p className="!opacity-100 text-black text-md">Called</p>
+                <div className="circlemobile onem h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-teal-200 transition hover:scale-125">
+                    <p className="text-md text-black !opacity-100">Called</p>
                   </div>
                 </div>
               }
@@ -195,9 +195,9 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <div className="circlemobile twom opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-primary/60">
-                    <p className="!opacity-100 text-black text-md">Centered</p>
+                <div className="circlemobile twom h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-primary/60 transition hover:scale-125">
+                    <p className="text-md text-black !opacity-100">Centered</p>
                   </div>
                 </div>
               }
@@ -211,9 +211,9 @@ export default function CoreValuesPage() {
             />
             <PopUpDialog
               trigger={
-                <div className=" circlemobile threem opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-cyan-200">
-                    <p className="!opacity-100 text-black text-md">Committed</p>
+                <div className=" circlemobile threem h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-cyan-200 transition hover:scale-125">
+                    <p className="text-md text-black !opacity-100">Committed</p>
                   </div>
                 </div>
               }
@@ -226,9 +226,9 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <div className=" circlemobile fourm opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-sky-600">
-                    <p className="!opacity-100 text-black text-md">
+                <div className=" circlemobile fourm h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-sky-600 transition hover:scale-125">
+                    <p className="text-md text-black !opacity-100">
                       Consultative
                     </p>
                   </div>
@@ -243,9 +243,9 @@ export default function CoreValuesPage() {
             />
             <PopUpDialog
               trigger={
-                <div className=" circlemobile fivem opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition bg-blue-300 hover:scale-125 z-10 h-full flex justify-center items-center rounded-full">
-                    <p className="!opacity-100 text-black text-md">
+                <div className=" circlemobile fivem h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-blue-300 transition hover:scale-125">
+                    <p className="text-md text-black !opacity-100">
                       Collaborative
                     </p>
                   </div>
@@ -261,9 +261,9 @@ export default function CoreValuesPage() {
 
             <PopUpDialog
               trigger={
-                <div className=" circlemobile sixm opacity-80 content-center justify-center h-full w-full">
-                  <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-teal-500">
-                    <p className="!opacity-100 text-black text-md">Connected</p>
+                <div className=" circlemobile sixm h-full w-full content-center justify-center opacity-80">
+                  <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-teal-500 transition hover:scale-125">
+                    <p className="text-md text-black !opacity-100">Connected</p>
                   </div>
                 </div>
               }
@@ -289,15 +289,15 @@ function PopUpDialog({ trigger, text }) {
         <SheetTrigger>{trigger}</SheetTrigger>
         <SheetContent
           side={"top"}
-          className="h-full flex justify-center items-center"
+          className="flex h-full items-center justify-center"
         >
           <SheetHeader>
             {/* <SheetTitle>Are you sure absolutely sure?</SheetTitle> */}
             {/* <SheetDescription>{text}</SheetDescription> */}
           </SheetHeader>
-          <div className="  opacity-80 h-96 w-96 content-center justify-center text-center ">
-            <div className="my-auto transition hover:scale-125 z-10 h-full flex justify-center items-center rounded-full bg-sky-400">
-              <p className="!opacity-100 text-black text-2xl p-4 font-semibold">
+          <div className="  h-96 w-96 content-center justify-center text-center opacity-80 ">
+            <div className="z-10 my-auto flex h-full items-center justify-center rounded-full bg-sky-400 transition hover:scale-125">
+              <p className="p-4 text-2xl font-semibold text-black !opacity-100">
                 {text}
               </p>
             </div>

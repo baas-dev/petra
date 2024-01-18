@@ -39,10 +39,10 @@ export default function Achievements() {
   let rdd = data.reverse()
   return (
     <div className=" flex  h-full w-full dark:bg-gray-900">
-      <div className="w-full mb-8 h-full  text-center">
+      <div className="mb-8 h-full w-full  text-center">
         <IntroSection ImageURL={"/site/about/bgawards.png"} />
         <div className="container">
-          <div className="flex max-w-2xl mx-auto flex-wrap justify-center items-center w-full">
+          <div className="mx-auto flex w-full max-w-2xl flex-wrap items-center justify-center">
             {rd.map((item, i) => {
               return (
                 <div className="w-1/2 md:w-1/4">
@@ -51,41 +51,41 @@ export default function Achievements() {
                     alt=""
                     width={500}
                     height={500}
-                    className="  p-1 md:w-full  max-h-48 object-contain"
+                    className="  max-h-48 object-contain  p-1 md:w-full"
                   />
                 </div>
               )
             })}
           </div>
 
-          <div className="w-full flex flex-col items-center justify-center mt-8">
+          <div className="mt-8 flex w-full flex-col items-center justify-center">
             <div className="mt-8 flex h-full">
               <Image
                 src={`/images/forbes.png`}
                 height={1920}
                 width={1080}
                 alt=""
-                className="h-64  w-full object-contain z-20"
+                className="z-20  h-64 w-full object-contain"
               />
               <Image
                 src={`/images/bbb.png`}
                 height={1920}
                 width={1080}
                 alt=""
-                className="h-64  w-full object-contain z-20"
+                className="z-20  h-64 w-full object-contain"
               />
               <Image
                 src={`/images/fsl22.svg`}
                 height={1920}
                 width={1080}
                 alt=""
-                className="h-64  w-full object-contain z-20"
+                className="z-20  h-64 w-full object-contain"
               />
             </div>
-            <div className="flex max-w-4xl mt-8 mx-auto flex-wrap justify-center items-center w-full">
+            <div className="mx-auto mt-8 flex w-full max-w-4xl flex-wrap items-center justify-center">
               {rdd.map((item, i) => {
                 return (
-                  <div className="w-1/2 md:w-1/4 px-2">
+                  <div className="w-1/2 px-2 md:w-1/4">
                     <Image
                       key={i}
                       src={`/images/fs${item}.png`}

@@ -4,8 +4,8 @@ export default function TableLoading() {
   return (
     <>
       <div className="flex flex-wrap space-y-4">
-        <Skeleton className="w-full h-[50px] bg-gray-500" />
-        <Skeleton className="w-full h-[300px] bg-gray-500" />
+        <Skeleton className="h-[50px] w-full bg-gray-500" />
+        <Skeleton className="h-[300px] w-full bg-gray-500" />
       </div>
     </>
   )

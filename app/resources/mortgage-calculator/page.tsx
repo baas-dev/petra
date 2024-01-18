@@ -87,7 +87,7 @@ export default function MortgageCalculatorPage() {
   ]
 
   return (
-    <div className="min-h-screen h-full w-full ">
+    <div className="h-full min-h-screen w-full ">
       <Banner
         Title={"Mortgage Calculator"}
         Subtitle={"An easy-to-use, mortgage estimation tool"}
@@ -95,9 +95,9 @@ export default function MortgageCalculatorPage() {
         <></>
       </Banner>
 
-      <div className="w-full flex container">
+      <div className="container flex w-full">
         <div className="m-auto  h-full w-full">
-          <div className="flex flex-col pb-4 md:flex-row gap-2">
+          <div className="flex flex-col gap-2 pb-4 md:flex-row">
             <StatCard
               title={"Total Amount Financed"}
               val={financedAmount.toFixed(2)}
@@ -127,12 +127,12 @@ export default function MortgageCalculatorPage() {
                 .toFixed(2)}
             />
           </div>
-          <div className=" flex flex-col w-full gap-2 h-full  md:flex-row  ">
-            <div className=" w-full md:w-1/3 rounded-xl bg-gray-200 py-8">
+          <div className=" flex h-full w-full flex-col gap-2  md:flex-row  ">
+            <div className=" w-full rounded-xl bg-gray-200 py-8 md:w-1/3">
               <MortgageCalculatorForm />
             </div>
 
-            <div className="w-full md:w-2/3 bg-white mx-auto px-4">
+            <div className="mx-auto w-full bg-white px-4 md:w-2/3">
               <MortgagePieChart data={Dataset} />
             </div>
           </div>

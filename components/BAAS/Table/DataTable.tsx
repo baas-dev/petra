@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [rowSelection, setRowSelection] = useState({})
   const [filterSelected, setFilterSelected] = useState(0)
-  const { data: session } = useSession()
+  const session = useSession()
   const table = useReactTable({
     data,
     columns,
@@ -105,7 +105,7 @@ export function DataTable<TData, TValue>({
   return (
     <>
       {filters && filters?.length > 0 ? (
-        <div className="flex items-center py-4 gap-2">
+        <div className="flex items-center gap-2 py-4">
           <Input
             placeholder={`Filtering by ${filters[filterSelected].value}...`}
             value={
@@ -155,13 +155,13 @@ export function DataTable<TData, TValue>({
         </div>
       ) : null}
 
-      <Table className="mt-2 mb-16 rounded-xl">
-        <TableHeader className="bg-white rounded-xl font-bold text-primary">
+      <Table className="mb-16 mt-2 rounded-xl">
+        <TableHeader className="rounded-xl bg-white font-bold text-primary">
           {table.getHeaderGroups().map((headerGroup, i) => (
             <>
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header, index) => {
-                  let role = session?.user?.role
+                  let role = session.data?.user?.role
 
                   if (
                     index === 0 &&
@@ -200,7 +200,7 @@ export function DataTable<TData, TValue>({
                   }}
                 >
                   {row.getVisibleCells().map((cell, index) => {
-                    let role = session?.user?.role
+                    let role = session.data?.user?.role
 
                     if (
                       index === 0 &&
@@ -229,11 +229,11 @@ export function DataTable<TData, TValue>({
             </TableRow>
           )}
         </TableBody>
-        <TableFooter className="flex gap-2 justify-between mt-4 min-w-7xl">
+        <TableFooter className="min-w-7xl mt-4 flex justify-between gap-2">
           <div className="w-full">
             {scope != undefined &&
-            (session?.user?.role === "admin" ||
-              session?.user?.role === "superadmin") ? (
+            (session.data?.user?.role === "admin" ||
+              session.data?.user?.role === "superadmin") ? (
               <BatchDeleteButton
                 TableName={scope.TableName}
                 SearchName={scope.SearchName ? scope.SearchName : ""}

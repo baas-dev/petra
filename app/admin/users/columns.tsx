@@ -49,17 +49,19 @@ export const columns: ColumnDef<z.infer<typeof UsersFormSchema>>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
-        className="w-6 h-6 rounded-full"
+        className="h-6 w-6 rounded-full"
       />
     ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className="w-6 h-6 rounded-full"
-      />
-    ),
+    cell: function ({ row }) {
+      return (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+          className="h-6 w-6 rounded-full"
+        />
+      )
+    },
     enableResizing: true,
     size: 10,
     enableSorting: false,
@@ -77,8 +79,7 @@ export const columns: ColumnDef<z.infer<typeof UsersFormSchema>>[] = [
     accessorKey: "Role",
     header: "Role",
 
-    cell: ({ row }) => {
-      const { data } = useSession()
+    cell: function ({ row }) {
       const api = new BACKEND()
       const HandleUpdate = async (newVal: string) => {
         await api.UPDATE({
@@ -120,13 +121,41 @@ export const columns: ColumnDef<z.infer<typeof UsersFormSchema>>[] = [
           ]
         }
       }
+
       return (
         <>
-          {row.original.Role !== "superadmin" ? (
-            // Check if the row's role is higher or same as the user's role
-            row.original.Role !== "admin" || data?.user?.role === "admin" ? (
-              row.original.ID === data?.user?.id ? (
-                <p>{row.original.Role}</p>
+          {/* <div>
+            {row.original.Role !== "superadmin" ? (
+              // Check if the row's role is higher or same as the user's role
+              row.original.Role !== "admin" || data.user?.role === "admin" ? (
+                row.original.ID === Session.data?.user?.id ? (
+                  <p>{row.original.Role}</p>
+                ) : (
+                  <Select
+                    defaultValue={row.original.Role}
+                    onValueChange={(val) => {
+                      HandleUpdate(val)
+                    }}
+                  >
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Choose User's Role.." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Roles</SelectLabel>
+                        {CheckLevelPoints(Session.data?.user?.role)?.map(
+                          (item, i) => {
+                            return (
+                              <SelectItem value={item.value} key={i}>
+                                {item.label}
+                              </SelectItem>
+                            )
+                          }
+                        )}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                )
               ) : (
                 <Select
                   defaultValue={row.original.Role}
@@ -140,44 +169,23 @@ export const columns: ColumnDef<z.infer<typeof UsersFormSchema>>[] = [
                   <SelectContent>
                     <SelectGroup>
                       <SelectLabel>Roles</SelectLabel>
-                      {CheckLevelPoints(data?.user?.role)?.map((item, i) => {
-                        return (
-                          <SelectItem value={item.value} key={i}>
-                            {item.label}
-                          </SelectItem>
-                        )
-                      })}
+                      {CheckLevelPoints(Session.data?.user?.role)?.map(
+                        (item, i) => {
+                          return (
+                            <SelectItem value={item.value} key={i}>
+                              {item.label}
+                            </SelectItem>
+                          )
+                        }
+                      )}
                     </SelectGroup>
                   </SelectContent>
                 </Select>
               )
             ) : (
-              <Select
-                defaultValue={row.original.Role}
-                onValueChange={(val) => {
-                  HandleUpdate(val)
-                }}
-              >
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Choose User's Role.." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Roles</SelectLabel>
-                    {CheckLevelPoints(data?.user?.role)?.map((item, i) => {
-                      return (
-                        <SelectItem value={item.value} key={i}>
-                          {item.label}
-                        </SelectItem>
-                      )
-                    })}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            )
-          ) : (
-            <Label>{row.original.Role}</Label>
-          )}
+              <Label>{row.original.Role}</Label>
+            )}
+          </div> */}
         </>
       )
     },
@@ -219,56 +227,60 @@ export const columns: ColumnDef<z.infer<typeof UsersFormSchema>>[] = [
     cell: ({ row }) => {
       const time: Date = row.getValue("UpdatedAt")
 
-      return <div className="font-medium">{moment(time).calendar()}</div>
+      return (
+        <>
+          <div className="font-medium">{moment(time).calendar()}</div>
+        </>
+      )
     },
   },
   {
     accessorKey: "Enabled",
     header: "Enabled?",
-    cell: ({ row }) => {
-      const api = new BACKEND()
-      const { data } = useSession()
+    // cell: ({ row }) => {},
+    //   const api = new BACKEND()
+    //   const { data } = useSession()
 
-      const HandleUpdate = async (newVal: boolean) => {
-        await api.UPDATE({
-          Route: `users/${row.original.ID}/access`,
-          Body: JSON.stringify({
-            Enabled: newVal,
-          }),
-        })
-      }
+    //   const HandleUpdate = async (newVal: boolean) => {
+    //     await api.UPDATE({
+    //       Route: `users/${row.original.ID}/access`,
+    //       Body: JSON.stringify({
+    //         Enabled: newVal,
+    //       }),
+    //     })
+    //   }
 
-      const RoleCheck = (myRole, theirRole) => {
-        if (myRole == "admin") {
-          if (theirRole == "superadmin") {
-            return true
-          }
-        }
+    //   const RoleCheck = (myRole, theirRole) => {
+    //     if (myRole == "admin") {
+    //       if (theirRole == "superadmin") {
+    //         return true
+    //       }
+    //     }
 
-        return false
-      }
+    //     return false
+    //   }
 
-      let isEnabled = () => {
-        if (row.original.Enabled == true) {
-          return true
-        }
-        return false
-      }
-      return (
-        <div className="flex items-center space-x-2">
-          <Switch
-            id="airplane-mode"
-            disabled={
-              row.original.ID == data?.user?.id ||
-              RoleCheck(data?.user?.role, row.original.Role)
-            }
-            defaultChecked={isEnabled()}
-            onCheckedChange={(val) => {
-              HandleUpdate(val)
-            }}
-          />
-        </div>
-      )
-    },
+    //   let isEnabled = () => {
+    //     if (row.original.Enabled == true) {
+    //       return true
+    //     }
+    //     return false
+    //   }
+    //   return (
+    //     <div className="flex items-center space-x-2">
+    //       <Switch
+    //         id="airplane-mode"
+    //         disabled={
+    //           row.original.ID == data?.user?.id ||
+    //           RoleCheck(data?.user?.role, row.original.Role)
+    //         }
+    //         defaultChecked={isEnabled()}
+    //         onCheckedChange={(val) => {
+    //           HandleUpdate(val)
+    //         }}
+    //       />
+    //     </div>
+    //   )
+    // },
   },
 ]

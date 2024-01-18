@@ -92,9 +92,9 @@ export default function FormSettingsForm(props: {
     <Form {...formSettingCXT}>
       <form
         onSubmit={formSettingCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 max-w-7xl mx-auto mt-4"
+        className="mx-auto mt-4 w-full max-w-7xl space-y-6"
       >
-        <div className="bg-white rounded-xl shadow-md p-4 space-y-4">
+        <div className="space-y-4 rounded-xl bg-white p-4 shadow-md">
           <TextInput
             form={formSettingCXT}
             options={{

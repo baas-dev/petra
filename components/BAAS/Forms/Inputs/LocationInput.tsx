@@ -33,7 +33,7 @@ let stateChoices = states()
 export default function LocationInput({ form, Name }) {
   return (
     <>
-      <div className="flex flex-wrap my-8 bg-white rounded-xl  py-4 w-full">
+      <div className="my-8 flex w-full flex-wrap rounded-xl  bg-white py-4">
         <div className="w-full px-4 text-left">
           <Label className="text-md text-left text-primary underline ">
             Location Information

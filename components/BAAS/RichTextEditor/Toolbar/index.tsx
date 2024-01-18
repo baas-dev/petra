@@ -10,7 +10,7 @@ import { Youtube } from "./Youtube"
 export default function Toolbar() {
   return (
     <>
-      <div className="flex gap-4 mb-2 w-full">
+      <div className="mb-2 flex w-full gap-4">
         <div className="flex gap-1">
           <H2 />
           <H3 />

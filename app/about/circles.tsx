@@ -5,12 +5,12 @@ const Circles = () => {
   return (
     <div className="relative">
       {/* Center Circle */}
-      <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
-        <span className="text-white font-bold">Center</span>
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-500">
+        <span className="font-bold text-white">Center</span>
       </div>
 
       {/* Surrounding Circles */}
-      <div className="absolute top-0 left-0">
+      <div className="absolute left-0 top-0">
         {[1, 2, 3, 4, 5, 6].map((index) => (
           <div key={index} className="circle">
             {index}

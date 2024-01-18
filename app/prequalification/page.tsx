@@ -4,11 +4,11 @@ import PrequalificationForm from "./Steps/PrequalificationForm"
 
 export default function PrequalificationPage() {
   return (
-    <div className="w-full   h-full">
+    <div className="h-full   w-full">
       <Banner Title={"Prequalification"} Subtitle={"Borrower Snapshot"}>
         <></>
       </Banner>
-      <div className="container flex w-full flex-col min-h-screen">
+      <div className="container flex min-h-screen w-full flex-col">
         <p className="w-full">
           Not ready to apply now? Give us some basic info so we can decide what
           type of loan might be the best fit for you. <br /> Don’t worry, we

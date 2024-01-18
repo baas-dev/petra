@@ -13,7 +13,7 @@ export function DeleteButton(props: DataActionOptions) {
   }
 
   return (
-    <div className="w-full flex gap-2 mt-4">
+    <div className="mt-4 flex w-full gap-2">
       <Button variant={"destructive"} className="w-full">
         Delete
       </Button>
@@ -30,9 +30,9 @@ export function UpdateButton(props: DataActionOptions) {
 
   return (
     <>
-      <div className="w-full mb-8 gap-2">
+      <div className="mb-8 w-full gap-2">
         <Button
-          className=" text-lg w-full"
+          className=" w-full text-lg"
           // onClick={() => {
           //   SaveFunction()
           // }}

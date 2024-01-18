@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { DeleteButton, UpdateButton } from "@/components/BAAS/CRUD/DataActions"
 import DetailPage from "@/components/BAAS/CRUD/DetailPage"
 
-import { TeamMember } from "../columns"
+// import { TeamMember } from "../columns"
 
 async function GetData(id: string, path: string): Promise<any> {
   let data = await fetch(`http://localhost:4000/${path}/${id}`, {
@@ -36,21 +36,21 @@ export default async function DemoPage({ params }: { params: { id: string } }) {
     </>
   )
 }
-function FAQForm(props: { data: TeamMember }) {
+function FAQForm(props: { data }) {
   return (
     <div className="flex flex-wrap">
-      <div className="w-full flex justify-between mb-8 gap-2">
-        <Button variant={"outline"} className=" text-lg w-full">
+      <div className="mb-8 flex w-full justify-between gap-2">
+        <Button variant={"outline"} className=" w-full text-lg">
           Go Back
         </Button>
 
         <UpdateButton path={`/quotes/${props.data.ID}`} />
       </div>
-      <div className="w-full mb-2">
+      <div className="mb-2 w-full">
         <Label className="text-lg font-semibold">Name</Label>
         <Input defaultValue={props.data.name} />
       </div>
-      <div className="w-full mb-2">
+      <div className="mb-2 w-full">
         <Label className="text-lg font-semibold">Bio</Label>
         <Textarea defaultValue={props.data.bio} />
       </div>

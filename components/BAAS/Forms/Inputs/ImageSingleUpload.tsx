@@ -26,7 +26,7 @@ export default function ImageSingleUpload(props: {
 }) {
   return (
     <>
-      <div className=" p-4 w-full mb-4">
+      <div className=" mb-4 w-full p-4">
         <MainImage
           form={props.form}
           name={props.options.Name}
@@ -55,25 +55,25 @@ function MainImage({
 
   return (
     <>
-      <div className="w-full text-center justify-center items-center flex">
+      <div className="flex w-full items-center justify-center text-center">
         <div className="my-auto items-center ">
           <div className="mb-2">
             <MediaDialog />
           </div>
-          <div className="w-48 h-48 bg-gray-200 mx-auto mb-4">
+          <div className="mx-auto mb-4 h-48 w-48 bg-gray-200">
             {url ? (
               <Image
                 src={val}
                 alt={""}
                 height={128}
                 width={128}
-                className="w-full h-48  object-contain"
+                className="h-48 w-full  object-contain"
               />
             ) : (
               <></>
             )}
           </div>
-          <div className="flex gap-2 w-full">
+          <div className="flex w-full gap-2">
             <TextInput
               form={form}
               options={{

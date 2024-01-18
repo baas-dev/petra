@@ -36,7 +36,6 @@ import AssistanceTrigger from "../../Assistant/AssistanceTrigger"
 import MobileNavSheet from "../../mobile-nav-sheet"
 import BigCard from "../Cards/BigCard"
 import Cart from "../Shop/components/Cart"
-import SiteSearch from "./SiteSearch"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -84,8 +83,8 @@ export default function MainNav() {
           <FullWidthNavbar />
         </div>
       </div>
-      <div className=" md:hidden w-full">
-        <div className=" flex h-16  items-center space-x-4 justify-between sm:space-x-0">
+      <div className=" w-full md:hidden">
+        <div className=" flex h-16  items-center justify-between space-x-4 sm:space-x-0">
           <MobileNavbar />
 
           {/* <div className="flex p-2 m-2">
@@ -129,14 +128,14 @@ ListItem.displayName = "ListItem"
 
 function Info() {
   return (
-    <div className=" md:w-full  sm:flex text-left flex-col">
+    <div className=" flex-col  text-left sm:flex md:w-full">
       <div>
-        <span className="underline text-primary">
+        <span className="text-primary underline">
           <a href="tel:214-432-0443" className="flex hover:underline">
             +1 (214) 432-0443
           </a>
         </span>
-        <span className="underline text-primary">
+        <span className="text-primary underline">
           <a
             href="mailto:“contactus@petralending.com”"
             className="flex hover:underline"
@@ -149,7 +148,7 @@ function Info() {
         <span className="font-light md:text-lg"> Petra Home Lending</span>
       </div>
       <div>
-        <span className="font-normal text-sm text-gray-400">
+        <span className="text-sm font-normal text-gray-400">
           <a
             href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
             className="hover:cursor-pointer hover:underline"
@@ -169,7 +168,7 @@ const FullWidthNavbar = () => {
   let path = usePathname()
   return (
     <>
-      <header className="bg-white w-full flex items-center container max-w-4xl justify-between">
+      <header className="container flex w-full max-w-4xl items-center justify-between bg-white">
         <Image
           src={"/images/petra-blue.svg"}
           height={50}
@@ -202,13 +201,13 @@ const FullWidthNavbar = () => {
               <AssistanceTrigger />
             </div> */}
 
-        <NavigationMenu className="items-center text-center mx-auto py-1">
+        <NavigationMenu className="mx-auto items-center py-1 text-center">
           <NavigationMenuList>
             <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
-                    className={`flex-wrap text-center items-center  ${
+                    className={`flex-wrap items-center text-center  ${
                       path == "/" ? "text-accent underline" : ""
                     } `}
                   >
@@ -218,7 +217,7 @@ const FullWidthNavbar = () => {
               </Link>
               <HoverCardContent className="bg-white">
                 <div className="text-left">
-                  <Label className="text-lg pb-2 underline text-primary ">
+                  <Label className="pb-2 text-lg text-primary underline ">
                     Home
                   </Label>
                   <p>Start here!</p>
@@ -229,7 +228,7 @@ const FullWidthNavbar = () => {
               <Link href="/about" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
-                    className={`flex-wrap text-center items-center  ${
+                    className={`flex-wrap items-center text-center  ${
                       path == "/about" ? "text-accent underline" : ""
                     } `}
                   >
@@ -239,7 +238,7 @@ const FullWidthNavbar = () => {
               </Link>
               <HoverCardContent className="bg-white">
                 <div className="text-left">
-                  <Label className="text-lg pb-2 underline text-primary ">
+                  <Label className="pb-2 text-lg text-primary underline ">
                     About Us
                   </Label>
                   <p>Meet the team representing Petra Home Lending</p>
@@ -272,7 +271,7 @@ const FullWidthNavbar = () => {
               <Link href="/resources" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
-                    className={`flex-wrap text-center items-center  ${
+                    className={`flex-wrap items-center text-center  ${
                       path == "/resources" ? "text-accent underline" : ""
                     } `}
                   >
@@ -282,7 +281,7 @@ const FullWidthNavbar = () => {
               </Link>
               <HoverCardContent className="bg-white">
                 <div className="text-left">
-                  <Label className="text-lg pb-2 underline text-primary ">
+                  <Label className="pb-2 text-lg text-primary underline ">
                     Resources
                   </Label>
                   <p>Helpful Tools & Information</p>
@@ -339,7 +338,7 @@ const FullWidthNavbar = () => {
               <Link href="/contact" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
                   <div
-                    className={`flex-wrap text-cente items-center  ${
+                    className={`text-cente flex-wrap items-center  ${
                       path == "/contact" ? "text-accent underline" : ""
                     } `}
                   >
@@ -349,7 +348,7 @@ const FullWidthNavbar = () => {
               </Link>
               <HoverCardContent className="bg-white">
                 <div className="text-left">
-                  <Label className="text-lg pb-2 underline  text-primary">
+                  <Label className="pb-2 text-lg text-primary  underline">
                     Talk With The Team
                   </Label>
                   <p>We are eager to hear from you!</p>

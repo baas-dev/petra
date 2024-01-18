@@ -33,17 +33,17 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
       {/* Media Popover */}
-      <div className=" min-h-screen pt-8 gap-4 bg-secondary ">
+      <div className=" min-h-screen gap-4 bg-secondary pt-8 ">
         {loading ? (
-          <div className="flex mt-24 align-middle justify-center">
-            <Loader2 className="animate-spin text-lg text-accent mr-2" />
+          <div className="mt-24 flex justify-center align-middle">
+            <Loader2 className="mr-2 animate-spin text-lg text-accent" />
             <Label className="text-xl">Loading...</Label>
           </div>
         ) : status == "authenticated" ? (
           <AdminTableProvider>
-            <div className="md:pt-20 md:px-0 px-2">
+            <div className="px-2 md:px-0 md:pt-20">
               <AdminNav />
-              <div className="w-full mx-auto rounded-lg ">{children}</div>
+              <div className="mx-auto w-full rounded-lg ">{children}</div>
             </div>
           </AdminTableProvider>
         ) : (

@@ -8,7 +8,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <MortgageCalcProvider>
-        <div className="min-h-screen mb-16 h-full">{children}</div>
+        <div className="mb-16 h-full min-h-screen">{children}</div>
       </MortgageCalcProvider>
     </>
   )

@@ -14,10 +14,11 @@ import ImageSingleUpload from "@/components/BAAS/Forms/Inputs/ImageSingleUpload"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
 import RichTextEditor from "@/components/BAAS/RichTextEditor"
-import Status from "@/components/BAAS/Shop/Admin/Sections/Status"
 
 import "react-phone-number-input/style.css"
 import PhoneInput from "react-phone-number-input"
+
+import Status from "@/components/BAAS/Forms/Status"
 
 import { useAdminTableContext } from "../Context/TableContext"
 
@@ -108,9 +109,9 @@ export default function TeamForm(props: {
     <Form {...teamFormCXT}>
       <form
         onSubmit={teamFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 max-w-7xl mx-auto h-4/5 overflow-y-scroll py-8 pb-8"
+        className="mx-auto h-4/5 w-full max-w-7xl space-y-6 overflow-y-scroll py-8"
       >
-        <div className="bg-white  rounded-xl border shadow-lg p-4  ">
+        <div className="rounded-xl  border bg-white p-4 shadow-lg  ">
           <ImageSingleUpload
             form={teamFormCXT}
             options={{

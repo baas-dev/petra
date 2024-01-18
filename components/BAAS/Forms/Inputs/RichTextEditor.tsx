@@ -69,7 +69,7 @@ const MenuBar = () => {
           clear nodes
         </button> */}
       <div className="grid grid-cols-3">
-        <div className="w-full col-span-2">
+        <div className="col-span-2 w-full">
           <Select>
             <SelectTrigger className="bg-white">
               <SelectValue placeholder="Text Size" />
@@ -153,7 +153,7 @@ const MenuBar = () => {
               type="button"
               variant={"outline"}
               {...item}
-              className="bg-white z-50"
+              className="z-50 bg-white"
             >
               <div>{item.Icon}</div>
             </Button>
@@ -202,10 +202,10 @@ const content = `
 
 `
 
-export default (props: { form: any }) => {
+export default function RTE(props: { form: any }) {
   let content = props.form.getValues("Content")
   return (
-    <div className="bg-white border">
+    <div className="border bg-white">
       <EditorProvider
         slotBefore={<MenuBar />}
         extensions={extensions}

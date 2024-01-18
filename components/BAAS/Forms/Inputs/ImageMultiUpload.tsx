@@ -23,12 +23,12 @@ export default function ImageMultiUploadInput(props: {
   return (
     <>
       <div className="flex  gap-2">
-        <div className="bg-white p-4 w-full md:w-1/3 rounded-xl shadow-md mb-4">
+        <div className="mb-4 w-full rounded-xl bg-white p-4 shadow-md md:w-1/3">
           <div>
             <MainImage form={props.form} />
           </div>
         </div>
-        <div className="bg-white p-4 w-full md:w-2/3 roundex-cl shadow-md mb-4">
+        <div className="roundex-cl mb-4 w-full bg-white p-4 shadow-md md:w-2/3">
           <SecondaryImages />
         </div>
       </div>
@@ -42,7 +42,7 @@ function MainImage({ form }: { form: any }) {
       <div className="w-full text-center">
         <Popover>
           <PopoverTrigger asChild>
-            <Button className="mx-auto text-center mb-2" type="button">
+            <Button className="mx-auto mb-2 text-center" type="button">
               {`Set Main Image`}
             </Button>
           </PopoverTrigger>
@@ -58,7 +58,7 @@ function MainImage({ form }: { form: any }) {
             </div>
           </PopoverContent>
 
-          <div className="w-48 h-48 bg-gray-200 mx-auto">
+          <div className="mx-auto h-48 w-48 bg-gray-200">
             <Image src={""} alt={""} />
           </div>
         </Popover>
@@ -76,7 +76,7 @@ function SecondaryImages() {
           variant={"outline"}
           className="mx-auto text-center"
         >{`(0) Add Secondary Images`}</Button>
-        <div className="w-full h-48 mt-2 bg-gray-200 mx-auto mb-2"></div>
+        <div className="mx-auto my-2 h-48 w-full bg-gray-200"></div>
       </div>
     </>
   )

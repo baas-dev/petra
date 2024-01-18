@@ -2,7 +2,7 @@ import TableLoading from "@/components/BAAS/Loading/TableLoading"
 
 export default function Loading() {
   return (
-    <div className="max-w-6xl w-full mx-auto mt-4">
+    <div className="mx-auto mt-4 w-full max-w-6xl">
       <TableLoading />
     </div>
   )

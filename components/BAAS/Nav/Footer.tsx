@@ -8,10 +8,10 @@ import { Separator } from "@/components/ui/separator"
 
 export default function Footer() {
   return (
-    <footer className=" mx-auto w-full relative text-center bg-secondary border-t-4-blue-300 text-primary">
-      <div className=" text-left p-4">
+    <footer className=" border-t-4-blue-300 relative mx-auto w-full bg-secondary text-center text-primary">
+      <div className=" p-4 text-left">
         <MiddleSection />
-        <Separator className="border-2 mb-4" />
+        <Separator className="mb-4 border-2" />
         <Bottom />
       </div>
     </footer>
@@ -21,7 +21,7 @@ export default function Footer() {
 function Bottom() {
   return (
     <>
-      <div className="w-full text-center mt-4">
+      <div className="mt-4 w-full text-center">
         <p className="text-base ">© {moment().year()} Petra Lending</p>
       </div>
     </>
@@ -30,9 +30,9 @@ function Bottom() {
 
 function MiddleSection() {
   return (
-    <div className="flex flex-col text-center mt-4 md:flex-row w-full justify-between container items-center">
-      <div className="w-full flex justify-between items-center">
-        <div className="w-full flex flex-wrap justify-between container">
+    <div className="container mt-4 flex w-full flex-col items-center justify-between text-center md:flex-row">
+      <div className="flex w-full items-center justify-between">
+        <div className="container flex w-full flex-wrap justify-between">
           {/* <SocialBar /> */}
 
           {/* <nav className="flex flex-wrap w-full text-center mx-auto justify-center text-lg font-medium">
@@ -56,7 +56,7 @@ function MiddleSection() {
         </div>
       </div>
 
-      <div className="my-auto mt-4 md:text-left flex flex-col w-full items-center h-full">
+      <div className="my-auto mt-4 flex h-full w-full flex-col items-center md:text-left">
         {/* <div className="mb-2">
           <Link target="_blank" href="https://m.me/petralending">
             <Button className=" hover:cursor-pointer border-2 p-4 bg-primary text-white">
@@ -65,7 +65,7 @@ function MiddleSection() {
             </Button>
           </Link>
         </div> */}
-        <div className="mb-2    mx-auto flex  text-center">
+        <div className="mx-auto    mb-2 flex  text-center">
           <Home className="mr-2" />
 
           <a
@@ -75,7 +75,7 @@ function MiddleSection() {
             3939 Belt Line Rd #150, Addison, TX 75001
           </a>
         </div>
-        <div className="mb-2 mx-auto  flex  text-center">
+        <div className="mx-auto mb-2  flex  text-center">
           <a
             href="mailto:“contact-us@petralending.com”"
             className="flex hover:underline"
@@ -84,13 +84,13 @@ function MiddleSection() {
             contact-us@petralending.com
           </a>
         </div>
-        <div className="mb-2 mx-auto  flex  text-center">
+        <div className="mx-auto mb-2  flex  text-center">
           <a href="tel:214-432-0443" className="flex hover:underline">
             <Phone className="mr-2" />
             +1 (214) 432-0443
           </a>
         </div>
-        <div className="mb-2 mx-auto  flex  text-center">
+        <div className="mx-auto mb-2  flex  text-center">
           NMLS#: <b className="ml-2">211515</b>
         </div>
         <div>
@@ -99,18 +99,18 @@ function MiddleSection() {
             alt=""
             width={1000}
             height={500}
-            className="w-full md:h-24 bottom-0 mx-auto md:float-right "
+            className="bottom-0 mx-auto w-full md:float-right md:h-24 "
           />
         </div>
       </div>
 
-      <div className="w-full flex h-full  items-baseline mb-8 justify-end">
+      <div className="mb-8 flex h-full  w-full items-baseline justify-end">
         <Image
           src={"/images/eh.png"}
           alt=""
           width={500}
           height={500}
-          className="w-16 h-16 md:w-16 md:h-16 bottom-0 mx-auto md:float-right "
+          className="bottom-0 mx-auto h-16 w-16 md:float-right md:h-16 md:w-16 "
         />
       </div>
     </div>

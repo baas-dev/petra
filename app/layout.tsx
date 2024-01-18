@@ -23,7 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen h-full font-sans antialiased"
+            "h-full min-h-screen font-sans antialiased"
             // fontSans.variable
           )}
         >

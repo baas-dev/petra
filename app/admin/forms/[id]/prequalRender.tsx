@@ -65,7 +65,7 @@ export default function PrequalRender(props: { Data: string }) {
 
 function TeamRender(props: { team: DataReceived["Team"] }) {
   return (
-    <div className="bg-white w-1/2 p-4">
+    <div className="w-1/2 bg-white p-4">
       <Label className="text-xl text-primary">Team Members Credited:</Label>
       <ol>
         {props.team.map((item, i) => {
@@ -96,7 +96,7 @@ function AddressRender({
         <>
           <Label className="text-xl text-primary ">Address Information:</Label>
           <Table className="mt-4">
-            <TableHeader className="bg-secondary border">
+            <TableHeader className="border bg-secondary">
               <TableHead>Street Address</TableHead>
               <TableHead>Suite #</TableHead>
               <TableHead>City</TableHead>
@@ -116,8 +116,8 @@ function AddressRender({
         </>
       ) : (
         <>
-          <div className="w-full text-center h-full">
-            <p className="italic font-light my-auto ">
+          <div className="h-full w-full text-center">
+            <p className="my-auto font-light italic ">
               The option to add an address was declined.
             </p>
           </div>
@@ -146,10 +146,10 @@ function BorrowerRender(props: { Borrowers: DataReceived["Borrowers"] }) {
           </Button>
         </>
       ))}
-      <div className="bg-white w-full p-4 my-4">
+      <div className="my-4 w-full bg-white p-4">
         <Label className="text-xl text-primary ">Borrower Information:</Label>
         <Table className="my-4">
-          <TableHeader className="bg-secondary border">
+          <TableHeader className="border bg-secondary">
             <TableHead>First Name</TableHead>
             <TableHead>Last Name</TableHead>
             <TableHead>Marital Status</TableHead>
@@ -173,7 +173,7 @@ function BorrowerRender(props: { Borrowers: DataReceived["Borrowers"] }) {
         </Table>
         <Label className="text-xl text-primary ">Financial Information:</Label>
         <Table className="mt-4">
-          <TableHeader className="bg-secondary border">
+          <TableHeader className="border bg-secondary">
             <TableHead>Annual Income</TableHead>
             <TableHead>Credit Score</TableHead>
             <TableHead>Expenses</TableHead>

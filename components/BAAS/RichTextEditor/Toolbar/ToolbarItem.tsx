@@ -8,7 +8,7 @@ import {
 
 type MenuBarItem = {
   Component: JSX.Element
-  onClick?: () => void
+  onClick
   disabled?: boolean
   Classes?: string
   Title?: string
@@ -27,7 +27,7 @@ export default function ToolbarItem(props: { config: MenuBarItem }) {
             variant={"outline"}
             {...props}
             onClick={onClick}
-            className={`bg-white shadow-xl text-black border-2 ${Classes}`}
+            className={`border-2 bg-white text-black shadow-xl ${Classes}`}
           >
             {Component}
           </Button>

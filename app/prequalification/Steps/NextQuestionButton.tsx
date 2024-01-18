@@ -14,7 +14,7 @@ export default function NextQuestionButton(props: {
       disabled={props.isDisabled}
     >
       <CardTitle className="text-2xl">Continue!</CardTitle>
-      <CardDescription className="text-xl ml-4 text-white">
+      <CardDescription className="ml-4 text-xl text-white">
         Go To Next Question
       </CardDescription>
     </Button>

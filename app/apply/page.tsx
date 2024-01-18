@@ -47,7 +47,7 @@ export default function Step1Form(props: {}) {
   let classStr = LoadLength()
   let r = useRouter()
   return (
-    <div className="w-full mt-8 container h-full min-h-screen">
+    <div className="container mt-8 h-full min-h-screen w-full">
       <QuestionHeader
         title="Select Your Team Member"
         text="Which Petra Agent are you applying through?"
@@ -55,7 +55,7 @@ export default function Step1Form(props: {}) {
       {teamMembers.length > 0 ? (
         <>
           <div
-            className={`grid grid-cols-2 md:grid-cols-4 h-full gap-2 w-full z-50 justify-center`}
+            className={`z-50 grid h-full w-full grid-cols-2 justify-center gap-2 md:grid-cols-4`}
           >
             {teamMembers.map((item, i) => {
               return (
@@ -89,10 +89,10 @@ export default function Step1Form(props: {}) {
                 //   props.UpdateState(1, Step1FormCXT.getValues("TeamMembers"))
                 //   props.HandleNext()
               }}
-              className=" flex w-full mb-8 flex-row items-center border-2 bg-green-200 mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl  p-4  "
+              className=" mx-auto mb-8 flex w-full flex-row items-center rounded-xl border-2 bg-green-200 p-4 text-center transition hover:animate-pulse hover:cursor-pointer md:w-1/2  "
             >
               <div className="w-full">
-                <Label className="text-2xl text-dark underline ">
+                <Label className="text-dark text-2xl underline ">
                   Apply Now with {teamMembers[selected].Name}
                 </Label>
               </div>

@@ -29,7 +29,7 @@ export default function BigCard({
       onClick={() => {
         r.push(link), action()
       }}
-      className={`${bg} w-full hover:${bgHover} hover:cursor-pointer `}
+      className={`${bg} hover: w-full${bgHover} hover:cursor-pointer `}
     >
       <Image
         src={"/images/background.svg"}

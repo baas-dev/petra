@@ -7,9 +7,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { DeleteButton, UpdateButton } from "@/components/BAAS/CRUD/DataActions"
 import DetailPage from "@/components/BAAS/CRUD/DetailPage"
 
-import { Resource } from "../columns"
+// import { Resource } from "../columns"
 
-async function GetData(id: string, path: string): Promise<Resource[]> {
+async function GetData(id: string, path: string): Promise<any[]> {
   let data = await fetch(`http://localhost:4000/${path}/${id}`, {
     cache: "no-cache",
   })
@@ -37,25 +37,25 @@ export default async function DemoPage({ params }: { params: { id: string } }) {
     </>
   )
 }
-function QuoteForm(props: { data: Resource }) {
+function QuoteForm(props: { data }) {
   return (
     <div className="flex flex-wrap">
-      <div className="w-full flex justify-between mb-8 gap-2">
-        <Button variant={"outline"} className=" text-lg w-full">
+      <div className="mb-8 flex w-full justify-between gap-2">
+        <Button variant={"outline"} className=" w-full text-lg">
           Go Back
         </Button>
 
         <UpdateButton path={`/quotes/${props.data.ID}`} />
       </div>
-      <div className="w-full mb-2">
+      <div className="mb-2 w-full">
         <Label className="text-lg font-semibold">Title</Label>
         <Input defaultValue={props.data.Title} />
       </div>
-      <div className="w-full mb-2">
+      <div className="mb-2 w-full">
         <Label className="text-lg font-semibold">Description</Label>
         <Textarea defaultValue={props.data.Description} />
       </div>
-      <div className="w-full mb-2">
+      <div className="mb-2 w-full">
         <Label className="text-lg font-semibold">Resource Link</Label>
         <Input defaultValue={props.data.Link} />
       </div>

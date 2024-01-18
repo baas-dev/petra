@@ -51,13 +51,13 @@ export default async function Resoures() {
             Title: item.Title,
             Icon: (
               <>
-                <div className=" w-32 h-32 object-contain">
+                <div className=" h-32 w-32 object-contain">
                   <Image
                     src={item.IconLink ? item.IconLink.toString() : "/404.png"}
                     alt={`${item.Title} Image`}
                     width={1000}
                     height={1000}
-                    className="h-full relative w-full"
+                    className="relative h-full w-full"
                   />
                 </div>
               </>
@@ -74,12 +74,12 @@ export default async function Resoures() {
     <>
       <IntroSection ImageURL="/site/resource/bg.png" Title="Resources" />
 
-      <h2 className="text-2xl text-center max-w-xl mx-auto">
+      <h2 className="mx-auto max-w-xl text-center text-2xl">
         Buying a home shouldn’t be hard. Our team is here to support you every
         step of the way. <br className="mb-4" /> We have gathered a few
         resources to get you started.
       </h2>
-      <div className="grid grid-cols-2 mt-8 md:grid-cols-3 gap-2 px-4 container">
+      <div className="container mt-8 grid grid-cols-2 gap-2 px-4 md:grid-cols-3">
         <CardList items={res} />
       </div>
     </>

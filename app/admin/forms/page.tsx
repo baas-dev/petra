@@ -12,7 +12,7 @@ import { DataTable } from "@/components/BAAS/Table/DataTable"
 import BACKEND from "@/app/API"
 
 import { columns } from "./columns"
-import { columnsAlt } from "./columns-alt"
+import { ColumnsAlt } from "./columns-alt"
 
 const api = new BACKEND()
 
@@ -67,7 +67,7 @@ export default function FormsAdmin() {
       ) : (
         <>
           <Tabs defaultValue="contact" className="w-full">
-            <div className="bg-white p-2 rounded-xl shadow-md">
+            <div className="rounded-xl bg-white p-2 shadow-md">
               <Label>Selected Records:</Label>
               <TabsList className="grid w-full grid-cols-2 gap-2">
                 <TabsTrigger value="contact">Contact Form</TabsTrigger>
@@ -78,7 +78,7 @@ export default function FormsAdmin() {
             </div>
             <TabsContent value="contact" className="w-full">
               <DataTable
-                columns={columnsAlt}
+                columns={ColumnsAlt}
                 data={contactData ? contactData : []}
                 scope={{
                   TableName: "Forms",

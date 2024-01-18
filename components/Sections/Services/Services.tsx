@@ -13,8 +13,8 @@ import HoverCard from "@/components/BAAS/Cards/HoverCard"
 
 export default function Services() {
   return (
-    <div className="w-full relative  h-full ">
-      <section className=" z-20 flex flex-col  md:flex-row  pb-2   text-secondary">
+    <div className="relative h-full  w-full ">
+      <section className=" z-20 flex flex-col  pb-2  text-secondary   md:flex-row">
         <RevealAnimation
           options={{
             delay: 0.2,

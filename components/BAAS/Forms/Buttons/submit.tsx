@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 export default function SubmitButton({ loading }: { loading: boolean }) {
   return (
     <Button disabled={loading ? true : false} type="submit">
-      {loading ? <RefreshCcw className="animate-spin mt-1" /> : "Submit"}
+      {loading ? <RefreshCcw className="mt-1 animate-spin" /> : "Submit"}
     </Button>
   )
 }

@@ -62,11 +62,11 @@ export default function AuthPage() {
 
   return (
     <>
-      <div className="bg-gray-100 flex justify-center items-center h-screen">
-        <div className="w-1/2 h-screen hidden lg:block">
-          <div className="bg-primary w-full h-full flex items-center justify-center">
+      <div className="flex h-screen items-center justify-center bg-gray-100">
+        <div className="hidden h-screen w-1/2 lg:block">
+          <div className="flex h-full w-full items-center justify-center bg-primary">
             <div>
-              <div className="w-full z-10 my-auto text-center ">
+              <div className="z-10 my-auto w-full text-center ">
                 <Image
                   src="/images/petra-white.svg"
                   height={500}
@@ -74,7 +74,7 @@ export default function AuthPage() {
                   alt=""
                   className="mx-auto mb-4"
                 />
-                <Badge className="bg-accent mx-auto text-xl">
+                <Badge className="mx-auto bg-accent text-xl">
                   <p>Your #1 Choice for Texas Home Lending</p>
                 </Badge>
 
@@ -91,22 +91,22 @@ export default function AuthPage() {
                   height={20}
                   width={200}
                   alt={""}
-                  className="block -mt-8 rounded-md w-full mx-auto -z-10 "
+                  className="-z-10 mx-auto -mt-8 block w-full rounded-md "
                   src={"/images/underline.svg"}
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-          <h1 className="text-2xl font-semibold mb-4">Login</h1>
+        <div className="sm:20 w-full p-8 md:p-52 lg:w-1/2 lg:p-36">
+          <h1 className="mb-4 text-2xl font-semibold">Login</h1>
           {showAccessCodeEnter ? (
             <Form {...AuthFormCXT}>
               <form onSubmit={AuthFormCXT.handleSubmit(onSubmitLogin)}>
                 <div className="mb-4">
-                  <Label className="my-2 text-md  ">
+                  <Label className="text-md my-2  ">
                     Code was sent to:
-                    <span className="font-normal text-primary ml-2">
+                    <span className="ml-2 font-normal text-primary">
                       {AuthFormCXT.getValues("Email")}
                     </span>
                   </Label>
@@ -128,7 +128,7 @@ export default function AuthPage() {
                   <>
                     <Button
                       type="submit"
-                      className="  text-white font-semibold rounded-md py-2 px-4 w-full"
+                      className="  w-full rounded-md px-4 py-2 font-semibold text-white"
                     >
                       Login
                     </Button>
@@ -157,7 +157,7 @@ export default function AuthPage() {
                   <>
                     <Button
                       type="submit"
-                      className="  text-white font-semibold rounded-md py-2 px-4 w-full"
+                      className="  w-full rounded-md px-4 py-2 font-semibold text-white"
                     >
                       Request Access Code
                     </Button>

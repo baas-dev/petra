@@ -8,8 +8,8 @@ export default function QuoteHero() {
   return (
     <>
       <div className="w-full ">
-        <div className="relative rounded-lg block  items-center bg-gray-100 min-h-[600px] w-full shadow-xl ">
-          <div className="w-full h-full flex items-center bg-gray-100 rounded-lg"></div>
+        <div className="relative block min-h-[600px]  w-full items-center rounded-lg bg-gray-100 shadow-xl ">
+          <div className="flex h-full w-full items-center rounded-lg bg-gray-100"></div>
         </div>
       </div>
     </>

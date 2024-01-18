@@ -36,8 +36,8 @@ export default function PasswordInput({
       render={({ field }) => (
         <FormItem>
           {options.forReset ? (
-            <div className="px-4 bg-secondary rounded border mb-4">
-              <Label>To Reset User's Password:</Label>
+            <div className="mb-4 rounded border bg-secondary px-4">
+              <Label>To Reset User&#39;s Password:</Label>
               <ul>
                 <li>At least one uppercase letter.</li>
                 <li>At least one lowercase letter.</li>
@@ -55,7 +55,7 @@ export default function PasswordInput({
                 defaultValue={""}
                 {...field}
               />
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer">
+              <div className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3 text-gray-400">
                 {showPassword ? (
                   <Button
                     variant={"ghost"}

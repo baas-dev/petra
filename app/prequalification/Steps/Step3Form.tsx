@@ -224,7 +224,7 @@ export default function Step3Form(props: {
 
   useEffect(() => {}, [borrowerState])
   return (
-    <div className="w-full pt-8 pb-8 text-center ">
+    <div className="w-full py-8 text-center">
       <Form {...Step3FormCXT}>
         <form
           onSubmit={(e) => {
@@ -248,7 +248,7 @@ export default function Step3Form(props: {
             AddMonthlyItems={AddMonthlyItems}
           />
 
-          <div className="flex gap-2 justify-between">
+          <div className="flex justify-between gap-2">
             {loading ? (
               <Loader2 className="animate-spin" />
             ) : (
@@ -259,7 +259,7 @@ export default function Step3Form(props: {
                 />
                 <Button
                   type="submit"
-                  className=" mb-4 h-full bg-green-200 hover:bg-green-200 text-primary text-2xl underline flex w-full border-2 flex-row items-center mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl p-4  "
+                  className=" mx-auto mb-4 flex h-full w-full flex-row items-center rounded-xl border-2 bg-green-200 p-4 text-center text-2xl text-primary underline transition hover:animate-pulse hover:cursor-pointer hover:bg-green-200 md:w-1/2  "
                 >
                   Save
                 </Button>
@@ -303,10 +303,10 @@ function BorrowerAccord({
           vals.map((item, i) => (
             <AccordionItem
               value={`item-${i}`}
-              className={`bg-white shadow-xl p-4 border ${GetStyle(i)}`}
+              className={`border bg-white p-4 shadow-xl ${GetStyle(i)}`}
             >
               <AccordionTrigger className={`border-b-2 `}>
-                <div className={`w-full text-xl text-left`}>
+                <div className={`w-full text-left text-xl`}>
                   {i == 0 ? " Borrower" : `Borrower #${i + 1}`}
                   {i == 0 ? (
                     <></>
@@ -378,7 +378,7 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
 
   return (
     <>
-      <div className="flex w-full gap-2 text-left py-4">
+      <div className="flex w-full gap-2 py-4 text-left">
         <div className="w-full">
           <TextInput
             form={form}
@@ -420,7 +420,7 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
           </div>
         </div>
       </div>
-      <div className="flex w-full gap-2 mt-4">
+      <div className="mt-4 flex w-full gap-2">
         <div className="w-full text-left">
           <FormField
             control={form.control}
@@ -444,7 +444,7 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
                     name={field.name}
                     // value={parseInt(field.value)}
                     decimalsLimit={2}
-                    className={`w-full mt-2 border border-gray-400 border-opacity-25 ${
+                    className={`mt-2 w-full border border-gray-400/25 ${
                       form.getFieldState(field.name).invalid
                         ? "border border-red-500"
                         : ""
@@ -480,7 +480,7 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
           />
         </div>
       </div>
-      <div className="flex flex-wrap mt-4 text-left">
+      <div className="mt-4 flex flex-wrap text-left">
         <div className="w-full">
           <div className="mb-4 flex   w-full">
             <Label htmlFor="name" className="mb-2 w-full border-none ">
@@ -497,7 +497,7 @@ function BorrowerInformationForm({ form, index, AddMonthlyItems }) {
                     <div key={i} className="w-full">
                       <Input
                         defaultValue={item.key}
-                        className="rounded-none w-full "
+                        className="w-full rounded-none "
                         onChange={(e) => {
                           // HandleExpenseKeyChange(i, e.target.value)
                         }}

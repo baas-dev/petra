@@ -11,9 +11,9 @@ export interface TableActionOptions {
 export default function TableActions(props: TableActionOptions) {
   return (
     <>
-      <div className="flex pb-2  w-full">
+      <div className="flex w-full  pb-2">
         <SearchInput />
-        <div className=" w-full flex justify-end gap-2">
+        <div className=" flex w-full justify-end gap-2">
           <CreateDialog
             Form={
               <BodyRenderer

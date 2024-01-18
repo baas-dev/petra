@@ -51,11 +51,11 @@ export default async function Downloads() {
           <></>
         </Banner>
 
-        <div className="w-full flex flex-wrap  container">
+        <div className="container flex w-full  flex-wrap">
           {res && res.length > 0 ? (
             <>
               {res.map((item: Resource, i) => (
-                <div className="w-full md:w-1/2 px-2 mb-2">
+                <div className="mb-2 w-full px-2 md:w-1/2">
                   <ResourceCard
                     key={i}
                     title={item.Title}
@@ -88,13 +88,13 @@ const ResourceCard = (props: {
 }) => {
   return (
     <Card className="w-full bg-white">
-      <CardHeader className="shadow-none py-2 mt-4 px-4 ">
+      <CardHeader className="mt-4 px-4 py-2 shadow-none ">
         <CardTitle className="pb-2">{props.title}</CardTitle>
       </CardHeader>
       <CardContent className="p-4">
         <CardDescription>{props.description}</CardDescription>
       </CardContent>
-      <CardFooter className="flex p-2 text-right w-full items-end">
+      <CardFooter className="flex w-full items-end p-2 text-right">
         {/* <Button variant="secondary">{props.type}</Button> */}
 
         <Link href={props.link} target="_blank" className="w-full">

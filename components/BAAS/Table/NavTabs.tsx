@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import {
   Select,
   SelectContent,
@@ -10,8 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
-import { useComponentViewContext } from "@/app/admin/components/hooks/ComponentViewContext"
+import { useComponentViewContext } from "@/components/Animations/ComponentViewContext"
 
 export default function NavTabs() {
   const { selectedOption, setSelectedOption } = useComponentViewContext()
@@ -20,7 +18,7 @@ export default function NavTabs() {
     setSelectedOption(value)
   }
   return (
-    <div className="flex w-ull mb-4 justify-center gap-1">
+    <div className="w-ull mb-4 flex justify-center gap-1">
       <Select value={selectedOption} onValueChange={handleSelectChange}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Select a fruit" />

@@ -27,7 +27,7 @@ export default function MediaDialog(userInfo: {}) {
           <span className="text-lg text-white">Browse Files</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side={"bottom"} className="bg-secondary h-screen w-screen">
+      <SheetContent side={"bottom"} className="h-screen w-screen bg-secondary">
         <SheetHeader className="mb-4 w-full">
           <div className="flex w-full justify-between">
             <div>

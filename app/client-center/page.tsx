@@ -7,13 +7,13 @@ export default async function ClientCenterPage() {
   return (
     <>
       <IntroSection ImageURL={"/site/cc/bg.png"} />
-      <h1 className="text-4xl text-center">{`Let's Get Started!`}</h1>
-      <div className="flex gap-4 max-w-4xl flex-col md:flex-row container mt-8 mb-16">
+      <h1 className="text-center text-4xl">{`Let's Get Started!`}</h1>
+      <div className="container mb-16 mt-8 flex max-w-4xl flex-col gap-4 md:flex-row">
         <TitleWithIconCard
           icon={
-            <div className="flex bottom-0">
-              <CheckCircle className="w-20 h-20 mt-16" />
-              <Stamp className="w-20 h-20 rotate-45 " />
+            <div className="bottom-0 flex">
+              <CheckCircle className="mt-16 h-20 w-20" />
+              <Stamp className="h-20 w-20 rotate-45 " />
             </div>
           }
           title={"Get Prequalified"}
@@ -22,7 +22,7 @@ export default async function ClientCenterPage() {
         <TitleWithIconCard
           icon={
             <div className="flex p-4 ">
-              <Keyboard className="w-32 h-32" />
+              <Keyboard className="h-32 w-32" />
             </div>
           }
           title={"Apply Now"}

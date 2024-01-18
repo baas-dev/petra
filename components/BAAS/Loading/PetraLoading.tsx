@@ -5,10 +5,10 @@ export default function TableLoading() {
     <>
       <div className="flex flex-wrap space-y-4">
         <Skeleton
-          className="w-full h-[50px]"
+          className="h-[50px] w-full"
           style={{ backgroundImage: "/images/10.png", backgroundSize: "cover" }}
         />
-        <Skeleton className="w-full h-[300px] bg-gray-500" />
+        <Skeleton className="h-[300px] w-full bg-gray-500" />
       </div>
     </>
   )

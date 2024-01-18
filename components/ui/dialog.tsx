@@ -76,7 +76,7 @@ const DialogFooter = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("flex text-center mx-auto justify-center w-full", className)}
+    className={cn("mx-auto flex w-full justify-center text-center", className)}
     {...props}
   />
 )

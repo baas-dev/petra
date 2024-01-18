@@ -5,7 +5,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <div className="max-w-6xl mx-auto">{children}</div>
+      <div className="mx-auto max-w-6xl">{children}</div>
     </>
   )
 }

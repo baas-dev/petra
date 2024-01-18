@@ -10,15 +10,15 @@ interface IntroSection {
 export default function IntroSection(props: IntroSection) {
   return (
     <>
-      <section className="relative w-full h-full min-h-[300px]  lg:h-[65vh] mb-8">
+      <section className="relative mb-8 h-full min-h-[300px]  w-full lg:h-[65vh]">
         <Image
           src={props.ImageURL}
           fill
           alt=""
-          className=" mx-auto object-cover  z-0  max-w-[2560px] object-top xl:object-center xl:object-cover 2xl:object-center "
+          className=" z-0 mx-auto  max-w-[2560px]  object-cover object-top xl:object-cover xl:object-center 2xl:object-center "
         />
 
-        <div className="relative flex flex-col bg-black bg-opacity-20 items-center z-10 w-full h-full justify-center">
+        <div className="relative z-10 flex h-full w-full flex-col items-center justify-center bg-black/20">
           <h1 className="text-6xl text-white">{props.Title}</h1>
         </div>
       </section>

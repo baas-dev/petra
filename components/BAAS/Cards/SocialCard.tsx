@@ -21,8 +21,8 @@ import { Input } from "@/components/ui/input"
 
 export function SocialCard() {
   return (
-    <Card className="text-center pt-4">
-      <div className="h-24 w-24 rounded mx-auto"></div>
+    <Card className="pt-4 text-center">
+      <div className="mx-auto h-24 w-24 rounded"></div>
 
       <CardHeader>
         <CardTitle>Create project</CardTitle>

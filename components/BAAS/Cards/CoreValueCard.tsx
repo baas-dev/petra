@@ -18,10 +18,10 @@ export default function CoreValueCard(props: {
 }) {
   let { title, subtext, icon } = props
   return (
-    <Card className="border-0 my-4 " style={{ background: "none" }}>
+    <Card className="my-4 border-0 " style={{ background: "none" }}>
       <CardHeader className="-mb-4">
         {icon}
-        <CardTitle className="text-xl font-semibold text-center">
+        <CardTitle className="text-center text-xl font-semibold">
           {title}
         </CardTitle>
       </CardHeader>
@@ -31,7 +31,7 @@ export default function CoreValueCard(props: {
             </div>
           </CardContent> */}
       <CardContent>
-        <CardDescription className="text-center max-w-sm mx-auto">
+        <CardDescription className="mx-auto max-w-sm text-center">
           {subtext}
         </CardDescription>
       </CardContent>

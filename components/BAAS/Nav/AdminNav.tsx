@@ -64,7 +64,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
         href: "/admin/faqs",
         description: "The most frequent questions you answer",
         classes: "bg-blue-100 hover:bg-blue-300 ",
-        icon: <FileQuestion className="h-8 w-8 mr-2 font-light" />,
+        icon: <FileQuestion className="mr-2 h-8 w-8 font-light" />,
       },
       {
         title: "Resources",
@@ -72,7 +72,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
         description: "Helpful links, downloads, and other content",
         classes: "bg-blue-100 hover:bg-blue-300 ",
 
-        icon: <Wrench className="h-8 w-8 mr-2  font-light" />,
+        icon: <Wrench className="mr-2 h-8 w-8  font-light" />,
       },
       {
         title: "Team Members",
@@ -81,7 +81,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
           "Biographical information about your company for the public",
         classes: "bg-blue-100 hover:bg-blue-300 ",
 
-        icon: <Users className="h-8 w-8 mr-2 font-light " />,
+        icon: <Users className="mr-2 h-8 w-8 font-light " />,
       },
       {
         title: "Testimonials",
@@ -90,7 +90,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
 
         classes: "bg-blue-100 hover:bg-blue-300 ",
 
-        icon: <Quote className="h-8 w-8 mr-2  font-light" />,
+        icon: <Quote className="mr-2 h-8 w-8  font-light" />,
       },
       // {
       //   title: "Articles",
@@ -114,7 +114,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
 
         classes: "bg-green-100 hover:bg-green-300",
 
-        icon: <FormInput className="h-8 w-8 mr-2 " />,
+        icon: <FormInput className="mr-2 h-8 w-8 " />,
       },
       {
         title: "Form Delivery Settings",
@@ -123,7 +123,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
 
         classes: "bg-green-100 hover:bg-green-300",
 
-        icon: <Cog className="h-8 w-8 mr-2 " />,
+        icon: <Cog className="mr-2 h-8 w-8 " />,
       },
 
       {
@@ -131,7 +131,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
         classes: "bg-purple-100 hover:bg-purple-300",
         description: "Accounts with admin capabilities",
         href: "/admin/users",
-        icon: <Users className="h-8 w-8 mr-2 " />,
+        icon: <Users className="mr-2 h-8 w-8 " />,
       },
       // {
       //   title: "Log Out",
@@ -156,7 +156,7 @@ const EditorContentItems: {
       href: "/admin/faqs",
       description: "The most frequent questions you answer",
       classes: "bg-blue-100 hover:bg-blue-300 ",
-      icon: <FileQuestion className="h-8 w-8 mr-2 font-light" />,
+      icon: <FileQuestion className="mr-2 h-8 w-8 font-light" />,
     },
     {
       title: "Resources",
@@ -164,7 +164,7 @@ const EditorContentItems: {
       description: "Helpful links, downloads, and other content",
       classes: "bg-blue-100 hover:bg-blue-300 ",
 
-      icon: <Wrench className="h-8 w-8 mr-2  font-light" />,
+      icon: <Wrench className="mr-2 h-8 w-8  font-light" />,
     },
 
     // {
@@ -189,7 +189,7 @@ const EditorContentItems: {
 
       classes: "bg-green-100",
 
-      icon: <FormInput className="h-8 w-8 mr-2 " />,
+      icon: <FormInput className="mr-2 h-8 w-8 " />,
     },
   ],
 }
@@ -262,7 +262,7 @@ export default function AdminNav() {
   }
   let RoleView = RoleSwitch(userData.Role)
   return (
-    <div className="mx-auto max-w-6xl  mb-4 flex justify-between">
+    <div className="mx-auto mb-4  flex max-w-6xl justify-between">
       <Sheet open={open} onOpenChange={handleChange}>
         <SheetTrigger asChild>
           <Button className="text-lg">
@@ -271,7 +271,7 @@ export default function AdminNav() {
           </Button>
         </SheetTrigger>
         <SheetContent side={"bottom"} className="h-screen">
-          <div className="flex w-full justify-between max-w-6xl mx-auto ">
+          <div className="mx-auto flex w-full max-w-6xl justify-between ">
             <SheetHeader className="mb-8 w-full ">
               <SheetTitle>Admin Navigation</SheetTitle>
               <SheetDescription>
@@ -279,7 +279,7 @@ export default function AdminNav() {
               </SheetDescription>
             </SheetHeader>
           </div>
-          <ScrollArea className="h-full  max-w-6xl mx-auto">
+          <ScrollArea className="mx-auto  h-full max-w-6xl">
             <div className=" mx-auto">
               <NavGroupSection {...RoleView} action={handleChange} />
 
@@ -307,12 +307,12 @@ function NavGroupSection(props: {
   return (
     <>
       <div className="mb-4 h-full">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2  h-full">
+        <div className="grid h-full grid-cols-1 gap-2  md:grid-cols-4">
           {items.map((item, i) => (
             <>
               <Link href={item.href} onClick={props.action}>
                 <Card
-                  className={`w-full p-4 flex items-center hover:cursor-pointer  h-full ${item.classes}`}
+                  className={`flex h-full w-full items-center p-4  hover:cursor-pointer ${item.classes}`}
                 >
                   {item.icon}
                   <div>
@@ -336,7 +336,7 @@ function NavGroupSection(props: {
             }}
           >
             <Card
-              className={`w-full p-4 flex items-center hover:cursor-pointer bg-red-200 hover:bg-red-300`}
+              className={`flex w-full items-center bg-red-200 p-4 hover:cursor-pointer hover:bg-red-300`}
             >
               {<LogOut />}
               <div>

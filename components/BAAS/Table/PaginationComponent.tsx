@@ -66,7 +66,7 @@ export default function PaginationComponent({
   const endItem = Math.min(CurrentPage * Limit, TotalHits)
 
   return (
-    <div className="flex pb-4 justify-between items-center container w-full">
+    <div className="container flex w-full items-center justify-between pb-4">
       <div className="text-light w-full">
         Showing:
         <b>

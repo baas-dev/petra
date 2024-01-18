@@ -1,9 +1,9 @@
 FROM node:18.13.0-alpine
 # Set the working directory in the container
-ENV NODE_ENV=staging
+# ENV NODE_ENV=staging
 
 WORKDIR /app
-COPY .env.staging ./.env
+COPY .env ./.env
 
 
 # Copy package.json and pnpm-lock.yaml

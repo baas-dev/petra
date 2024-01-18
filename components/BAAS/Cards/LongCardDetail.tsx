@@ -7,7 +7,6 @@ import moment from "moment"
 import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Articles } from "@/app/admin/articles/columns"
 
 export default function LongCardDetail(props: {
   Key: number
@@ -30,10 +29,10 @@ export default function LongCardDetail(props: {
     setLoading(false)
   }
   return (
-    <Card className="mx-auto grid grid-cols-3 w-full h-full pb-2 space-y-2 mt-2 rounded-xl border bg-white shadow   md:items-center">
-      <div className="col-span-3 lg:col-span-1  w-full">
+    <Card className="mx-auto mt-2 grid h-full w-full grid-cols-3 space-y-2 rounded-xl border bg-white pb-2 shadow   md:items-center">
+      <div className="col-span-3 w-full  lg:col-span-1">
         <Image
-          className={`xl:rounded-l-xl h-48 border-r w-full object-cover bg-white`}
+          className={`h-48 w-full border-r bg-white object-cover xl:rounded-l-xl`}
           src={MainImage ? MainImage : "/images/petra-blue.svg"}
           onLoadingComplete={HandleLoad}
           alt=""
@@ -41,15 +40,15 @@ export default function LongCardDetail(props: {
           width={1000}
         />
       </div>
-      <div className="h-full w-full p-4  col-span-3 lg:col-span-2 justify-end">
+      <div className="col-span-3 h-full w-full  justify-end p-4 lg:col-span-2">
         <div className="flex w-full items-center">
           <div className="w-full">
-            <h2 className=" text-xl  text-primary font-light">{Title}</h2>
+            <h2 className=" text-xl  font-light text-primary">{Title}</h2>
           </div>
-          <div className="flex items-center w-full h-full text-right ">
+          <div className="flex h-full w-full items-center text-right ">
             <div className="w-full">
               <p className="">
-                <strong className="block text-sm font-secondary">
+                <strong className="font-secondary block text-sm">
                   Last Updated:
                 </strong>
                 <span className="text-sm font-light">
@@ -59,14 +58,14 @@ export default function LongCardDetail(props: {
             </div>
           </div>
         </div>
-        <Separator orientation="horizontal" className="text-black mb-4" />
+        <Separator orientation="horizontal" className="mb-4 text-black" />
 
         <div className="bottom-0 align-bottom">
-          <p className="mb-4 font-light h-20 w-full">{Description}</p>
-          <div className="flex items-center h-full align-bottom bottom-0  justify-between w-full ">
+          <p className="mb-4 h-20 w-full font-light">{Description}</p>
+          <div className="bottom-0 flex h-full w-full items-center  justify-between align-bottom ">
             <div className="w-full">
               <p className=" w-56">
-                <strong className="block text-sm font-secondary">
+                <strong className="font-secondary block text-sm">
                   Published:
                 </strong>
                 <span className="text-sm font-light">
@@ -74,10 +73,10 @@ export default function LongCardDetail(props: {
                 </span>
               </p>
             </div>
-            <div className="mb-2 md:mr-8 w-full text-right">
+            <div className="mb-2 w-full text-right md:mr-8">
               {Category?.Title ? (
                 <>
-                  <strong className="block font-normal font-secondary">
+                  <strong className="font-secondary block font-normal">
                     Found In:
                   </strong>
                   <h3 className=" text-sm font-light">{Category?.Title}</h3>

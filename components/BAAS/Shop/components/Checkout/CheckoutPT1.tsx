@@ -19,11 +19,11 @@ export default function CheckoutPT1({ form }) {
   const { CartObject, setCartObject } = useCartContext()
 
   return (
-    <div className="flex flex-wrap justify-center items-center mx-auto w-full mt-8 gap-2  ">
-      <div className="w-full h-full">
+    <div className="mx-auto mt-8 flex w-full flex-wrap items-center justify-center gap-2  ">
+      <div className="h-full w-full">
         <PricingSection form={form} />
       </div>
-      <div className="w-full space-y-2  border overflow-y-scroll">
+      <div className="w-full space-y-2  overflow-y-scroll border">
         {CartObject.items.map((item, i) => {
           return <CartItem data={item} />
         })}
@@ -64,18 +64,18 @@ function PricingSection({ form }) {
         <CardTitle className="text-2xl">Order Pricing</CardTitle>
       </CardHeader>
       <CardContent className="pt-4">
-        <div className="text-left w-full space-y-4">
-          <div className="w-full flex justify-between">
+        <div className="w-full space-y-4 text-left">
+          <div className="flex w-full justify-between">
             <Label className="text-xl font-light">Sub Total</Label>
             <Label className="text-xl font-semibold">${GetSubtotal()}</Label>
           </div>
-          <div className="w-full flex justify-between">
+          <div className="flex w-full justify-between">
             <Label className="text-xl font-light">Tax</Label>
             <Label className="text-xl font-semibold">
               ${GetTaxAmount().toFixed(2)}
             </Label>
           </div>
-          <div className="w-full flex justify-between ">
+          <div className="flex w-full justify-between ">
             <Label className="text-2xl font-light">Total:</Label>
             <Label className="text-2xl font-semibold">
               ${GetTotal().toFixed(2)}

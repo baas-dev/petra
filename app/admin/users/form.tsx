@@ -22,7 +22,6 @@ import PasswordInput from "@/components/BAAS/Forms/Inputs/PasswordInput"
 import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
 import SwitchInput from "@/components/BAAS/Forms/Inputs/Switch"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
-import Status from "@/components/BAAS/Shop/Admin/Sections/Status"
 
 import { useAdminTableContext } from "../Context/TableContext"
 
@@ -80,7 +79,7 @@ export default function UserManagementForm() {
 
   console.log(adminTableCXT.Data)
   return (
-    <div className="w-full mt-4 mx-auto">
+    <div className="mx-auto mt-4 w-full">
       <Form {...usersFormCXT}>
         <form
           onSubmit={usersFormCXT.handleSubmit(onSubmit)}

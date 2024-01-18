@@ -17,17 +17,17 @@ export default function CardExtra(props: {
 }) {
   return (
     <Card style={{ contain: "layout" }} className="bg-primary">
-      <div className="  text-center mx-auto w-full">
+      <div className="  mx-auto w-full text-center">
         <Image
           src={"/images/background.svg"}
           alt=""
           height={50}
           width={50}
-          className="w-full h-full absolute -z-10 opacity-30 "
+          className="absolute -z-10 h-full w-full opacity-30 "
         />
         <CardHeader>
           {props.icon}
-          <CardTitle className="text-2xl  z-10 text-secondary font-light">
+          <CardTitle className="z-10  text-2xl font-light text-secondary">
             {props.title}
           </CardTitle>
           <CardDescription className="text-secondary">
@@ -39,8 +39,8 @@ export default function CardExtra(props: {
               <p>Create Project</p>
             </div>
           </CardContent> */}
-        <CardFooter className="flex w-full align-bottom mx-auto text-center text-secondary">
-          <Button variant={"ghost"} className="mx-auto bottom-0  ">
+        <CardFooter className="mx-auto flex w-full text-center align-bottom text-secondary">
+          <Button variant={"ghost"} className="bottom-0 mx-auto  ">
             {props.actionText}
           </Button>
           {/* <Button>Deploy</Button> */}

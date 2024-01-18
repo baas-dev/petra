@@ -5,7 +5,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <div className=" bg-secondary min-h-screen`">{children}</div>
+      <div className=" min-h-screen` bg-secondary">{children}</div>
     </>
   )
 }

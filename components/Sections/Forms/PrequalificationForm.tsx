@@ -9,7 +9,7 @@ const steps = [
 export default function PrequalificationForm() {
   return (
     <>
-      <div className="items-center h-full min-h-screen text-center bg-white rounded-xl">
+      <div className="h-full min-h-screen items-center rounded-xl bg-white text-center">
         <div className="m-auto">
           <h1 className="text-4xl font-bold">Start Prequalification Process</h1>
           <p className="text-md font-light">Here, you can get started</p>

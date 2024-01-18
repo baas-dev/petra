@@ -4,13 +4,13 @@ interface Banner {
   Title: string
   Subtitle: string
   Tagline?: string
-  children: any
+  children?: any
 }
 
 export default function Banner(props: Banner) {
   return (
-    <div className=" h-full w-full  flex items-center border shadow-md bg-white p-4 mb-4">
-      <div className="w-full container mx-auto">
+    <div className=" mb-4 flex  h-full w-full items-center border bg-white p-4 shadow-md">
+      <div className="container mx-auto w-full">
         <h2 className="text-md block font-light text-primary">
           {props.Subtitle}
         </h2>

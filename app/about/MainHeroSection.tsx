@@ -72,19 +72,19 @@ import { Button } from "@/components/ui/button"
 export default function MainHeroSection() {
   return (
     <>
-      <div className="w-full bg-center bg-cover h-screen bg-primary">
-        <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 py-12">
+      <div className="h-screen w-full bg-primary bg-cover bg-center">
+        <div className="flex h-full w-full items-center justify-center bg-gray-900/50 py-12">
           <div className="text-center">
-            <div className="container px-4 mx-auto">
+            <div className="container mx-auto px-4">
               <div className="mx-auto text-center">
-                <Badge className="bg-accent mb-2 text-sm font-light md:text-xl">
+                <Badge className="mb-2 bg-accent text-sm font-light md:text-xl">
                   The #1 Choice for Texas Home Lending
                 </Badge>
-                <h1 className="text-2xl md:text-4xl text-white font-bold mb-2">
+                <h1 className="mb-2 text-2xl font-bold text-white md:text-4xl">
                   Petra Home Lending
                 </h1>
 
-                <p className="max-w-xl mx-auto mb-4 text-lg text-gray-300">
+                <p className="mx-auto mb-4 max-w-xl text-lg text-gray-300">
                   {`Our name comes from the Greek, meaning rock. We chose it
                   because a rock-solid foundation undergirds all that we believe
                   in and everything we do. We’re a small home mortgage lender,

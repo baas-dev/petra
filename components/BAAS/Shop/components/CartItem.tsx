@@ -16,9 +16,9 @@ export default function CartItem(props: { data: IProduct }) {
               src={props.data.Image}
               height={500}
               width={500}
-              className="h-16 w-16 bg-gray"
+              className="bg-gray h-16 w-16"
             />
-            <div className="px-2 flex w-full justify-between">
+            <div className="flex w-full justify-between px-2">
               <div className="">
                 <Label className="font-bold">{props.data.Name}</Label>
                 <p>Size: XL</p>

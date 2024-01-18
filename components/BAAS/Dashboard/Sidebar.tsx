@@ -24,20 +24,20 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Sidebar({ className, items }: SidebarProps) {
   return (
-    <div className={cn("pb-12 w-full", className)}>
-      <div className="space-y-4 py-4 max-w-4xl mx-auto">
+    <div className={cn("w-full pb-12", className)}>
+      <div className="mx-auto max-w-4xl space-y-4 py-4">
         <MediaDialog />
 
         <div className="space-y-1   ">
           {items.map((item, i) => (
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger className=" border bg-white shadow-md rounded-lg">
-                  <h2 className="relative text-md font-semibold tracking-tight pl-4">
+                <AccordionTrigger className=" rounded-lg border bg-white shadow-md">
+                  <h2 className="text-md relative pl-4 font-semibold tracking-tight">
                     {item.title}
                   </h2>
                 </AccordionTrigger>
-                <AccordionContent className="space-y-4 mt-2 ">
+                <AccordionContent className="mt-2 space-y-4 ">
                   <RenderSidebarItems items={item.items} />
                 </AccordionContent>
               </AccordionItem>
@@ -58,14 +58,14 @@ function RenderSidebarItems(props: { items: SidebarItems[] }) {
             <Accordion
               type="single"
               collapsible
-              className="w-full items-start py-2 mt-2"
+              className="mt-2 w-full items-start py-2"
             >
               <AccordionItem value="item-1 text-left">
-                <AccordionTrigger className="text-left bg-white">
+                <AccordionTrigger className="bg-white text-left">
                   {item.icon}
-                  <span className="font-normal text-sm pl-4">{item.title}</span>
+                  <span className="pl-4 text-sm font-normal">{item.title}</span>
                 </AccordionTrigger>
-                <AccordionContent className="bg-white rounded-xl">
+                <AccordionContent className="rounded-xl bg-white">
                   {item.children.map((subitem, j) => (
                     <Link href={`${subitem.href}`}>
                       <Button
@@ -82,11 +82,11 @@ function RenderSidebarItems(props: { items: SidebarItems[] }) {
             </Accordion>
           ) : (
             <Link href={`${item.href}`} className="w-full ">
-              <div className="w-full  hover:bg-gray-500/20 mb-1 text-white bg-white border shadow-sm hover:cursor-pointer">
+              <div className="mb-1  w-full border bg-white text-white shadow-sm hover:cursor-pointer hover:bg-gray-500/20">
                 <Button
                   key={`${item}-${i}`}
                   variant="link"
-                  className="w-ful p-0 justify-start font-normal ml-2  rounded-lg hover:no-underline "
+                  className="w-ful ml-2 justify-start rounded-lg p-0  font-normal hover:no-underline "
                 >
                   <span className="pl-4">{item.icon}</span>
                   <span className="text-md pl-2  ">{item.title}</span>

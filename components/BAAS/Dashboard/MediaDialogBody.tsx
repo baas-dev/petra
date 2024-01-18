@@ -139,17 +139,17 @@ export default function MediaDialogBody() {
 
   return (
     <>
-      <div className="grid overflow-y-scroll h-11/12 md: grid-cols-1 md:grid-cols-3 max-h-[800px] w-full">
+      <div className="h-11/12 md: grid max-h-[800px] w-full grid-cols-1 overflow-y-scroll md:grid-cols-3">
         <div>
-          <div className="flex flex-wrap mb-4 gap-2 max-h-32 overflow-y-scroll">
+          <div className="mb-4 flex max-h-32 flex-wrap gap-2 overflow-y-scroll">
             <MediaUploadBox handleFileSelected={handleFileSelected} />
             {/* <UppyComponent /> */}
             {/* <ImagePreview images={images} /> */}
           </div>
-          <div className="h-64 mb-4">
+          <div className="mb-4 h-64">
             {images.length == 0 ? (
               <>
-                <div className="w-full h-64 flex items-center  justify-center border-2 border-gray-300 border-dashed rounded-lg shadow-sm bg-white">
+                <div className="flex h-64 w-full items-center  justify-center rounded-lg border-2 border-dashed border-gray-300 bg-white shadow-sm">
                   <File className="mr-2" />
                   <Label className="text-lg">
                     Files You Upload Will Show Here
@@ -158,7 +158,7 @@ export default function MediaDialogBody() {
               </>
             ) : (
               <>
-                <div className="w-full  border-2 mb-2  overflow-y-scroll h-48 border-gray-300 border-dashed rounded-lg shadow-sm bg-white">
+                <div className="mb-2  h-48 w-full  overflow-y-scroll rounded-lg border-2 border-dashed border-gray-300 bg-white shadow-sm">
                   <FilePreview images={images} callBack={setImages} />
                 </div>
                 {uploading ? (
@@ -182,12 +182,12 @@ export default function MediaDialogBody() {
             <MediaStorage />
           </div> */}
         </div>
-        <div className=" md:col-span-2 w-full mb-4 ">
+        <div className=" mb-4 w-full md:col-span-2 ">
           {filesLoading ? (
-            <Loader2 className="text-accent text-2xl animate-spin m-auto" />
+            <Loader2 className="m-auto animate-spin text-2xl text-accent" />
           ) : (
             <>
-              <div className="px-4  grid grid-cols-3 gap-2 w-full max-h-[600px] overflow-y-scroll ">
+              <div className="grid  max-h-[600px] w-full grid-cols-3 gap-2 overflow-y-scroll px-4 ">
                 {loadedFiles && loadedFiles.length > 0 ? (
                   <>
                     {loadedFiles.map((item, i) => (
@@ -209,12 +209,12 @@ export default function MediaDialogBody() {
                     ))}
                   </>
                 ) : (
-                  <div className="w-full col-span-3 flex justify-center items-center h-full  border-2 border-gray-300 border-dashed rounded-lg shadow-sm bg-white">
+                  <div className="col-span-3 flex h-full w-full items-center justify-center  rounded-lg border-2 border-dashed border-gray-300 bg-white shadow-sm">
                     <h3>No Files Found</h3>
                   </div>
                 )}
               </div>
-              <div className="w-full bg-white pt-4 pb-4">
+              <div className="w-full bg-white py-4">
                 <PaginationComponent
                   PageID="MediaPage"
                   TotalHits={pagination.TotalRows}
@@ -270,8 +270,8 @@ function FileCard({ name, type, url, id, size, reload }) {
   }
 
   return (
-    <Card className="text-center p-2 w-full mb-2">
-      <h3 className="text-sm mb-2 text-center font-semibold underline">
+    <Card className="mb-2 w-full p-2 text-center">
+      <h3 className="mb-2 text-center text-sm font-semibold underline">
         {name}
       </h3>
       {isImageByExtension(name) ? (
@@ -281,23 +281,23 @@ function FileCard({ name, type, url, id, size, reload }) {
             alt=""
             height={64}
             width={128}
-            className=" mx-auto h-32 w-32 object-contain mb-4"
+            className=" mx-auto mb-4 h-32 w-32 object-contain"
           />
         </>
       ) : (
         <>
-          <Files className="h-32 w-32 mx-auto mb-4" />
+          <Files className="mx-auto mb-4 h-32 w-32" />
         </>
       )}
       {/* {type} */}
       <div className="flex gap-2 ">
         {loading ? (
           <Button>
-            <Loader2 className="animate-spin text-center mx-auto" />
+            <Loader2 className="mx-auto animate-spin text-center" />
           </Button>
         ) : (
           <Button
-            className="w-full mb-2"
+            className="mb-2 w-full"
             variant={"destructive"}
             onClick={() => handleDelete(id)}
           >
@@ -305,7 +305,7 @@ function FileCard({ name, type, url, id, size, reload }) {
           </Button>
         )}
         <Button
-          className="w-full mb-2"
+          className="mb-2 w-full"
           onClick={() => {
             navigator.clipboard.writeText(url)
 

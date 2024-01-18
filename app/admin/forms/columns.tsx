@@ -18,7 +18,7 @@ export const columns: ColumnDef<any>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
-        className="w-6 h-6 rounded-full"
+        className="h-6 w-6 rounded-full"
       />
     ),
     cell: ({ row }) => (
@@ -26,7 +26,7 @@ export const columns: ColumnDef<any>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
-        className="w-6 h-6 rounded-full"
+        className="h-6 w-6 rounded-full"
       />
     ),
     enableSorting: false,
@@ -37,25 +37,25 @@ export const columns: ColumnDef<any>[] = [
     header: () => {
       return <div className="max-w-10"></div>
     },
-    cell: ({ row }) => {
-      let data = JSON.parse(row.original.SubmissionData)
-      const [loading, setLoading] = useState(false)
-      return (
-        <>
-          <div className="max-w-8">
-            {loading ? (
-              <>{<Loader2 className="text-2xl animate-spin text-accent" />}</>
-            ) : (
-              <>
-                <Link href={`/admin/forms/${row.original.ID}`}>
-                  <Button>View</Button>
-                </Link>
-              </>
-            )}
-          </div>
-        </>
-      )
-    },
+    // cell: ({ row }) => {
+    //   let data = JSON.parse(row.original.SubmissionData)
+    //   const [loading, setLoading] = useState(false)
+    //   return (
+    //     <>
+    //       <div className="max-w-8">
+    //         {loading ? (
+    //           <>{<Loader2 className="animate-spin text-2xl text-accent" />}</>
+    //         ) : (
+    //           <>
+    //             <Link href={`/admin/forms/${row.original.ID}`}>
+    //               <Button>View</Button>
+    //             </Link>
+    //           </>
+    //         )}
+    //       </div>
+    //     </>
+    //   )
+    // },
   },
   {
     id: "Team",
@@ -96,7 +96,7 @@ export const columns: ColumnDef<any>[] = [
   {
     accessorKey: "CreatedAt",
     header: "Created At",
-    cell: ({ row }) => {
+    cell: function ({ row }) {
       const time: Date = row.getValue("CreatedAt")
 
       return <div className="font-medium">{moment(time).calendar()}</div>

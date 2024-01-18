@@ -13,7 +13,6 @@ import PasswordInput from "@/components/BAAS/Forms/Inputs/PasswordInput"
 import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
 import SwitchInput from "@/components/BAAS/Forms/Inputs/Switch"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
-import Status from "@/components/BAAS/Shop/Admin/Sections/Status"
 
 import { useAdminTableContext } from "../Context/TableContext"
 
@@ -69,7 +68,7 @@ export default function UserManagementFormInit() {
     <Form {...usersFormCXT}>
       <form
         onSubmit={usersFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 max-w-7xl"
+        className="w-full max-w-7xl space-y-6"
       >
         <TextInput
           form={usersFormCXT}

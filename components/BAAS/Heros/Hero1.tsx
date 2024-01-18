@@ -11,7 +11,7 @@ import {
 export default function Hero1() {
   return (
     <HeroContainer>
-      <div className="container flex h-full flex-col mt-48 md:flex-row w-full items-center justify-center">
+      <div className="container mt-48 flex h-full w-full flex-col items-center justify-center md:flex-row">
         <RevealAnimation
           options={{
             delay: 0.1,
@@ -21,7 +21,7 @@ export default function Hero1() {
             width={1000}
             height={700}
             alt={""}
-            className="  w-full  max-w-xl  rounded-md  h-full object-contain z-10 "
+            className="  z-10  h-full  w-full  max-w-xl rounded-md object-contain "
             src={"/images/plogo.png"}
           />
         </RevealAnimation>
@@ -34,12 +34,12 @@ export default function Hero1() {
             width={1000}
             height={350}
             alt={""}
-            className=" rounded-md  w-full max-w-xl h-full object-contain  float-right z-10  "
+            className=" z-10  float-right h-full w-full max-w-xl  rounded-md object-contain  "
             src={"/images/tag.png"}
           />
         </SlideInAnimation>
       </div>
-      <div className="w-full mx-auto md:my-16 max-w-4xl h-full">
+      <div className="mx-auto h-full w-full max-w-4xl md:my-16">
         <Services />
       </div>
     </HeroContainer>
@@ -58,7 +58,7 @@ function HeroContainer({ children }) {
             style={{
               clipPath: "polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%)",
             }}
-            className="min-h-screen shadow-md opacity-80 object-center mt-12  h-full w-full object-cover"
+            className="mt-12 h-full min-h-screen w-full object-cover  object-center opacity-80 shadow-md"
             alt="hero image example"
           />
         </div>

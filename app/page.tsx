@@ -18,19 +18,19 @@ export default function IndexPage() {
   return (
     <>
       <IntroSection ImageURL="/site/home/bg.png" Title="" />
-      <div className="container flex flex-col md:flex-row gap-4 max-w-4xl mb-16">
+      <div className="container mb-16 flex max-w-4xl flex-col gap-4 md:flex-row">
         <Dialog>
           <DialogTrigger className="w-full">
             <TitleWithIconCard
-              icon={<Home className="w-32 h-32" />}
+              icon={<Home className="h-32 w-32" />}
               title={"Purchase"}
             />
           </DialogTrigger>
-          <DialogContent className=" flex flex-wrap max-w-4xl">
+          <DialogContent className=" flex max-w-4xl flex-wrap">
             <Image
               src={"/site/home/purbg.png"}
               fill
-              className="object-contain w-full  !relative"
+              className="!relative w-full  object-contain"
               alt="finance image"
             />
             <DialogDescription className="text-center">
@@ -50,15 +50,15 @@ export default function IndexPage() {
           <DialogTrigger className="w-full">
             <TitleWithIconCard
               delay={0.2}
-              icon={<DollarSign className="w-32 h-32" />}
+              icon={<DollarSign className="h-32 w-32" />}
               title={"Refinance"}
             />
           </DialogTrigger>
-          <DialogContent className=" flex flex-wrap max-w-4xl">
+          <DialogContent className=" flex max-w-4xl flex-wrap">
             <Image
               src={"/site/home/refbg.png"}
               fill
-              className="object-contain w-full h-48 !relative"
+              className="!relative h-48 w-full object-contain"
               alt="finance image"
             />
             <DialogDescription className="text-center">

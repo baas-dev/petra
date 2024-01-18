@@ -10,7 +10,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 
-export const columnsAlt: ColumnDef<any>[] = [
+export const ColumnsAlt: ColumnDef<any>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -18,17 +18,21 @@ export const columnsAlt: ColumnDef<any>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
-        className="w-6 h-6 rounded-full"
+        className="h-6 w-6 rounded-full"
       />
     ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className="w-6 h-6 rounded-full"
-      />
-    ),
+    cell: ({ row }) => {
+      return (
+        <>
+          <Checkbox
+            checked={row.getIsSelected()}
+            onCheckedChange={(value) => row.toggleSelected(!!value)}
+            aria-label="Select row"
+            className="h-6 w-6 rounded-full"
+          />
+        </>
+      )
+    },
     enableSorting: false,
     enableHiding: false,
   },
@@ -37,27 +41,27 @@ export const columnsAlt: ColumnDef<any>[] = [
     header: () => {
       return <div className="max-w-10"></div>
     },
-    cell: ({ row }) => {
-      const [loading, setLoading] = useState(false)
-      return (
-        <>
-          <div className="max-w-8">
-            {loading ? (
-              <>{<Loader2 className="text-2xl animate-spin text-accent" />}</>
-            ) : (
-              <>
-                <Link
-                  onClick={() => setLoading(true)}
-                  href={`/admin/forms/${row.original.ID}`}
-                >
-                  <Button>View</Button>
-                </Link>
-              </>
-            )}
-          </div>
-        </>
-      )
-    },
+    // cell: ({ row }) => {
+    //   const [loading, setLoading] = useState(false)
+    //   return (
+    //     <>
+    //       <div className="max-w-8">
+    //         {loading ? (
+    //           <>{<Loader2 className="animate-spin text-2xl text-accent" />}</>
+    //         ) : (
+    //           <>
+    //             <Link
+    //               onClick={() => setLoading(true)}
+    //               href={`/admin/forms/${row.original.ID}`}
+    //             >
+    //               <Button>View</Button>
+    //             </Link>
+    //           </>
+    //         )}
+    //       </div>
+    //     </>
+    //   )
+    // },
   },
   {
     id: "Boroowers",

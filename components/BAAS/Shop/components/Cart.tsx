@@ -50,7 +50,7 @@ export default function Cart() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button className="w-full bg-accent border mb-2">
+        <Button className="mb-2 w-full border bg-accent">
           <ShoppingCart className="mr-4" /> View Cart ({CartObject.items.length}
           )
         </Button>
@@ -62,7 +62,7 @@ export default function Cart() {
         </SheetHeader>
         <div className="w-full">
           <Button
-            className="mb-4 mt-2 mx-auto"
+            className="mx-auto mb-4 mt-2"
             onClick={() => {
               setCartObject({
                 items: [],
@@ -72,30 +72,30 @@ export default function Cart() {
             Clear Cart
           </Button>
         </div>
-        <div className=" space-y-2 max-h-96 overflow-y-scroll">
+        <div className=" max-h-96 space-y-2 overflow-y-scroll">
           {CartObject.items.length > 0 ? (
             CartObject.items.map((item, i) => {
               return <CartItem data={item} />
             })
           ) : (
-            <div className="border mb-8 p-4 rounded-xl shadow-md bg-white">
+            <div className="mb-8 rounded-xl border bg-white p-4 shadow-md">
               <p>No Items Have Been Added.</p>
               <p>Go To Our Shop To Add Some Now!</p>
             </div>
           )}
         </div>
         <div>
-          <div className="w-full flex justify-between">
+          <div className="flex w-full justify-between">
             <Label className="text-xl font-light">Sub Total</Label>
             <Label className="text-xl font-semibold">${GetSubtotal()}</Label>
           </div>
-          <div className="w-full flex justify-between">
+          <div className="flex w-full justify-between">
             <Label className="text-xl font-light">Tax</Label>
             <Label className="text-xl font-semibold">
               ${GetTaxAmount().toFixed(2)}
             </Label>
           </div>
-          <div className="w-full flex justify-between ">
+          <div className="flex w-full justify-between ">
             <Label className="text-2xl font-light">Total:</Label>
             <Label className="text-2xl font-semibold">
               ${GetTotal().toFixed(2)}

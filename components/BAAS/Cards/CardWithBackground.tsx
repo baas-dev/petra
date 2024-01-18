@@ -12,16 +12,16 @@ import { CoreValue } from "@/app/about/core-values/page"
 
 export default function CardWithBackground(props: CoreValue) {
   return (
-    <div className=" rounded-[20px] mx-auto items-center  mb-4 w-full  h-full bg-white shadow-md hover:shadow-lg ">
+    <div className=" mx-auto mb-4 h-full  w-full items-center  rounded-[20px] bg-white shadow-md hover:shadow-lg ">
       <Image
-        src={props.image}
+        src={props.image ? props.image : "/error.png"}
         height={1000}
         width={500}
         alt={props.title + "Image"}
         className="h-96 w-full rounded-t-lg border ring-2 ring-primary"
       />
-      <div className="w-full p-2 bg-gray-200 rounded-b-xl h-32">
-        <h4 className="mb-2 underline text-primary text-xl font-accent">
+      <div className="h-32 w-full rounded-b-xl bg-gray-200 p-2">
+        <h4 className="font-accent mb-2 text-xl text-primary underline">
           {props.title}
         </h4>
 

@@ -21,11 +21,11 @@ export default function News() {
   return (
     <>
       <section className="container  grid grid-cols-1 gap-2 md:grid-cols-2">
-        <div className="grid grid-cols-2 gap-1 h-full">
+        <div className="grid h-full grid-cols-2 gap-1">
           <NewsCard
             key={0}
             album={listenNowAlbums[0]}
-            className="w-full mb-4"
+            className="mb-4 w-full"
             aspectRatio="portrait"
             width={250}
             height={330}
@@ -33,7 +33,7 @@ export default function News() {
           <NewsCard
             key={0}
             album={listenNowAlbums[1]}
-            className="w-full mb-4"
+            className="mb-4 w-full"
             aspectRatio="portrait"
             width={250}
             height={330}
@@ -41,7 +41,7 @@ export default function News() {
           <NewsCard
             key={0}
             album={listenNowAlbums[2]}
-            className="w-full mb-4"
+            className="mb-4 w-full"
             aspectRatio="portrait"
             width={250}
             height={330}
@@ -49,7 +49,7 @@ export default function News() {
           <NewsCard
             key={0}
             album={listenNowAlbums[3]}
-            className="w-full mb-4"
+            className="mb-4 w-full"
             aspectRatio="portrait"
             width={250}
             height={330}

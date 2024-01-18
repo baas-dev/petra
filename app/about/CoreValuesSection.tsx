@@ -39,17 +39,17 @@ let coreValueData: CoreValue[] = [
 export default function CoreValuesSection() {
   return (
     <>
-      <section className="min-h-screen flex justify-center items-center px-4">
+      <section className="flex min-h-screen items-center justify-center px-4">
         <div className="">
-          <div className="w-full h-24 relative text-center">
-            <span className="mb-2 text-xs font-bold tracking-widest text-primary uppercase">
+          <div className="relative h-24 w-full text-center">
+            <span className="mb-2 text-xs font-bold uppercase tracking-widest text-primary">
               Our Core Values
             </span>
             <h1 className="text-4xl font-bold leading-none tracking-tighter text-neutral-600">
               Defining Our Service
             </h1>
           </div>
-          <div className="flex flex-col  md:flex-row gap-2">
+          <div className="flex flex-col  gap-2 md:flex-row">
             {coreValueData.map((item, i) => {
               return <CardWithBackground {...item} />
             })}

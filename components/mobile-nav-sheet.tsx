@@ -47,7 +47,7 @@ export default function MobileNavSheet() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="w-full text-left flex items-center justify-between">
+    <div className="flex w-full items-center justify-between text-left">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant={"ghost"} className="ml-2">
@@ -65,18 +65,18 @@ export default function MobileNavSheet() {
               />
             </SheetTitle>
             <SheetDescription>
-              <div className="w-full h-16">
+              <div className="h-16 w-full">
                 <Image
                   src={"/images/tag.png"}
                   height={500}
                   width={1000}
-                  className=" mx-auto w-full  pb-4 mb-4  "
+                  className=" mx-auto mb-4  w-full pb-4  "
                   alt=""
                 />{" "}
               </div>
             </SheetDescription>
           </SheetHeader>
-          <Separator className="bg-background border w-full text-primary" />
+          <Separator className="w-full border bg-background text-primary" />
 
           <div>
             <MobileNavMenu setOpen={setOpen} />
@@ -86,7 +86,7 @@ export default function MobileNavSheet() {
           </SheetFooter> */}
         </SheetContent>
       </Sheet>
-      <div className="w-full flex items-center">
+      <div className="flex w-full items-center">
         <Image
           src={"/images/petra-blue.svg"}
           height={50}

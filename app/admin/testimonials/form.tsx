@@ -85,9 +85,9 @@ export default function TestimonialsForm(props: {
     <Form {...testimonialFormCXT}>
       <form
         onSubmit={testimonialFormCXT.handleSubmit(onSubmit)}
-        className="w-full space-y-6 mt-4 max-w-7xl mx-auto"
+        className="mx-auto mt-4 w-full max-w-7xl space-y-6"
       >
-        <div className="bg-white p-4 rounded-xl shadow-md">
+        <div className="rounded-xl bg-white p-4 shadow-md">
           <TextInput
             form={testimonialFormCXT}
             options={{

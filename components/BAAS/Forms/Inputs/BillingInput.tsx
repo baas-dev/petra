@@ -37,7 +37,7 @@ export default function BillingInput({ form, useSameLocationAsBilling }) {
   }
   return (
     <>
-      <div className={`flex flex-wrap my-8 ${useSameLocationAsBilling ? "hidden":""} bg-white rounded-xl p-4 w-full`}>
+      <div className={`my-8 flex flex-wrap ${useSameLocationAsBilling ? "hidden":""} w-full rounded-xl bg-white p-4`}>
         <div className="w-full px-4 text-left">
           <Label className="text-md text-left text-primary underline ">
             Location Information

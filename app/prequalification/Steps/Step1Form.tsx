@@ -86,7 +86,7 @@ export default function Step1Form(props: { HandleNext: any; UpdateState }) {
   }
   let classStr = LoadLength()
   return (
-    <div className="w-full mt-8">
+    <div className="mt-8 w-full">
       <Form {...Step1FormCXT}>
         <form
           onSubmit={Step1FormCXT.handleSubmit(onSubmit)}
@@ -99,7 +99,7 @@ export default function Step1Form(props: { HandleNext: any; UpdateState }) {
           {teamMembers.length > 0 ? (
             <>
               <div
-                className={`grid grid-cols-2 md:grid-cols-4 h-full gap-2 w-full z-50 justify-center`}
+                className={`z-50 grid h-full w-full grid-cols-2 justify-center gap-2 md:grid-cols-4`}
               >
                 {teamMembers.map((item, i) => {
                   return (

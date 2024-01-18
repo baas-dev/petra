@@ -24,7 +24,7 @@ export default function TitleWithIconCard({
         onClick={() => {
           link != null ? r.push(link) : null
         }}
-        className="h-64 justify-normal hover:cursor-pointer bg-gradient-to-br transition hover:scale-105 from-white to-blue-100/50 flex flex-col  border border-primary  w-full rounded-xl text-center p-4  dark:border-gray-700"
+        className="flex h-64 w-full flex-col justify-normal rounded-xl border border-primary bg-gradient-to-br from-white  to-blue-100/50 p-4  text-center transition hover:scale-105 hover:cursor-pointer  dark:border-gray-700"
       >
         <div className="w-full max-w-sm">
           <SlideInAnimation
@@ -32,11 +32,11 @@ export default function TitleWithIconCard({
               delay: delay,
             }}
           >
-            <h3 className="text-sm sm:text-2xl  font-semibold ">{title}</h3>
+            <h3 className="text-sm font-semibold  sm:text-2xl ">{title}</h3>
           </SlideInAnimation>
         </div>
         <Separator className="w-md my-4 bg-gray-300" />
-        <div className="flex justify-center items-center  rounded-lg mx-auto">
+        <div className="mx-auto flex items-center  justify-center rounded-lg">
           {icon}
         </div>
       </div>

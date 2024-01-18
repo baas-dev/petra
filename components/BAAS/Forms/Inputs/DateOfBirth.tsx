@@ -55,7 +55,7 @@ export default function DateOfBirth({ form, index, selectedMonth }) {
     return values.reverse()
   }
   return (
-    <div className="w-full flex flex-wrap text-left">
+    <div className="flex w-full flex-wrap text-left">
       <Label className="w-full">Date of Birth</Label>
 
       <div className="w-1/3 px-1">

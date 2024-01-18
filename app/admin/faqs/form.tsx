@@ -86,13 +86,13 @@ export default function FAQFullForm(props: {
   }
 
   return (
-    <div className=" h-full w-full container">
+    <div className=" container h-full w-full">
       <Form {...faqFormCXT}>
         <form
           onSubmit={faqFormCXT.handleSubmit(onSubmit)}
-          className="w-full  py-4 my-auto max-w-7xl mx-auto h-full"
+          className="m-auto  h-full w-full max-w-7xl py-4"
         >
-          <div className="p-4 bg-white rounded-xl my-4 shadow-md">
+          <div className="my-4 rounded-xl bg-white p-4 shadow-md">
             <div className="mb-8">
               <TextInput
                 form={faqFormCXT}
@@ -113,7 +113,7 @@ export default function FAQFullForm(props: {
                   "The answer to the above question, adding further information",
               }}
             />
-            <div className="w-full flex justify-between">
+            <div className="flex w-full justify-between">
               {props.data ? (
                 <DeleteButton
                   DeleteOptions={{

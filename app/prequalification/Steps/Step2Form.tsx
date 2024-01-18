@@ -76,7 +76,7 @@ export default function Step2Form(props: {
 
   Step2FormCXT.watch()
   return (
-    <div className="w-full pt-8 pb-8 text-center ">
+    <div className="w-full py-8 text-center">
       {showForm ? (
         <Form {...Step2FormCXT}>
           <form
@@ -87,7 +87,7 @@ export default function Step2Form(props: {
               title="Question 2"
               text="Do you have a property in mind?"
             />
-            <div className="flex w-full gap-2 bg-none mb-4">
+            <div className="mb-4 flex w-full gap-2 bg-none">
               <Card
                 className={`w-full hover:cursor-pointer  `}
                 onClick={() => handleSetShowForm(true)}
@@ -125,7 +125,7 @@ export default function Step2Form(props: {
               handleSetShowForm={handleSetShowForm}
             />
             {/* <NextQuestionButton action={props.HandleNext} isDisabled={false} /> */}
-            <div className="flex gap-2 justify-between">
+            <div className="flex justify-between gap-2">
               <PreviousQuestionButton
                 action={props.HandlePrev}
                 isDisabled={false}
@@ -141,7 +141,7 @@ export default function Step2Form(props: {
                 //     props.HandleNext()
                 //   }
                 // }}
-                className=" mb-4 flex hover:bg-green-300 h-full w-full flex-row items-center border-2 bg-green-200 mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl  p-4  "
+                className=" mx-auto mb-4 flex h-full w-full flex-row items-center rounded-xl border-2 bg-green-200 p-4 text-center transition hover:animate-pulse hover:cursor-pointer hover:bg-green-300 md:w-1/2  "
                 disabled={false}
               >
                 <div className="w-full">
@@ -155,12 +155,12 @@ export default function Step2Form(props: {
         </Form>
       ) : (
         <>
-          <div className="flex flex-wrap w-full gap-2 bg-none mb-4">
+          <div className="mb-4 flex w-full flex-wrap gap-2 bg-none">
             <QuestionHeader
               title="Question 2"
               text="Do you have a property in mind?"
             />
-            <div className="flex gap-2 w-full">
+            <div className="flex w-full gap-2">
               <Card
                 className={`w-full hover:cursor-pointer  `}
                 onClick={() => handleSetShowForm(true)}
@@ -194,7 +194,7 @@ export default function Step2Form(props: {
             </div>
           </div>
           <AddressPlaceholder />
-          <div className="w-full flex justify-between gap-2">
+          <div className="flex w-full justify-between gap-2">
             <PreviousQuestionButton
               action={props.HandlePrev}
               isDisabled={false}
@@ -202,7 +202,7 @@ export default function Step2Form(props: {
             <Button
               type="button"
               onClick={props.HandleNext}
-              className=" mb-4 flex hover:bg-green-300 h-full w-full flex-row items-center border-2 bg-green-200 mx-auto hover:animate-pulse transform transition md:w-1/2 text-center hover:cursor-pointer rounded-xl  p-4  "
+              className=" mx-auto mb-4 flex h-full w-full flex-row items-center rounded-xl border-2 bg-green-200 p-4 text-center transition hover:animate-pulse hover:cursor-pointer hover:bg-green-300 md:w-1/2  "
               disabled={false}
             >
               <div className="w-full">
@@ -220,7 +220,7 @@ export default function Step2Form(props: {
 
 function AddressPlaceholder() {
   return (
-    <div className="text-center bg-white py-4 my-8 p-4 rounded-xl">
+    <div className="my-8 rounded-xl bg-white p-4 text-center">
       <p className="text-2xl font-semibold">
         You have selected that you are not currently interested in any
         properties at this time. <br /> We are so excited to help you start your

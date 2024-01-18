@@ -28,11 +28,11 @@ function Example(props) {
   ]
 
   return (
-    <div className="w-full mb-8 h-full">
+    <div className="mb-8 h-full w-full">
       <Carousel
         autoPlay={true}
         interval={3000}
-        className=" justify-center items-center max-w-xl"
+        className=" max-w-xl items-center justify-center"
       >
         {items.map((item, i) => (
           <Item key={i} item={item} />
@@ -44,25 +44,25 @@ function Example(props) {
 
 function Item(props) {
   return (
-    <div className="rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800">
-      <div className="w-full mb-10">
-        <div className="text-3xl text-indigo-500 text-left leading-tight h-3">
+    <div className="rounded-lg bg-white px-5 pb-10 pt-5 text-gray-800 shadow-lg">
+      <div className="mb-10 w-full">
+        <div className="h-3 text-left text-3xl leading-tight text-indigo-500">
           “
         </div>
-        <p className="text-sm py-8 text-gray-600 text-center px-5">
+        <p className="px-5 py-8 text-center text-sm text-gray-600">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam
           obcaecati laudantium recusandae, debitis eum voluptatem ad, illo
           voluptatibus temporibus odio provident.
         </p>
-        <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
+        <div className="-mt-3 h-3 text-right text-3xl leading-tight text-indigo-500">
           ”
         </div>
       </div>
       <div className="w-full">
-        <p className="text-md text-indigo-500 font-bold text-center">
+        <p className="text-md text-center font-bold text-indigo-500">
           {props.name}
         </p>
-        <p className="text-xs text-gray-500 text-center">@scott.windon</p>
+        <p className="text-center text-xs text-gray-500">@scott.windon</p>
       </div>
     </div>
   )

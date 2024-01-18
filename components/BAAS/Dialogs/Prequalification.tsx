@@ -161,7 +161,7 @@ export default function PrequalificationInformationPopUpForm(props: {
       <DialogTrigger asChild>
         <Button
           variant={"outline"}
-          className={`mb-2 h-full w-full max-w-[500px] border-2 border-dashed border-black border-opacity/25 ${
+          className={`border-opacity/25 mb-2 h-full w-full max-w-[500px] border-2 border-dashed border-black ${
             valid ? "bg-green-300" : "bg-red-200"
           }`}
         >

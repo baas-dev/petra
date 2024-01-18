@@ -21,7 +21,7 @@ export default function ContactCard(props: {
     <Card className="mb-1">
       <CardHeader className="-mb-4 text-center">
         <div className="mx-auto">{icon}</div>
-        <CardTitle className="text-md md:text-lg  font-light text-center">
+        <CardTitle className="text-md text-center  font-light md:text-lg">
           {title}
         </CardTitle>
         <CardDescription>{description}</CardDescription>
@@ -31,7 +31,7 @@ export default function ContactCard(props: {
               <p>Create Project</p>
             </div>
           </CardContent> */}
-      <CardFooter className="flex w-full mx-auto text-center">
+      <CardFooter className="mx-auto flex w-full text-center">
         <Button variant={"outline"} className="mx-auto">
           {actionText}
         </Button>

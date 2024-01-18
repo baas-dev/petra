@@ -2,8 +2,8 @@ import Image from "next/image"
 
 export default function StatCard(props: { title; description; image }) {
   return (
-    <div className="min-w-0 w-full rounded-lg shadow-xs z-10 overflow-hidden border shadow-md bg-white dark:bg-gray-800">
-      <div className="p-4 flex items-center">
+    <div className="shadow-xs z-10 w-full min-w-0 overflow-hidden rounded-lg border bg-white shadow-md dark:bg-gray-800">
+      <div className="flex items-center p-4">
         <div className="mr-4">
           <Image
             src={props.image}
