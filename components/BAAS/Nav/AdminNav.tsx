@@ -18,7 +18,7 @@ import {
   Wallet,
   Wrench,
 } from "lucide-react"
-import { signOut } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -40,7 +40,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import BigCard from "../Cards/BigCard"
 import MediaDialog from "../Dashboard/MediaDialog"
@@ -54,18 +54,50 @@ export interface SidebarItems {
   children?: SidebarItems[]
 }
 
+const FormItems: { title: string; bgColor: string; items: SidebarItems[] } = {
+  title: "Forms",
+  bgColor: "",
+  items: [
+    {
+      title: "Form Submissions",
+      href: "/admin/forms",
+      description: "Form submissions recorded in your system.",
+
+      classes: "bg-green-100 hover:bg-green-300",
+
+      icon: <FormInput className="mr-2 h-8 w-8 " />,
+    },
+    {
+      title: "Form Delivery Settings",
+      href: "/admin/forms/settings",
+      description: "Emails that receive copies of forms submitted",
+
+      classes: "bg-green-100 hover:bg-green-300",
+
+      icon: <Cog className="mr-2 h-8 w-8 " />,
+    },
+  ],
+}
+
+const AdminItems: { title: string; bgColor: string; items: SidebarItems[] } = {
+  title: "Admin Management",
+  bgColor: "bg-primary",
+  items: [
+    {
+      title: "Users",
+      classes: "bg-purple-100 hover:bg-purple-300",
+      description: "Accounts with portal capabilities",
+      href: "/admin/users",
+      icon: <Users className="mr-2 h-8 w-8 " />,
+    },
+  ],
+}
+
 const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
   {
     title: "Site Content",
     bgColor: "bg-primary",
     items: [
-      {
-        title: "FAQs",
-        href: "/admin/faqs",
-        description: "The most frequent questions you answer",
-        classes: "bg-blue-100 hover:bg-blue-300 ",
-        icon: <FileQuestion className="mr-2 h-8 w-8 font-light" />,
-      },
       {
         title: "Resources",
         href: "/admin/resources",
@@ -92,47 +124,7 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
 
         icon: <Quote className="mr-2 h-8 w-8  font-light" />,
       },
-      // {
-      //   title: "Articles",
-      //   href: "/admin/articles",
-      //   description: "Content posts to serve to your users",
-      //   classes: "bg-orange-100 hover:bg-orange-300",
 
-      //   icon: <Pen className="h-8 w-8 mr-2 " />,
-      // },
-      // {
-      //   title: "Article Categories",
-      //   classes: "bg-orange-100 hover:bg-orange-300",
-      //   href: "/admin/articles/categories",
-      //   description: "Classification categories for article posts",
-      //   icon: <Group className="h-8 w-8 mr-2 " />,
-      // },
-      {
-        title: "Form Submissions",
-        href: "/admin/forms",
-        description: "Form submissions recorded in your system.",
-
-        classes: "bg-green-100 hover:bg-green-300",
-
-        icon: <FormInput className="mr-2 h-8 w-8 " />,
-      },
-      {
-        title: "Form Delivery Settings",
-        href: "/admin/forms/settings",
-        description: "Emails that receive copies of forms submitted",
-
-        classes: "bg-green-100 hover:bg-green-300",
-
-        icon: <Cog className="mr-2 h-8 w-8 " />,
-      },
-
-      {
-        title: "Users",
-        classes: "bg-purple-100 hover:bg-purple-300",
-        description: "Accounts with admin capabilities",
-        href: "/admin/users",
-        icon: <Users className="mr-2 h-8 w-8 " />,
-      },
       // {
       //   title: "Log Out",
       //   classes: "bg-red-300 hover:bg-red-500",
@@ -146,18 +138,14 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
 const EditorContentItems: {
   title: string
   bgColor: string
+  group: string
   items: SidebarItems[]
 } = {
   title: "Site Content",
   bgColor: "bg-primary",
+  group: "Site Content",
+
   items: [
-    {
-      title: "FAQs",
-      href: "/admin/faqs",
-      description: "The most frequent questions you answer",
-      classes: "bg-blue-100 hover:bg-blue-300 ",
-      icon: <FileQuestion className="mr-2 h-8 w-8 font-light" />,
-    },
     {
       title: "Resources",
       href: "/admin/resources",
@@ -167,21 +155,6 @@ const EditorContentItems: {
       icon: <Wrench className="mr-2 h-8 w-8  font-light" />,
     },
 
-    // {
-    //   title: "Articles",
-    //   href: "/admin/articles",
-    //   description: "Content posts to serve to your users",
-    //   classes: "bg-orange-100 hover:bg-orange-300",
-
-    //   icon: <Pen className="h-8 w-8 mr-2 " />,
-    // },
-    // {
-    //   title: "Article Categories",
-    //   classes: "bg-orange-100 hover:bg-orange-300",
-    //   href: "/admin/articles/categories",
-    //   description: "Classification categories for article posts",
-    //   icon: <Group className="h-8 w-8 mr-2 " />,
-    // },
     {
       title: "Form Submissions",
       href: "/admin/forms",
@@ -193,77 +166,29 @@ const EditorContentItems: {
     },
   ],
 }
-// const ShopItems: { title: string; bgColor: string; items: SidebarItems[] } = {
-//   title: "Shop",
-//   bgColor: "bg-accent",
 
-//   items: [
-//     {
-//       title: "Products",
-//       href: "/admin/shop/products",
-//       icon: <Package />,
-//     },
-//     {
-//       title: "Categories",
-//       href: "/admin/shop/categories",
-//       icon: <Group />,
-//     },
-//     {
-//       title: "Orders",
-//       href: "/admin/shop/orders",
-//       icon: <Wallet />,
-//     },
-
-//     {
-//       title: "Coupons",
-//       href: "/admin/shop/coupons",
-//       icon: <Percent />,
-//     },
-//     {
-//       title: "Attributes",
-//       href: "/admin/shop/attributes",
-//       icon: <PanelTopClose />,
-//     },
-//   ],
-// }
 const api = new BACKEND()
 
 export default function AdminNav() {
-  let [open, setOpen] = useState(false)
-  let [userData, setUserData] = useState({
-    Name: "",
-    Email: "",
-    CreatedAt: "",
-    Role: "",
-  })
+  let session = useSession()
 
-  useEffect(() => {}, [])
-
-  function handleChange() {
-    if (!open) {
-      setOpen(true)
-    }
-
-    if (open) {
-      setOpen(false)
-    }
-  }
-  function RoleSwitch(role: string) {
+  function RoleSwitch() {
+    let role = session.data?.user?.role
     switch (role) {
       case "editor":
-        return EditorContentItems
+        return [ContentItems]
       case "admin":
-        return ContentItems
+        return [ContentItems, FormItems]
       case "superadmin":
-        return ContentItems
+        return [ContentItems, FormItems, AdminItems]
       default:
-        return ContentItems
+        return [ContentItems]
     }
   }
-  let RoleView = RoleSwitch(userData.Role)
+  let NavItemsRendered = RoleSwitch()
   return (
     <div className="mx-auto mb-4  flex max-w-6xl justify-between">
-      <Sheet open={open} onOpenChange={handleChange}>
+      <Sheet>
         <SheetTrigger asChild>
           <Button className="text-lg">
             <FlipHorizontal className="mr-2" />
@@ -273,7 +198,9 @@ export default function AdminNav() {
         <SheetContent side={"bottom"} className="h-screen">
           <div className="mx-auto flex w-full max-w-6xl justify-between ">
             <SheetHeader className="mb-8 w-full ">
-              <SheetTitle>Admin Navigation</SheetTitle>
+              <SheetTitle className="text-4xl font-bold">
+                Admin Navigation
+              </SheetTitle>
               <SheetDescription>
                 Make changes to your site by targeting different scopes
               </SheetDescription>
@@ -281,11 +208,7 @@ export default function AdminNav() {
           </div>
           <ScrollArea className="mx-auto  h-full max-w-6xl">
             <div className=" mx-auto">
-              <NavGroupSection {...RoleView} action={handleChange} />
-
-              {/* <NavGroupSection {...FormItems} action={handleChange} />
-              <NavGroupSection {...ArticleItems} action={handleChange} /> */}
-              {/* <NavGroupSection {...ShopItems} action={handleChange} /> */}
+              <NavGroupSection items={NavItemsRendered} />
             </div>
           </ScrollArea>
         </SheetContent>
@@ -297,60 +220,65 @@ export default function AdminNav() {
 }
 
 function NavGroupSection(props: {
-  title: string
-  bgColor: string
-  items: SidebarItems[]
-  action: () => void
+  items: {
+    title: string
+    bgColor: string
+    items: SidebarItems[]
+  }[]
 }) {
-  let { title, bgColor, items } = props
-
   return (
     <>
-      <div className="mb-4 h-full">
-        <div className="grid h-full grid-cols-1 gap-2  md:grid-cols-4">
-          {items.map((item, i) => (
-            <>
-              <Link href={item.href} onClick={props.action}>
+      {props.items.map((item, idx) => {
+        return (
+          <div className="mb-4 h-full">
+            <Label className="text-lg font-light">{item.title}</Label>
+            <div className="grid h-full grid-cols-1 gap-2  md:grid-cols-4">
+              {item.items.map((subitem, i) => (
+                <>
+                  <Link href={subitem.href}>
+                    <Card
+                      className={`flex h-full w-full items-center p-4  hover:cursor-pointer ${subitem.classes}`}
+                    >
+                      <div>
+                        <CardTitle className="text-lg font-semibold underline flex ">
+                          {subitem.icon}
+
+                          {subitem.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm">
+                          {subitem.description}
+                        </CardDescription>
+                      </div>
+                    </Card>
+                  </Link>
+                </>
+              ))}
+              {/* <div
+                onClick={() => {
+                  signOut({
+                    redirect: true,
+                    callbackUrl: "/admin",
+                  })
+                }}
+              >
                 <Card
-                  className={`flex h-full w-full items-center p-4  hover:cursor-pointer ${item.classes}`}
+                  className={`flex w-full items-center bg-red-200 p-4 hover:cursor-pointer hover:bg-red-300`}
                 >
-                  {item.icon}
+                  {<LogOut />}
                   <div>
                     <CardTitle className="text-md font-light">
-                      {item.title}
+                      {`Log Out`}
                     </CardTitle>
                     <CardDescription className="text-sm">
-                      {item.description}
+                      {`Sign out of your account`}
                     </CardDescription>
                   </div>
                 </Card>
-              </Link>
-            </>
-          ))}
-          <div
-            onClick={() => {
-              signOut({
-                redirect: true,
-                callbackUrl: "/admin",
-              })
-            }}
-          >
-            <Card
-              className={`flex w-full items-center bg-red-200 p-4 hover:cursor-pointer hover:bg-red-300`}
-            >
-              {<LogOut />}
-              <div>
-                <CardTitle className="text-md font-light">
-                  {`Log Out`}
-                </CardTitle>
-                <CardDescription className="text-sm">
-                  {`Sign out of your account`}
-                </CardDescription>
-              </div>
-            </Card>
+              </div> */}
+            </div>
           </div>
-        </div>
-      </div>
+        )
+      })}
     </>
   )
 }

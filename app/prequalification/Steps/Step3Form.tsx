@@ -27,7 +27,7 @@ import {
 import DateOfBirth from "@/components/BAAS/Forms/Inputs/DateOfBirth"
 import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import { Borrower, usePreqFormContext } from "../components/formContext"
 import QuestionHeader from "../components/questionHeader"

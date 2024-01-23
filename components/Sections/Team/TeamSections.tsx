@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
 import TeamMember from "@/components/interfaces/TeamMember.interface"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import { TeamCard } from "./TeamCard"
 

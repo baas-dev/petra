@@ -12,8 +12,7 @@ import { toast } from "@/components/ui/use-toast"
 import SubmitButton from "@/components/BAAS/Forms/Buttons/submit"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
-
-import BACKEND from "../API"
+import BACKEND from "@/app/api"
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, "Please complete first name"),

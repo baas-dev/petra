@@ -41,7 +41,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
           </div>
         ) : status == "authenticated" ? (
           <AdminTableProvider>
-            <div className="px-2 md:px-0 md:pt-20">
+            <div className="px-2 md:px-0 md:pt-8">
               <AdminNav />
               <div className="mx-auto w-full rounded-lg ">{children}</div>
             </div>

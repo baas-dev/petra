@@ -17,7 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { toast } from "@/components/ui/use-toast"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import CustomFileSelector from "./FileSelector"
 

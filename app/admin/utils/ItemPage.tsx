@@ -1,5 +1,5 @@
 import { BodyRenderer } from "@/components/BAAS/Forms/Render"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 interface EditPage {
   Functions: {

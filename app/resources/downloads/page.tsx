@@ -13,7 +13,7 @@ import {
 import { Label } from "@/components/ui/label"
 import Banner from "@/components/BAAS/Banners/BannerSite"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 const api = new BACKEND()
 
@@ -29,7 +29,7 @@ interface Resource {
   Title: string
   Description: string
   Link: string
-  LinkIcon?:string
+  LinkIcon?: string
 }
 export default async function Downloads() {
   let res = await GetData(`resources`)

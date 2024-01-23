@@ -23,7 +23,7 @@ import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TableLoading from "@/components/BAAS/Loading/TableLoading"
 import { AuthFormSchema } from "@/components/schemas"
 
-import BACKEND from "../API"
+import BACKEND from "../api"
 
 const api = new BACKEND()
 

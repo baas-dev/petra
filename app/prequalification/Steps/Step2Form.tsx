@@ -16,7 +16,7 @@ import { Form } from "@/components/ui/form"
 import { Label } from "@/components/ui/label"
 import SelectInput from "@/components/BAAS/Forms/Inputs/Select"
 import TeamMember from "@/components/interfaces/TeamMember.interface"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import AddressQuestion from "../components/AddressQuestion"
 import QuestionHeader from "../components/questionHeader"

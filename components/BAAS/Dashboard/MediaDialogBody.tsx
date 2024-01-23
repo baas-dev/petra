@@ -34,8 +34,8 @@ import {
 } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
-import BACKEND from "@/app/API"
-import { Pagination } from "@/app/API/TYPES"
+import BACKEND from "@/app/api"
+import { Pagination } from "@/app/api/TYPES"
 
 import PaginationComponent from "../Table/PaginationComponent"
 import MediaStorage from "./MediaStorage"

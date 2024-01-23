@@ -8,7 +8,7 @@ import Banner from "@/components/BAAS/Banners/Banner"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
 import TableLoading from "@/components/BAAS/Loading/TableLoading"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import { useAdminTableContext } from "../Context/TableContext"
 import { columns } from "./columns"

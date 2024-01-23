@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { RefreshCcw } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 const api = new BACKEND()
 

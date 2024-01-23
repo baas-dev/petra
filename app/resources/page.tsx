@@ -8,7 +8,7 @@ import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 import CardList from "@/components/Sections/General/CardList"
 import IntroSection from "@/components/Sections/General/IntroSection"
 
-import BACKEND from "../API"
+import BACKEND from "../api"
 
 const api = new BACKEND()
 

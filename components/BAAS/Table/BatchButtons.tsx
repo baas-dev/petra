@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { Loader } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 interface BatchButton {
   TableName: string

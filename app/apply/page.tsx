@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 import { TeamCard } from "@/components/Sections/Team/TeamCard"
 import TeamMember from "@/components/interfaces/TeamMember.interface"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import QuestionNext from "../prequalification/Steps/QuestionNext"
 import QuestionHeader from "../prequalification/components/questionHeader"

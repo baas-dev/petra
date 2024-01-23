@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { toast } from "@/components/ui/use-toast"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import { SubmitFormConfig } from "../Types/FormConfig"
 

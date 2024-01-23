@@ -6,7 +6,7 @@ import { Award, CheckCircle, Cog, Trophy, Users, Users2 } from "lucide-react"
 import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 import IntroSection from "@/components/Sections/General/IntroSection"
 
-import BACKEND from "../API"
+import BACKEND from "@/app/api"
 import Achievements from "./Achievements"
 // import CoreValuesSection from "./CoreValuesSection"
 import MainHeroSection from "./MainHeroSection"

@@ -1,4 +1,4 @@
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import TeamSection from "../TeamSection"
 

@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import UserManagementForm, { UsersFormSchema } from "./form"
 

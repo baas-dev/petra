@@ -9,7 +9,7 @@ import Banner from "@/components/BAAS/Banners/Banner"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
 import TableLoading from "@/components/BAAS/Loading/TableLoading"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
-import BACKEND from "@/app/API"
+import BACKEND from "@/app/api"
 
 import { columns } from "./columns"
 import { ColumnsAlt } from "./columns-alt"
