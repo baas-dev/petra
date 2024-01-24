@@ -109,7 +109,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.12.6",
     "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "^3.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "sharp": "^0.31.3",
     "swiper": "9.4.1",
