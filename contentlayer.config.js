@@ -25,6 +25,10 @@ export const Doc = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    group: {
+      type: "string",
+      required: true
+    },
     description: {
       type: "string",
     },

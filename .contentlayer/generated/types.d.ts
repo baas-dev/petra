@@ -14,6 +14,7 @@ export type Doc = {
   _raw: Local.RawDocumentData
   type: 'Doc'
   title: string
+  group: string
   description?: string | undefined
   published: boolean
   /** MDX file body */
