@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { BookOpen, Pen, Phone } from "lucide-react"
@@ -18,10 +17,17 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 
-import { Teammate } from "./page"
-
+export interface Teammate {
+  Name?: string
+  Image?: string
+  RNumber?: string
+  Biography?: string
+  Title: string
+  Phone?: string
+  Email?: string
+  Published?: string
+}
 export default function TeamSection({ data }: { data: Teammate[] }) {
-  useEffect(() => {}, [data])
   return (
     <section className=" relative h-full min-h-screen items-center  px-4 text-center   md:py-16">
       <h1 className="relative block bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text py-8 text-4xl  font-bold text-transparent dark:from-blue-400 dark:to-cyan-300">

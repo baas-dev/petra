@@ -1,20 +1,9 @@
-import { useEffect, useState } from "react"
-import Image from "next/image"
-import { Parallax, ParallaxLayer } from "@react-spring/parallax"
-import { Award, CheckCircle, Cog, Trophy, Users, Users2 } from "lucide-react"
+import { Cog, Trophy, Users, Users2 } from "lucide-react"
 
 import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 import IntroSection from "@/components/Sections/General/IntroSection"
-
 import BACKEND from "@/app/api"
-import Achievements from "./Achievements"
-// import CoreValuesSection from "./CoreValuesSection"
-import MainHeroSection from "./MainHeroSection"
-import TeamSection from "./TeamSection"
-import { TestimonialSwiper } from "./Testimonials"
-import Circles from "./circles"
 
-const api = new BACKEND()
 export interface Teammate {
   Name?: string
   Image?: string
@@ -26,61 +15,9 @@ export interface Teammate {
   Published?: string
 }
 export default function IndexPage() {
-  // const [testimonials, setTestimonials] = useState([])
-  // const [team, setTeam] = useState<[]>([])
-
-  // let GetTestimonials = async () => {
-  //   let res = await api.GET({
-  //     Route: "quotes",
-  //   })
-  //   setTestimonials(res.data)
-  // }
-  // let GetTeam = async () => {
-  //   let res = await api.GET({
-  //     Route: "team",
-  //   })
-  //   setTeam(res.data)
-  // }
-  // useEffect(() => {
-  // GetTestimonials()
-  // GetTeam()
-  // }, [])
-
   return (
     <>
       <Content />
-      {/* Core Values Section */}
-
-      {/* <div className="min-h-screen bg-secondary overflow-x-hidden">
-        <div className="md:hidden">
-          <TeamSection data={team} />
-          <TestimonialSwiper data={testimonials} />
-          <Achievements />
-          <MainHeroSection />
-          <CoreValuesSection />
-        </div>
-        <div className="hidden md:block">
-          <Parallax pages={2.8}>
-            <ParallaxLayer offset={1} speed={0.3}>
-              <Image
-                src={"/images/mountains.png"}
-                alt=""
-                fill
-                className="opacity-50"
-              />
-            </ParallaxLayer>
-           
-            <ParallaxLayer offset={0} speed={1}>
-              <TeamSection data={team} />
-
-              <TestimonialSwiper data={testimonials} />
-              <Achievements />
-              <MainHeroSection />
-              <CoreValuesSection />
-            </ParallaxLayer>
-          </Parallax>
-        </div>
-      </div> */}
     </>
   )
 }

@@ -9,7 +9,7 @@ interface RootLayoutProps {
 let SEO = {
   title: "Helpful Mortgage Lending Resources",
   description:
-    "Buying a home shouldn’t be hard. Our team is here to support you every step of the way. We have gathered a few resources to get you started.",
+    "Buying a home shouldn&apos.t be hard. Our team is here to support you every step of the way. We have gathered a few resources to get you started.",
   site: "https://petralending.com",
   images: [
     {

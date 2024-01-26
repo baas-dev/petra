@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: "standalone",
+  // output: "standalone",
   async redirects() {
     return [
       {
@@ -34,6 +34,7 @@ const nextConfig = {
       },
     ],
   },
+  staticPageGenerationTimeout: 1000,
 }
 
 export default nextConfig
