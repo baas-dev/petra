@@ -16,6 +16,8 @@ RUN pnpm install
 # Copy the application code 
 COPY . .
 # Build the TypeScript code
+RUN pnpm contentlayer build
+
 RUN pnpm run build
 # Expose the app
 EXPOSE 3000
