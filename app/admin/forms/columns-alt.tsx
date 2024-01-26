@@ -41,6 +41,15 @@ export const ColumnsAlt: ColumnDef<any>[] = [
     header: () => {
       return <div className="max-w-10"></div>
     },
+    cell: ({ row }) => {
+      return (
+        <>
+          <Link href={`/admin/forms/${row.original.ID}`}>
+            <Button>View</Button>
+          </Link>
+        </>
+      )
+    },
     // cell: ({ row }) => {
     //   const [loading, setLoading] = useState(false)
     //   return (
@@ -64,8 +73,17 @@ export const ColumnsAlt: ColumnDef<any>[] = [
     // },
   },
   {
-    id: "Boroowers",
-    header: "Borrower(s) Information Submitted",
+    id: "Name",
+    header: "Name",
+    cell: ({ row }) => {
+      let data = JSON.parse(row.original.SubmissionData)
+      // email, name, message
+      return <div>{data.name}</div>
+    },
+  },
+  {
+    id: "Email",
+    header: "Contact Email",
     cell: ({ row }) => {
       let data = JSON.parse(row.original.SubmissionData)
       // email, name, message
@@ -82,7 +100,11 @@ export const ColumnsAlt: ColumnDef<any>[] = [
     cell: ({ row }) => {
       const time: Date = row.getValue("CreatedAt")
 
-      return <div className="font-medium">{moment(time).calendar()}</div>
+      return (
+        <div className="font-medium">
+          {moment(time).format("MMMM Do YYYY, h:mm:ss a")}
+        </div>
+      )
     },
   },
 ]

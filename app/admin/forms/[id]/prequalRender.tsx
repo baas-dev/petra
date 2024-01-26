@@ -46,8 +46,14 @@ interface Expense {
   amount: string
 }
 
-export default function PrequalRender(props: { Data: string }) {
-  let data: DataReceived = JSON.parse(props.Data)
+export default function PrequalRender(props: {
+  Data: {
+    SubmissionData: string
+    Type: string
+    CreatedAt: string
+  }
+}) {
+  let data: DataReceived = JSON.parse(props.Data.SubmissionData)
   return (
     <>
       <BorrowerRender Borrowers={data.Borrowers} />

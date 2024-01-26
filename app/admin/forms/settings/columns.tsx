@@ -19,7 +19,6 @@ import Banner from "@/components/BAAS/Banners/Banner"
 import DeleteButton from "@/components/BAAS/Forms/Buttons/delete"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
 
-import FAQFullForm from "../../faqs/form"
 import FormSettingsForm, { FormSettingsFormSchema } from "./form"
 
 export const columns: ColumnDef<z.infer<typeof FormSettingsFormSchema>>[] = [

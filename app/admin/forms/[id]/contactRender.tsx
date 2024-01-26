@@ -20,7 +20,6 @@ export default function ContactRender(props: {
   Data: { SubmissionData: string; CreatedAt: string }
 }) {
   let data: DataReceived = JSON.parse(props.Data.SubmissionData)
-  console.log(data.email)
   return (
     <>
       <Card>
@@ -30,7 +29,9 @@ export default function ContactRender(props: {
           <Separator />
           <div className="mt-4 p-8 italic">{data.message}</div>
         </CardContent>
-        <CardFooter>{moment(props.Data.CreatedAt).calendar()}</CardFooter>
+        <CardFooter className="text-black font-bold">
+          {moment(props.Data.CreatedAt).format("MMMM Do YYYY, h:mm:ss a")}
+        </CardFooter>
       </Card>
     </>
   )

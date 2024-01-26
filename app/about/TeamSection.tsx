@@ -31,7 +31,7 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
         </span>
       </h1>
       <div
-        className={`xl:grid-cols- grid grid-cols-1 md:grid-cols-3${
+        className={`xl:grid-cols-3 grid grid-cols-1 md:grid-cols-2${
           data.length < 6 ? `${data.length}` : "4"
         } h-full w-full`}
       >

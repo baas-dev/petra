@@ -1,6 +1,5 @@
 "use client"
 
-import FAQFullForm from "@/app/admin/faqs/form"
 import ResourceInitForm from "@/app/admin/resources/form"
 import TeamInitForm from "@/app/admin/team/form"
 import TestimonialsInitForm from "@/app/admin/testimonials/form"

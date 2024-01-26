@@ -22,7 +22,6 @@ import { useAdminTableContext } from "../Context/TableContext"
 export const ResourceFormSchema = z.object({
   ID: z.string().optional(),
   Title: z.string().min(2, "Please Complete Title"),
-  Description: z.string(),
   Link: z.string().url(),
   IconLink: z.string().url(),
   Order: z.number(),
@@ -40,9 +39,7 @@ export default function ResourcesForm() {
     defaultValues: {
       ID: adminTableCXT.Data?.ID ? adminTableCXT.Data.ID : "",
       Title: adminTableCXT.Data?.Title ? adminTableCXT.Data.Title : "",
-      Description: adminTableCXT.Data?.Description
-        ? adminTableCXT.Data.Description
-        : "",
+
       Link: adminTableCXT.Data?.Link ? adminTableCXT.Data.Link : "",
       IconLink: adminTableCXT.Data?.IconLink
         ? adminTableCXT.Data?.IconLink
@@ -99,14 +96,6 @@ export default function ResourcesForm() {
               label: "Title",
             }}
           />
-          <TextInput
-            form={faqFormCXT}
-            options={{
-              name: "Description",
-              label: "Description",
-            }}
-          />
-
           <TextInput
             form={faqFormCXT}
             options={{

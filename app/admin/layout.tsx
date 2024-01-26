@@ -33,7 +33,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
       {/* Media Popover */}
-      <div className=" min-h-screen gap-4 bg-secondary pt-8 ">
+      <div className=" min-h-screen gap-4 bg-secondary ">
         {loading ? (
           <div className="mt-24 flex justify-center align-middle">
             <Loader2 className="mr-2 animate-spin text-lg text-accent" />

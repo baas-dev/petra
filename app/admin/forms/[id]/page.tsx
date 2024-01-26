@@ -46,7 +46,7 @@ export default function FormsAdmin({ params }) {
       ) : data.Type == "contact" ? (
         <ContactRender Data={data} />
       ) : (
-        <PrequalRender Data={data.SubmissionData} />
+        <PrequalRender Data={data} />
       )}
     </>
   )

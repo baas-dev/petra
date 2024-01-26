@@ -96,7 +96,7 @@ function MiddleSection() {
         <div>
           <Image
             src={"/images/tag.png"}
-            alt=""
+            alt="Your Home. Our Calling."
             width={1000}
             height={500}
             className="bottom-0 mx-auto w-full md:float-right md:h-24 "
@@ -107,7 +107,7 @@ function MiddleSection() {
       <div className="mb-8 flex h-full  w-full items-baseline justify-end">
         <Image
           src={"/images/eh.png"}
-          alt=""
+          alt="Equal Housing Opportunity Provider"
           width={500}
           height={500}
           className="bottom-0 mx-auto h-16 w-16 md:float-right md:h-16 md:w-16 "

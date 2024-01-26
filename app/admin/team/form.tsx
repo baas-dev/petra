@@ -40,21 +40,20 @@ export default function TeamForm(props: {
 }) {
   const { adminTableCXT } = useAdminTableContext()
   const [loading, setLoading] = useState(false)
-  const [value, setValue] = useState<any>()
+  const [value, setValue] = useState<string>()
   function SetDefaultValues() {
     if (adminTableCXT.Data == null) {
-      return {}
+      return
     }
 
     if (!adminTableCXT.Data !== null) {
       return {
         ID: adminTableCXT.Data?.ID ? adminTableCXT.Data.ID : "",
         Name: adminTableCXT.Data?.Name ? adminTableCXT.Data.Name : "",
-        RNumber: adminTableCXT.Data?.RNumber ? adminTableCXT.Data.RNumber : "",
+        RNumber: adminTableCXT.Data?.RNumber ? adminTableCXT.Data.RNumber : 0,
         Biography: adminTableCXT.Data?.Biography
           ? adminTableCXT.Data.Biography
           : "",
-        Phone: adminTableCXT.Data?.Phone ? adminTableCXT.Data.Phone : "",
         Email: adminTableCXT.Data?.Email ? adminTableCXT.Data.Email : "",
         Image: adminTableCXT.Data?.Image ? adminTableCXT.Data.Image : "",
         Title: adminTableCXT.Data?.Title ? adminTableCXT.Data.Title : "",
@@ -74,7 +73,7 @@ export default function TeamForm(props: {
 
   async function onSubmit(data: z.infer<typeof TeamFormSchema>) {
     setLoading(true)
-
+    data.Phone = value
     await SubmitForm({
       APIRoute:
         teamFormCXT.getValues("ID") === undefined
@@ -159,8 +158,10 @@ export default function TeamForm(props: {
               /> */}
             <PhoneInput
               placeholder="Enter phone number"
-              value={value}
-              onChange={setValue}
+              value={
+                adminTableCXT.Data?.Phone ? adminTableCXT.Data.Phone : null
+              }
+              onChange={(e) => setValue(e)}
             />
             <TextInput
               form={teamFormCXT}

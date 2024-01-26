@@ -10,6 +10,7 @@ import {
   LogOut,
   Package,
   PanelTopClose,
+  Paperclip,
   Pen,
   Percent,
   PersonStanding,
@@ -92,7 +93,19 @@ const AdminItems: { title: string; bgColor: string; items: SidebarItems[] } = {
     },
   ],
 }
-
+const DocItems: { title: string; bgColor: string; items: SidebarItems[] } = {
+  title: "Documentation",
+  bgColor: "bg-orange-500",
+  items: [
+    {
+      title: "Docs",
+      classes: "bg-orange-100 hover:bg-orange-300",
+      description: "Help articles for users of this system.",
+      href: "/admin/docs",
+      icon: <Paperclip className="mr-2 h-8 w-8 " />,
+    },
+  ],
+}
 const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
   {
     title: "Site Content",
@@ -114,15 +127,6 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
         classes: "bg-blue-100 hover:bg-blue-300 ",
 
         icon: <Users className="mr-2 h-8 w-8 font-light " />,
-      },
-      {
-        title: "Testimonials",
-        href: "/admin/testimonials",
-        description: "Public facing managed reviews of your services",
-
-        classes: "bg-blue-100 hover:bg-blue-300 ",
-
-        icon: <Quote className="mr-2 h-8 w-8  font-light" />,
       },
 
       // {
@@ -171,24 +175,42 @@ const api = new BACKEND()
 
 export default function AdminNav() {
   let session = useSession()
+  let [open, setOpen] = useState(false)
+  let [userData, setUserData] = useState({
+    Name: "",
+    Email: "",
+    CreatedAt: "",
+    Role: "",
+  })
 
+  useEffect(() => {}, [])
+
+  function handleChange() {
+    if (!open) {
+      setOpen(true)
+    }
+
+    if (open) {
+      setOpen(false)
+    }
+  }
   function RoleSwitch() {
     let role = session.data?.user?.role
     switch (role) {
       case "editor":
-        return [ContentItems]
+        return [ContentItems, FormItems, DocItems]
       case "admin":
-        return [ContentItems, FormItems]
+        return [ContentItems, FormItems, DocItems, AdminItems]
       case "superadmin":
-        return [ContentItems, FormItems, AdminItems]
+        return [ContentItems, FormItems, DocItems, AdminItems]
       default:
-        return [ContentItems]
+        return [ContentItems, DocItems]
     }
   }
   let NavItemsRendered = RoleSwitch()
   return (
     <div className="mx-auto mb-4  flex max-w-6xl justify-between">
-      <Sheet>
+      <Sheet open={open} onOpenChange={handleChange}>
         <SheetTrigger asChild>
           <Button className="text-lg">
             <FlipHorizontal className="mr-2" />
@@ -208,7 +230,7 @@ export default function AdminNav() {
           </div>
           <ScrollArea className="mx-auto  h-full max-w-6xl">
             <div className=" mx-auto">
-              <NavGroupSection items={NavItemsRendered} />
+              <NavGroupSection action={handleChange} items={NavItemsRendered} />
             </div>
           </ScrollArea>
         </SheetContent>
@@ -220,6 +242,7 @@ export default function AdminNav() {
 }
 
 function NavGroupSection(props: {
+  action: () => void
   items: {
     title: string
     bgColor: string
@@ -230,17 +253,19 @@ function NavGroupSection(props: {
     <>
       {props.items.map((item, idx) => {
         return (
-          <div className="mb-4 h-full">
-            <Label className="text-lg font-light">{item.title}</Label>
+          <div key={idx} className="mb-4 h-full">
+            <Label className="text-lg font-semibold text-primary underline">
+              {item.title}
+            </Label>
             <div className="grid h-full grid-cols-1 gap-2  md:grid-cols-4">
               {item.items.map((subitem, i) => (
                 <>
-                  <Link href={subitem.href}>
+                  <Link key={i} href={subitem.href} onClick={props.action}>
                     <Card
                       className={`flex h-full w-full items-center p-4  hover:cursor-pointer ${subitem.classes}`}
                     >
                       <div>
-                        <CardTitle className="text-lg font-semibold underline flex ">
+                        <CardTitle className="text-lg underline font-light flex ">
                           {subitem.icon}
 
                           {subitem.title}
@@ -253,32 +278,34 @@ function NavGroupSection(props: {
                   </Link>
                 </>
               ))}
-              {/* <div
-                onClick={() => {
-                  signOut({
-                    redirect: true,
-                    callbackUrl: "/admin",
-                  })
-                }}
-              >
-                <Card
-                  className={`flex w-full items-center bg-red-200 p-4 hover:cursor-pointer hover:bg-red-300`}
-                >
-                  {<LogOut />}
-                  <div>
-                    <CardTitle className="text-md font-light">
-                      {`Log Out`}
-                    </CardTitle>
-                    <CardDescription className="text-sm">
-                      {`Sign out of your account`}
-                    </CardDescription>
-                  </div>
-                </Card>
-              </div> */}
             </div>
           </div>
         )
       })}
+      <Label className="text-lg font-semibold text-primary underline">
+        Logout
+      </Label>
+      <div
+        onClick={() => {
+          signOut({
+            redirect: true,
+            callbackUrl: "/admin",
+          })
+        }}
+        className="grid h-full grid-cols-1 gap-2  md:grid-cols-4"
+      >
+        <Card
+          className={`flex w-full items-center bg-red-200 p-4 hover:cursor-pointer hover:bg-red-300`}
+        >
+          {<LogOut />}
+          <div>
+            <CardTitle className="text-md font-light">{`Log Out`}</CardTitle>
+            <CardDescription className="text-sm">
+              {`Sign out of your account`}
+            </CardDescription>
+          </div>
+        </Card>
+      </div>
     </>
   )
 }

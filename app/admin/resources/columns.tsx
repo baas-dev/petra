@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
 
 import ResourcesForm, { ResourceFormSchema } from "./form"
+import { Label } from "@/components/ui/label"
 
 export const columns: ColumnDef<z.infer<typeof ResourceFormSchema>>[] = [
   {
@@ -70,16 +71,17 @@ export const columns: ColumnDef<z.infer<typeof ResourceFormSchema>>[] = [
     },
     enableSorting: true,
   },
-  {
-    accessorKey: "Description",
-    header: "Description",
-    cell: ({ row }) => {
-      return <p className="line-clamp-2">{row.original.Description}</p>
-    },
-  },
+
   {
     accessorKey: "Link",
     header: "Link",
+    cell: ({ row }) => {
+      return (
+        <div className="truncate w-24">
+          {row.original.Link}
+        </div>
+      )
+    }
   },
   {
     accessorKey: "CreatedAt",

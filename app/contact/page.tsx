@@ -15,21 +15,21 @@ const ContactUsBody = () => {
   return (
     <>
       <section className="flex h-full min-h-screen items-center justify-center bg-secondary pb-8">
-        <div className="container">
+        <div className="max-w-4xl w-full">
           <div className="-mx-4 flex flex-wrap pt-4 md:pt-0 lg:justify-between">
             <div className="w-full px-2 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
                 <span className="block text-base font-semibold text-primary"></span>
-                <h2 className="mb-2 text-4xl uppercase  text-primary ">
+                <h1 className="mb-2 text-4xl uppercase  text-primary ">
                   Get In Touch With Us
-                </h2>
+                </h1>
 
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
-                  <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary/20 text-primary">
+                  <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity/20 text-primary">
                     <PhoneCall className="h-6 w-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="text-dark   text-lg"> Phone Number</h4>
+                    <h2 className="text-dark text-lg"> Phone Number</h2>
                     <p className="text-body-color text-md font-light">
                       <a
                         href="tel:214-432-0443"
@@ -45,7 +45,7 @@ const ContactUsBody = () => {
                     <Mail className="h-6 w-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="text-dark   text-lg"> Email Address</h4>
+                    <h2 className="text-dark   text-lg"> Email Address</h2>
                     <p className="text-body-color text-md font-light">
                       <a
                         href="mailto:“contactus@petralending.com”"

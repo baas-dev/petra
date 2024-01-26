@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { DollarSign, Home } from "lucide-react"
+import { NextSeo } from "next-seo"
 
 import {
   Dialog,

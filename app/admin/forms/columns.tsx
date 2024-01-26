@@ -37,25 +37,15 @@ export const columns: ColumnDef<any>[] = [
     header: () => {
       return <div className="max-w-10"></div>
     },
-    // cell: ({ row }) => {
-    //   let data = JSON.parse(row.original.SubmissionData)
-    //   const [loading, setLoading] = useState(false)
-    //   return (
-    //     <>
-    //       <div className="max-w-8">
-    //         {loading ? (
-    //           <>{<Loader2 className="animate-spin text-2xl text-accent" />}</>
-    //         ) : (
-    //           <>
-    //             <Link href={`/admin/forms/${row.original.ID}`}>
-    //               <Button>View</Button>
-    //             </Link>
-    //           </>
-    //         )}
-    //       </div>
-    //     </>
-    //   )
-    // },
+    cell: ({ row }) => {
+      return (
+        <>
+          <Link href={`/admin/forms/${row.original.ID}`}>
+            <Button>View</Button>
+          </Link>
+        </>
+      )
+    },
   },
   {
     id: "Team",
@@ -99,7 +89,11 @@ export const columns: ColumnDef<any>[] = [
     cell: function ({ row }) {
       const time: Date = row.getValue("CreatedAt")
 
-      return <div className="font-medium">{moment(time).calendar()}</div>
+      return (
+        <div className="font-medium">
+          {moment(time).format("MMMM Do YYYY, h:mm:ss a")}
+        </div>
+      )
     },
   },
 ]

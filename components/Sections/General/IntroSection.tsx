@@ -14,7 +14,7 @@ export default function IntroSection(props: IntroSection) {
         <Image
           src={props.ImageURL}
           fill
-          alt=""
+          alt="Petra Page Background"
           className=" z-0 mx-auto  max-w-[2560px]  object-cover object-top xl:object-cover xl:object-center 2xl:object-center "
         />
 

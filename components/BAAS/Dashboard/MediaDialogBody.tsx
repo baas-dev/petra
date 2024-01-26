@@ -107,7 +107,7 @@ export default function MediaDialogBody() {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_APIURL}/media`, {
         method: "POST",
-        credentials: "include",
+        // credentials: "include",
         body: formData,
       })
 
@@ -120,8 +120,9 @@ export default function MediaDialogBody() {
     LoadData(null).then((val) => {
       setFilesLoading(true)
 
+      console.log("valdata", val.data)
       if (val.data) {
-        setLoadedFiles(val.data)
+        setLoadedFiles(val.data.rows)
         setPagination({
           ...pagination,
           Limit: val.data.meta.Limit,
@@ -129,11 +130,9 @@ export default function MediaDialogBody() {
           TotalPages: val.data.meta.TotalPages,
           TotalRows: val.data.meta.TotalRows,
         })
-
-        console.log(val.data)
       }
+      setFilesLoading(false)
     })
-    setFilesLoading(false)
     setUploading(false)
   }
 
@@ -200,8 +199,7 @@ export default function MediaDialogBody() {
                         reload={() => {
                           LoadData(null).then((val) => {
                             if (val.data) {
-                              setLoadedFiles(val.data)
-                              console.log(val.data)
+                              setLoadedFiles(val.data.rows)
                             }
                           })
                         }}
@@ -253,11 +251,12 @@ function FileCard({ name, type, url, id, size, reload }) {
   }
 
   async function handleDelete(givenID: string) {
+    console.log(givenID)
     setLoading(true)
     let res = await api.DELETE({
-      Route: "media",
+      Route: `media/${givenID}`,
       ID: givenID,
-      Body: {},
+      Body: JSON.stringify({}),
     })
     if (res.data) {
       toast({

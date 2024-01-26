@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
 
 import { Button } from "@/components/ui/button"
 import Banner from "@/components/BAAS/Banners/Banner"
 import ManageDataDialog from "@/components/BAAS/Forms/Dialog"
 import TableLoading from "@/components/BAAS/Loading/TableLoading"
 import { DataTable } from "@/components/BAAS/Table/DataTable"
+import { UserInteraction } from "@/components/BAAS/Table/UserRoleControl"
 import BACKEND from "@/app/api"
 
 import { useAdminTableContext } from "../Context/TableContext"
@@ -27,6 +29,7 @@ export default function UsersAdmin() {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
 
+  let session = useSession()
   const LoadData = async () => {
     await getData()
       .then((val) => {
@@ -44,6 +47,10 @@ export default function UsersAdmin() {
     LoadData()
   }, [])
 
+  let perms = new UserInteraction()
+  let adminPerms = perms.CanDelete(
+    session.data?.user?.role ? session.data?.user?.role : ""
+  )
   return (
     <>
       <Banner
@@ -65,9 +72,7 @@ export default function UsersAdmin() {
         <DataTable
           columns={columns}
           data={data ? data : []}
-          scope={{
-            TableName: "Users",
-          }}
+          scope={adminPerms}
           filters={[
             {
               label: "Name",

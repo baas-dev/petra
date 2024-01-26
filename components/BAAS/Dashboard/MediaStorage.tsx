@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { CardBody } from "@material-tailwind/react"
 
 import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
@@ -18,19 +17,17 @@ export default function MediaStorage() {
 
   return (
     <Card>
-      <CardBody>
-        <h2>Your Storage</h2>
-        <Label className="text-md font-light">sdfosdpofk</Label>
-        <Separator className="my-4" />
-        <div>
-          <div className="flex justify-between">
-            <Progress value={progress} className="w-[60%]" />
+      <h2>Your Storage</h2>
+      <Label className="text-md font-light">sdfosdpofk</Label>
+      <Separator className="my-4" />
+      <div>
+        <div className="flex justify-between">
+          <Progress value={progress} className="w-[60%]" />
 
-            <Label className="text-md ">13.4%</Label>
-          </div>
+          <Label className="text-md ">13.4%</Label>
         </div>
-        <Label className="text-sm">25m of 50GB</Label>
-      </CardBody>
+      </div>
+      <Label className="text-sm">25m of 50GB</Label>
     </Card>
   )
 }

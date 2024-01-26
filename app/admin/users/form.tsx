@@ -29,7 +29,6 @@ export const UsersFormSchema = z.object({
   ID: z.string().optional(),
 
   Role: z.string(),
-  Enabled: z.boolean(),
 })
 
 export default function UserManagementForm() {
@@ -40,7 +39,6 @@ export default function UserManagementForm() {
     resolver: zodResolver(UsersFormSchema),
     defaultValues: {
       ID: adminTableCXT.Data?.ID ? adminTableCXT.Data.ID : "",
-      Enabled: adminTableCXT.Data?.Email ? adminTableCXT.Data.Enabled : "",
       Role: adminTableCXT.Data?.Role ? adminTableCXT.Data.Role : "editor",
     },
   })
@@ -77,7 +75,6 @@ export default function UserManagementForm() {
       })
   }
 
-  console.log(adminTableCXT.Data)
   return (
     <div className="mx-auto mt-4 w-full">
       <Form {...usersFormCXT}>
@@ -102,24 +99,10 @@ export default function UserManagementForm() {
                       label: "editor",
                     },
                     {
-                      value: "manager",
-                      label: "manager",
-                    },
-                    {
                       value: "admin",
                       label: "admin",
                     },
                   ],
-                }}
-              />
-            </TabsContent>
-            <TabsContent value="password">
-              <PasswordInput
-                form={usersFormCXT}
-                options={{
-                  name: "Password",
-                  label: "Password",
-                  forReset: true,
                 }}
               />
             </TabsContent>

@@ -68,7 +68,7 @@ export default function UserManagementFormInit() {
     <Form {...usersFormCXT}>
       <form
         onSubmit={usersFormCXT.handleSubmit(onSubmit)}
-        className="w-full max-w-7xl space-y-6"
+        className="w-full max-w-7xl p-4 md:mt-4 space-y-6 mx-auto"
       >
         <TextInput
           form={usersFormCXT}
@@ -93,10 +93,6 @@ export default function UserManagementFormInit() {
               {
                 value: "editor",
                 label: "editor",
-              },
-              {
-                value: "manager",
-                label: "manager",
               },
               {
                 value: "admin",
