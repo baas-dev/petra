@@ -34,9 +34,10 @@ export default async function FAQ() {
         <Banner
           Title={"Frequently Asked Questions"}
           Subtitle={"Helping You with Home Lending Questions"}
-          children={undefined}
-        ></Banner>
-        <div className="container   ">
+        >
+          <></>
+        </Banner>
+        <div className="container">
           <section className=" grid bg-white p-4 rounded-xl shadow-md border-2">
             <FAQAccordion data={res ? res : []} />
           </section>
