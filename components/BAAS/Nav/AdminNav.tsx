@@ -100,7 +100,7 @@ const DocItems: { title: string; bgColor: string; items: SidebarItems[] } = {
     {
       title: "Docs",
       classes: "bg-orange-100 hover:bg-orange-300",
-      description: "Help articles for users of this system.",
+      description: "Help articles for users of this system",
       href: "/admin/docs",
       icon: <Paperclip className="mr-2 h-8 w-8 " />,
     },
@@ -111,6 +111,14 @@ const ContentItems: { title: string; bgColor: string; items: SidebarItems[] } =
     title: "Site Content",
     bgColor: "bg-primary",
     items: [
+      {
+        title: "FAQs",
+        href: "/admin/faqs",
+        description: "Answer your most common mortgage lending questions",
+        classes: "bg-blue-100 hover:bg-blue-300 ",
+
+        icon: <FileQuestion className="mr-2 h-8 w-8  font-light" />,
+      },
       {
         title: "Resources",
         href: "/admin/resources",
@@ -151,6 +159,14 @@ const EditorContentItems: {
 
   items: [
     {
+      title: "FAQs",
+      href: "/admin/faqs",
+      description: "Answer your most common mortgage lending questions",
+      classes: "bg-blue-100 hover:bg-blue-300 ",
+
+      icon: <FileQuestion className="mr-2 h-8 w-8  font-light" />,
+    },
+    {
       title: "Resources",
       href: "/admin/resources",
       description: "Helpful links, downloads, and other content",
@@ -162,7 +178,7 @@ const EditorContentItems: {
     {
       title: "Form Submissions",
       href: "/admin/forms",
-      description: "Form submissions recorded in your system.",
+      description: "Form submissions recorded in your system",
 
       classes: "bg-green-100",
 

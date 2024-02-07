@@ -11,11 +11,15 @@ export default function TitleWithIconCard({
   icon,
   link,
   delay,
+  height,
+  width,
 }: {
   title?: string
   icon?: ReactNode
   link?: string
   delay?: number
+  height?: string
+  width?: string
 }) {
   let r = useRouter()
   return (
@@ -24,7 +28,7 @@ export default function TitleWithIconCard({
         onClick={() => {
           link != null ? r.push(link) : null
         }}
-        className="flex h-64 w-full flex-col justify-normal rounded-xl border border-primary bg-gradient-to-br from-white  to-blue-100/50 p-4  text-center transition hover:scale-105 hover:cursor-pointer  dark:border-gray-700"
+        className={`${height} ${width} flex flex-col justify-normal rounded-xl border border-primary bg-gradient-to-br from-white  to-blue-100/50 p-4  text-center transition hover:scale-105 hover:cursor-pointer  dark:border-gray-700`}
       >
         <div className="w-full max-w-sm">
           <SlideInAnimation

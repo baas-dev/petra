@@ -14,6 +14,7 @@ import {
   FileQuestion,
   Home,
   Info,
+  MailQuestion,
   MoreVertical,
   Newspaper,
   Pen,
@@ -140,6 +141,16 @@ const MobileNavMenu = ({ setOpen }) => {
             >
               <Calculator className="mr-2 h-4 w-4" />
               Resources
+            </Button>
+            <Button
+              onClick={() => {
+                router.push("/faqs"), setOpen(false)
+              }}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <MailQuestion className="mr-2 h-4 w-4" />
+              FAQs
             </Button>
 
             <Button
