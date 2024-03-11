@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { DollarSign, Home } from "lucide-react"
-import { NextSeo } from "next-seo"
 
 import {
   Dialog,
@@ -75,6 +74,14 @@ export default function IndexPage() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+      </div>
+      <div className="container text-center mb-8">
+        <a
+          href="https://www.sml.texas.gov/wp-content/uploads/2021/07/rmlo_80_200_b_recovery_fund_notice.pdf"
+          className="text-2xl text-blue-500 mb-8 font-bold underline hover:cursor-pointer hover:text-blue-300 mx-auto text-center"
+        >
+          Texas Recovery Fund Notice
+        </a>
       </div>
     </>
   )
