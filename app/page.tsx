@@ -22,8 +22,9 @@ export default function IndexPage() {
         <Dialog>
           <DialogTrigger className="w-full">
             <TitleWithIconCard
-              icon={<Home className="h-32 w-32" />}
+              icon={<Home className="h-24 w-24" />}
               title={"Purchase"}
+              height="h-48"
             />
           </DialogTrigger>
           <DialogContent className=" flex max-w-4xl flex-wrap">
@@ -50,8 +51,10 @@ export default function IndexPage() {
           <DialogTrigger className="w-full">
             <TitleWithIconCard
               delay={0.2}
-              icon={<DollarSign className="h-32 w-32" />}
+              icon={<DollarSign className="h-24 w-24" />}
               title={"Refinance"}
+              height="h-48"
+              width="w-full"
             />
           </DialogTrigger>
           <DialogContent className=" flex max-w-4xl flex-wrap">

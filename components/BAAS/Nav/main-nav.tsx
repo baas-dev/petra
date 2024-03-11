@@ -288,7 +288,27 @@ const FullWidthNavbar = () => {
                 </div>
               </HoverCardContent>
             </HoverCard>
-
+            <HoverCard openDelay={0} closeDelay={0}>
+              <Link href="/faqs" legacyBehavior passHref>
+                <HoverCardTrigger className={navigationMenuTriggerStyle()}>
+                  <div
+                    className={`text-cente flex-wrap items-center  ${
+                      path == "/faqs" ? "text-accent underline" : ""
+                    } `}
+                  >
+                    FAQs
+                  </div>
+                </HoverCardTrigger>
+              </Link>
+              <HoverCardContent className="bg-white">
+                <div className="text-left">
+                  <Label className="pb-2 text-lg text-primary  underline">
+                    Frequently Asked Questions
+                  </Label>
+                  <p>Find answers to common mortgage lending questions</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
             {/* <HoverCard openDelay={0} closeDelay={0}>
               <Link href="/prequalification" legacyBehavior passHref>
                 <HoverCardTrigger className={navigationMenuTriggerStyle()}>
