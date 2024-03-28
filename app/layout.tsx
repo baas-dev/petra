@@ -22,7 +22,7 @@ let SEO = {
   site: "https://petralending.com",
   images: [
     {
-      url: "https://media.petralending.com/logo_social.png", // Must be an absolute URL
+      url: "https://files.petralending.com/logo_social.png", // Must be an absolute URL
       width: 1920,
       height: 1080,
     },
