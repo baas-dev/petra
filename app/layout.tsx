@@ -1,6 +1,6 @@
 import "@/app/styles/globals.css"
 import { Metadata } from "next"
-import { DefaultSeo } from "next-seo"
+import Script from "next/script"
 
 import { siteConfig } from "@/config/site"
 // import { fontSans } from "@/lib/fonts"
@@ -61,6 +61,20 @@ export default function RootLayout({ children }: RootLayoutProps) {
             // fontSans.variable
           )}
         >
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-C6Q1GQP18V"
+          />
+
+          <Script id="google-analytics">
+            {`
+               window.dataLayer = window.dataLayer || [];
+               function gtag(){dataLayer.push(arguments);}
+               gtag('js', new Date());
+             
+               gtag('config', 'G-C6Q1GQP18V');
+          `}
+          </Script>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <AuthProvider>
               <TableContextProvider>
