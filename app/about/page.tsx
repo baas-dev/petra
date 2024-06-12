@@ -3,7 +3,7 @@ import { Cog, Trophy, Users, Users2 } from "lucide-react"
 import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 import IntroSection from "@/components/Sections/General/IntroSection"
 import BACKEND from "@/app/api"
-
+import Image from 'next/image'
 export interface Teammate {
   Name?: string
   Image?: string
@@ -25,8 +25,17 @@ export default function IndexPage() {
 function Content() {
   return (
     <>
-      <IntroSection ImageURL="https://files.petralending.com/PetraLendingBranding0002.jpg" />
+  <section className="relative mb-8 h-full min-h-[300px]  w-full md:h-[70vh]">
+        <Image
+          src={"/petra-staff.png"}
+          fill
+          loading={"eager"}
+          alt="Petra Page Background"
+          className=" z-0 mx-auto  max-w-[1920px] aspect-auto object-cover object-top h-full "
+        />
 
+        
+      </section>
       <section>
         <h2 className="mx-auto max-w-4xl leading-loose text-center text-lg">
           Our name comes from the Greek, meaning rock. We chose it because a

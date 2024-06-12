@@ -55,9 +55,36 @@ export default function Step1Form(props: {}) {
       {teamMembers.length > 0 ? (
         <>
           <div
-            className={`z-50 grid h-full w-full grid-cols-2 justify-center gap-2 md:grid-cols-4`}
+            className={`flex flex-col md:flex-row max-w-4xl mx-auto items-center justify-center`}
           >
-            {teamMembers.map((item, i) => {
+            {teamMembers.slice(0,2).map((item, i) => {
+              return (
+                <RevealAnimation
+                  key={i} // Don't forget to add a unique key when mapping
+                  options={{
+                    delay: 0.2 * (i + 1),
+                  }}
+                >
+                  <TeamCard
+                    key={i}
+                    action={() => setSelected(i)}
+                    ID={item.ID}
+                    description={item.Biography}
+                    title={item.Name}
+                    name={item.Name}
+                    rmloNumber={item.RNumber.toString()}
+                    image={item.Image}
+                    isSelected={() => selected == i}
+                  />
+                </RevealAnimation>
+              )
+            })}
+          </div> 
+          
+          <div
+            className={`flex flex-col md:flex-row max-w-4xl mx-auto items-center justify-center`}
+          >
+            {teamMembers.slice(2,5).map((item, i) => {
               return (
                 <RevealAnimation
                   key={i} // Don't forget to add a unique key when mapping

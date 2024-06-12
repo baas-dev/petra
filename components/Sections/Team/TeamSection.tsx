@@ -37,13 +37,40 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
         </span>
       </h1>
       <div
-        className={`xl:grid-cols-3 grid grid-cols-1 md:grid-cols-2${
-          data.length < 6 ? `${data.length}` : "4"
-        } h-full w-full`}
+                  className={`flex flex-col md:flex-row max-w-4xl mx-auto items-center justify-center`}
+
       >
         {data &&
           data.length > 0 &&
-          data.map((item, i) => (
+          data.slice(0,2).map((item, i) => (
+            <>
+              <RevealAnimation
+                key={i} // Don't forget to add a unique key when mapping
+                options={{
+                  delay: 0.1 * (i + 1),
+                }}
+              >
+                {item.Published ? (
+                  <TeamCard
+                    key={i}
+                    title={item.Name}
+                    image={item.Image}
+                    rmloNumber={item.RNumber}
+                    position={item.Title}
+                    bio={item.Biography}
+                  />
+                ) : null}
+              </RevealAnimation>
+            </>
+          ))}
+      </div>
+      <div
+                  className={`flex flex-col mt-8 md:flex-row max-w-6xl mx-auto items-center justify-center`}
+
+      >
+        {data &&
+          data.length > 0 &&
+          data.slice(2,5).map((item, i) => (
             <>
               <RevealAnimation
                 key={i} // Don't forget to add a unique key when mapping

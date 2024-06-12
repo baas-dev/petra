@@ -14,8 +14,9 @@ export default function IntroSection(props: IntroSection) {
         <Image
           src={props.ImageURL}
           fill
+          loading={"eager"}
           alt="Petra Page Background"
-          className=" z-0 mx-auto  max-w-[2560px]  object-cover object-top xl:object-cover xl:object-center 2xl:object-center "
+          className=" z-0 mx-auto  max-w-[2560px]  object-cover object-top xl:object-cover xl:object-center 2xl:object-top "
         />
 
         <div className="relative z-10 flex h-full w-full flex-col items-center justify-center bg-black/20">
