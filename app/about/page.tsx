@@ -25,7 +25,7 @@ export default function IndexPage() {
 function Content() {
   return (
     <>
-      <IntroSection ImageURL="/site/about/bg.jpg" />
+      <IntroSection ImageURL="https://files.petralending.com/PetraLendingBranding0002.jpg" />
 
       <section>
         <h2 className="mx-auto max-w-4xl leading-loose text-center text-lg">

@@ -72,7 +72,7 @@ export default async function Resoures() {
     .catch((err) => [])
   return (
     <>
-      <IntroSection ImageURL="/site/resource/bg.png" Title="Resources" />
+      <IntroSection ImageURL="https://files.petralending.com/Resources_header.png" Title="Resources" />
 
       <h2 className="mx-auto max-w-2xl text-center text-2xl">
         Buying a home shouldn’t be hard. Our team is here to support you every
