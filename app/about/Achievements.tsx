@@ -34,6 +34,9 @@ export default function Achievements() {
     {
       path: "dmag2023.png",
     },
+    {
+      path: "dmag2024.png",
+    },
   ]
   let rd = imgdata.reverse()
   let rdd = data.reverse()
@@ -59,7 +62,7 @@ export default function Achievements() {
           </div>
 
           <div className="mt-8 flex w-full flex-col items-center justify-center">
-            <div className="mt-8 flex h-full">
+            <div className="mt-8 flex flex-col md:flex-row h-full">
               <Image
                 src={`/images/forbes.png`}
                 height={1920}

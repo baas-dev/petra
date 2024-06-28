@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Separator } from "@/components/ui/separator"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
+import MailAddress from "@/components/Sections/Contact/MailAddress"
+import PhoneAddress from "@/components/Sections/Contact/PhoneAddress"
 
 import ContactForm from "./form"
 
@@ -28,33 +30,13 @@ const ContactUsBody = () => {
                   <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity/20 text-primary">
                     <PhoneCall className="h-6 w-6 text-white" />
                   </div>
-                  <div className="w-full">
-                    <h2 className="text-dark text-lg"> Phone Number</h2>
-                    <p className="text-body-color text-md font-light">
-                      <a
-                        href="tel:214-432-0443"
-                        className="flex text-xl text-blue-600 underline hover:underline"
-                      >
-                        (+1) 214 432-0443
-                      </a>
-                    </p>
-                  </div>
+                  <PhoneAddress />
                 </div>
                 <div className="mb-8 flex w-full max-w-[370px] items-center">
                   <div className="mr-6 flex h-12 w-16 items-center justify-center overflow-hidden rounded bg-primary bg-opacity/20 text-primary">
                     <Mail className="h-6 w-6 text-white" />
                   </div>
-                  <div className="w-full">
-                    <h2 className="text-dark   text-lg"> Email Address</h2>
-                    <p className="text-body-color text-md font-light">
-                      <a
-                        href="mailto:“contactus@petralending.com”"
-                        className="flex text-xl text-blue-600 underline hover:underline"
-                      >
-                        contactus@petralending.com
-                      </a>
-                    </p>
-                  </div>
+                  <MailAddress />
                 </div>
               </div>
             </div>

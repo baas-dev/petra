@@ -71,6 +71,10 @@ export default function FAQAdmin() {
               value: "Name",
             },
             {
+              label: "Order",
+              value: "Order",
+            },
+            {
               label: "Title",
               value: "Title",
             },

@@ -18,6 +18,7 @@ import RichTextEditor from "@/components/BAAS/RichTextEditor"
 import "react-phone-number-input/style.css"
 import PhoneInput from "react-phone-number-input"
 
+import NumberInput from "@/components/BAAS/Forms/Inputs/NumberInput"
 import Status from "@/components/BAAS/Forms/Status"
 
 import { useAdminTableContext } from "../Context/TableContext"
@@ -25,7 +26,7 @@ import { useAdminTableContext } from "../Context/TableContext"
 export const TeamFormSchema = z.object({
   ID: z.string().optional(),
   Name: z.string().min(3, "Required"),
-
+  Order: z.number(),
   Image: z.string().optional(),
   RNumber: z.string().optional(),
   Biography: z.string().optional(),
@@ -50,6 +51,8 @@ export default function TeamForm(props: {
       return {
         ID: adminTableCXT.Data?.ID ? adminTableCXT.Data.ID : "",
         Name: adminTableCXT.Data?.Name ? adminTableCXT.Data.Name : "",
+        Order: adminTableCXT.Data?.Order ? adminTableCXT.Data.Order : 0,
+
         RNumber: adminTableCXT.Data?.RNumber ? adminTableCXT.Data.RNumber : 0,
         Biography: adminTableCXT.Data?.Biography
           ? adminTableCXT.Data.Biography
@@ -131,6 +134,13 @@ export default function TeamForm(props: {
               options={{
                 name: "Name",
                 label: "Name",
+              }}
+            />
+            <NumberInput
+              form={teamFormCXT}
+              options={{
+                name: "Order",
+                label: "Order",
               }}
             />
             <TextInput

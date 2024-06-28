@@ -9,7 +9,7 @@ name: Prod Deploy
 env:
   REPO_URL: 058264522604.dkr.ecr.us-east-1.amazonaws.com
   REPO_NAME: petra-client
-  REPO_TAG: 1.0.2
+  REPO_TAG: 1.0.3
   SERVICE_NAME: petra-client
 
 jobs:

@@ -1,9 +1,10 @@
+import Image from "next/image"
 import { Cog, Trophy, Users, Users2 } from "lucide-react"
 
 import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 import IntroSection from "@/components/Sections/General/IntroSection"
 import BACKEND from "@/app/api"
-import Image from 'next/image'
+
 export interface Teammate {
   Name?: string
   Image?: string
@@ -25,16 +26,14 @@ export default function IndexPage() {
 function Content() {
   return (
     <>
-  <section className="relative mb-8 h-full min-h-[300px]  w-full md:h-[70vh]">
+      <section className="relative mb-8 h-full min-h-[300px]  w-full md:h-[80vh]">
         <Image
-          src={"/petra-staff.png"}
+          src={"https://files.petralending.com/team-photo.jpg"}
           fill
           loading={"eager"}
           alt="Petra Page Background"
           className=" z-0 mx-auto  max-w-[1920px] aspect-auto object-cover object-top h-full "
         />
-
-        
       </section>
       <section>
         <h2 className="mx-auto max-w-4xl leading-loose text-center text-lg">
