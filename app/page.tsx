@@ -80,7 +80,7 @@ export default function IndexPage() {
       </div>
       <div className="container text-center mb-8">
         <a
-          href="https://www.sml.texas.gov/wp-content/uploads/2021/07/rmlo_80_200_b_recovery_fund_notice.pdf"
+          href="https://files.petralending.com/mortgage_company_consumer_complaint_notice_website.pdf"
           className="text-2xl text-blue-500 mb-8 font-bold underline hover:cursor-pointer hover:text-blue-300 mx-auto text-center"
         >
           Texas Recovery Fund Notice
