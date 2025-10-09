@@ -19,7 +19,7 @@ export const TeamCard = (props: {
       <div className="mx-auto mb-4 w-full h-full ">
         <div className=" overflow-hidden rounded-lg">
           <Image
-            src={image}
+            src={`${image.toString()}`}
             alt=""
             width={1000}
             height={1000}
