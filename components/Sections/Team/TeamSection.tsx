@@ -142,7 +142,7 @@ const TeamCard = (props: {
       <div className="mx-auto mb-10 flex h-full  w-full rounded-xl shadow-md">
         <div className="w-2/5">
           <Image
-            src={image}
+            src={`${image.toString()}`}
             height={500}
             width={500}
             alt=""
