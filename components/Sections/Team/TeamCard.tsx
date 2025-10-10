@@ -18,10 +18,13 @@ export const TeamCard = (props: {
     >
       <div className="mx-auto mb-4 w-full h-full ">
         <div className=" overflow-hidden rounded-lg">
-          <img
-            src={image}
+          <Image
+            src={`${image.toString()}`}
             alt=""
+            width={1000}
+            height={1000}
             className="h-64 w-full  object-contain"
+              unoptimized
           />
           <div className=" bottom-5 left-0 w-full text-center">
             <div

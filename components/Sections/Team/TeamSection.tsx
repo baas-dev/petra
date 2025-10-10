@@ -146,6 +146,7 @@ const TeamCard = (props: {
             height={500}
             width={500}
             alt=""
+            unoptimized
             className="h-full w-full border-2 object-contain  "
           />
         </div>
