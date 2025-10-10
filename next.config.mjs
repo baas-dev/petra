@@ -34,7 +34,7 @@ const nextConfig = {
       },
     ],
   },
-  staticPageGenerationTimeout: 1000,
+  staticPageGenerationTimeout: 10000,
 }
 
 export default nextConfig
