@@ -18,7 +18,7 @@ export default class BACKEND {
         Authorization: session?.token ? "Bearer " + session.token : " ",
       }
 
-      console.log("gonna try", `${process.env.NEXT_PUBLIC_APIURL}/${options.Route}`)
+      console.log("gonna try:", `${process.env.NEXT_PUBLIC_APIURL}/${options.Route}`)
 
       let apiResponse = await fetch(
         `${process.env.NEXT_PUBLIC_APIURL}/${options.Route}`,
