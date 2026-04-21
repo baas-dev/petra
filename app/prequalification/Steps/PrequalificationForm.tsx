@@ -17,6 +17,8 @@ import Step3Form from "./Step3Form"
 const api = new BACKEND()
 export default function PrequalificationForm() {
   const [localState, setLocalState] = useState({
+    Email: "",
+    Phone: "",
     Team: [],
     Address: {},
     Price: "",
@@ -42,7 +44,9 @@ export default function PrequalificationForm() {
     let state = localState
     switch (step) {
       case 1:
-        state.Team = data
+        state.Email = data.Email
+        state.Phone = data.Phone
+        state.Team = data.Team
         setLocalState(state)
         break
       case 2:
