@@ -28,6 +28,7 @@ export default async function FAQ() {
     .then((val) => val)
     .catch((err) => [])
 
+
   return (
     <>
       <div className="min-h-screen w-full h-full  ">
