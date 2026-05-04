@@ -58,6 +58,8 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
                     rmloNumber={item.RNumber}
                     position={item.Title}
                     bio={item.Biography}
+                    phoneNumber={item.Phone}
+                    email={item.Email}
                   />
                 ) : null}
               </RevealAnimation>
@@ -86,6 +88,8 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
                     rmloNumber={item.RNumber}
                     position={item.Title}
                     bio={item.Biography}
+                    phoneNumber={item.Phone}
+                    email={item.Email}
                   />
                 ) : null}
               </RevealAnimation>
