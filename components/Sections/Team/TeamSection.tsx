@@ -20,12 +20,12 @@ import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 export interface Teammate {
   Name?: string
   Image?: string
-  RNumber?: string
+  RNumber?: string | number
   Biography?: string
-  Title: string
+  Title?: string
   Phone?: string
   Email?: string
-  Published?: string
+  Published?: boolean
 }
 export default function TeamSection({ data }: { data: Teammate[] }) {
   return (
@@ -37,12 +37,11 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
         </span>
       </h1>
       <div
-                  className={`flex flex-col md:flex-row max-w-4xl mx-auto items-center justify-center`}
-
+        className={`flex flex-col md:flex-row max-w-4xl mx-auto items-center justify-center`}
       >
         {data &&
           data.length > 0 &&
-          data.slice(0,2).map((item, i) => (
+          data.slice(0, 2).map((item, i) => (
             <>
               <RevealAnimation
                 key={i} // Don't forget to add a unique key when mapping
@@ -55,7 +54,7 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
                     key={i}
                     title={item.Name}
                     image={item.Image}
-                    rmloNumber={item.RNumber}
+                    rmloNumber={String(item.RNumber || "")}
                     position={item.Title}
                     bio={item.Biography}
                     phoneNumber={item.Phone}
@@ -67,12 +66,11 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
           ))}
       </div>
       <div
-                  className={`flex flex-col mt-8 md:flex-row max-w-6xl mx-auto items-center justify-center`}
-
+        className={`flex flex-col mt-8 md:flex-row max-w-6xl mx-auto items-center justify-center`}
       >
         {data &&
           data.length > 0 &&
-          data.slice(2,5).map((item, i) => (
+          data.slice(2, 5).map((item, i) => (
             <>
               <RevealAnimation
                 key={i} // Don't forget to add a unique key when mapping
@@ -85,7 +83,7 @@ export default function TeamSection({ data }: { data: Teammate[] }) {
                     key={i}
                     title={item.Name}
                     image={item.Image}
-                    rmloNumber={item.RNumber}
+                    rmloNumber={String(item.RNumber || "")}
                     position={item.Title}
                     bio={item.Biography}
                     phoneNumber={item.Phone}

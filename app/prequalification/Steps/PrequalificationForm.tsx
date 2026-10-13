@@ -6,15 +6,14 @@ import "swiper/css"
 import { useRouter } from "next/navigation"
 import { Swiper, SwiperSlide } from "swiper/react"
 
+import { submitPetraFormClient } from "@/lib/petra-client"
 import { toast } from "@/components/ui/use-toast"
-import BACKEND from "@/app/api"
 
 import QuestionNext from "./QuestionNext"
 import Step1Form from "./Step1Form"
 import Step2Form from "./Step2Form"
 import Step3Form from "./Step3Form"
 
-const api = new BACKEND()
 export default function PrequalificationForm() {
   const [localState, setLocalState] = useState({
     Email: "",
@@ -66,13 +65,7 @@ export default function PrequalificationForm() {
   }
 
   async function FinalSubmit() {
-    await api.CREATE({
-      Route: "forms",
-      Body: JSON.stringify({
-        SubmissionData: JSON.stringify(localState),
-        Type: "prequalification",
-      }),
-    })
+    await submitPetraFormClient("prequalification", localState)
     toast({
       title: "Your Submission Was Successful!",
       description: (

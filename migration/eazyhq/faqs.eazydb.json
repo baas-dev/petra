@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-10-13T16:10:11.300Z",
+  "table": {
+    "name": "FAQs",
+    "slug": "faqs",
+    "description": "Published Petra Lending website questions and answers.",
+    "status": "active",
+    "primary_key_name": "legacy_id",
+    "settings": {
+      "source": "petra-legacy-sql",
+      "public_read": true
+    },
+    "interfaces": {},
+    "displays": {}
+  },
+  "fields": [
+    {
+      "name": "Legacy ID",
+      "slug": "legacy_id",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": true,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 10
+    },
+    {
+      "name": "Question",
+      "slug": "question",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 20
+    },
+    {
+      "name": "Slug",
+      "slug": "slug",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 30
+    },
+    {
+      "name": "Answer",
+      "slug": "answer",
+      "field_type": "markdown",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "markdown_wysiwyg"
+      },
+      "displays": {
+        "kind": "markdown"
+      },
+      "sort_order": 40
+    },
+    {
+      "name": "Category",
+      "slug": "category",
+      "field_type": "select",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {
+        "options": [
+          "General",
+          "Applications",
+          "Loans",
+          "Payments"
+        ]
+      },
+      "interfaces": {
+        "kind": "dropdown_select"
+      },
+      "displays": {
+        "kind": "badge"
+      },
+      "sort_order": 50
+    },
+    {
+      "name": "Published",
+      "slug": "published",
+      "field_type": "boolean",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "toggle"
+      },
+      "displays": {
+        "kind": "badge"
+      },
+      "sort_order": 60
+    },
+    {
+      "name": "Featured",
+      "slug": "featured",
+      "field_type": "boolean",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "toggle"
+      },
+      "displays": {
+        "kind": "badge"
+      },
+      "sort_order": 70
+    },
+    {
+      "name": "Sort Order",
+      "slug": "sort_order",
+      "field_type": "number",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "number"
+      },
+      "displays": {},
+      "sort_order": 80
+    }
+  ],
+  "records": [
+    {
+      "values": {
+        "legacy_id": "26294594-75fe-4367-8d54-9c066bae818a",
+        "question": "What is an escrow account?",
+        "slug": "what-is-an-escrow-account-1",
+        "answer": "When you obtain a mortgage, you'll probably be asked to put money into an escrow account to guarantee the lender that the ongoing expenses of owning the property will be handled -- specifically taxes and insurance. You'll pay a lump sum into the escrow account at closing (also known as your \"prepaids\"), and add to it further with each of your monthly mortgage payments. When the time comes to pay your taxes and insurance, your funded Escrow account will be used to disburse those funds to the appropriate place.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 1
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "8a1edb5f-8c7f-401e-abb2-66d6255a00ae",
+        "question": "Why does it take so long to close a mortgage?",
+        "slug": "why-does-it-take-so-long-to-close-a-mortgage-2",
+        "answer": "Mortgages tend to take at least 30 days to originate, and many first-timers don't expect this much of a waiting period. The short answer is that a lot of things need to happen between you submitting your mortgage application and you taking ownership of your home.\nJust to name a few: You'll need to gather documentation for your lender to present to an underwriter (and they'll always come back and ask for more); you'll want to schedule and complete a home inspection; the seller may need time to complete repairs; and the loan needs to make its way through underwriting. Once all of those things have been completed you will be “Cleared to Close”, then a few more days are required for drawing up contracts and other paperwork, scheduling your closing, and getting all the involved parties to the table. It is a lot to get done in just 30 days!",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 2
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "2bc7b386-2f20-480c-8d64-943c236d06df",
+        "question": "Should I \"lock\" my interest rate?",
+        "slug": "should-i-lock-my-interest-rate-3",
+        "answer": "A rate lock means that you're guaranteed today's mortgage interest rate for some predetermined period, typically 30 to 60 days. If interest rates have been trending upward, it's generally a good idea to lock in your rate. While the prevailing mortgage rate doesn't usually make a big move in a month or two, it's certainly possible.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 3
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "a5f13f7b-5079-4dd3-aad2-e58adc3b4af0",
+        "question": "How much of a down payment do I need?",
+        "slug": "how-much-of-a-down-payment-do-i-need-4",
+        "answer": "Of course there is no one answer to this question. But there are a few basic scenarios that we can discuss. The short answer is that you can get a conventional mortgage with as little as 3% down, an FHA loan with 3.5% down, and a VA or USDA loan with no money down at all. With the first 2 options you will need to pay Private Mortgage Insurance, or PMI. This is something that lenders require to insure the loan because you don’t have as much “skin in the game” with a lower down payment. Once you have 20% equity in your mortgage you can request to have the PMI removed. ",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 4
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "64d3b4ac-f170-492d-92f4-52663fbc7e43",
+        "question": "What are closing costs, and how much should I expect them to be?",
+        "slug": "what-are-closing-costs-and-how-much-should-i-expect-them-to-be-5",
+        "answer": "    The process typically involves pre-approval, choosing a loan program, submitting documentation, underwriting, and closing.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 5
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "09a22690-4c41-4185-a326-18767b127176",
+        "question": "What type of mortgage is best for me?",
+        "slug": "what-type-of-mortgage-is-best-for-me-6",
+        "answer": "There are several different types of mortgages to choose from. A conventional mortgage is tougher to qualify for credit-wise, but an FHA loan can be costlier. If you're a veteran, a VA loan could be the best option for you, and if you plan to buy a home in a rural area, a USDA mortgage could give you a no-money-down option. Every type of loan serves different borrowers well. Sharing some key details with your Loan Officer is a great way to start figuring out the best fit for you.\nWhat are discount points, and should I pay them?\nDiscount points are money that you pay up front on your mortgage in exchange for a lower interest rate. One \"point\" is equal to 1% of the loan amount, so on a $200,000 mortgage, one discount point would be $2,000. Discount points are tax-deductible, and mathematically, if the interest savings over the life of the loan is greater than the points paid, it can be worth it. Our mortgage calculator can help you determine whether discount points are a good idea by comparing the effect of various interest rates on your mortgage. In addition, your Loan Officer can do some calculating to make sure you make the right choice.\n",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 6
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "12e1a541-4b09-4e61-9cfc-6db5cc8e271e",
+        "question": "Should I get a 15-year or 30-year term loan?",
+        "slug": "should-i-get-a-15-year-or-30-year-term-loan-7",
+        "answer": "This depends on how much you want to stretch your budget. If you can afford the higher monthly payments, a 15-year mortgage usually comes with a better interest rate than a 30-year version. Not only will you pay off the house quicker, but you can save a tremendous amount of interest. On the other hand, a 30-year mortgage will cost less per month, allowing you to afford a bigger or nicer house, or one in a better location. Reviewing some key details about your situation with your loan officer is a great place to start before making this decision.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 7
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "bd6ac624-2dc5-4495-8951-738f2018037f",
+        "question": "What documentation should I gather?",
+        "slug": "what-documentation-should-i-gather-8",
+        "answer": "Your lender may ask for many different items, but in general, be prepared to show all of the following:\nIncome verification (Last two years' tax returns, W-2s, 1099s, and your last few pay stubs)\nDrivers' license and Social Security card (or alternative ID)\nBank statements\nProof of funds to close (and an explanation of where they came from, if it's not obvious)\nIf some or all of your down payment is coming from a gift, you will need a gift letter from the source of the funds that confirms they are a gift, not a loan.\nSome of this process can be overwhelming as you go digging through your recent financial past. Remember that talking to your Loan Officer first can help you better understand each item. If you have more questions about the specific details, they will be a great resource for you.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 8
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "8da5fedf-30a0-494b-aecb-e4e586a03148",
+        "question": "What is a pre-qualification?",
+        "slug": "what-is-a-pre-qualification-9",
+        "answer": "A pre-qualification is a basic review of your finances to determine if you would qualify for a mortgage. In general, a pre-qualification is based on unverified information you provide and does not include a credit check or any documentation, and is therefore not a firm guarantee of a loan. Most buyers will have one of these if they are shopping for a home. Though it is helpful, having a pre-approval on hand creates a stronger position for you as a buyer and will get your offer to the top of the pile.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 9
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "eec0023e-7c67-4456-83fe-0cd53a6d5094",
+        "question": "What is a pre-approval?",
+        "slug": "what-is-a-pre-approval-10",
+        "answer": "Unlike a pre-qualification, a pre-approval can be a highly useful tool in the homebuying process. It's essentially the same thing as applying for a mortgage, just without a specific home attached to it. As part of a pre-approval, a lender will check your credit, verify your income and employment, and commit to lending a certain amount of money. A pre-approval can show sellers that you're serious about buying a home, and that you're likely to be able to follow through on a bid, and close on their property. Sellers are looking for these over a pre-qualification, and having one in hand will give you the edge you need in this competitive market of buying homes.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 10
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "abd87ea8-7f16-4f3b-ad64-9987b6270a18",
+        "question": "How is my mortgage payment determined?",
+        "slug": "how-is-my-mortgage-payment-determined-11",
+        "answer": "Depending on your situation, there are typically three or four parts of your mortgage payment:\nPrincipal: Repayment of your outstanding balance.\nInterest: Payment of the interest charged on the outstanding balance.\nTaxes: One-twelfth of your expected annual property taxes will be included in your mortgage payment, and deposited into your escrow account.\nInsurance: This includes homeowner's insurance, as well as any other hazard insurances you're required to have, such as flood or windstorm. If you put less than 20% down on your loan, this can also include private mortgage insurance.\nBased on these four items, your mortgage payments are sometimes referred to as PITI.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 11
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "ccc193ce-7356-4922-bae2-87f4bd54a6b3",
+        "question": "Will my monthly payments change during the loan term?",
+        "slug": "will-my-monthly-payments-change-during-the-loan-term-12",
+        "answer": "Probably. Even with a fixed-rate loan, your payment is likely to change over time. The reason? Your property taxes and insurance expenses, upon which the escrow portion of your payment is based, tend to fluctuate. If they rise, it may be necessary for your lender to ask for a higher escrow payment. This will impact your payment. It is typically not a huge amount, but you should anticipate that as costs of services and taxes rise, so will your payments year over year.",
+        "category": "General",
+        "published": true,
+        "featured": false,
+        "sort_order": 12
+      }
+    }
+  ]
+}

@@ -5,17 +5,15 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { getPetraTeamClient } from "@/lib/petra-client"
 import { Form } from "@/components/ui/form"
 import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import { TeamCard } from "@/components/Sections/Team/TeamCard"
 import TeamMember from "@/components/interfaces/TeamMember.interface"
-import BACKEND from "@/app/api"
 
 import QuestionHeader from "../components/questionHeader"
 import QuestionNext from "./QuestionNext"
-
-const api = new BACKEND()
 
 export const Step1FormSchema = z.object({
   Email: z.string().email("Please enter a valid email address"),
@@ -36,12 +34,7 @@ export default function Step1Form(props: { HandleNext: any; UpdateState }) {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
 
   let LoadTeam = async () => {
-    let res = await api
-      .GET({
-        Route: "team",
-      })
-      .then((val) => val.data)
-      .catch((err) => [])
+    const res = await getPetraTeamClient().catch(() => [])
 
     setTeamMembers(res)
     return

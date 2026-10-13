@@ -3,22 +3,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { CheckCircle } from "lucide-react"
 
+import { getPetraResources } from "@/lib/petra-public-api"
 import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 import TitleWithIconCard from "@/components/Cards/TitleWithIconCard"
 import CardList from "@/components/Sections/General/CardList"
 import IntroSection from "@/components/Sections/General/IntroSection"
-
-import BACKEND from "../api"
-
-const api = new BACKEND()
-
-const GetData = async (route: string) => {
-  let val = await api.GET({
-    Route: route,
-  })
-
-  return val
-}
 
 interface Resource {
   Title?: string
@@ -35,8 +24,8 @@ interface Formatted {
 }
 
 export default async function Resoures() {
-  let res = await GetData(`resources`)
-    .then(({ data, code, error }: { data: Resource[]; code; error }) => {
+  let res = await getPetraResources()
+    .then((data: Resource[]) => {
       let finalData: Formatted[] = []
       if (data.length > 0) {
         data.sort((a, b) => {
@@ -72,7 +61,10 @@ export default async function Resoures() {
     .catch((err) => [])
   return (
     <>
-      <IntroSection ImageURL="https://files.petralending.com/Resources_header.png" Title="Resources" />
+      <IntroSection
+        ImageURL="https://files.petralending.com/Resources_header.png"
+        Title="Resources"
+      />
 
       <h2 className="mx-auto max-w-2xl text-center text-2xl">
         Buying a home shouldn’t be hard. Our team is here to support you every

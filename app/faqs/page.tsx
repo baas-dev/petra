@@ -1,3 +1,4 @@
+import { getPetraFAQs } from "@/lib/petra-public-api"
 import {
   Accordion,
   AccordionContent,
@@ -6,28 +7,15 @@ import {
 } from "@/components/ui/accordion"
 import Banner from "@/components/BAAS/Banners/BannerSite"
 
-import BACKEND from "../api"
-
-const api = new BACKEND()
-
-const GetData = async (route: string) => {
-  let val = await api.GET({
-    Route: route,
-  })
-
-  return val.data
-}
-
 interface FAQ {
   Question: string
   Answer: string
-  Published: string
+  Published?: boolean
 }
 export default async function FAQ() {
-  let res = await GetData(`faq`)
+  let res = await getPetraFAQs()
     .then((val) => val)
     .catch((err) => [])
-
 
   return (
     <>

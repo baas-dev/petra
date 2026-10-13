@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-10-13T16:10:11.306Z",
+  "table": {
+    "name": "Team Members",
+    "slug": "team-members",
+    "description": "Petra Lending public team directory and loan officer application routing.",
+    "status": "active",
+    "primary_key_name": "legacy_id",
+    "settings": {
+      "source": "petra-legacy-sql",
+      "public_read": true
+    },
+    "interfaces": {},
+    "displays": {}
+  },
+  "fields": [
+    {
+      "name": "Legacy ID",
+      "slug": "legacy_id",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": true,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 10
+    },
+    {
+      "name": "Name",
+      "slug": "name",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 20
+    },
+    {
+      "name": "Slug",
+      "slug": "slug",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 30
+    },
+    {
+      "name": "Title",
+      "slug": "title",
+      "field_type": "text",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 40
+    },
+    {
+      "name": "Biography",
+      "slug": "biography",
+      "field_type": "markdown",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "markdown_wysiwyg"
+      },
+      "displays": {
+        "kind": "markdown"
+      },
+      "sort_order": 50
+    },
+    {
+      "name": "Headshot URL",
+      "slug": "headshot_url",
+      "field_type": "text",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 60
+    },
+    {
+      "name": "NMLS Number",
+      "slug": "nmls_number",
+      "field_type": "text",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 70
+    },
+    {
+      "name": "Phone",
+      "slug": "phone",
+      "field_type": "text",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 80
+    },
+    {
+      "name": "Email",
+      "slug": "email",
+      "field_type": "text",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 90
+    },
+    {
+      "name": "Quote",
+      "slug": "quote_text",
+      "field_type": "markdown",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "markdown_wysiwyg"
+      },
+      "displays": {
+        "kind": "markdown"
+      },
+      "sort_order": 100
+    },
+    {
+      "name": "Application URL",
+      "slug": "application_url",
+      "field_type": "text",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 110
+    },
+    {
+      "name": "Published",
+      "slug": "published",
+      "field_type": "boolean",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "toggle"
+      },
+      "displays": {
+        "kind": "badge"
+      },
+      "sort_order": 120
+    },
+    {
+      "name": "Sort Order",
+      "slug": "sort_order",
+      "field_type": "number",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "number"
+      },
+      "displays": {},
+      "sort_order": 130
+    }
+  ],
+  "records": [
+    {
+      "values": {
+        "legacy_id": "625896f7-6680-4328-96d7-b7f76896f369",
+        "name": "Jason O'Quinn",
+        "slug": "jason-o-quinn",
+        "title": "Founder & CEO",
+        "biography": "<p>Jason started Petra nearly two decades ago with a sincere passion for helping people. Voted one of D Magazine’s Best Mortgage Professionals year after year, Jason really gets the mortgage industry. But that’s not why people choose Jason for their home lending needs. His integrity, commitment, and personal touch are what make him the best at what he does; it comes as no surprise that most of his clients come back over and over because of his willingness to serve them well.</p>",
+        "headshot_url": "/images/jo.jpg",
+        "nmls_number": "293991",
+        "phone": "",
+        "email": "jason@petralending.com",
+        "quote_text": "",
+        "application_url": "https://jasonoquinn.zipforhome.com",
+        "published": true,
+        "sort_order": 1
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "85bf1552-a595-4156-a053-0f216bf0074f",
+        "name": "Kyle Kisselburg",
+        "slug": "kyle-kisselburg",
+        "title": "Vice President",
+        "biography": "<p>With 20 years of home lending experience, Kyle helps Petra lead the charge in excellent customer experiences. More likely to call rather than text, Kyle knows exactly what his clients expect and always delivers his best. Maybe that’s because he was raised in Tulsa, and people from Tulsa are super smart, and super nice, and super great mortgage lenders. Yeah, that’s it.</p>",
+        "headshot_url": "/images/kk.jpg",
+        "nmls_number": "331591",
+        "phone": "+18174444444",
+        "email": "kyle@petralending.com",
+        "quote_text": "",
+        "application_url": "https://kylekisselburg.zipforhome.com",
+        "published": true,
+        "sort_order": 2
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "888b2e50-9e2e-4915-b386-1e8511ec3bdc",
+        "name": "Kevin Russell",
+        "slug": "kevin-russell",
+        "title": "Senior Loan Officer",
+        "biography": "<p>Kevin comes with 25 years of experience in the real estate and lending industry. He resides with his sweet family in Dallas where he enjoys good eating, spending time with those he loves, and anything cars! Kevin makes every client a priority by offering “boutique service”, transparency, and honesty. He knows that financing a home can come with its challenges and wants to serve each client by making their experience as stress-free and seamless as possible</p>",
+        "headshot_url": "/images/kr.jpg",
+        "nmls_number": "195604",
+        "phone": "",
+        "email": "kevin@petralending.com",
+        "quote_text": "",
+        "application_url": "https://kevinrussell.zipforhome.com",
+        "published": true,
+        "sort_order": 3
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "a762b009-1af2-4131-9c0a-7f8937f91f0e",
+        "name": "Mary Russell",
+        "slug": "mary-russell",
+        "title": "Senior Loan Officer",
+        "biography": "<p>With 20 years’ experience in just about every corner of the mortgage business, Mary really has what it takes to make sure your home buying experience is second to none. Mary’s clients, many of whom she has worked with for 10+ years, will say that she is dedicated, extremely responsive, and available after hours, on the weekends and even vacation (what?!). She does it all while raising 3 kids and keeping active with her church. I’d call that a super power. What’s yours?</p>",
+        "headshot_url": "/images/mr.jpg",
+        "nmls_number": "1120374",
+        "phone": "234234234234",
+        "email": "mary@petralending.com",
+        "quote_text": "",
+        "application_url": "https://maryrussell.zipforhome.com",
+        "published": true,
+        "sort_order": 4
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "bb383736-553e-45f0-8706-f70b404480fd",
+        "name": "Joshua Hernandez",
+        "slug": "joshua-hernandez",
+        "title": "Senior Loan Officer",
+        "biography": "<p>With nearly 20 years of experience as a loan originator, Joshua makes it a priority to build trusting relationships with each of his clients so he can serve them best. His communication skills and attention to detail are supported by the nearly 100 5- star reviews he has received online from satisfied clients. He’s also the co-founder of Impossible Possibilities – an education non-profit that has awarded $250,000 in college scholarships to students in Dallas and Tarrant county.</p>",
+        "headshot_url": "/images/jh.jpg",
+        "nmls_number": "284694",
+        "phone": "+19729585553",
+        "email": "joshua@petralending.com",
+        "quote_text": "",
+        "application_url": "https://joshuahernandez.zipforhome.com",
+        "published": true,
+        "sort_order": 5
+      }
+    }
+  ]
+}

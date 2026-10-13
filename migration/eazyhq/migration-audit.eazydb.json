@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-10-13T00:00:00Z",
+  "table": {
+    "name": "Migration Audit",
+    "slug": "migration-audit",
+    "description": "Petra production content migration audit trail.",
+    "status": "active",
+    "primary_key_name": "legacy_id",
+    "settings": {},
+    "interfaces": {},
+    "displays": {}
+  },
+  "fields": [
+    {
+      "name": "Legacy ID",
+      "slug": "legacy_id",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": true,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 10
+    }
+  ],
+  "records": [
+    {
+      "values": {
+        "legacy_id": "petra-content-2025-05-13"
+      }
+    }
+  ]
+}

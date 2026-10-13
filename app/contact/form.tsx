@@ -6,13 +6,13 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { submitPetraFormClient } from "@/lib/petra-client"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { toast } from "@/components/ui/use-toast"
 import SubmitButton from "@/components/BAAS/Forms/Buttons/submit"
 import TextInput from "@/components/BAAS/Forms/Inputs/Text"
 import TextAreaInput from "@/components/BAAS/Forms/Inputs/TextArea"
-import BACKEND from "@/app/api"
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, "Please complete first name"),
@@ -20,8 +20,6 @@ export const ContactFormSchema = z.object({
   message: z.string().min(2, "Please complete second name"),
   type: z.string(),
 })
-
-const api = new BACKEND()
 
 export default function ContactForm() {
   const r = useRouter()
@@ -52,13 +50,7 @@ export default function ContactForm() {
     }
 
     if (result.success) {
-      await api.CREATE({
-        Route: "forms",
-        Body: JSON.stringify({
-          SubmissionData: JSON.stringify(data),
-          Type: "contact",
-        }),
-      })
+      await submitPetraFormClient("contact", data)
       toast({
         title: "Your Submission Was Successful!",
         description: (

@@ -1,21 +1,15 @@
 import { useEffect, useRef, useState } from "react"
 
+import { getPetraTeamClient } from "@/lib/petra-client"
 import TeamMember from "@/components/interfaces/TeamMember.interface"
-import BACKEND from "@/app/api"
 
 import { TeamCard } from "./TeamCard"
 
 export default function TeamSection() {
-  const api = new BACKEND()
   const [teamMember, setTeamMembers] = useState<TeamMember[]>([])
 
   let LoadTeam = async () => {
-    let res = await api
-      .GET({
-        Route: "team",
-      })
-      .then((val) => val.data)
-      .catch((err) => [])
+    const res = await getPetraTeamClient().catch(() => [])
 
     setTeamMembers(res)
   }

@@ -6,4 +6,8 @@ export default interface TeamMember {
   Image: string
   Biography: string
   RNumber: number
+  Title?: string
+  ApplicationURL?: string
+  Published?: boolean
+  Order?: number
 }

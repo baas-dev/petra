@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-10-13T16:10:11.306Z",
+  "table": {
+    "name": "Resources",
+    "slug": "resources",
+    "description": "Published Petra Lending downloads, calculators, compliance documents, and external tools.",
+    "status": "active",
+    "primary_key_name": "legacy_id",
+    "settings": {
+      "source": "petra-legacy-sql",
+      "public_read": true
+    },
+    "interfaces": {},
+    "displays": {}
+  },
+  "fields": [
+    {
+      "name": "Legacy ID",
+      "slug": "legacy_id",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": true,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 10
+    },
+    {
+      "name": "Title",
+      "slug": "title",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 20
+    },
+    {
+      "name": "Slug",
+      "slug": "slug",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 30
+    },
+    {
+      "name": "Description",
+      "slug": "description",
+      "field_type": "markdown",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "markdown_wysiwyg"
+      },
+      "displays": {
+        "kind": "markdown"
+      },
+      "sort_order": 40
+    },
+    {
+      "name": "Destination URL",
+      "slug": "destination_url",
+      "field_type": "text",
+      "is_required": true,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 50
+    },
+    {
+      "name": "Icon URL",
+      "slug": "icon_url",
+      "field_type": "text",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {},
+      "displays": {},
+      "sort_order": 60
+    },
+    {
+      "name": "Category",
+      "slug": "category",
+      "field_type": "select",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {
+        "options": [
+          "Documents",
+          "Tools",
+          "Compliance"
+        ]
+      },
+      "interfaces": {
+        "kind": "dropdown_select"
+      },
+      "displays": {
+        "kind": "badge"
+      },
+      "sort_order": 70
+    },
+    {
+      "name": "Open in New Tab",
+      "slug": "open_in_new_tab",
+      "field_type": "boolean",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "toggle"
+      },
+      "displays": {},
+      "sort_order": 80
+    },
+    {
+      "name": "Published",
+      "slug": "published",
+      "field_type": "boolean",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "toggle"
+      },
+      "displays": {
+        "kind": "badge"
+      },
+      "sort_order": 90
+    },
+    {
+      "name": "Sort Order",
+      "slug": "sort_order",
+      "field_type": "number",
+      "is_required": false,
+      "is_primary_key": false,
+      "foreign_field": "",
+      "default_value": {},
+      "settings": {},
+      "interfaces": {
+        "kind": "number"
+      },
+      "displays": {},
+      "sort_order": 100
+    }
+  ],
+  "records": [
+    {
+      "values": {
+        "legacy_id": "a60c6987-6861-4b4e-8c82-6128b1d73cd3",
+        "title": "Freddie Mac’s Home Possible Eligibility Tool",
+        "slug": "freddie-mac-s-home-possible-eligibility-tool",
+        "description": "",
+        "destination_url": "https://myhome.freddiemac.com/?gad=1&gclid=Cj0KCQjwj5mpBhDJARIsAOVjBdpjNFtfbRlQD1gawpELPv3Q9bJ4SUURPp5dAIf1Iu3_wps1G9h9qoQaAhzvEALw_wcB",
+        "icon_url": "https://files.petralending.com/1703894-200.png",
+        "category": "Tools",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 9
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "d17f9df3-ab74-43a9-9ee3-e4e1f13d7307",
+        "title": "Texas Recovery Fund Notice",
+        "slug": "texas-recovery-fund-notice",
+        "description": "The notice details how it is illegal under Texas law to intentionally or knowingly make a materially false or misleading statement to obtain property or credit, including a mortgage loan.",
+        "destination_url": "https://www.sml.texas.gov/wp-content/uploads/2021/07/rmlo_80_200_b_recovery_fund_notice.pdf",
+        "icon_url": "https://files.petralending.com/texas.png",
+        "category": "Compliance",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 5
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "2c500734-cf5c-4427-b856-e71f70aaa64e",
+        "title": "Charm Booklet (PDF)",
+        "slug": "charm-booklet-pdf",
+        "description": "",
+        "destination_url": "https://files.petralending.com/CHARM booklet.pdf",
+        "icon_url": "https://files.petralending.com/graph.png",
+        "category": "Documents",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 4
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "57675f84-6b9f-41aa-8fc6-c1790e3cf07c",
+        "title": "Privacy Policy",
+        "slug": "privacy-policy",
+        "description": "This Privacy Policy explains how Petra Lending collects, uses, shares, and protects your personal information when you use our website and services.",
+        "destination_url": "https://files.petralending.com/Privacy Policy.pdf",
+        "icon_url": "https://files.petralending.com/shidle.png",
+        "category": "Compliance",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 12
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "ecc6f6d9-b182-4504-9ac5-902ca657fcf6",
+        "title": "Terms of Service",
+        "slug": "terms-of-service",
+        "description": "By using our website and services, you agree to comply with and be bound by the following Terms of Service.",
+        "destination_url": "https://files.petralending.com/TermsOfService.pdf",
+        "icon_url": "https://files.petralending.com/tos.png",
+        "category": "Compliance",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 11
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "7196b533-8f59-4c35-916d-8ea588c58500",
+        "title": "USDA Eligibility Map",
+        "slug": "usda-eligibility-map",
+        "description": "",
+        "destination_url": "https://eligibility.sc.egov.usda.gov/eligibility/welcomeAction.do?pageAction=sfp",
+        "icon_url": "https://files.petralending.com/2460728.png",
+        "category": "Tools",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 10
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "20825f3e-1214-44dc-bea1-d115f077f35f",
+        "title": "Your Home Loan Toolkit (PDF)",
+        "slug": "your-home-loan-toolkit-pdf",
+        "description": "",
+        "destination_url": "https://files.petralending.com/Home Loan toolkit-compressed.pdf",
+        "icon_url": "https://files.petralending.com/tools.png",
+        "category": "Tools",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 3
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "c09cdc23-3448-42c0-8e85-a02ed7390f31",
+        "title": "NMLS Consumer Access Link",
+        "slug": "nmls-consumer-access-link",
+        "description": "",
+        "destination_url": "https://www.nmlsconsumeraccess.org",
+        "icon_url": "https://files.petralending.com/nmls.png",
+        "category": "Compliance",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 6
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "502e2498-0cb3-4e03-84c2-7cb203828f42",
+        "title": "Fannie Mae’s Are Median income Eligibility tool",
+        "slug": "fannie-mae-s-are-median-income-eligibility-tool",
+        "description": "",
+        "destination_url": "https://ami-lookup-tool.fanniemae.com/amilookuptool/",
+        "icon_url": "https://files.petralending.com/Fannie_Mae_(2016)_(Icon)-svg.png",
+        "category": "Tools",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 7
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "36555d46-2ba2-4bb8-8530-2bfb55a07ecf",
+        "title": "Fannie Mae’s Home Ready Tool",
+        "slug": "fannie-mae-s-home-ready-tool",
+        "description": "",
+        "destination_url": "https://singlefamily.fanniemae.com/originating-underwriting/mortgage-products/homeready-mortgage",
+        "icon_url": "https://files.petralending.com/Fannie_Mae_(2016)_(Icon)-svg.png",
+        "category": "Tools",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 8
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "34575f7f-1f63-40a2-9dbe-e3ce952c13c5",
+        "title": "Mortgage Calculator",
+        "slug": "mortgage-calculator",
+        "description": "",
+        "destination_url": "https://petralending.com/resources/mortgage-calculator",
+        "icon_url": "https://files.petralending.com/calc.png",
+        "category": "Tools",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 2
+      }
+    },
+    {
+      "values": {
+        "legacy_id": "be9ac150-2369-4e9e-b500-46946e24bed6",
+        "title": "Home Loan Mortgage Checklist (PDF)",
+        "slug": "home-loan-mortgage-checklist-pdf",
+        "description": "",
+        "destination_url": "https://files.petralending.com/Mortgage Checklist-1.pdf",
+        "icon_url": "https://media.petralending.com/Mortgage%20Checklist.pdf",
+        "category": "Documents",
+        "open_in_new_tab": true,
+        "published": true,
+        "sort_order": 1
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowBigRight, Download, View } from "lucide-react"
 
+import { getPetraResources } from "@/lib/petra-public-api"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -13,17 +14,6 @@ import {
 import { Label } from "@/components/ui/label"
 import Banner from "@/components/BAAS/Banners/BannerSite"
 import LongCardDetail from "@/components/BAAS/Cards/LongCardDetail"
-import BACKEND from "@/app/api"
-
-const api = new BACKEND()
-
-const GetData = async (route: string) => {
-  let val = await api.GET({
-    Route: route,
-  })
-
-  return val
-}
 
 interface Resource {
   Title: string
@@ -32,11 +22,8 @@ interface Resource {
   LinkIcon?: string
 }
 export default async function Downloads() {
-  let res = await GetData(`resources`)
-    .then((val) => {
-      console.log(val.data)
-      return val.data
-    })
+  let res = await getPetraResources()
+    .then((val) => val)
     .catch((err) => [])
 
   return (

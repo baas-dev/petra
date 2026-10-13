@@ -4,18 +4,16 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { z } from "zod"
 
+import { getPetraTeamClient } from "@/lib/petra-client"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Label } from "@/components/ui/label"
 import { RevealAnimation } from "@/components/Animations/InViewAnimationWrapper"
 import { TeamCard } from "@/components/Sections/Team/TeamCard"
 import TeamMember from "@/components/interfaces/TeamMember.interface"
-import BACKEND from "@/app/api"
 
 import QuestionNext from "../prequalification/Steps/QuestionNext"
 import QuestionHeader from "../prequalification/components/questionHeader"
-
-const api = new BACKEND()
 
 export default function Step1Form(props: {}) {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
@@ -26,12 +24,7 @@ export default function Step1Form(props: {}) {
   }
   const [selected, setSelected] = useState<string | null>(null)
   let LoadTeam = async () => {
-    let res = await api
-      .GET({
-        Route: "team",
-      })
-      .then((val) => val.data)
-      .catch((err) => [])
+    const res = await getPetraTeamClient().catch(() => [])
 
     setTeamMembers(res)
     return
@@ -111,12 +104,13 @@ export default function Step1Form(props: {}) {
           {selected != null ? (
             <Button
               onClick={() => {
-                let adr = processString(
-                  teamMembers.find((member) => member.Name === selected)
-                    ?.Name || ""
+                const teammate = teamMembers.find(
+                  (member) => member.Name === selected
                 )
-                console.log(adr)
-                r.replace(`https://${adr}.zipforhome.com`)
+                const fallback = `https://${processString(
+                  teammate?.Name || ""
+                )}.zipforhome.com`
+                r.replace(teammate?.ApplicationURL || fallback)
                 //   props.UpdateState(1, Step1FormCXT.getValues("TeamMembers"))
                 //   props.HandleNext()
               }}
