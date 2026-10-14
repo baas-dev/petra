@@ -35,5 +35,10 @@
     "app/resources/mortgage-calculator/components/piechart.js",
     "next.config.mjs"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    ".open-next",
+    ".open-next/**/*",
+    "cloudflare-env.d.ts"
+  ]
 }

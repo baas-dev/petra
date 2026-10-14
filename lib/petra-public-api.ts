@@ -153,6 +153,28 @@ export async function submitPetraForm(
   form: "contact" | "prequalification",
   values: JsonObject
 ) {
+  const submissionValues: JsonObject =
+    form === "contact"
+      ? {
+          name: stringValue(values, "Name", "name"),
+          email: stringValue(values, "Email", "email"),
+          message: stringValue(values, "Message", "message"),
+        }
+      : {
+          email: stringValue(values, "Email", "email"),
+          phone: stringValue(values, "Phone", "phone"),
+          team: JSON.stringify(objectValue(values, "Team", "team") ?? []),
+          address: JSON.stringify(
+            objectValue(values, "Address", "address") ?? {}
+          ),
+          price: stringValue(values, "Price", "price"),
+          property_selected:
+            objectValue(values, "Enabled", "property_selected") === true,
+          borrowers: JSON.stringify(
+            objectValue(values, "Borrowers", "borrowers") ?? []
+          ),
+        }
+
   const response = await fetch(
     `${apiBase}/api/forms/${encodeURIComponent(workspace)}/${form}/submit`,
     {
@@ -162,7 +184,7 @@ export async function submitPetraForm(
         Accept: "application/json",
       },
       body: JSON.stringify({
-        values,
+        values: submissionValues,
         metadata: { source: "petralending.com" },
       }),
       cache: "no-store",
