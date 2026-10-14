@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "petra-lending",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "EAZYHQ_API_URL": "https://app.baas.dev",
+    "EAZYHQ_WORKSPACE_SLUG": "petra",
+    "EAZYHQ_SITE_FLOW_SLUG": "petra-site-api"
+  },
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

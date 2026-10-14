@@ -10,16 +10,17 @@ import DetailPage from "@/components/BAAS/CRUD/DetailPage"
 // import { Resource } from "../columns"
 
 async function GetData(id: string, path: string): Promise<any[]> {
-  let data = await fetch(`http://localhost:4000/${path}/${id}`, {
+  const data = await fetch(`http://localhost:4000/${path}/${id}`, {
     cache: "no-cache",
   })
     .then(async (data) => {
       let d = await data.json()
       console.log(d)
-      return d
+      return d as any[]
     })
     .catch((err) => {
       console.log(err)
+      return []
     })
 
   return data

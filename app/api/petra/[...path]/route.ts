@@ -46,8 +46,16 @@ export async function POST(
   if (!form) return NextResponse.json({ error: "Not found" }, { status: 404 })
 
   try {
-    const values = await request.json()
-    return NextResponse.json(await submitPetraForm(form, values))
+    const values: unknown = await request.json()
+    if (!values || typeof values !== "object" || Array.isArray(values)) {
+      return NextResponse.json(
+        { error: "Submission values must be an object" },
+        { status: 400 }
+      )
+    }
+    return NextResponse.json(
+      await submitPetraForm(form, values as Record<string, unknown>)
+    )
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Submission failed" },

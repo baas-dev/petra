@@ -2,3 +2,7 @@ node_modules
 .next
 .vscode
 .contentlayer
+.open-next
+.wrangler
+.dev.vars*
+!.dev.vars.example

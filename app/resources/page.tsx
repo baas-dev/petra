@@ -23,6 +23,16 @@ interface Formatted {
   Delay?: number
 }
 
+function isImageUrl(value?: string) {
+  if (!value) return false
+  try {
+    const pathname = new URL(value, "https://petralending.com").pathname
+    return /\.(avif|gif|jpe?g|png|svg|webp)$/i.test(pathname)
+  } catch {
+    return false
+  }
+}
+
 export default async function Resoures() {
   let res = await getPetraResources()
     .then((data: Resource[]) => {
@@ -41,13 +51,17 @@ export default async function Resoures() {
             Icon: (
               <>
                 <div className=" h-28 w-28 object-contain">
-                  <Image
-                    src={item.IconLink ? item.IconLink.toString() : "/404.png"}
-                    alt={`${item.Title} Image`}
-                    width={1000}
-                    height={1000}
-                    className="relative h-full w-full"
-                  />
+                  {isImageUrl(item.IconLink) ? (
+                    <Image
+                      src={item.IconLink!}
+                      alt={`${item.Title} Image`}
+                      width={1000}
+                      height={1000}
+                      className="relative h-full w-full object-contain"
+                    />
+                  ) : (
+                    <CheckCircle className="size-full text-primary" />
+                  )}
                 </div>
               </>
             ),

@@ -33,23 +33,7 @@ export default function ContactForm() {
   })
   async function onSubmit(data: z.infer<typeof ContactFormSchema>) {
     setLoading(true)
-    const result = ContactFormSchema.safeParse(data)
-
-    if (!result.success) {
-      // Handle the validation errors
-
-      toast({
-        title: "Errors Detected:",
-        description: (
-          <p>Please fix errors!</p>
-          // <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          //   <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-          // </pre>
-        ),
-      })
-    }
-
-    if (result.success) {
+    try {
       await submitPetraFormClient("contact", data)
       toast({
         title: "Your Submission Was Successful!",
@@ -61,8 +45,18 @@ export default function ContactForm() {
         ),
       })
       r.push("/success")
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "We could not send your message",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Please try again in a moment.",
+      })
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
   // ID: string
   // Question: string

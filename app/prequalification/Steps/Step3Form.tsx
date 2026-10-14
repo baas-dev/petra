@@ -115,19 +115,23 @@ export default function Step3Form(props: {
     }
   }
 
-  async function SubmitFunc(e, errors) {
+  async function SubmitFunc(e) {
     e.preventDefault()
     setLoading(true)
-    handleBorrowerState(errors)
+    try {
+      const isValid = await Step3FormCXT.trigger("Borrowers")
+      handleBorrowerState(Step3FormCXT.formState.errors.Borrowers)
 
-    if (Step3FormCXT.formState.isValid) {
-      props.UpdateState(3, {
-        Borrowers: Step3FormCXT.getValues("Borrowers"),
-      })
-
-      props.HandleNext()
+      if (isValid) {
+        const finalStep = {
+          Borrowers: Step3FormCXT.getValues("Borrowers"),
+        }
+        props.UpdateState(3, finalStep)
+        await props.HandleNext(finalStep)
+      }
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   function handleAdd(e) {
@@ -210,18 +214,6 @@ export default function Step3Form(props: {
     Step3FormCXT.setValue("Borrowers", data)
   }
 
-  const triggerForm = async (e) => {
-    SubmitFunc(e, Step3FormCXT.formState.errors.Borrowers)
-
-    await Step3FormCXT.trigger("Borrowers")
-      .then(() => {
-        SubmitFunc(e, Step3FormCXT.formState.errors.Borrowers)
-      })
-      .catch((err) => {
-        // console.log(err)
-      })
-  }
-
   useEffect(() => {}, [borrowerState])
   return (
     <div className="w-full py-8 text-center">
@@ -229,7 +221,7 @@ export default function Step3Form(props: {
         <form
           onSubmit={(e) => {
             e.preventDefault()
-            triggerForm(e)
+            SubmitFunc(e)
           }}
           // onSubmit={onSubmit}
           className="w-full space-y-6"

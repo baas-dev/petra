@@ -39,43 +39,56 @@ export default function PrequalificationForm() {
   }, [])
 
   function UpdateState(step: number, data: any) {
-    console.log(step, data)
-    let state = localState
-    switch (step) {
-      case 1:
-        state.Email = data.Email
-        state.Phone = data.Phone
-        state.Team = data.Team
-        setLocalState(state)
-        break
-      case 2:
-        state.Enabled = data.Enabled
-        state.Address = data.Address
-        state.Price = data.Price
-        setLocalState(state)
-        break
-      case 3:
-        state.Borrowers = data.Borrowers
-        setLocalState(state)
-        break
-      default:
-        break
-    }
-    console.log(state)
+    setLocalState((state) => {
+      switch (step) {
+        case 1:
+          return {
+            ...state,
+            Email: data.Email,
+            Phone: data.Phone,
+            Team: data.Team,
+          }
+        case 2:
+          return {
+            ...state,
+            Enabled: data.Enabled,
+            Address: data.Address,
+            Price: data.Price,
+          }
+        case 3:
+          return { ...state, Borrowers: data.Borrowers }
+        default:
+          return state
+      }
+    })
   }
 
-  async function FinalSubmit() {
-    await submitPetraFormClient("prequalification", localState)
-    toast({
-      title: "Your Submission Was Successful!",
-      description: (
-        <div>
-          <h2>Thank you!</h2>
-          <p>A team member will reach out to you.</p>
-        </div>
-      ),
-    })
-    r.push("/success")
+  async function FinalSubmit(finalStep: { Borrowers: any[] }) {
+    try {
+      await submitPetraFormClient("prequalification", {
+        ...localState,
+        ...finalStep,
+      })
+      toast({
+        title: "Your Submission Was Successful!",
+        description: (
+          <div>
+            <h2>Thank you!</h2>
+            <p>A team member will reach out to you.</p>
+          </div>
+        ),
+      })
+      r.push("/success")
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "We could not submit your prequalification",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Please try again in a moment.",
+      })
+    }
   }
   return (
     <div className="delay-0">
