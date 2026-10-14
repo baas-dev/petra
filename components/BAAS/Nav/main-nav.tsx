@@ -153,7 +153,7 @@ function Info() {
             href="https://maps.app.goo.gl/JA62akvuZnDwxN5CA"
             className="hover:cursor-pointer hover:underline"
           >
-            4425 Plano Pkwy, Suite 802, Carrollton, TX 75010
+            4425 Plano Pkwy Ste 802, Carrollton, TX 75010
           </a>
         </span>
       </div>
